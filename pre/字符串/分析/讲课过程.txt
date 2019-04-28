@@ -1,0 +1,56 @@
+字符串基础
+1213324
+adbadg
+ff法32 &*（）
+ 
+字符串
+
+子串
+abcd
+
+列出它的子串
+a 
+abc 
+abcd
+bc
+不是它的子串
+ac
+
+空串 
+
+(真)前缀  
+空串
+a
+ab
+abc
+
+abcd 
+
+(真)后缀
+空串
+d
+cd
+bcd
+
+abcd
+
+判等
+s1 = "abcd"
+s2 = "abcd"
+
+
+
+朴素的模式匹配算法(BF(Brute-Force)算法)
+也称 暴力算法 
+主串
+BBC ABCDAB ABCDABCDABDE
+子串
+ABCDABD
+
+
+
+
+
+
+
+

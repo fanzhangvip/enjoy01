@@ -1,0 +1,120 @@
+1. 为什么要学rxjava
+ 代码逻辑清晰，优雅
+ 避免回调地狱
+ 线程调度
+ 
+ 2. rxjava 我们应该学会哪些东西
+ 观察者模式
+ 线程调度
+ 架构和原理
+ 应用
+ 
+ 3. 观察者模式在rxjava里面的体现
+抽象被观察者角色：Observable
+抽象观察者角色：Observer
+具体被观察者角色：ObservableCreate ...
+具体观察者角色：实现了Observer接口的匿名类
+
+观察者模式 vs 发布订阅模式
+
+Observable 的 "冷" 和 "热"
+
+冷： 观察者订阅了，才会开始执行发射数据流的代码
+Observable  和 Observer 是一对一的关系
+Observable的 just,create range fromXXX等操作符生成的Observable
+都是"冷"的
+
+热：无论有没有观察者进行订阅，事件始终都会发生，
+多个观察者进行订阅的时候，信息是共享的
+
+被观察者：重量级
+内存泄露
+
+RxJava 2.x
+操作符的核心原理
+extends AbstractObservableWithUpstream<T, U> 
+在subscribeActual方面里面实现自己的核心逻辑
+source.subscribe
+
+
+
+关联关系
+java: 成员变量
+聚合：整体与个体，小汽车 ｛轮胎，方向盘 ，发动机。。。｝
+复合： 整体需要负责部分的生命周期，人（鼻子， 眼睛 ，手，）
+
+依赖关系  依赖总是单向
+java: 形参
+
+
+背压
+
+什么是背压
+被观察者发送消息太快以至于它的操作符
+或者订阅者不能及时处理相关的消息，从而操作消息的阻塞现象。
+通俗的来说：
+水坝： 没有下暴雨 相安无事
+			下暴雨  决堤
+
+异步：上游产生数据的速度 快过 下游处理数据的的速度
+
+MissingBackpressureException
+阻塞是怎么形成的？
+当下游不能快速处理上游发来的事件事件时，
+而造成的事件阻塞现象
+
+上游的水流过快（上游发送事件过快）
+上游水流量过大（上游发送事件过多）
+
+RXJava2.0中
+Observable不再支持背压，
+Flowable  支持背压操作
+
+
+如何解决阻塞？
+Flowable.create
+(FlowableOnSubscribe<T> source, BackpressureStrategy mode)
+
+背压策略
+
+MISSING：
+如果流的速度无法保持同步，可能会抛出
+MissingBackpressureException或IllegalStateException。
+
+BUFFER
+上游不断的发出onNext请求，直到下游处理完，
+也就是和Observable一样了，缓存池无限大，最后直到程序崩溃
+
+ERROR
+会在下游跟不上速度时抛出MissingBackpressureException。
+
+DROP
+会在下游跟不上速度时把onNext的值丢弃。
+
+LATEST
+会一直保留最新的onNext的值，直到被下游消费掉。
+
+网络请求
+rxjava + retrofit
+
+1.线程切换
+
+
+注册  -》 成功  
+下一步
+登录
+
+获取项目
+baseurl 
+https://www.wanandroid.com/
+https://www.wanandroid.com/
+
+功能接口的路径
+/project/tree/json
+project/list/1/json?cid=294
+
+
+
+
+
+
