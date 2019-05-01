@@ -2,6 +2,7 @@ package com.zero.lambdademo.stream;
 
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,13 @@ public class Stream4 {
         long count = Arrays.stream(ary).count();
 
 //        6.求ary里面最大值
+        Arrays.stream(ary)
+                .max(new Comparator<Integer>() {
+                    @Override
+                    public int compare(Integer integer, Integer t1) {
+                        return integer - t1;
+                    }
+                }).get();
         Arrays.stream(ary).max(Integer::compare).get();
 
 //        7.求ary里面最小值

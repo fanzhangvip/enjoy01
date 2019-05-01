@@ -6,10 +6,6 @@ import com.zero.lambdademo.lamdba.lamdba3.Person;
 
 import java.util.function.*;
 
-/**
- * Created by VULCAN on 2018/8/1.
- */
-
 //构造器引用 And 数组引用
 public class Lambda6 {
 

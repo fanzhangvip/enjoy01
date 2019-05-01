@@ -5,13 +5,11 @@ import com.zero.lambdademo.lamdba.lamdba3.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
-/**
- * Created by VULCAN on 2018/8/1.
- */
 public class Stream1 {
 
-    List<Person> persons = Arrays.asList(
+  static  List<Person> persons = Arrays.asList(
             new Person("CJK",19,90),
             new Person("BODUO",20,80),
             new Person("JZ",21,70),
@@ -21,7 +19,19 @@ public class Stream1 {
     );
 
     //取出所有大于18岁人的姓名，按字典排序，并输出到控制台
-    public  void test1() {
+    public static  void test1() {
         persons.stream().filter(x->x.getAge()>=18).map(Person::getName).sorted().forEach(System.out::println);
+        persons.stream().filter( x -> x.getAge() >=18)
+                .map(new Function<Person, String>() {
+                    @Override
+                    public String apply(Person person) {
+                        return person.getName();
+                    }
+                }).sorted().forEach(System.out::println);
+    }
+
+    public static void main(String ... args){
+            //TODO:
+        test1();
     }
 }

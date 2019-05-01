@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * Created by VULCAN on 2018/8/1.
  *
  * 创建流
  */
@@ -31,6 +30,7 @@ public class Stream2 {
         //4. 创建无限流
         //迭代
         Stream<Integer> stream3 = Stream.iterate(0, (x) -> x + 2).limit(10);
+
         stream3.forEach(System.out::println);
 
         //生成
