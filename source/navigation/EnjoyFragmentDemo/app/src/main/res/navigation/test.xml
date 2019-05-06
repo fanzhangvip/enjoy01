@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/test"
+    app:startDestination="@id/oneFragment">
+
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.enjoy.enjoyfragmentdemo.fragment.OneFragment"
+        android:label="fragment_1"
+        tools:layout="@layout/fragment_1" >
+        <action
+            android:id="@+id/action_oneFragment_to_oneFragment1"
+            app:destination="@id/oneFragment1" />
+        <action
+            android:id="@+id/action_oneFragment_to_oneFragment2"
+            app:destination="@id/oneFragment2" />
+        <action
+            android:id="@+id/action_oneFragment_to_oneFragment3"
+            app:destination="@id/oneFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneFragment1"
+        android:name="com.enjoy.enjoyfragmentdemo.fragment.OneFragment1"
+        android:label="fragment_11"
+        tools:layout="@layout/fragment_11" >
+        <action
+            android:id="@+id/action_oneFragment1_to_oneFragment2"
+            app:destination="@id/oneFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneFragment2"
+        android:name="com.enjoy.enjoyfragmentdemo.fragment.OneFragment2"
+        android:label="fragment_12"
+        tools:layout="@layout/fragment_12" />
+    <fragment
+        android:id="@+id/oneFragment3"
+        android:name="com.enjoy.enjoyfragmentdemo.fragment.OneFragment3"
+        android:label="fragment_13"
+        tools:layout="@layout/fragment_13" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.enjoy.enjoyfragmentdemo.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>

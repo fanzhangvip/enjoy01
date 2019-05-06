@@ -26,23 +26,23 @@ Lambda是一个匿名函数，即没有函数名的函数(简化了匿名委托�
 Runnable r = new Runnable() {
     @Override
     public void run() {
-        System.*out*.print("hello toroot");
+        System.out.print("hello toroot");
     }
 };
 
 //lambda
-Runnable r2 = ()->System.*out*.print("hello toroot");
+Runnable r2 = ()->System.out.print("hello toroot");
 
 //匿名内部类
 TreeSet<String> ts = new TreeSet<>(new Comparator<String>() {
     @Override
     public int compare(String o1, String o2) {
-        return Long.*compare*(o1.length(),o2.length());
+        return Long.compare(o1.length(),o2.length());
     }
 });
 
 //lambda
-TreeSet<String> ts2 = new TreeSet<>((o1,o2)-> Long.*compare*(o1.length(),o2.length()));
+TreeSet<String> ts2 = new TreeSet<>((o1,o2)-> Long.compare(o1.length(),o2.length()));
 ```
 ###  Lambda  表达式语法
 Lambda 表达式在Java 语言中引入了一个新的语法元素和操作符。这个操作符为 “->” ， 该操作符被称为 Lambda 操作符或剪头操作符。
@@ -80,6 +80,7 @@ b. 右侧：指定了 Lambda 体，即 Lambda 表达式要执行的功能。
 ###  函数式接口
 Lambda 表达式需要“函数式接口”的支持
 函数式接口：接口中只有一个抽象方法的接口，称为函数式接口。 可以使用注解 ```@FunctionalInterface``` 修饰可以检查是否是函数式接口
+
 ```java
 @FunctionalInterface
 public interface MyFun {
@@ -92,8 +93,8 @@ public interface MyFun<T> {
 }
 
 public static void main(String[] args) {
-    String newStr = *toUpperString*((str)->str.toUpperCase(),"toroot");
-    System.*out*.println(newStr);
+    String newStr = toUpperString((str)->str.toUpperCase(),"toroot");
+    System.out.println(newStr);
 }
 
 public static String  toUpperString(MyFun<String> mf,String str) {
@@ -126,16 +127,55 @@ public static String  toUpperString(MyFun<String> mf,String str) {
 -  对象 :: 实例方法
 -  类 :: 静态方法
 - 类 ::  实例方法
+
+### 什么时候可以用 **::**方法引用（重点）
+在我们使用Lambda表达式的时候，”->”右边部分是要执行的代码，即要完成的功能，可以把这部分称作Lambda体。有时候，当我们想要实现一个函数式接口的那个抽象方法，但是已经有类实现了我们想要的功能，这个时候我们就可以用方法引用来直接使用现有类的功能去实现
+
+文字解释有点绕，我们直接上代码
+```java
+ Person p1 = new Person("Av",18,90);
+        Person p2 = new Person("King",20,0);
+        Person p3 = new Person("Lance",17,100);
+        List<Person> list = new ArrayList<>();
+        list.add(p1);
+        list.add(p2);
+        list.add(p3);
+
+        //这里我们需要比较list里面的person,按照年龄排序
+        //那么我们最常见的做法是
+        //sort(List<T> list, Comparator<? super T> c)
+        //1. 因为我们的sort方法的第二个参数是一个接口，所以我们需要实现一个匿名内部类
+        Collections.sort(list, new Comparator<Person>() {
+            @Override
+            public int compare(Person person1, Person person2) {
+                return person1.getAge().compareTo(person2.getAge());
+            }
+        });
+        //2. 因为第二个参数是一个@FunctionalInterface的函数式接口，所以我们可以用lambda写法
+        Collections.sort(list, (person1,person2) -> p1.getScore().compareTo(p2.getAge()));
+        //3. 因为第二个参数我们可以用lambda的方式去实现，
+        // 但是刚好又有代码(Comparator.comparing)已经实现了这个功能
+        // 这个时候我们就可以采用方法引用了
+        /**
+         * 重点：
+         * 当我们想要实现一个函数式接口的那个抽象方法，但是已经有类实现了我们想要的功能，
+         * 这个时候我们就可以用方法引用来直接使用现有类的功能去实现。
+         */
+        Collections.sort(list, Comparator.comparing(Person::getAge));
+
+        System.out.println(list);
+```
+
 ```java
 public static void main(String[] args) {
     Consumer<String>  c = x->System.out.println(x);
     //等同于
-    Consumer<String> c2 = System.*out*::print;
+    Consumer<String> c2 = System.out::print;
 }
 
 public static void main(String[] args) {
-    BinaryOperator<Double> bo = (n1,n2) ->Math.*pow*(n1,n2);
-    BinaryOperator<Double> bo2 = Math::*pow*;
+    BinaryOperator<Double> bo = (n1,n2) ->Math.pow(n1,n2);
+    BinaryOperator<Double> bo2 = Math::pow;
 }
 
 public static void main(String[] args) {
@@ -151,6 +191,7 @@ public static void main(String[] args) {
 格式： ClassName :: new
 与函数式接口相结合，自动与函数式接口中方法兼容。
 可以把构造器引用赋值给定义的方法，与构造器参数列表要与接口中抽象方法的参数列表一致！
+
 ```java
 public static void main(String[] args) {
     Supplier<Person> x = ()->new Person();
@@ -194,7 +235,7 @@ Stream是数据渠道，用于操作数据源（集合、数组等）所生成�
             new Person("ROY",18,"男")
     );
 public static void main(String[] args) throws IOException {
- persons.stream().filter(x-    	>x.getAge()>=18).map(Person::getName).sorted().forEach(System.*out*::println);
+ persons.stream().filter(x-    	>x.getAge()>=18).map(Person::getName).sorted().forEach(System.out::println);
 }
 ```
 ###  Stream 的操作三个步骤 

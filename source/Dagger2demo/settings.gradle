@@ -1,1 +1,1 @@
-include ':app', ':zhuruyilai', ':dagger2demo', ':lambdademo'
+include ':app', ':zhuruyilai', ':dagger2demo', ':lambdademo', ':mvpdemo', ':mvpdemo01', ':mvpdemo02', ':mvpdagger2demo', ':mvpdagger2demo01'

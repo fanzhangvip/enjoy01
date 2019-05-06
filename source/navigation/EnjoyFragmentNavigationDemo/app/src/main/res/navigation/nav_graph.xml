@@ -33,6 +33,7 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
         <!-- 1）enter 指定向栈中放入新的Fragment时的动画 （当前栈顶是oneFragment1）  oneFragment2进入动画
              2）exit 指定向栈中弹出当前栈顶的Fragment时的动画 （当前栈顶是oneFragment1） oneFragment1退出动画
              3）popEnter 指定由于当前栈顶Fragment弹出而显示底层的Fragment时的动画 返回时 （当前栈顶是oneFragment2） oneFragment1进入的动画

@@ -39,16 +39,19 @@ public class TestAnnotation {
 
 元标签有 @Retention、@Documented、@Target、@Inherited、@Repeatable 5 种。
 
-*  @Retention
+* @Retention
 
   Retention 的英文意为保留期的意思。当 @Retention 应用到一个注解上的时候，它解释说明了这个注解的的存活时间。
 
   它的取值如下：
 
   1. RetentionPolicy.SOURCE 注解只在源码阶段保留，在编译器进行编译时它将被丢弃忽视。
+
   2. RetentionPolicy.CLASS 注解只被保留到编译进行的时候，它并不会被加载到 JVM 中。
 
   3. RetentionPolicy.RUNTIME 注解可以保留到程序运行的时候，它会被加载进入到 JVM 中，所以在程序运行时可以获取到它们
+
+     java  - source被丢弃 -> class - class被丢弃 > jvm （runtime）
 
   
 
@@ -344,7 +347,7 @@ static class Car{
 
 不管你承认不承认，“有人的地方就有江湖”，我们都说人人平等，但是对于任何一个组织机构而言，它一定有架构的设计有职能的划分。按照职能的重要性，自然而然就有了上下之分。并且，随着模块的粒度划分不同这种上层与底层模块会进行变动，也许某一模块相对于另外一模块它是底层，但是相对于其他模块它又可能是上层
 
-![组织架构](D:\xiangxue\pre\dagger2\assets\组织架构.png)
+![组织架构](.\assets\组织架构.png)
 
 公司管理层就是上层，CEO 是整个事业群的上层，那么 CEO 职能之下就是底层。
 
@@ -354,7 +357,7 @@ static class Car{
 
 那么，映射到我们软件实际开发中，一般我们也会将软件进行模块划分，比如业务层、逻辑层和数据层。 
 
-![业务模块](D:\xiangxue\pre\dagger2\assets\业务模块.png)
+![业务模块](.\assets\业务模块.png)
 
 业务层中是软件真正要进行的操作，也就是**做什么**。 
 逻辑层是软件现阶段为了业务层的需求提供的实现细节，也就是**怎么做**。 
@@ -462,7 +465,7 @@ public class Person {
 按照决策能力高低或者重要性划分，Person 属于上层模块，Bike、Car 和 Train 属于底层模块。
 
 上层模块不应该依赖于底层模块。 
-![person架构](D:\xiangxue\pre\dagger2\assets\person架构.png)
+![person架构](.\assets\person架构.png)
 ```java
 public class Person {
 
@@ -685,7 +688,11 @@ Dagger2是基于Java注解来实现依赖注入的，那么在正式使用之前
 - 步骤3：若不存在提供依赖的方法，则查找@Inject标注的构造函数，看构造函数是否存在参数。
 
 - - a：若存在参数，则从步骤1开始依次初始化每一个参数
+  
   - b：若不存在，则直接初始化该类实例，完成一次依赖注入。
+  
+
+![dagger2](.\assets\dagger2.jpg)
 
 ### Dagger2使用入门
 
@@ -1042,3 +1049,17 @@ Engine create: gear
 Engine{name='gear'}
 Engine{name='gear'}
 ```
+#  Dagger与MVP
+　对于一个应用而言我们需要对它抽象出各个层面，而在MVP架构中它将UI界面和数据进行隔离，所以我们的应用也就分为三个层次。
+
+- View: 对于View层也是视图层，在View层中只负责对数据的展示，提供友好的界面与用户进行交互。在Android开发中通常将Activity或者Fragment作为View层。
+- Model: 对于Model层也是数据层。它区别于MVC架构中的Model，在这里不仅仅只是数据模型。在MVP架构中Model它负责对数据的存取操作，例如对数据库的读写，网络的数据的请求等。
+- Presenter:对于Presenter层他是连接View层与Model层的桥梁并对业务逻辑进行处理。在MVP架构中Model与View无法直接进行交互。所以在Presenter层它会从Model层获得所需要的数据，进行一些适当的处理后交由View层进行显示。这样通过Presenter将View与Model进行隔离，使得View和Model之间不存在耦合，同时也将业务逻辑从View中抽离。
+
+　　下面通过MVP结构图来看一下MVP中各个层次之间的关系。 
+
+![mvp](.\assets\mvp.png)
+
+在MVP架构中将这三层分别抽象到各自的接口当中。通过接口将层次之间进行隔离，而Presenter对View和Model的相互依赖也是依赖于各自的接口。这点符合了接口隔离原则，也正是面向接口编程。在Presenter层中包含了一个View接口，并且依赖于Model接口，从而将Model层与View层联系在一起。而对于View层会持有一个Presenter成员变量并且只保留对Presenter接口的调用，具体业务逻辑全部交由Presenter接口实现类中处理。
+
+如果你的项目是采用MVP架构的，那么结合Dagger2将会是一件非常棒的体验，它让M-V-P进一步解藕，架构更清晰。
