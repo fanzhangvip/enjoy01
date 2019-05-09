@@ -13,8 +13,8 @@ public class MarkCarModule {
      * 2. @CarScope去标记依赖提供方MarkCarModule
      * @return
      */
-    @Engine.CarScope
     @Provides
+    @Engine.CarScope
     Engine provideEngine(){
         return new Engine("gear");
     }

@@ -30,6 +30,8 @@ public class Person2  implements DepedencySetter {
     public static void main(String ... args){
             //TODO:
         Person2 person = new Person2(new Car());
+        person = new Person2(new Train());
+        person.set(new Bike());
         person.goOut();
     }
 }

@@ -1,6 +1,7 @@
 package com.zero.dagger2demo.c;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 /**
  * 那么如果一台汽车有两个引擎（也就是说Car类中有两个Engine变量）怎么办呢？没关系，我们还有@Qulifier
@@ -9,11 +10,13 @@ public class Car {
     /**
      * 3. 接下来依赖需求方Car类同样需要修改
      */
-    @Engine.QualifierA
+    @Named("a")
+//    @Engine.QualifierA
     @Inject
     Engine engineA;
 
-    @Engine.QualifierB
+//    @Engine.QualifierB
+    @Named("b")
     @Inject
     Engine engineB;
 

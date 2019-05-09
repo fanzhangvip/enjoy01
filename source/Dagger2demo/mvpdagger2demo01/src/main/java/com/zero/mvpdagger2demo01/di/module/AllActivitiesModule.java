@@ -18,4 +18,6 @@ public abstract class AllActivitiesModule {
 
     @ContributesAndroidInjector(modules = RegisterActivityModule.class)
     abstract RegisterActivity contributeRegisterActivityInjector();
+
+
 }

@@ -11,6 +11,11 @@ public class Engine {
     @Inject
     Engine(){}
 
+    private String name;
+
+//    @Inject
+//    Engine(String name){}
+
     @Override
     public String toString() {
         return "Engine{}";

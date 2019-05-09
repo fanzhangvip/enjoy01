@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<classes><!--根节点 -->
+    <student id="0">
+        <name>Av</name>
+        <age>23</age>
+        <sax>男</sax>
+        <Courses>
+            <course name="语文" score="90"/>
+            <course name="数学" score="78"/>
+        </Courses>
+    </student>
+    <student id="1">
+        <name>Lance</name>
+        <age>22</age>
+        <sax>男</sax>
+        <Courses>
+            <course name="语文" score="59"/>
+            <course name="数学" score="38"/>
+        </Courses>
+    </student>
+</classes>

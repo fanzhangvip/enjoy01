@@ -109,6 +109,7 @@ public class TestAnnotation {
 
 注解与反射。
 注解通过反射获取。首先可以通过 Class 对象的 isAnnotationPresent() 方法判断它是否应用了某个注解
+
 ```java
 public boolean isAnnotationPresent(Class<? extends Annotation> annotationClass) {}
 ```
@@ -150,6 +151,7 @@ public static void main(String[] args) {
 简而言之，通过反射，我们可以在运行时获得程序或程序集中每一个类型的成员和成员的信息。程序中一般的对象的类型都是在编译期就确定下来的，而 Java 反射机制可以动态地创建对象并调用其属性，这样的对象的类型在编译期是未知的。所以我们可以通过反射机制直接创建对象，即使这个对象的类型在编译期是未知的。
 反射的核心是 JVM 在运行时才动态加载类或调用方法/访问属性，它不需要事先（写代码的时候或编译期）知道运行对象是谁。
 Java 反射主要提供以下功能：
+
 - 在运行时判断任意一个对象所属的类；
 - 在运行时构造任意一个类的对象；
 - 在运行时判断任意一个类所具有的成员变量和方法（通过反射甚至可以调用private方法）；
@@ -604,7 +606,7 @@ JSR-330 是 Java 的依赖注入标准。定义了如下的术语描述依赖注
 - A 类型依赖 B类型（或者说 B 被 A 依赖），则 A类型 称为”依赖(物) dependency”
 - 运行时查找依赖的过程，称为”解析 resolving“依赖
 - 如果找不到依赖的实例，称该依赖是”不能满足的 unsatisfied”
-- 在”依赖注入 dependency injection”机制中，提供依赖的工具称为”依赖注入器 dependency injector”
+- 在”依赖注入 dependency injection”机制中，提供依赖的工具称为”依赖注入器 dependency injector，注射器”
 
 > 在标准中, 依赖是类型而不是实例/对象; 在程序中（运行时）, 需要的是依赖的实例.
 
