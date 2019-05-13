@@ -11,11 +11,6 @@ public class Main {
     public static void main(String... args) throws Exception {
         //TODO:
         test01();//
-        //多重引用
-
-
-
-
     }
 
 
@@ -27,17 +22,15 @@ public class Main {
         //序列化
         byte[] bytes = SerializeableUtils.serialize(student);
         String path = System.getProperty("user.dir") + "\\SerializableDemo\\src\\main\\Demostudent.out";
-        System.out.println("path: " + path);
         SerializeableUtils.saveObject(student, path);
         System.out.println(Arrays.toString(bytes));
 
+        System.out.println("=============反序列化=====================");
         //反序列化
         Student student1 = SerializeableUtils.deserialize(bytes);
         student1.newDate();
         System.out.println("Student: " + student1);
-        Student student2 = SerializeableUtils.readObject(path);
-        student2.newDate();
-        System.out.println("Student2: " + student2);
+
     }
 
 }

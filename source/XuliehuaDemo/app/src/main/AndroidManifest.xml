@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".TestBActivity"/>
         <activity android:name=".XMLActivity"/>
+        <activity android:name=".JSONActivity"/>
     </application>
 
 </manifest>

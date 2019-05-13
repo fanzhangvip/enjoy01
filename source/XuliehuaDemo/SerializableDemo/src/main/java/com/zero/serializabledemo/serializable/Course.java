@@ -54,9 +54,9 @@ public class Course implements Serializable {
         ObjectOutputStream oos = new ObjectOutputStream(out);
         oos.writeObject(course);
         course.setScore(78f);
-//        oos.reset();
-        oos.writeUnshared(course);
-//        oos.writeObject(course);
+        oos.reset();
+//        oos.writeUnshared(course);
+        oos.writeObject(course);
         byte[] bs = out.toByteArray();
         oos.close();
 
@@ -65,9 +65,6 @@ public class Course implements Serializable {
         Course course2 = (Course) ois.readObject();
         System.out.println("course1: " + course1);
         System.out.println("course2: " + course2);
-        //是不是和希望的不一样？其实在默认情况下，
-        // 对于一个实例的多个引用，为了节省空间，只会写入一次，后面会追加几个字节代表某个实例的引用。
-        //course1: Course{name='英语', score=12.0}
-        //course2: Course{name='英语', score=12.0}
+
     }
 }

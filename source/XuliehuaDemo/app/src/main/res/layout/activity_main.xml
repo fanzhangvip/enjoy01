@@ -62,4 +62,12 @@
         android:gravity="center"
         android:text="XML解析方式" />
 
+    <Button
+        android:id="@+id/btnJson"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:text="JSON解析方式" />
+
 </LinearLayout>

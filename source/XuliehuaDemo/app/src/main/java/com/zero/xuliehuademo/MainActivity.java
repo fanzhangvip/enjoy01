@@ -175,4 +175,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, XMLActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.btnJson)
+    public void onViewClicked1() {
+        Intent intent = new Intent(MainActivity.this, JSONActivity.class);
+        startActivity(intent);
+    }
 }

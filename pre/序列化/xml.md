@@ -300,7 +300,48 @@ public void domTest(Context context) {
 ### 具体解析实例
 
 ```java
+ public void pullTest(Context context) throws Exception {
+        XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
+        parser.setInput(context.getResources().openRawResource(R.raw.students), "utf-8");//设置数据源编码
+        int eventCode = parser.getEventType();//获取事件类型
+        Student student = null;
+        while (eventCode != XmlPullParser.END_DOCUMENT) {
+            switch (eventCode) {
+                case XmlPullParser.START_DOCUMENT://开始读取XML文档
+                    break;
+                case XmlPullParser.START_TAG://开始读取标签
+                    String name = parser.getName();
+                    if ("student".equals(name)) {
+                        student = new Student();
+                        student.setId(Integer.parseInt(parser.getAttributeValue(null, "id")));
+                    }
+                    if ("name".equals(name) && student != null) {
+                        student.setName(parser.nextText());
+                    }
+                    if ("age".equals(name) && student != null) {
+                        student.setAge(Integer.parseInt(parser.nextText().trim()));
+                    }
+                    if ("sax".equals(name) && student != null) {
+                        student.setSax(parser.nextText());
+                    }
+                    if ("course".equals(name) && student != null) {
+                        Course course = new Course();
+                        course.setName(parser.getAttributeValue(null, "name"));
+                        course.setScore(Float.parseFloat(parser.getAttributeValue(null, "score")));
+                        student.addCourse(course);
+                    }
+                    break;
+                case XmlPullParser.END_TAG://结束原始事件
+                    if ("student".equals(parser.getName())) {
+                        Log.i(TAG, "pullTest: student: " + student);
+                    }
+                    break;
 
+            }
+            eventCode = parser.next();
+        }
+
+    }
 ```
 
 ### 特点及应用场景

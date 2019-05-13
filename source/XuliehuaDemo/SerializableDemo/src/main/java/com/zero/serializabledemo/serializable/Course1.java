@@ -72,7 +72,7 @@ public class Course1 implements Externalizable {
         oos.writeObject(course);
         byte[] bs = out.toByteArray();
         oos.close();
-
+        System.out.println("============反序列化=============");
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
         Course1 course1 = (Course1) ois.readObject();
         System.out.println("course1: " + course1);

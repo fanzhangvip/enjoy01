@@ -19,10 +19,18 @@ public final class _StudentSerializable {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <pre>
+     *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+     * </pre>
+     *
      * <code>string name = 1;</code>
      */
     java.lang.String getName();
     /**
+     * <pre>
+     *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+     * </pre>
+     *
      * <code>string name = 1;</code>
      */
     com.google.protobuf.ByteString
@@ -44,30 +52,54 @@ public final class _StudentSerializable {
     int getAge();
 
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     java.util.List<com.zero.serializabledemo.protobuf._StudentSerializable._Course> 
         getCoursesList();
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     com.zero.serializabledemo.protobuf._StudentSerializable._Course getCourses(int index);
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     int getCoursesCount();
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     java.util.List<? extends com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder> 
         getCoursesOrBuilderList();
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder getCoursesOrBuilder(
         int index);
   }
   /**
+   * <pre>
+   * message 确定消息命名
+   * </pre>
+   *
    * Protobuf type {@code _Student}
    */
   public  static final class _Student extends
@@ -174,6 +206,10 @@ public final class _StudentSerializable {
     public static final int NAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object name_;
     /**
+     * <pre>
+     *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+     * </pre>
+     *
      * <code>string name = 1;</code>
      */
     public java.lang.String getName() {
@@ -189,6 +225,10 @@ public final class _StudentSerializable {
       }
     }
     /**
+     * <pre>
+     *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+     * </pre>
+     *
      * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
@@ -251,12 +291,20 @@ public final class _StudentSerializable {
     public static final int COURSES_FIELD_NUMBER = 4;
     private java.util.List<com.zero.serializabledemo.protobuf._StudentSerializable._Course> courses_;
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     public java.util.List<com.zero.serializabledemo.protobuf._StudentSerializable._Course> getCoursesList() {
       return courses_;
     }
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     public java.util.List<? extends com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder> 
@@ -264,18 +312,30 @@ public final class _StudentSerializable {
       return courses_;
     }
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     public int getCoursesCount() {
       return courses_.size();
     }
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     public com.zero.serializabledemo.protobuf._StudentSerializable._Course getCourses(int index) {
       return courses_.get(index);
     }
     /**
+     * <pre>
+     *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+     * </pre>
+     *
      * <code>repeated ._Course courses = 4;</code>
      */
     public com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder getCoursesOrBuilder(
@@ -472,6 +532,10 @@ public final class _StudentSerializable {
       return builder;
     }
     /**
+     * <pre>
+     * message 确定消息命名
+     * </pre>
+     *
      * Protobuf type {@code _Student}
      */
     public static final class Builder extends
@@ -680,6 +744,10 @@ public final class _StudentSerializable {
 
       private java.lang.Object name_ = "";
       /**
+       * <pre>
+       *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+       * </pre>
+       *
        * <code>string name = 1;</code>
        */
       public java.lang.String getName() {
@@ -695,6 +763,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+       * </pre>
+       *
        * <code>string name = 1;</code>
        */
       public com.google.protobuf.ByteString
@@ -711,6 +783,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+       * </pre>
+       *
        * <code>string name = 1;</code>
        */
       public Builder setName(
@@ -724,6 +800,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+       * </pre>
+       *
        * <code>string name = 1;</code>
        */
       public Builder clearName() {
@@ -733,6 +813,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *指定字段的类型 定义字段的编号，在Protocol Buffers中，字段的编号非常重要，字段名仅仅是作为参考和生成代码用。需要注意的是字段的编号区间范围，其中19000 ～ 19999被Protocol Buffers作为保留字段
+       * </pre>
+       *
        * <code>string name = 1;</code>
        */
       public Builder setNameBytes(
@@ -855,6 +939,10 @@ public final class _StudentSerializable {
           com.zero.serializabledemo.protobuf._StudentSerializable._Course, com.zero.serializabledemo.protobuf._StudentSerializable._Course.Builder, com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder> coursesBuilder_;
 
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public java.util.List<com.zero.serializabledemo.protobuf._StudentSerializable._Course> getCoursesList() {
@@ -865,6 +953,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public int getCoursesCount() {
@@ -875,6 +967,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public com.zero.serializabledemo.protobuf._StudentSerializable._Course getCourses(int index) {
@@ -885,6 +981,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder setCourses(
@@ -902,6 +1002,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder setCourses(
@@ -916,6 +1020,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder addCourses(com.zero.serializabledemo.protobuf._StudentSerializable._Course value) {
@@ -932,6 +1040,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder addCourses(
@@ -949,6 +1061,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder addCourses(
@@ -963,6 +1079,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder addCourses(
@@ -977,6 +1097,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder addAllCourses(
@@ -992,6 +1116,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder clearCourses() {
@@ -1005,6 +1133,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public Builder removeCourses(int index) {
@@ -1018,6 +1150,10 @@ public final class _StudentSerializable {
         return this;
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public com.zero.serializabledemo.protobuf._StudentSerializable._Course.Builder getCoursesBuilder(
@@ -1025,6 +1161,10 @@ public final class _StudentSerializable {
         return getCoursesFieldBuilder().getBuilder(index);
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder getCoursesOrBuilder(
@@ -1035,6 +1175,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public java.util.List<? extends com.zero.serializabledemo.protobuf._StudentSerializable._CourseOrBuilder> 
@@ -1046,6 +1190,10 @@ public final class _StudentSerializable {
         }
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public com.zero.serializabledemo.protobuf._StudentSerializable._Course.Builder addCoursesBuilder() {
@@ -1053,6 +1201,10 @@ public final class _StudentSerializable {
             com.zero.serializabledemo.protobuf._StudentSerializable._Course.getDefaultInstance());
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public com.zero.serializabledemo.protobuf._StudentSerializable._Course.Builder addCoursesBuilder(
@@ -1061,6 +1213,10 @@ public final class _StudentSerializable {
             index, com.zero.serializabledemo.protobuf._StudentSerializable._Course.getDefaultInstance());
       }
       /**
+       * <pre>
+       *required指定该字段必须赋值，禁止为空（在v3中该约束被移除）；optional指定字段为可选字段，可以为空，对于optional字段还可以使用[default]指定默认值，如果没有指定，则会使用字段类型的默认值
+       * </pre>
+       *
        * <code>repeated ._Course courses = 4;</code>
        */
       public java.util.List<com.zero.serializabledemo.protobuf._StudentSerializable._Course.Builder> 
@@ -1154,6 +1310,10 @@ public final class _StudentSerializable {
     float getScore();
   }
   /**
+   * <pre>
+   *在一个proto文件中可以同时定义多个message类型，生成代码时根据生成代码的目标语言不同，处理的方式不太一样，如Java会针对每个message类型生成一个.java文件
+   * </pre>
+   *
    * Protobuf type {@code _Course}
    */
   public  static final class _Course extends
@@ -1447,6 +1607,10 @@ public final class _StudentSerializable {
       return builder;
     }
     /**
+     * <pre>
+     *在一个proto文件中可以同时定义多个message类型，生成代码时根据生成代码的目标语言不同，处理的方式不太一样，如Java会针对每个message类型生成一个.java文件
+     * </pre>
+     *
      * Protobuf type {@code _Course}
      */
     public static final class Builder extends

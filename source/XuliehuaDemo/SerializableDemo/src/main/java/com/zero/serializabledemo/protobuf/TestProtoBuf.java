@@ -12,6 +12,7 @@ public class TestProtoBuf {
         byte[] bs = serialize();
         System.out.println(Arrays.toString(bs));
 
+        System.out.println("================反序列化====================");
         //反序列化
         _StudentSerializable._Student student = deserialize(bs);
         System.out.println(student);

@@ -45,6 +45,7 @@ public class Course2 implements Serializable {
         this.score = score;
     }
 
+
     private void readObject(ObjectInputStream inputStream) throws ClassNotFoundException, IOException {
         System.out.println("readObject");
         inputStream.defaultReadObject();

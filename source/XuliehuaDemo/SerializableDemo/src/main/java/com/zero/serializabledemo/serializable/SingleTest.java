@@ -48,7 +48,7 @@ class Single implements Serializable {
     private Single(){
         synchronized (Single.class) {
             if (!flag) {
-//                flag = true;
+                flag = true;
             } else {
                 throw new RuntimeException("单例模式被侵犯！");
             }
@@ -70,7 +70,7 @@ class Single implements Serializable {
         return single;
     }
 
-//    private Object readResolve() {
-//        return single;
-//    }
+    private Object readResolve() {
+        return single;
+    }
 }
