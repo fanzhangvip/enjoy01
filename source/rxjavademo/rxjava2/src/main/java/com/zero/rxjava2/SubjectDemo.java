@@ -15,7 +15,7 @@ public class SubjectDemo {
 //        behaviorSubject();
 //        replaySubject();
         publishSubject();
-//        publishSubject1();
+        publishSubject1();
     }
 
     public static void asyncSubject() {
@@ -105,7 +105,7 @@ public class SubjectDemo {
         subject.onComplete();
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

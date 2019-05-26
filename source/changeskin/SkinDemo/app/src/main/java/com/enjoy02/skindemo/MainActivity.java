@@ -74,8 +74,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeSkin();
-//                changeSkin01();
+//                changeSkin();
+                //找hook的点
+                changeSkin01();
             }
         });
 

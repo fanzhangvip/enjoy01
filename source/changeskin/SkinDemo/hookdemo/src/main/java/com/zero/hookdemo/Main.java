@@ -7,10 +7,13 @@ public class Main {
     public static void main(String... args) {
 
         Person wangmeili = new Person("王美丽", "小丽", 18);
-
+//hook
         setFiled("com.zero.hookdemo.Main$Person","age",wangmeili,28);
 
         wangmeili.displayPerson();
+        //root
+        //1. 要root
+        //2. 免root hook app本身
 
     }
 

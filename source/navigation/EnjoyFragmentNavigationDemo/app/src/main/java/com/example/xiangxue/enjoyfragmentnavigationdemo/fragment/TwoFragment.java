@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,9 @@ public class TwoFragment extends Fragment {
         return fragment;
     }
 
+    public TwoFragment(){
+        Log.i("Zero","init: " + this.getClass().getSimpleName());
+    }
 
     @Nullable
     @Override
@@ -31,6 +35,18 @@ public class TwoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("Zero","onResume: " + this.getClass().getSimpleName());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("Zero","onDestroy: " + this.getClass().getSimpleName());
     }
 
 //    public void onClick(View view) {

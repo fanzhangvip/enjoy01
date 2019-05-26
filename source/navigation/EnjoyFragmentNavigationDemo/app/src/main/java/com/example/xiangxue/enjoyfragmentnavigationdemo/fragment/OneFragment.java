@@ -20,6 +20,10 @@ public class OneFragment extends Fragment {
         return fragment;
     }
 
+    public OneFragment(){
+        Log.i("Zero","init: " + this.getClass().getSimpleName());
+    }
+
 
     @Nullable
     @Override
@@ -56,5 +60,15 @@ public class OneFragment extends Fragment {
         transaction.commitAllowingStateLoss();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("Zero","onResume: " + this.getClass().getSimpleName());
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("Zero","onDestroy: " + this.getClass().getSimpleName());
+    }
 }

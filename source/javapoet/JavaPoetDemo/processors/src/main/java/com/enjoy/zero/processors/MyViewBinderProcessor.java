@@ -175,6 +175,7 @@ public class MyViewBinderProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set annotations, RoundEnvironment roundEnv) {
+        System.out.println("Zero: process &&&&&&&&&&&&&&&&&&&&&&&&" );
         mAnnotatedClassMap.clear();
         try {
             processBindView(roundEnv);
