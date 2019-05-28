@@ -1,0 +1,125 @@
+Activity窗口的创建过程
+ActivityManagerService.startActivity
+ActivityStarter.execute 
+ActivityStarter.startActivityMayWait 945
+ActivityStarter.startActivity 528
+ActivityStarter.startActivity 571  new ActivityRecord 826
+ActivityStarter.startActivity 1193 
+ActivityStarter.startActivityUnchecked 1220
+
+
+ActivityStackSupervisor.realStartActivityLocked 1377
+mService.getLifecycleManager().scheduleTransaction(clientTransaction) 1545
+mService.getLifecycleManager() 返回的是ClientLifecycleManager 12560
+ClientLifecycleManager.scheduleTransaction 45
+ClientTransaction.schedule  128 //IApplicationThread.scheduleTransaction
+ActivityThread的内部类ApplicationThread 757
+ApplicationThread.scheduleTransaction 1539 //ActivityThread.this.scheduleTransaction(transaction)
+
+ClientTransactionHandler.scheduleTransaction //sendMessage(ActivityThread.H.EXECUTE_TRANSACTION, transaction)
+ActivityThread case EXECUTE_TRANSACTION: 1819
+LaunchActivityItem.execute 71 
+ActivityThread.handleLaunchActivity 3037
+ActivityThread.performLaunchActivity 2821 //activity.attach
+
+Ativity.attach 7046
+mWindow = new PhoneWindow(this, window, activityConfigCallback)
+PhoneWindow.setWindowManager 
+Window.setWindowManager 746
+WindowManagerImpl.createLocalWindowManager 72
+//区别其他context
+SystemServiceRegistry WindowManagerImpl 674
+
+Instrumentation.callActivityOnCreate 1269
+Activity.performCreate 7129
+Activity.onCreate 1021
+
+Activity.setContentView 2770
+Activity.initWindowDecorActionBar 2743
+PhoneWindow.getDecorView 2069
+PhoneWindow.installDecor 2659
+PhoneWindow.generateDecor 2292 //创建一个DecorView
+PhoneWindow.generateLayout 2313 //创建一个ViewGroup
+
+ResumeActivityItem.execute
+ActivityThread.handleResumeActivity 3822
+WindowManagerImpl.addView 91
+WindowManagerGlobal.addView 278
+ViewRootImpl.setView 654 // mWindowSession.addToDisplay
+Session.addToDisplay 201
+WindowManagerService.addWindow 1126
+
+窗口的更新过程
+WindowManagerGlobal.updateViewLayout 367
+ViewRootImpl.setLayoutParams 1051
+ViewRootImpl.scheduleTraversals 1428
+TraversalRunnable.run 7183
+ViewRootImpl.doTraversal 1451
+ViewRootImpl.performTraversals 1676
+relayoutWindow 1996
+ViewRootImpl.relayoutWindow 6518
+Session.relayout  235
+WindowManagerService.relayoutWindow 1856
+
+WMS的创建过程
+SystemServer.main 297
+SystemServer.startOtherServices 724 857
+WindowManagerService.main 900
+Handler.runWithScissors 558 //创建WMS实例
+WindowManagerService.onInitReady
+WindowManagerService.initPolicy 909
+PhoneWindowManager.init
+android.ui(PWM) > android.display(WMS) > system_server
+
+Window的添加过程
+WindowManagerService.addWindow 1126
+PhoneWindowManager.checkAddPermission  
+mPolicy.checkAddPermission(attrs, appOp) 1131
+final DisplayContent displayContent = getDisplayContentOrCreate(displayId) 1147
+parentWindow = windowForClientLocked 1167
+WindowToken token = displayContent.getWindowToken 1190 
+
+Window的删除过程
+
+WindowManagerGlobal.removeView 388
+WindowManagerGlobal.removeViewLocked 448
+ViewRootImpl.die  6727 
+ViewRootImpl.doDie 6745 
+WindowManagerGlobal.doRemoveView 467
+
+ViewRootImpl.dispatchDetachedFromWindow 3807
+Session.remove 225
+WindowManagerService.removeWindow 1640
+WindowState.removeIfPossible 1937 
+WindowState.removeImmediately 1888
+
+Toast 
+NotificationManagerService.enqueueToast 2016
+NotificationManagerService.showNextToastLocked 4989
+
+
+AMS.startActivity
+Activity.attach
+PolicyManager.MakeNewWindow
+ViewRootImpl.setView
+WMS.addWindow
+ViewRootImpl.performTraversals
+ViewRootImpl.relayoutWindow
+WMS.relayoutWindow
+WindowState.createSurfaceLocked
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,15 +1,8 @@
 package com.zero.wmsdemo;
 
-import android.app.ActivityManager;
 import android.app.Application;
-import android.content.ComponentName;
 import android.content.Context;
 
-import java.util.List;
-
-/**
- * Created by Administrator on 2017/10/10.
- */
 
 public class MyApp extends Application {
 
@@ -21,7 +14,7 @@ public class MyApp extends Application {
         application = this;
     }
 
-    public static Context getAppContext(){
+    public static Context getAppContext() {
         return application.getApplicationContext();
     }
 

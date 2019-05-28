@@ -37,7 +37,6 @@ public class SuspensionView extends View {
         Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.katou);
         width = ScreenSizeUtil.dp2px(66.6f);
         height = width;
-        //将图片裁剪到指定大小
         bitmap = Bitmap.createScaledBitmap(src, width, height, true);
     }
 
