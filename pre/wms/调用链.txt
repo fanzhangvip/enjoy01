@@ -98,17 +98,6 @@ NotificationManagerService.enqueueToast 2016
 NotificationManagerService.showNextToastLocked 4989
 
 
-AMS.startActivity
-Activity.attach
-PolicyManager.MakeNewWindow
-ViewRootImpl.setView
-WMS.addWindow
-ViewRootImpl.performTraversals
-ViewRootImpl.relayoutWindow
-WMS.relayoutWindow
-WindowState.createSurfaceLocked
-
-
 
 
 

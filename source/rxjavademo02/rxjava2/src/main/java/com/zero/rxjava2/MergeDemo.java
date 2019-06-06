@@ -4,6 +4,7 @@ package com.zero.rxjava2;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 
 /**
  * 合并数据源 & 统一展示
@@ -29,6 +30,9 @@ public class MergeDemo {
          * 此处仅作本地文件请求的模拟
          **/
         Observable<String> file = Observable.just("本地文件");
+
+        Observable.zip(network,file, (s1,s2) -> s1 +s2)
+                .subscribe(onNext -> Log.d(TAG,"结果: "+onNext));
 
         /*
          * 通过merge（）合并事件 & 同时发送事件
@@ -59,4 +63,6 @@ public class MergeDemo {
                     }
                 });
     }
+
+
 }

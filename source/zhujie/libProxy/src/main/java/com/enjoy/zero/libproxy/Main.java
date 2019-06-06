@@ -35,7 +35,7 @@ public class Main {
         System.out.println("====动态代理============");
         dynamicProxyTest();
         System.out.println("====cglib动态代理=========");
-//        cglibProxy();
+        cglibProxy();
     }
 
     public static void dynamicProxyTest() {
@@ -68,6 +68,7 @@ public class Main {
 
 
     public static void cglibProxy() {
+        //；CGLIB通过继承的方式进行代理，无论目标对象有没有实现接口都可以代理，但是无法处理final的情况
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(ILawsuit.class);
         enhancer.setCallback(new CglibProxy());

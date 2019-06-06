@@ -3,6 +3,11 @@ apply plugin: 'java-library'
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation files('libs/cglib-3.2.9.jar')
+
+    //ASM相关
+    implementation 'org.ow2.asm:asm:5.1'
+    implementation 'org.ow2.asm:asm-util:5.1'
+    implementation 'org.ow2.asm:asm-commons:5.1'
 }
 
 tasks.withType(JavaCompile){
