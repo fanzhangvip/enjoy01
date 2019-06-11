@@ -1,0 +1,19 @@
+JDK 动态代理实现方案有关
+Cglib 动态代理 Spring 
+
+IActivityManager 接口 1. G点
+Activity Instrumentation mInstrumentation;  2. G点
+mMainThread.getInstrumentation().execStartActivity 3. G 点
+Instrumentation mInstrumentation;//hook
+
+动态代理
+
+
+1. 找到hook点  IActivityManager 接口
+2. hook 动态代理
+2.1 需要拿到这个AMS的原始对象
+3. 需要找到加载代理的classLoader 用当前线程 
+4. IActivityManager Class.forName("android.app.IActivityManager")
+5. 创建我们的代理AMS接口 Proxy.newProxyInstance()
+6. 把这个代理融入到我们的framework
+

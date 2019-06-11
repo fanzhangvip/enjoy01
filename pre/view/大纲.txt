@@ -1,0 +1,12 @@
+1. Canvas
+2. Paint
+3. drawText文字绘制
+4. canvas对绘制的辅助clipXXX()和Matrix
+5. 绘制顺序问题
+6. 属性动画
+7. 硬件加速
+8. view坐标系和布局测量
+9. 事件传递和触摸反馈
+10. 约束布局实战
+11. ViewGroup分析(常见的几大布局)
+12. 自定义ViewGroup
