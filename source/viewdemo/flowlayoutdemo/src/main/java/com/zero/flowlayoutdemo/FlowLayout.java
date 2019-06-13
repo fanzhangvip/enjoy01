@@ -36,9 +36,9 @@ public class FlowLayout extends ViewGroup {
 
 	private int mGravity = (isIcs() ? Gravity.START : Gravity.LEFT) | Gravity.TOP;
 
-    private final List<List<View>> mLines = new ArrayList<>();
-    private final List<Integer> mLineHeights = new ArrayList<>();
-    private final List<Integer> mLineMargins = new ArrayList<>();
+    private final List<List<View>> mLines = new ArrayList<>();////保存所有child view
+    private final List<Integer> mLineHeights = new ArrayList<>();//保存所有行高
+    private final List<Integer> mLineMargins = new ArrayList<>();//保存所有行宽
 
 	public FlowLayout(Context context) {
 		this(context, null);
