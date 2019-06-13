@@ -5,6 +5,7 @@
 ### 自定义View的基本方法
 自定义View的最基本的三个方法分别是： onMeasure()、onLayout()、onDraw();
 View在Activity中显示出来，要经历测量、布局和绘制三个步骤，分别对应三个动作：measure、layout和draw。
+
 - 测量：onMeasure()决定View的大小；
 - 布局：onLayout()决定View在ViewGroup中的位置；
 - 绘制：onDraw()决定绘制这个View。
@@ -87,6 +88,7 @@ Android的坐标系定义为：
 ###  View位置（坐标）描述
 View的位置由4个顶点决定的
 4个顶点的位置描述分别由4个值决定：
+
 > 请记住：View的位置是相对于父控件而言的）
 
 - Top：子View上边界到父view上边界的距离
@@ -129,7 +131,7 @@ Android支持的颜色模式：
 
 ### View树的绘制流程是谁负责的？
 
-view树的绘制流程是通过ViewRoot去负责绘制的，ViewRoot这个类的命名有点坑，最初看到这个名字，翻译过来是view的根节点，但是事实完全不是这样，ViewRoot其实不是View的根节点，它连view节点都算不上，它的主要作用是View树的管理者，负责将DecorView和PhoneWindow“组合”起来，而View树的根节点严格意义上来说只有DecorView；每个DecorView都有一个ViewRoot与之关联，这种关联关系是由WindowManager去进行管理的；
+view树的绘制流程是通过ViewRootImpl去负责绘制的，ViewRoot这个类的命名有点坑，最初看到这个名字，翻译过来是view的根节点，但是事实完全不是这样，ViewRoot其实不是View的根节点，它连view节点都算不上，它的主要作用是View树的管理者，负责将DecorView和PhoneWindow“组合”起来，而View树的根节点严格意义上来说只有DecorView；每个DecorView都有一个ViewRoot与之关联，这种关联关系是由WindowManager去进行管理的；
 
 ### view的添加
 
@@ -143,7 +145,7 @@ view树的绘制流程是通过ViewRoot去负责绘制的，ViewRoot这个类的
 1. 系统为什么要有measure过程？
 2. measure过程都干了点什么事？
 3. 对于自适应的尺寸机制，如何合理的测量一颗View树？
-4. 那么ViewGroup是如何向子View传递限制信息的？············
+4. 那么ViewGroup是如何向子View传递限制信息的？
 5. ScrollView嵌套ListView问题？
 
 ![view_requestlayout](./assets/view_requestlayout.png)
