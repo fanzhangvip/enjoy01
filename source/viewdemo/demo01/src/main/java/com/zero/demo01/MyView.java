@@ -44,9 +44,9 @@ public class MyView extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
-        if (heightMeasureSpec == 0) {
-            heightMeasureSpec = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.AT_MOST);
-        }
+//        if (heightMeasureSpec == 0) {
+//            heightMeasureSpec = MeasureSpec.makeMeasureSpec(widthSize, MeasureSpec.AT_MOST);
+//        }
 
         int heigthMode = MeasureSpec.getMode(heightMeasureSpec);
 
@@ -77,7 +77,7 @@ public class MyView extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setColor(Color.RED);//设置为红色
         canvas.drawCircle(700,200,100,mPaint);
-
+        canvas.drawColor(Color.parseColor("#88E0FFFF"));
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(30);

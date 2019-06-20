@@ -17,3 +17,140 @@
 2. 处于性能考虑
 
 
+自定义ViewGroup: 则只需要重写onMeasure()和onLayout()
+
+
+onMeasure：
+1. 确定自身的大小
+2. 确定子view的大小
+
+尺寸： 200dp, match_parent, wrap_content
+
+流程：
+1. ViewGroup开始测量自己的尺寸
+2. 为每个子View计算测量的限制信息
+3. 把上一步确定的限制信息，传递给每一个子View，然后子View开始measure
+自己的尺寸
+4. 获取子View测量完成后的尺寸
+5. ViewGroup根据自身的情况，计算自己的尺寸
+6. 保存自身的尺寸
+
+onLayout
+1. 根据规则确定子view位置
+
+流程：
+1. 遍历子View for
+2. 确定自己的规则
+3. 子View的测量尺寸
+4. left,top,right,bottom
+6. child.layout
+
+
+layoutParams
+width
+height
+
+width
+getWidth
+getHeight
+public final int getWidth() {
+        return mRight - mLeft;
+    }
+getMeasureWidth
+getMeasureHeight
+public final int getMeasuredWidth() {
+        return mMeasuredWidth & MEASURED_SIZE_MASK;
+    }
+getSuggestedMinimumWidth
+getSuggestedMinimumHeight
+protected int getSuggestedMinimumWidth() {
+        return (mBackground == null) ? mMinWidth : max(mMinWidth, mBackground.getMinimumWidth());
+    }
+
+Drawable
+
+getIntrinsicWidth
+getIntrinsicHeight
+
+getMinimumWidth
+getMinimumHeight
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
