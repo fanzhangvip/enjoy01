@@ -63,7 +63,16 @@ a. 通过View的ScrollBy 和ScrollTo方法实现滑动
 b. 通过动画给View添加位移效果来实现滑动（补间动画）
 c. 通过改变View的 layoutparams 让View 重新布局从而实现滑动
 
+自定义ViewGroup滑动
 
+onInterceptTouchEvent 
+当前这一系列的事件 是有本身来消费  dx < dy  dy > min
+                   交给子View
+				   
+onTouchEvent 做滑动
+
+
+Scroller 
 
 
 

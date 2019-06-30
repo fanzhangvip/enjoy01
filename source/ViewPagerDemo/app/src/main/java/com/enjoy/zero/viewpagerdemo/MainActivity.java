@@ -1,9 +1,12 @@
 package com.enjoy.zero.viewpagerdemo;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.Interpolator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,5 +22,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.add(R.id.frameLayout, MainFragment.newIntance(), MainFragment.class.getName());
         //TODO: 4.提交事务，真正去执行添加动作
         transaction.commit();
+
+        AnimationDrawable
     }
 }
