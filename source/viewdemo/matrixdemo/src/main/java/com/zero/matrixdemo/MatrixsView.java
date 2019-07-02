@@ -53,7 +53,7 @@ public class MatrixsView extends View {
 
         Matrix matrix = new Matrix();
 
-        /*
+        /**/
         // 定义矩阵对象
         float[] values = { 0.707f, -0.707f, 0.0f, 0.707f, 0.707f, 0.0f, 0.0f,
                 0.0f, 1.0f };
@@ -84,25 +84,25 @@ public class MatrixsView extends View {
         matrix.setSkew(0.1f, 0.1f, mWidth / 2.0f, mHeight / 2.0f);
 
         canvas.drawBitmap(mBgBitmap, matrix, paint);
-        */
 
 
-        /*
+
+        /**/
         // 先旋转后平移
         matrix.reset();
         matrix.postRotate(45);// center(0,0)
         matrix.postTranslate(300, 200);
         canvas.drawBitmap(mBgBitmap, matrix, paint);
-        */
-        /*
+
+        /**/
         // 先平移后旋转
         matrix.reset();
         matrix.postTranslate(300, 200);
         matrix.postRotate(45);// center(100,100)
         canvas.drawBitmap(mBgBitmap, matrix, paint);
-        */
 
-        /*
+
+        /* */
         // 平移-旋转-缩放-仿射
         matrix.reset();
         matrix.postTranslate(200, 200);
@@ -111,9 +111,9 @@ public class MatrixsView extends View {
         matrix.postScale(2.0f, 2.0f, 0.0f, 0.0f);
         matrix.postSkew(0.2f,0.2f,0.0f, 0.0f);
         canvas.drawBitmap(mBgBitmap, matrix, paint);
-        */
 
-        /*
+
+        /*  */
         // 先旋转后平移
         matrix.reset();
         matrix.postRotate(45);// center(0,0)
@@ -127,7 +127,7 @@ public class MatrixsView extends View {
         matrix.preTranslate(300, 300);
         matrix.preRotate(45f, 0.0f, 0.0f);
         canvas.drawBitmap(mBgBitmap, matrix, paint);
-        */
+
         
         //postRotate(30, -300, -600)方法分解
         paint.setColor(Color.RED);

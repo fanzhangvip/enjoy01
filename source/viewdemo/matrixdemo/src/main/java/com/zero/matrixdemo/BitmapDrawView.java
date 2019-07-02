@@ -49,9 +49,7 @@ public class BitmapDrawView extends View {
         mHeight = mBitmap.getHeight();
         
         mBitmapEx = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
-        
-        
-        
+
         DisplayMetrics displayMetrics = new DisplayMetrics();   
         displayMetrics = context.getResources().getDisplayMetrics();   
         mDensity = displayMetrics.density;
@@ -61,17 +59,17 @@ public class BitmapDrawView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        
+
         float x, y;
 
-        canvas.drawBitmap(mBitmap, 50 * mDensity, 20 * mDensity, mPaint);
+//        canvas.drawBitmap(mBitmap, 50 * mDensity, 20 * mDensity, mPaint);
+//
+//        x = 50 * mDensity;
+//        y = 140 * mDensity;
+//        mBitmapEx = processRoundBitmap(mBitmap);
+//        canvas.drawBitmap(mBitmapEx, x, y, mPaint);
 
-        x = 50 * mDensity;
-        y = 140 * mDensity;
-        mBitmapEx = processRoundBitmap(mBitmap);
-        canvas.drawBitmap(mBitmapEx, x, y, mPaint);
-
-        /*
+        /* */
         x = 50 * mDensity;
         y = 260 * mDensity;
         canvas.save();
@@ -84,7 +82,7 @@ public class BitmapDrawView extends View {
         canvas.clipPath(mClipPath, Op.DIFFERENCE);
         canvas.drawColor(Color.WHITE); 
         canvas.restore();
-        */
+
     }
     
     private Bitmap processRoundBitmap(Bitmap bitmap) {

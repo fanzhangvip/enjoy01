@@ -18,8 +18,6 @@ package com.zero.flowlayoutdemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import androidx.core.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -27,9 +25,9 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.EdgeEffect;
 import android.widget.OverScroller;
+
+import androidx.core.view.ViewConfigurationCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,28 +44,18 @@ public class FlowLayout extends ViewGroup {
     private int measureHeight;//代表本身的测量高度
     private int realHeight;//表示内容的高度
 
-    private OverScroller mScroller;
-    private EdgeEffect mEdgeGlowTop;
-    private EdgeEffect mEdgeGlowBottom;
+    private int mTouchSlop;//用来判断是不是一次滑动
+    private float mLastInterceptX = 0;
+    private float mLastInterceptY = 0;
+    private float mLastY = 0;
 
+    private OverScroller mScroller;
 
     private VelocityTracker mVelocityTracker;
-    private int mTouchSlop;
     private int mMinimumVelocity;
     private int mMaximumVelocity;
 
     private int mOverscrollDistance;
-    private int mOverflingDistance;
-
-    private boolean mIsBeingDragged = false;
-    private static final int INVALID_POINTER = -1;
-    private int mActivePointerId = INVALID_POINTER;
-
-    private int mLastMotionY;
-
-    private final int[] mScrollOffset = new int[2];
-    private final int[] mScrollConsumed = new int[2];
-    private int mNestedYOffset;
 
     public FlowLayout(Context context) {
         this(context, null);
@@ -79,34 +67,21 @@ public class FlowLayout extends ViewGroup {
 
     public FlowLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initFlowLayout(context);
-    }
-
-    private void initFlowLayout(Context context) {
-        mScroller = new OverScroller(getContext());
-        setFocusable(true);
-        setDescendantFocusability(FOCUS_AFTER_DESCENDANTS);
-        setWillNotDraw(false);
-        final ViewConfiguration configuration = ViewConfiguration.get(context);
-        mTouchSlop = configuration.getScaledTouchSlop();
+        ViewConfiguration configuration = ViewConfiguration.get(context);
+        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);//获取最小滑动距离
+        Log.i(TAG, "FlowLayout: mTouchSlop= " + mTouchSlop);
+        mScroller = new OverScroller(context);
         mMinimumVelocity = configuration.getScaledMinimumFlingVelocity();
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
         mOverscrollDistance = configuration.getScaledOverscrollDistance();
-        mOverflingDistance = configuration.getScaledOverflingDistance();
     }
 
-    private void initOrResetVelocityTracker() {
-        if (mVelocityTracker == null) {
-            mVelocityTracker = VelocityTracker.obtain();
-        } else {
-            mVelocityTracker.clear();
-        }
-    }
 
     private void initVelocityTrackerIfNotExists() {
         if (mVelocityTracker == null) {
             mVelocityTracker = VelocityTracker.obtain();
         }
+
     }
 
     private void recycleVelocityTracker() {
@@ -115,78 +90,6 @@ public class FlowLayout extends ViewGroup {
             mVelocityTracker = null;
         }
     }
-
-    @Override
-    public void setOverScrollMode(int mode) {
-        if (mode != OVER_SCROLL_NEVER) {
-            if (mEdgeGlowTop == null) {
-                Context context = getContext();
-                mEdgeGlowTop = new EdgeEffect(context);
-                mEdgeGlowBottom = new EdgeEffect(context);
-            }
-        } else {
-            mEdgeGlowTop = null;
-            mEdgeGlowBottom = null;
-        }
-        super.setOverScrollMode(mode);
-    }
-
-    @Override
-    public void requestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-        if (disallowIntercept) {
-            recycleVelocityTracker();
-        }
-        super.requestDisallowInterceptTouchEvent(disallowIntercept);
-    }
-
-    @Override
-    public void draw(Canvas canvas) {
-        super.draw(canvas);
-        if (mEdgeGlowTop != null) {
-            final int scrollY = getScrollY();
-            if (!mEdgeGlowTop.isFinished()) {
-                final int restoreCount = canvas.save();
-                final int width;
-                final int height;
-                final float translateX;
-                final float translateY;
-
-                width = getWidth();
-                height = getHeight();
-                translateX = 0;
-                translateY = 0;
-
-                canvas.translate(translateX, Math.min(0, scrollY) + translateY);
-                mEdgeGlowTop.setSize(width, height);
-                if (mEdgeGlowTop.draw(canvas)) {
-                    postInvalidateOnAnimation();
-                }
-                canvas.restoreToCount(restoreCount);
-            }
-            if (!mEdgeGlowBottom.isFinished()) {
-                final int restoreCount = canvas.save();
-                final int width;
-                final int height;
-                final float translateX;
-                final float translateY;
-
-                width = getWidth();
-                height = getHeight();
-                translateX = 0;
-                translateY = 0;
-
-                canvas.translate(-width + translateX,
-                        Math.max(getScrollRange(), scrollY) + height + translateY);
-                canvas.rotate(180, width, 0);
-                mEdgeGlowBottom.setSize(width, height);
-                if (mEdgeGlowBottom.draw(canvas)) {
-                    postInvalidateOnAnimation();
-                }
-                canvas.restoreToCount(restoreCount);
-            }
-        }
-    }
-
 
     private void init() {
         views = new ArrayList<>();
@@ -211,317 +114,126 @@ public class FlowLayout extends ViewGroup {
         return result;
     }
 
-    private void obtainVelocityTracker(MotionEvent event) {
-        if (mVelocityTracker == null) {
-            mVelocityTracker = VelocityTracker.obtain();
-        }
-        mVelocityTracker.addMovement(event);
-    }
-
-
-    private void releaseVelocityTracker() {
-        if (mVelocityTracker != null) {
-            mVelocityTracker.recycle();
-            mVelocityTracker = null;
-        }
-    }
-
-
-    private int getScrollRange() {
-        return realHeight - measureHeight;
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-
-        final int action = ev.getAction();
-        if ((action == MotionEvent.ACTION_MOVE) && (mIsBeingDragged)) {
-            return true;
-        }
-
-        if (super.onInterceptTouchEvent(ev)) {
-            return true;
-        }
-
-        if (getScrollY() == 0 && !canScrollVertically(1)) {
-            return false;
-        }
-
-        switch (action & MotionEvent.ACTION_MASK) {
-            case MotionEvent.ACTION_MOVE: {
-
-                final int activePointerId = mActivePointerId;
-                if (activePointerId == INVALID_POINTER) {
-                    break;
-                }
-
-                final int pointerIndex = ev.findPointerIndex(activePointerId);
-                if (pointerIndex == -1) {
-                    Log.e(TAG, "Invalid pointerId=" + activePointerId
-                            + " in onInterceptTouchEvent");
-                    break;
-                }
-
-                final int y = (int) ev.getY(pointerIndex);
-                final int yDiff = Math.abs(y - mLastMotionY);
-                if (yDiff > mTouchSlop && (getNestedScrollAxes() & SCROLL_AXIS_VERTICAL) == 0) {
-                    mIsBeingDragged = true;
-                    mLastMotionY = y;
-                    initVelocityTrackerIfNotExists();
-                    mVelocityTracker.addMovement(ev);
-                    mNestedYOffset = 0;
-
-                    final ViewParent parent = getParent();
-                    if (parent != null) {
-                        parent.requestDisallowInterceptTouchEvent(true);
-                    }
-                }
-                break;
-            }
-
-            case MotionEvent.ACTION_DOWN: {
-                final int y = (int) ev.getY();
-//                if (!inChild((int) ev.getX(), (int) y)) {
-//                    mIsBeingDragged = false;
-//                    recycleVelocityTracker();
-//                    break;
-//                }
-
-                mLastMotionY = y;
-                mActivePointerId = ev.getPointerId(0);
-
-                initOrResetVelocityTracker();
-                mVelocityTracker.addMovement(ev);
-
-                mScroller.computeScrollOffset();
-                mIsBeingDragged = !mScroller.isFinished();
-
-                startNestedScroll(SCROLL_AXIS_VERTICAL);
-                break;
-            }
-
-            case MotionEvent.ACTION_CANCEL:
-            case MotionEvent.ACTION_UP:
-                mIsBeingDragged = false;
-                mActivePointerId = INVALID_POINTER;
-                recycleVelocityTracker();
-
-                if (mScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
-                    postInvalidateOnAnimation();
-                }
-                stopNestedScroll();
-                break;
-            case MotionEvent.ACTION_POINTER_UP:
-                onSecondaryPointerUp(ev);
-                break;
-        }
-        return mIsBeingDragged;
-    }
-
-    private void onSecondaryPointerUp(MotionEvent ev) {
-        final int pointerIndex = (ev.getAction() & MotionEvent.ACTION_POINTER_INDEX_MASK) >>
-                MotionEvent.ACTION_POINTER_INDEX_SHIFT;
-        final int pointerId = ev.getPointerId(pointerIndex);
-        if (pointerId == mActivePointerId) {
-            final int newPointerIndex = pointerIndex == 0 ? 1 : 0;
-            mLastMotionY = (int) ev.getY(newPointerIndex);
-            mActivePointerId = ev.getPointerId(newPointerIndex);
-            if (mVelocityTracker != null) {
-                mVelocityTracker.clear();
-            }
-        }
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        initVelocityTrackerIfNotExists();
-        MotionEvent vtev = MotionEvent.obtain(ev);
-        final int actionMasked = ev.getActionMasked();
-        if (actionMasked == MotionEvent.ACTION_DOWN) {
-            mNestedYOffset = 0;
-        }
-        vtev.offsetLocation(0, mNestedYOffset);
-        switch (actionMasked) {
-            case MotionEvent.ACTION_DOWN: {
-                if (getChildCount() == 0) {
-                    return false;
-                }
-                if ((mIsBeingDragged = !mScroller.isFinished())) {
-                    final ViewParent parent = getParent();
-                    if (parent != null) {
-                        parent.requestDisallowInterceptTouchEvent(true);
-                    }
-                }
-                if (!mScroller.isFinished()) {
-                    mScroller.abortAnimation();
-
-                }
-                // Remember where the motion event started
-                mLastMotionY = (int) ev.getY();
-                mActivePointerId = ev.getPointerId(0);
-                startNestedScroll(SCROLL_AXIS_VERTICAL);
-                break;
-            }
-            case MotionEvent.ACTION_MOVE:
-                final int activePointerIndex = ev.findPointerIndex(mActivePointerId);
-                if (activePointerIndex == -1) {
-                    Log.e(TAG, "Invalid pointerId=" + mActivePointerId + " in onTouchEvent");
-                    break;
-                }
-                final int y = (int) ev.getY(activePointerIndex);
-                int deltaY = mLastMotionY - y;
-                if (dispatchNestedPreScroll(0, deltaY, mScrollConsumed, mScrollOffset)) {
-                    deltaY -= mScrollConsumed[1];
-                    vtev.offsetLocation(0, mScrollOffset[1]);
-                    mNestedYOffset += mScrollOffset[1];
-                }
-                if (!mIsBeingDragged && Math.abs(deltaY) > mTouchSlop) {
-                    final ViewParent parent = getParent();
-                    if (parent != null) {
-                        parent.requestDisallowInterceptTouchEvent(true);
-                    }
-                    mIsBeingDragged = true;
-                    if (deltaY > 0) {
-                        deltaY -= mTouchSlop;
-                    } else {
-                        deltaY += mTouchSlop;
-                    }
-                }
-                if (mIsBeingDragged) {
-                    mLastMotionY = y - mScrollOffset[1];
-
-                    final int oldY = getScrollY();
-                    final int range = getScrollRange();
-                    final int overscrollMode = getOverScrollMode();
-                    boolean canOverscroll = overscrollMode == OVER_SCROLL_ALWAYS ||
-                            (overscrollMode == OVER_SCROLL_IF_CONTENT_SCROLLS && range > 0);
-
-                    // Calling overScrollBy will call onOverScrolled, which
-                    // calls onScrollChanged if applicable.
-                    if (overScrollBy(0, deltaY, 0, getScrollY(), 0, range, 0, mOverscrollDistance, true)
-                            && !hasNestedScrollingParent()) {
-                        // Break our velocity if we hit a scroll barrier.
-                        mVelocityTracker.clear();
-                    }
-
-                    final int scrolledDeltaY = getScrollY() - oldY;
-                    final int unconsumedY = deltaY - scrolledDeltaY;
-                    if (dispatchNestedScroll(0, scrolledDeltaY, 0, unconsumedY, mScrollOffset)) {
-                        mLastMotionY -= mScrollOffset[1];
-                        vtev.offsetLocation(0, mScrollOffset[1]);
-                        mNestedYOffset += mScrollOffset[1];
-                    } else if (canOverscroll) {
-                        final int pulledToY = oldY + deltaY;
-                        if (pulledToY < 0) {
-                            mEdgeGlowTop.onPull((float) deltaY / getHeight(),
-                                    ev.getX(activePointerIndex) / getWidth());
-                            if (!mEdgeGlowBottom.isFinished()) {
-                                mEdgeGlowBottom.onRelease();
-                            }
-                        } else if (pulledToY > range) {
-                            mEdgeGlowBottom.onPull((float) deltaY / getHeight(),
-                                    1.f - ev.getX(activePointerIndex) / getWidth());
-                            if (!mEdgeGlowTop.isFinished()) {
-                                mEdgeGlowTop.onRelease();
-                            }
-                        }
-                        if (mEdgeGlowTop != null
-                                && (!mEdgeGlowTop.isFinished() || !mEdgeGlowBottom.isFinished())) {
-                            postInvalidateOnAnimation();
-                        }
-                    }
-                }
-                break;
-            case MotionEvent.ACTION_UP:
-                if (mIsBeingDragged) {
-                    final VelocityTracker velocityTracker = mVelocityTracker;
-                    velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
-                    int initialVelocity = (int) velocityTracker.getYVelocity(mActivePointerId);
-
-                    if ((Math.abs(initialVelocity) > mMinimumVelocity)) {
-                        flingWithNestedDispatch(-initialVelocity);
-                    } else if (mScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0,
-                            getScrollRange())) {
-                        postInvalidateOnAnimation();
-                    }
-
-                    mActivePointerId = INVALID_POINTER;
-                    endDrag();
-                }
-                break;
-            case MotionEvent.ACTION_CANCEL:
-                if (mIsBeingDragged && getChildCount() > 0) {
-                    if (mScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0, getScrollRange())) {
-                        postInvalidateOnAnimation();
-                    }
-                    mActivePointerId = INVALID_POINTER;
-                    endDrag();
-                }
-                break;
-            case MotionEvent.ACTION_POINTER_DOWN: {
-                final int index = ev.getActionIndex();
-                mLastMotionY = (int) ev.getY(index);
-                mActivePointerId = ev.getPointerId(index);
-                break;
-            }
-            case MotionEvent.ACTION_POINTER_UP:
-                onSecondaryPointerUp(ev);
-                mLastMotionY = (int) ev.getY(ev.findPointerIndex(mActivePointerId));
-                break;
-        }
-
-        if (mVelocityTracker != null) {
-            mVelocityTracker.addMovement(vtev);
-        }
-        vtev.recycle();
-        return true;
-    }
-
-    private void flingWithNestedDispatch(int velocityY) {
-        final boolean canFling = (getScaleY() > 0 || velocityY > 0) &&
-                (getScrollY() < getScrollRange() || velocityY < 0);
-        if (!dispatchNestedPreFling(0, velocityY)) {
-            dispatchNestedFling(0, velocityY, canFling);
-            if (canFling) {
-                fling(velocityY);
-            }
-        }
-    }
-
     public void fling(int velocityY) {
         if (getChildCount() > 0) {
             int height = measureHeight;
             int bottom = realHeight;
 
             mScroller.fling(getScrollX(), getScrollY(), 0, velocityY, 0, 0, 0,
-                    Math.max(0, bottom - height), 0, height/2);
+                    Math.max(0, bottom - height), 0, height / 2);
 
             postInvalidateOnAnimation();
         }
     }
 
-    private void endDrag() {
-        mIsBeingDragged = false;
-
-        recycleVelocityTracker();
-
-        if (mEdgeGlowTop != null) {
-            mEdgeGlowTop.onRelease();
-            mEdgeGlowBottom.onRelease();
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        boolean intercepted = false;
+        float xInterceptX = ev.getX();
+        float yInterceptY = ev.getY();
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                mLastInterceptX = xInterceptX;
+                mLastInterceptY = yInterceptY;
+                intercepted = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float dx = xInterceptX - mLastInterceptX;
+                float dy = yInterceptY - mLastInterceptY;
+                if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > mTouchSlop) {
+                    intercepted = true;//表示本身需要拦截处理
+                    mIsBeingDragged = true;
+                } else {
+                    intercepted = false;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                intercepted = false;
+                break;
         }
+        mLastInterceptX = xInterceptX;
+        mLastInterceptY = yInterceptY;
+
+        return intercepted;
     }
+
+    private boolean mIsBeingDragged = false;
 
     @Override
-    protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) {
-        super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
+    public boolean onTouchEvent(MotionEvent event) {//处理滑动
+        if (!scrollable) {
+            return super.onTouchEvent(event);
+        }
+        initVelocityTrackerIfNotExists();
+        mVelocityTracker.addMovement(event);
+        float currY = event.getY();
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if (!mScroller.isFinished()) {
+                    mScroller.abortAnimation();
+                }
+                mLastY = currY;
+                mIsBeingDragged = !mScroller.isFinished();
+//                return mIsBeingDragged;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float dy = mLastY - currY;//本次手势滑动了多大距离
+                int oldScrollY = getScrollY();//已经偏移了的距离
+//                int scrollY = oldScrollY + (int)dy;//这是本次需要偏移的距离 = 之前已经偏移了的距离 + 本次手势滑动的距离
+//                if(scrollY < 0){
+//                    scrollY = 0;
+//                }
+//                if(scrollY > realHeight - measureHeight){
+//                    scrollY = realHeight - measureHeight;
+//                }
+//                scrollTo(0,scrollY);
+                if(mIsBeingDragged){
+                    if (dy > 0) {
+                        dy += mTouchSlop;
+                    } else {
+                        dy -= mTouchSlop;
+                    }
+                }
+
+                Log.i(TAG, "onTouchEvent: dy= " + dy);
+                mScroller.startScroll(0, mScroller.getFinalY(), 0, (int) dy);//mCurrY = oldScrollY + dy*scale;
+                invalidate();
+                mLastY = currY;
+                break;
+            case MotionEvent.ACTION_UP:
+                mIsBeingDragged = false;
+                final VelocityTracker velocityTracker = mVelocityTracker;
+                velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
+                int initialVelocity = (int) velocityTracker.getYVelocity();
+
+                if ((Math.abs(initialVelocity) > mMinimumVelocity)) {
+                    fling(-initialVelocity);
+                } else if (mScroller.springBack(getScrollX(), getScrollY(), 0, 0, 0,
+                        (realHeight - measureHeight))) {
+                    postInvalidateOnAnimation();
+                }
+                break;
+        }
+        return super.onTouchEvent(event);
     }
+
 
     @Override
     public void computeScroll() {
-        if (mScroller.computeScrollOffset()) {
-            scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
+        super.computeScroll();
+        if (mScroller.computeScrollOffset()) {//mCurrY = oldScrollY + dy*scale;
+            //int scrollY = oldScrollY + (int)dy;
+//            int currY = mScroller.getCurrY();
+//            if(currY < 0){
+//                currY = 0;
+//            }
+//            if(currY > realHeight - measureHeight){
+//                currY = realHeight - measureHeight;
+//            }
+            scrollTo(0, mScroller.getCurrY());
             postInvalidate();
         }
+
     }
 
     @Override
@@ -556,7 +268,6 @@ public class FlowLayout extends ViewGroup {
             int childHeight = child.getMeasuredHeight();
 //            Log.i(TAG, "onMeasure: childHeight= " + childHeight);
             LayoutParams lp = (LayoutParams) child.getLayoutParams();
-            int marginLeft = lp.leftMargin;
             //看下当前的行的剩余的宽度是否可以容纳下一个子View,
             // 如果放不下，换行 保存当前行的所有子View,累加行高，当前的宽度，高度 置零
             if (lineWidth + childWidth > widthSize) {//换行

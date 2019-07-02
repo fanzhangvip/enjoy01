@@ -12,18 +12,14 @@ import android.view.View;
 public class CanvasComposeView extends View {
     public CanvasComposeView(Context context) {
         super(context);
-
     }
 
     public CanvasComposeView(Context context, AttributeSet set) {
         super(context, set);
-
-
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        // TODO Auto-generated method stub
         super.onDraw(canvas);
         
         //构造两个画笔，一个红色，一个绿色

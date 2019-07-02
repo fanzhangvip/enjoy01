@@ -173,11 +173,23 @@ public class PropertyAnimationActivity extends AppCompatActivity {
     static class PropertyBean {
         int backgroundColor;
         float rotationX;
+        float rotationY;
+        float rotationZ;
         float size;
 
-        public PropertyBean(int backgroundColor, float rotationX, float size) {
+        private float getRotationY() {
+            return rotationY;
+        }
+
+        private void setRotationY(final float rotationY) {
+            this.rotationY = rotationY;
+        }
+
+        public PropertyBean(int backgroundColor, float rotationX, float rotationY,float rotationZ, float size) {
             this.backgroundColor = backgroundColor;
             this.rotationX = rotationX;
+            this.rotationY = rotationY;
+            this.rotationZ = rotationZ;
             this.size = size;
         }
 
@@ -191,6 +203,14 @@ public class PropertyAnimationActivity extends AppCompatActivity {
 
         public float getRotationX() {
             return rotationX;
+        }
+
+        private float getRotationZ() {
+            return rotationZ;
+        }
+
+        private void setRotationZ(final float rotationZ) {
+            this.rotationZ = rotationZ;
         }
 
         public void setRotationX(float rotationX) {
@@ -233,16 +253,18 @@ public class PropertyAnimationActivity extends AppCompatActivity {
         public PropertyBean evaluate(float fraction, PropertyBean startPropertyBean, PropertyBean endPropertyBean) {
             int currentColor = (int) mArgbEvaluator.evaluate(fraction, startPropertyBean.getBackgroundColor(), endPropertyBean.getBackgroundColor());
             float currentRotationX = startPropertyBean.getRotationX() + (endPropertyBean.getRotationX() - startPropertyBean.getRotationX()) * fraction;
+            float currentRotationY = startPropertyBean.getRotationY() + (endPropertyBean.getRotationY() - startPropertyBean.getRotationY()) * fraction;
+            float currentRotationZ = startPropertyBean.getRotationZ() + (endPropertyBean.getRotationZ() - startPropertyBean.getRotationZ()) * fraction;
             float currentSize = startPropertyBean.getSize() + (endPropertyBean.getSize() - startPropertyBean.getSize()) * fraction;
-            return new PropertyBean(currentColor, currentRotationX, currentSize);
+            return new PropertyBean(currentColor, currentRotationX,currentRotationY,currentRotationZ, currentSize);
         }
     }
 
     private Animator getValueAnimatorByCustom() {
         final int height = mTarget.getLayoutParams().height;
         final int width = mTarget.getLayoutParams().width;
-        PropertyBean startPropertyBean = new PropertyBean(0xff009688, 0f, 1f);
-        PropertyBean endPropertyBean = new PropertyBean(0xff795548, 360f, 3.0f);
+        PropertyBean startPropertyBean = new PropertyBean(0xff009688, 0f,360, 0,1f);
+        PropertyBean endPropertyBean = new PropertyBean(0xff795548, 360f,0, 360,3.0f);
 
         ValueAnimator valueAnimator = new ValueAnimator();
         valueAnimator.setDuration(3000);
@@ -261,6 +283,8 @@ public class PropertyAnimationActivity extends AppCompatActivity {
                     mTarget.setBackgroundColor(propertyBean.getBackgroundColor());
                 }
                 mTarget.setRotationX(propertyBean.getRotationX());
+                mTarget.setRotationY(propertyBean.getRotationY());
+                mTarget.setRotation(propertyBean.rotationZ);
                 mTarget.getLayoutParams().height = (int) (height * propertyBean.getSize());
                 mTarget.getLayoutParams().width = (int) (width * propertyBean.getSize());
                 mTarget.requestLayout();

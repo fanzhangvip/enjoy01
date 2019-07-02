@@ -54,28 +54,32 @@ public class CanvasDrawView extends View {
         mPaint.setColor(Color.BLUE);
         mPaint.setStyle(Style.STROKE);
         mPaint.setStrokeWidth(3 * mDensity);
+
         // 绘制圆形
         canvas.drawCircle(40 * mDensity, 40 * mDensity, 30 * mDensity, mPaint);
+
         // 绘制正方形
         canvas.drawRect(10 * mDensity, 80 * mDensity, 70 * mDensity, 140 * mDensity, mPaint);
+
         // 绘制矩形
         canvas.drawRect(10 * mDensity, 150 * mDensity, 70 * mDensity, 190 * mDensity, mPaint);
-        RectF re1 = new RectF(10 * mDensity, 200 * mDensity, 70 * mDensity, 230 * mDensity);
+
         // 绘制圆角矩形
+        RectF re1 = new RectF(10 * mDensity, 200 * mDensity, 70 * mDensity, 230 * mDensity);
         canvas.drawRoundRect(re1, 15 * mDensity, 15 * mDensity, mPaint);
-        RectF re11 = new RectF(10 * mDensity, 240 * mDensity, 70 * mDensity, 270 * mDensity);
-        
-        
+
         // 绘制椭圆
+        RectF re11 = new RectF(10 * mDensity, 240 * mDensity, 70 * mDensity, 270 * mDensity);
         canvas.drawOval(re11, mPaint);
-        // 定义�?个Path对象，封闭成�?个三角形�?
+
+        // 根据Path进行绘制，绘制三角形
         Path path1 = new Path();
         path1.moveTo(10 * mDensity, 340 * mDensity);
         path1.lineTo(70 * mDensity, 340 * mDensity);
         path1.lineTo(40 * mDensity, 290 * mDensity);
         path1.close();
-        // 根据Path进行绘制，绘制三角形
         canvas.drawPath(path1, mPaint);
+
         // 定义一个个Path对象，封闭成五边形
         Path path2 = new Path();
         path2.moveTo(26 * mDensity, 360 * mDensity);
@@ -86,27 +90,37 @@ public class CanvasDrawView extends View {
         path2.close();
         // 根据Path进行绘制，绘制五角形
         canvas.drawPath(path2, mPaint);
+
         // ----------设置填充风格----------
         mPaint.setStyle(Style.FILL);
         mPaint.setColor(Color.RED);
+
+        // 绘制圆形
         canvas.drawCircle(120 * mDensity, 40 * mDensity, 30 * mDensity, mPaint);
+
         // 绘制正方形
         canvas.drawRect(90 * mDensity, 80 * mDensity, 150 * mDensity, 140 * mDensity, mPaint);
+
         // 绘制矩形
         canvas.drawRect(90 * mDensity, 150 * mDensity, 150 * mDensity, 190 * mDensity, mPaint);
-        RectF re2 = new RectF(90 * mDensity, 200 * mDensity, 150 * mDensity, 230 * mDensity);
+
         // 绘制圆角矩形
+        RectF re2 = new RectF(90 * mDensity, 200 * mDensity, 150 * mDensity, 230 * mDensity);
         canvas.drawRoundRect(re2, 15 * mDensity, 15 * mDensity, mPaint);
-        RectF re21 = new RectF(90 * mDensity, 240 * mDensity, 150 * mDensity, 270 * mDensity);
+
         // 绘制椭圆
+        RectF re21 = new RectF(90 * mDensity, 240 * mDensity, 150 * mDensity, 270 * mDensity);
         canvas.drawOval(re21, mPaint);
+
+        // 绘制三角形
         Path path3 = new Path();
         path3.moveTo(90  * mDensity, 340  * mDensity);
         path3.lineTo(150  * mDensity, 340  * mDensity);
         path3.lineTo(120  * mDensity, 290  * mDensity);
         path3.close();
-        // 绘制三角形
         canvas.drawPath(path3, mPaint);
+
+        // 绘制五角形
         Path path4 = new Path();
         path4.moveTo(106 * mDensity, 360  * mDensity);
         path4.lineTo(134 * mDensity, 360 * mDensity);
@@ -114,7 +128,6 @@ public class CanvasDrawView extends View {
         path4.lineTo(120 * mDensity, 420 * mDensity);
         path4.lineTo(90 * mDensity, 392 * mDensity);
         path4.close();
-        // 绘制五角形
         canvas.drawPath(path4, mPaint);
         
         // ----------设置渐变器后绘制----------
@@ -123,25 +136,33 @@ public class CanvasDrawView extends View {
                 Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW }, null,
                 Shader.TileMode.REPEAT);
         mPaint.setShader(mShader);
+
         // 绘制圆形
         canvas.drawCircle(200 * mDensity, 40 * mDensity, 30 * mDensity, mPaint);
+
         // 绘制正方形
         canvas.drawRect(170 * mDensity, 80 * mDensity, 230 * mDensity, 140 * mDensity, mPaint);
+
         // 绘制矩形
         canvas.drawRect(170 * mDensity, 150 * mDensity, 230 * mDensity, 190 * mDensity, mPaint);
-        RectF re3 = new RectF(170 * mDensity, 200 * mDensity, 230 * mDensity, 230 * mDensity);
+
         // 绘制圆角矩形
+        RectF re3 = new RectF(170 * mDensity, 200 * mDensity, 230 * mDensity, 230 * mDensity);
         canvas.drawRoundRect(re3, 15 * mDensity, 15 * mDensity, mPaint);
-        RectF re31 = new RectF(170 * mDensity, 240 * mDensity, 230 * mDensity, 270 * mDensity);
+
         // 绘制椭圆
+        RectF re31 = new RectF(170 * mDensity, 240 * mDensity, 230 * mDensity, 270 * mDensity);
         canvas.drawOval(re31, mPaint);
+
+        // 根据Path进行绘制，绘制三角形
         Path path5 = new Path();
         path5.moveTo(170 * mDensity, 340 * mDensity);
         path5.lineTo(230 * mDensity, 340 * mDensity);
         path5.lineTo(200 * mDensity, 290 * mDensity);
         path5.close();
-        // 根据Path进行绘制，绘制三角形
         canvas.drawPath(path5, mPaint);
+
+        // 根据Path进行绘制，绘制五角形
         Path path6 = new Path();
         path6.moveTo(186 * mDensity, 360 * mDensity);
         path6.lineTo(214 * mDensity, 360 * mDensity);
@@ -149,8 +170,8 @@ public class CanvasDrawView extends View {
         path6.lineTo(200 * mDensity, 420 * mDensity);
         path6.lineTo(170 * mDensity, 392 * mDensity);
         path6.close();
-        // 根据Path进行绘制，绘制五角形
         canvas.drawPath(path6, mPaint);
+
         // ----------设置字符大小----------
         mPaint.setTextSize(24 * mDensity);
         mPaint.setShader(null);

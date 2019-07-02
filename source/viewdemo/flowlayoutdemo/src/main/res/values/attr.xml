@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-	<declare-styleable name="FlowLayout">
+	<declare-styleable name="FlowLayout1">
 		<attr name="android:gravity" />
 		<attr name="horizonSpacing" format="dimension|reference"/>
 	</declare-styleable>

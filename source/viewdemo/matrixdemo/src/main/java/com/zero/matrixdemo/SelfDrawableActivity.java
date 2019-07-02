@@ -27,15 +27,11 @@ public class SelfDrawableActivity extends Activity {
             
             @Override
             public void onClick(View v) {
-                
-                
-                
+
                 if(false == mTaskClearDrawable.isRunning()){
                     mTaskClearDrawable.start();
                 }
-
-                Log.i("madengfu", "mTaskClearDrawable = " + mTaskClearDrawable.isRunning() );
-                
+                Log.i("Zero", "mTaskClearDrawable = " + mTaskClearDrawable.isRunning() );
             }
         });
         

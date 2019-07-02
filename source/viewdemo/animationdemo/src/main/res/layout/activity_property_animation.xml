@@ -23,7 +23,7 @@
         android:layout_height="100dp"
         android:background="?attr/colorAccent"
         android:gravity="center"
-        android:text="AnimatorDemo"
+        android:text="Hello World!"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
