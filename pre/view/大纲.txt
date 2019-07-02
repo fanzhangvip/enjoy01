@@ -122,6 +122,34 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 5. 处理LayoutParams 
 6. 触摸反馈：滑动事件
 
+动画
+视图动画
+	补间动画 (平移，缩放，旋转，透明度) popupwidow 转场 show/hide layoutAnimation
+	逐帧动画  开机 app启动
+	
+	interpolator 缓动函数
+	y = f(t)
+	
+	
+
+属性动画
+
+触摸反馈动画
+
+转场动画 共享元素
+
+视图状态状态动画
+
+矢量图动画
+
+约束布局ConStraintSet
+
+揭露动画
+
+spring 动画
+
+lottie-android  
+
 
 
 
