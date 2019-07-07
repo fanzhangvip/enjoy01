@@ -10,7 +10,7 @@ public class TextDrawActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new TextDrawView(this));
+        setContentView(new XfermodeView(this));
     }
 
 }

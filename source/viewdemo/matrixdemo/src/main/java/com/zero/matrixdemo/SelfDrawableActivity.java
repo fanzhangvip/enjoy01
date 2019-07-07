@@ -19,12 +19,12 @@ public class SelfDrawableActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_self_drawable);
         
-        mImageView = (ImageView) findViewById(R.id.imageView);
+        mImageView = findViewById(R.id.imageView);
         mTaskClearDrawable = new TaskClearDrawable(this, 500, 500);
         mImageView.setImageDrawable(mTaskClearDrawable);
-        
+
         mImageView.setOnClickListener(new OnClickListener() {
-            
+
             @Override
             public void onClick(View v) {
 

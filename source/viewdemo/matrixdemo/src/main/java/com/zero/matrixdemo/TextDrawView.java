@@ -27,6 +27,7 @@ public class TextDrawView extends View {
     private String text = "澳大利亚曾质疑过日本科研捕鲸的真实性。2010年，澳大利亚政府曾向海牙国际法院提起诉讼，控告日本在南冰洋的“科研”捕鲸活动实则是商业捕鲸。2014年，国际法院对此作出终审裁决，认定日本“出于科研目的”的捕鲸理由不成立，其捕鲸行为违背了《国际捕鲸管制公约》。日本表示尊重国际法院的裁决，并有所收敛了一段时间，但捕鲸活动仍未终止。2018年9月，在IWC的巴西峰会上，日本重提恢复商业捕鲸的诉求，但又一次遭到委员会的否决。这被视为日本最终退出该组织的直接原因被“科研”捕杀的鲸鱼，是如何被送上餐桌的？以科研名义被捕杀的鲸鱼，最后被输送到日本国内，满足人们的口腹之欲。负责执行这一系列动作的是一个名为日本鲸类研究所的机构，其上属机构是日本水产厅。日本鲸类研究所对鲸鱼肉有一个有趣的称呼：科研调查的副产物。他们称，根据《国际捕鲸规则公约》第8条的规定，调查后的鲸鱼体应被尽可能充分地利用。因而在鲸鱼被捕捞到渔船上并完成了对其体型、皮脂、胃内容物等款项的检测后，鲸体即会被拆解，用于鲸肉消费品的生产。当渔船抵达日本后，一块块的鲸肉会被分送给日本各级消费市场，或是以远低于市场价的价格出售给各地政府、供应于日本小学生的午餐中。";
 
     float[] curWidth = new float[1];
+    private int mScreenHeight;
 
     public TextDrawView(Context context) {
         super(context);
@@ -45,6 +46,22 @@ public class TextDrawView extends View {
         displayMetrics = context.getResources().getDisplayMetrics();   
         mDensity = displayMetrics.density;
         mPaint = new Paint();
+
+        mScreenHeight = Utils.getScreenHeight(context);
+    }
+
+
+
+    @Override
+    protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        if(heightMode == MeasureSpec.UNSPECIFIED){//为什么这么写
+            setMeasuredDimension(widthSize,mScreenHeight *2);
+        }
+
     }
 
     @Override
@@ -111,46 +128,69 @@ public class TextDrawView extends View {
         mPaint.reset();
         canvas.drawLine(0,Utils.dp2px(420),getMeasuredWidth(),Utils.dp2px(420),mPaint);
 
+        //文字测量
+        //绘制一个圆
         mPaint.setStyle(Style.STROKE);
         mPaint.setColor(Color.GRAY);
         mPaint.setStrokeWidth(Utils.dp2px(15));
-        canvas.drawCircle(getWidth()/2, mCy, mRadius,mPaint);
+        canvas.drawCircle(Utils.dp2px(110),mCy,mRadius,mPaint);
 
+
+        mPaint.setStyle(Style.STROKE);
+        mPaint.setColor(Color.GRAY);
+        mPaint.setStrokeWidth(Utils.dp2px(15));
+        canvas.drawCircle(Utils.dp2px(320),mCy,mRadius,mPaint);
+
+        //画圆弧
         mPaint.setColor(Color.GREEN);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
-        canvas.drawArc(getWidth()/2 - mRadius,mCy - mRadius,getWidth()/2 + mRadius,
-                mCy + mRadius,-90,225,false ,mPaint);
+        RectF rectArc = new RectF(Utils.dp2px(10),mCy - mRadius,Utils.dp2px(210),mCy + mRadius);
+        canvas.drawArc(rectArc,-90,225,false,mPaint);
 
+
+        Paint paintLine = new Paint();//这是一个反面教材，容易GC
+        paintLine.setStyle(Style.STROKE);
+        canvas.drawLine(0,mCy,getWidth(),mCy,paintLine);
+        canvas.drawLine(Utils.dp2px(110),mCy - mRadius,Utils.dp2px(110),mCy + mRadius,paintLine);
+
+        //开始绘制文字
         mPaint.setStyle(Style.FILL);
         mPaint.setTextAlign(Paint.Align.CENTER);
         mPaint.setTextSize(Utils.dp2px(50));
-
-        Paint paintLine = new Paint();//反面教材
-        paintLine.setStyle(Style.STROKE);
-        canvas.drawLine(0,mCy,getWidth(),mCy,paintLine);
-
+        //1.
         Rect rect = new Rect();
         mPaint.getTextBounds("fgab",0,4,rect);
+        float offsety = (rect.top + rect.bottom)/2;
+        canvas.drawText("fgab",Utils.dp2px(110),mCy - offsety,mPaint);
+
+        Rect rect1 = new Rect();
+//        mPaint.getTextBounds("aaaa",0,4,rect1);
+
+        //2
         Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
         mPaint.getFontMetrics(fontMetrics);
-        float offset = (fontMetrics.ascent + fontMetrics.descent)/2;
-//        float offset = (rect.top + rect.bottom)/2;
-        canvas.drawText("fgaa",getWidth()/2,mCy - offset,mPaint);
+        float offsety2 = (fontMetrics.ascent + fontMetrics.descent)/2;
+        float offsety1 = (rect1.top + rect1.bottom)/2;
+        canvas.drawText("aaaa",Utils.dp2px(320),mCy - offsety2,mPaint);
+
+        mPaint.reset();
+        canvas.drawLine(0,Utils.dp2px(680),getMeasuredWidth(),Utils.dp2px(680),mPaint);
 
         //文字绘制2
-        mPaint.setTextSize(Utils.dp2px(150));
+        mPaint.setStyle(Style.FILL);
         mPaint.setTextAlign(Paint.Align.LEFT);
-        Rect rect1 = new Rect();
-        mPaint.getTextBounds("aaaa",0,4,rect1);
-        canvas.drawText("aaaa",0- rect1.left,Utils.dp2px(460),mPaint);
+        mPaint.setTextSize(Utils.dp2px(150));
+//        Rect rect3 = new Rect();
+//        mPaint.getTextBounds("aaaa",0,4,rect3);
+//        canvas.drawText("aaaa",0 - rect3.left,Utils.dp2px(800),mPaint);
+        Path path = new Path();
+        mPaint.getTextPath("aaaa",0,0,0,Utils.dp2px(800),path);
+        canvas.drawPath(path,mPaint);
+//        mPaint.setTextSize(Utils.dp2px(15));
+//        canvas.drawText("aaaa",0,Utils.dp2px(800) + mPaint.getFontSpacing(),mPaint);
 
-        mPaint.setTextSize(Utils.dp2px(15));
-        canvas.drawText("aaaa",0,Utils.dp2px(460) + mPaint.getFontSpacing(),mPaint);
 
-        //int index = mPaint.breakText("",true,getWidth(),curWidth);
-//        StaticLayout staticLayout = new StaticLayout(text,new TextPaint(),getWidth(), Layout.Alignment.ALIGN_NORMAL,1,0,false);
-
-
+   
 
     }
 

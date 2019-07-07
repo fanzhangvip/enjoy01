@@ -10,7 +10,7 @@ public class BitmapDrawActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(new BitmapDrawView(this));
+        setContentView(new CustomerDrawCanvas(this));
     }
 
 }

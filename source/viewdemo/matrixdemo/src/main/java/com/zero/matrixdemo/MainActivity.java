@@ -61,7 +61,8 @@ public class MainActivity extends Activity {
         };
 
         final Class<?>[] mActivityList = new Class<?>[] {
-                CanvasDrawActivity.class,
+//                CanvasDrawActivity.class,
+                Xfermodes.class,
                 CanvasTransformationActivity.class,
                 CanvasStackActivity.class,
                 CanvasComposeActivity.class,

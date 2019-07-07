@@ -9,7 +9,9 @@ import android.util.AttributeSet;
 import android.view.View;
 
 public class CanvasTransformationView extends View {
+    private final Rect mRect = new Rect(0, 0, 200, 200);
     private Paint mPaint;
+
     public CanvasTransformationView(Context context) {
         super(context);
         init();
@@ -32,16 +34,16 @@ public class CanvasTransformationView extends View {
         canvas.translate(100, 100);  
         canvas.drawColor(Color.GRAY);//可以看到，整个屏幕依然填充为灰色  
         
-        canvas.drawRect(new Rect(0, 0, 200, 200), mPaint);
-
+        canvas.drawRect(mRect, mPaint);
+//
         canvas.translate(0, 300);
         canvas.scale(0.5f, 0.5f);  //缩放了
-        canvas.drawRect(new Rect(0, 0, 200, 200), mPaint);
-
+        canvas.drawRect(mRect, mPaint);
+//
         canvas.translate(0, 300);
         canvas.rotate(30);  //旋转了
         canvas.drawRect(new Rect(0, 0, 200, 200), mPaint);
-
+//
         canvas.translate(0, 300);
         canvas.skew(.5f, .5f);//扭曲了
         canvas.drawRect(new Rect(0, 0, 200, 200), mPaint);

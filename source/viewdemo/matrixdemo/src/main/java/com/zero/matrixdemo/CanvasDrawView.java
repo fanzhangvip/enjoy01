@@ -12,6 +12,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
@@ -51,10 +52,15 @@ public class CanvasDrawView extends View {
         
         // 去锯齿
         mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.BLUE);
-        mPaint.setStyle(Style.STROKE);
-        mPaint.setStrokeWidth(3 * mDensity);
+        mPaint.setStyle(Style.STROKE);//画线
 
+        mPaint.setColor(Color.GREEN);
+        mPaint.setStrokeWidth(15* mDensity);//设置线的宽度
+        // 绘制圆形
+        canvas.drawCircle(40 * mDensity, 40 * mDensity, 30 * mDensity, mPaint);
+
+        mPaint.setColor(Color.BLUE);
+        mPaint.setStrokeWidth(1* mDensity);//设置线的宽度
         // 绘制圆形
         canvas.drawCircle(40 * mDensity, 40 * mDensity, 30 * mDensity, mPaint);
 
@@ -66,6 +72,8 @@ public class CanvasDrawView extends View {
 
         // 绘制圆角矩形
         RectF re1 = new RectF(10 * mDensity, 200 * mDensity, 70 * mDensity, 230 * mDensity);
+        Rect roundre1 = new Rect((int)(10 * mDensity), (int)(200 * mDensity), (int)(70 * mDensity), (int)(230 * mDensity));
+        canvas.drawRect(roundre1,mPaint);
         canvas.drawRoundRect(re1, 15 * mDensity, 15 * mDensity, mPaint);
 
         // 绘制椭圆
@@ -90,6 +98,9 @@ public class CanvasDrawView extends View {
         path2.close();
         // 根据Path进行绘制，绘制五角形
         canvas.drawPath(path2, mPaint);
+
+        RectF re1arc = new RectF(10 * mDensity, 430 * mDensity, 110 * mDensity, 530 * mDensity);
+        canvas.drawArc(re1arc,30,225,true,mPaint);
 
         // ----------设置填充风格----------
         mPaint.setStyle(Style.FILL);
@@ -134,7 +145,10 @@ public class CanvasDrawView extends View {
         // 为Paint设置渐变
         Shader mShader = new LinearGradient(0, 0, 40 * mDensity, 60 * mDensity, new int[] {
                 Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW }, null,
-                Shader.TileMode.REPEAT);
+                Shader.TileMode.MIRROR);
+
+        mShader = new RadialGradient(200 * mDensity, 40 * mDensity,30 * mDensity,Color.RED,Color.YELLOW
+                , Shader.TileMode.MIRROR);
         mPaint.setShader(mShader);
 
         // 绘制圆形

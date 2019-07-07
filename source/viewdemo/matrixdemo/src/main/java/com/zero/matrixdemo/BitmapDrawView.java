@@ -48,7 +48,7 @@ public class BitmapDrawView extends View {
         mWidth  = mBitmap.getWidth();
         mHeight = mBitmap.getHeight();
         
-        mBitmapEx = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
+//        mBitmapEx = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();   
         displayMetrics = context.getResources().getDisplayMetrics();   
@@ -63,25 +63,25 @@ public class BitmapDrawView extends View {
         float x, y;
 
 //        canvas.drawBitmap(mBitmap, 50 * mDensity, 20 * mDensity, mPaint);
-//
-//        x = 50 * mDensity;
-//        y = 140 * mDensity;
-//        mBitmapEx = processRoundBitmap(mBitmap);
-//        canvas.drawBitmap(mBitmapEx, x, y, mPaint);
 
-        /* */
         x = 50 * mDensity;
-        y = 260 * mDensity;
-        canvas.save();
-        mPaint.setAntiAlias(true);
-        canvas.clipRect(x, y, x + mWidth, y + mHeight);
-        canvas.drawBitmap(mBitmap, x, y, mPaint);
-        mClipPath.addOval(new RectF(x, y, x + mWidth, y + mHeight),
-                Path.Direction.CCW);
-        
-        canvas.clipPath(mClipPath, Op.DIFFERENCE);
-        canvas.drawColor(Color.WHITE); 
-        canvas.restore();
+        y = 140 * mDensity;
+        mBitmapEx = processRoundBitmap(mBitmap);
+        canvas.drawBitmap(mBitmapEx, x, y, mPaint);
+
+//        /* */
+//        x = 50 * mDensity;
+//        y = 260 * mDensity;
+//        canvas.save();
+//        mPaint.setAntiAlias(true);
+//        canvas.clipRect(x, y, x + mWidth, y + mHeight);
+//        canvas.drawBitmap(mBitmap, x, y, mPaint);
+//        mClipPath.addOval(new RectF(x, y, x + mWidth, y + mHeight),
+//                Path.Direction.CCW);
+//
+//        canvas.clipPath(mClipPath, Op.DIFFERENCE);
+//        canvas.drawColor(Color.WHITE);
+//        canvas.restore();
 
     }
     

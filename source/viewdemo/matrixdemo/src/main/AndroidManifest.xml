@@ -27,6 +27,7 @@
         <activity android:name=".CanvasStackActivity"/>
         <activity android:name=".CanvasDrawActivity"/>
         <activity android:name=".CommonImgEffectActivity"/>
+        <activity android:name=".Xfermodes"/>
     </application>
 
 </manifest>
