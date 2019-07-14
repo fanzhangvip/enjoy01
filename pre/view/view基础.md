@@ -506,3 +506,36 @@ MeasureSpec值到底是如何计算得来的呢?
       2. 当view的宽高是match_parent时，这个时候如果父容器的模式是精准模式，那么view也是精准模式并且其大小是父容器的剩余空间，如果父容器是最大模式，那么view也是最大模式并且其大小不会超过父容器的剩余空间；
       3.  当view的宽高是wrap_content时，不管父容器的模式是精准还是最大化，view的模式总是最大化并且大小不能超过父容器的剩余空间。
       4. Unspecified模式，这个模式主要用于系统内部多次measure的情况下，一般来说，我们不需要关注此模式(这里注意自定义View放到ScrollView的情况 需要处理)。
+
+
+
+
+
+
+
+### Drawable是什么？
+
+> 一种可以在Canvas上进行绘制的抽象的概念
+颜色、图片等都可以是一个Drawable
+Drawable可以通过XML定义，或者通过代码创建
+Android中Drawable是一个抽象类，每个具体的Drawable都是其子类
+### Drawable的优点
+
+> 使用简单，比自定义View成本低
+非图片类的Drawable所占空间小，能减小apk大小
+3、Drawable的内部宽/高
+
+一般getIntrinsicWidth/Height能获得内部宽/高
+图片Drawable其内部宽高就是图片的宽高
+颜色Drawable没有内部宽高的概念
+内部宽高不等同于它的大小，一般Drawable没有大小概念(作为View背景时，会被拉伸至View的大小)
+
+### 自定义Drawable
+
+> 一般作为ImageView的图像来显示
+另一个是作为View的背景
+自定义Drawable主要就是实现draw方法
+setAlpha、setColorFilter、getOpacity也需要重写，但是模板固定
+当自定义Drawable有固定大小时(比如绘制一张图片)，需要重写getIntrinsicWidth()/getIntrinsicHeight()方法(默认返回-1)，会影响到View的wrap_content布局
+内部固定大小不等于Drawable的实际区域大小，getBounds能获得实际区域大小
+ 
