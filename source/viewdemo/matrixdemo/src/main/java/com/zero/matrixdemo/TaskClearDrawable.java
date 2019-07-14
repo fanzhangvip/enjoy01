@@ -230,7 +230,7 @@ public class TaskClearDrawable extends Drawable {
                     x4 = mCenterX - length;
                     y4 = mCenterY + length;
                     drawPath(canvas, mPaint, x1, y1, x2, y2, x3, y3, x4, y4);
-                    canvas.save();
+                //    canvas.save();
                     break;
 
                 case STATE_UP:
@@ -240,7 +240,7 @@ public class TaskClearDrawable extends Drawable {
                     canvas.drawCircle(mCenterX, mCenterY - mPointUpLen * mScale,
                             mPointRadius, mPaint);
                     canvas.drawBitmap(mCircleBitmap, 0, 0, null);
-                    canvas.save();
+                 //   canvas.save();
                     break;
 
                 case STATE_DOWN:
