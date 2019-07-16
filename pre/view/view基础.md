@@ -523,7 +523,7 @@ Android中Drawable是一个抽象类，每个具体的Drawable都是其子类
 
 > 使用简单，比自定义View成本低
 非图片类的Drawable所占空间小，能减小apk大小
-3、Drawable的内部宽/高
+Drawable的内部宽/高
 
 一般getIntrinsicWidth/Height能获得内部宽/高
 图片Drawable其内部宽高就是图片的宽高
@@ -538,4 +538,4 @@ Android中Drawable是一个抽象类，每个具体的Drawable都是其子类
 setAlpha、setColorFilter、getOpacity也需要重写，但是模板固定
 当自定义Drawable有固定大小时(比如绘制一张图片)，需要重写getIntrinsicWidth()/getIntrinsicHeight()方法(默认返回-1)，会影响到View的wrap_content布局
 内部固定大小不等于Drawable的实际区域大小，getBounds能获得实际区域大小
- 
+

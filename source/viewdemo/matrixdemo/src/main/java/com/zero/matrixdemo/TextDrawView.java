@@ -68,7 +68,6 @@ public class TextDrawView extends View {
     protected void onDraw(Canvas canvas) {
         // TODO Auto-generated method stub
         super.onDraw(canvas);
-        
         mPaint.setColor(Color.RED); // 设置画笔颜色
 
         mPaint.setStrokeWidth(5);// 设置画笔宽度

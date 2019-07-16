@@ -22,7 +22,7 @@ import java.util.Random;
  */
 
 public class FishDrawable extends Drawable {
-	public static final float HEAD_RADIUS = 30;//头部圆形半径
+	public static final float HEAD_RADIUS = 150;//头部圆形半径
 	public static final float TOTAL_LENGTH = 6.79f * HEAD_RADIUS;//鱼总体长度
 	protected static final float BODY_LENGHT = HEAD_RADIUS * 3.2f; //第一节身体长度
 	private static final String TAG = "Zero";
@@ -164,7 +164,6 @@ public class FishDrawable extends Drawable {
 	}
 
 	//画身子
-
 	@Override
 	public void draw(Canvas canvas) {
 

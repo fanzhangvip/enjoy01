@@ -396,7 +396,7 @@ public class TaskClearDrawable extends Drawable {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-//                mAnimState = STATE_ORIGIN;
+                mAnimState = STATE_ORIGIN;
                 invalidateSelf();
             }
 

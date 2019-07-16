@@ -29,7 +29,7 @@ public class ZeroView extends View {
 
     public ZeroView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.girl1);
         Log.i("Zero","mBitmap: " + mBitmap);
 
     }

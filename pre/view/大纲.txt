@@ -200,7 +200,21 @@ y = r * sinθ
 x1 = cx - r * cosθ
 y1 =  cy  + r * sinθ 
 画线 两个点  起始点   
+
+
+干货：
  
+1. 当你拿到一个复杂的动画让你实现的时候，你不会迷茫啦 
+自定义view实现复杂动画的过程 如何思考
+2. Path 和 PathMeasure 
+3. onDraw draw canvas paint 
+4. 贝塞尔曲线
+
+5. Drawable到底是什么
+ 然后自定义Drawable 
+
+6 属性动画  
+
 
 
 

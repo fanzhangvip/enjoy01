@@ -18,6 +18,7 @@ import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -29,7 +30,7 @@ import java.util.Random;
  * author：Zero
  * 2019/7/12
  */
-public class FishDrawableView extends RelativeLayout {
+public class FishDrawableView extends FrameLayout {
 
 	public static final int STROKE_WIDTH = 8;
 	public static final float DEFAULT_RADIUS = 150;
@@ -228,7 +229,6 @@ public class FishDrawableView extends RelativeLayout {
 				float fraction = animation.getAnimatedFraction();
 				pathMeasure.getPosTan(pathMeasure.getLength() * fraction, null, tan);
 				float angle = (float) (Math.toDegrees(Math.atan2(-tan[1], tan[0])));
-				Log.e("**-**-**-**", "onAnimationUpdate: " + angle);
 				fishDrawable.setMainAngle(angle);
 			}
 		});
