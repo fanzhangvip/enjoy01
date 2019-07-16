@@ -3,6 +3,7 @@ package com.enjoy02.changeskindemo;
 import android.os.Bundle;
 import android.support.v4.view.LayoutInflaterCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 
 /**
 * [享学课堂]
@@ -19,7 +20,7 @@ public class SkinActivity extends AppCompatActivity {
         // TODO: hook view的加载，设置factory进去
         mSkinFactory = new SkinFactory();
         mSkinFactory.setDelegate(getDelegate());
-        LayoutInflaterCompat.setFactory2(getLayoutInflater(),mSkinFactory);
+        LayoutInflater.from(this).setFactory2(mSkinFactory);
         super.onCreate(savedInstanceState);
 
     }

@@ -75,27 +75,37 @@ public class SkinEngine {
     }
 
     public int getColor(int resId) {
-        if (mOutResource == null) {
-            return resId;
+        try {
+            if (mOutResource == null) {
+                return resId;
+            }
+            String resName = mOutResource.getResourceEntryName(resId);
+            int outResId = mOutResource.getIdentifier(resName, "color", mOutPkgName);
+            if (outResId == 0) {
+                return resId;
+            }
+            return mOutResource.getColor(outResId);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        String resName = mOutResource.getResourceEntryName(resId);
-        int outResId = mOutResource.getIdentifier(resName, "color", mOutPkgName);
-        if (outResId == 0) {
-            return resId;
-        }
-        return mOutResource.getColor(outResId);
+        return resId;
     }
 
     public Drawable getDrawable(int resId) {//获取图片
-        if (mOutResource == null) {
+        try {
+            if (mOutResource == null) {
+                return ContextCompat.getDrawable(mContext, resId);
+            }
+            String resName = mOutResource.getResourceEntryName(resId);
+            int outResId = mOutResource.getIdentifier(resName, "drawable", mOutPkgName);
+            if (outResId == 0) {
+                return ContextCompat.getDrawable(mContext, resId);
+            }
+            return mOutResource.getDrawable(outResId);
+        } catch (Exception e) {
+            e.printStackTrace();
             return ContextCompat.getDrawable(mContext, resId);
         }
-        String resName = mOutResource.getResourceEntryName(resId);
-        int outResId = mOutResource.getIdentifier(resName, "drawable", mOutPkgName);
-        if (outResId == 0) {
-            return ContextCompat.getDrawable(mContext, resId);
-        }
-        return mOutResource.getDrawable(outResId);
     }
 
 }

@@ -48,6 +48,7 @@ public class MainActivity extends SkinActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        verifyStoragePermissions(this);
 //        LayoutInflater.from(this).setFactory2(new LayoutInflater.Factory2() {
 //            @Override
 //            public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {

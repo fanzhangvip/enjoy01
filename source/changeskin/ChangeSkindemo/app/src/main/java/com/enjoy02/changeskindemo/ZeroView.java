@@ -17,7 +17,6 @@ import android.view.View;
  * 类说明:
  */
 public class ZeroView extends View {
-    private Bitmap mBitmap;
 
     public ZeroView(Context context) {
         this(context,null);
@@ -29,15 +28,6 @@ public class ZeroView extends View {
 
     public ZeroView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.girl1);
-        Log.i("Zero","mBitmap: " + mBitmap);
-
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        canvas.drawBitmap(mBitmap, 0, 0, null);
-
-    }
 }
