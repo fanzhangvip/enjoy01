@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="reset"/>
 
-    <com.zero.myfish.PathMoveView1
+    <com.zero.myfish.path.PathMoveView1
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

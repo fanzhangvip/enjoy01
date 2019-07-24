@@ -79,7 +79,7 @@ public class SkinEngine {
             if (mOutResource == null) {
                 return resId;
             }
-            String resName = mOutResource.getResourceEntryName(resId);
+            String resName = mOutResource.getResourceEntryName(resId);//bg
             int outResId = mOutResource.getIdentifier(resName, "color", mOutPkgName);
             if (outResId == 0) {
                 return resId;

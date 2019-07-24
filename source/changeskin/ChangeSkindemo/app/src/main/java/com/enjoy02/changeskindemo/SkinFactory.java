@@ -150,7 +150,7 @@ public class SkinFactory implements LayoutInflater.Factory2 {
             skinView.attrsMap = attrmap;
             cacheSkinView.add(skinView);
         }
-
+        a.recycle();
     }
 
     public void changeSkin() {

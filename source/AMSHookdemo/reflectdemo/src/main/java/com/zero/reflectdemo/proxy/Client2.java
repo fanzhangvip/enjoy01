@@ -14,6 +14,7 @@ public class Client2 {
         //TODO:
         //创建Zero
         IShop zero = new Zero();
+
         //创建动态代理
         IShop proxyShop = (IShop) Proxy.newProxyInstance(zero.getClass().getClassLoader()
                 , zero.getClass().getInterfaces()

@@ -26,101 +26,69 @@ public class HookHelper {
     public static final String EXTRA_TARGET_INTENT = "extra_target_intent";
 
     public static void hookIActivityManager() {
-        //TODO:
-//        1. 找到了Hook的点
-//        2. hook点 动态代理 静态？
-//        3. 获取到getDefault的IActivityManager原始对象
-//        4. 动态代理 准备classloader 接口
-//        5  classloader, 获取当前线程
-//        6. 接口 Class.forName("android.app.IActivityManager");
-//        7. Proxy.newProxyInstance() 得到一个IActivityManagerProxy
-//        8. IActivityManagerProxy融入到framework
-
-//            public abstract class Singleton<T> {
-//                private T mInstance;
-//
-//                protected abstract T create();
-//
-//                public final T get() {
-//                    synchronized (this) {
-//                        if (mInstance == null) {
-//                            mInstance = create();
-//                        }
-//                        return mInstance;
-//                    }
-//                }
-//            }
 
         try {
-            Field gDefaultField = null;
+//            1. 找hook点 IActivityManager
+//            2. hook 点 动态代理
+//            3. 获取到装了IActivityManager对象的单例对象gDefault/ IActivityManagerSingleton
+            Field singletonField = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                Class<?> activityManager = Class.forName("android.app.ActivityManager");
-                gDefaultField = activityManager.getDeclaredField("IActivityManagerSingleton");
+                Class<?> actvityManager = Class.forName("android.app.ActivityManager");
+                singletonField = actvityManager.getDeclaredField("IActivityManagerSingleton");
             } else {
-                Class<?> activityManager = Class.forName("android.app.ActivityManagerNative");
-                //拿到 Singleton<IActivityManager> gDefault
-                gDefaultField = activityManager.getDeclaredField("gDefault");
+                Class<?> actvityManager = Class.forName("android.app.ActivityManagerNative");
+                singletonField = actvityManager.getDeclaredField("gDefault");
             }
-
-            gDefaultField.setAccessible(true);
-            //Singlon<IActivityManager>
-            Object gDefault = gDefaultField.get(null);
-
-            //拿到Singleton的Class对象
-            Class<?> singletonClass = Class.forName("android.util.Singleton");
-            Field mInstanceField = singletonClass.getDeclaredField("mInstance");
+            singletonField.setAccessible(true);
+            Object singleton = singletonField.get(null);
+            //拿IActivityManager对象
+            Class<?> actvityManager = Class.forName("android.util.Singleton");
+            Field mInstanceField = actvityManager.getDeclaredField("mInstance");
             mInstanceField.setAccessible(true);
-            //获取到ActivityManagerNative里面的gDefault对象里面的原始的IActivityManager对象
-            final Object rawIActivityManager = mInstanceField.get(gDefault);
+            //原始的IActivityManager
+            final Object rawIActivityManager = mInstanceField.get(singleton);
+            //创建一个IActivityManager代理对象
+            Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader()
+                    , new Class[]{Class.forName("android.app.IActivityManager")}
+                    , new InvocationHandler() {
+                        @Override
+                        public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+//                            Log.i(TAG, "invoke: " + method.getName());
 
-            //进行动态代理
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-            Class<?> iActivityManagerInterface = Class.forName("android.app.IActivityManager");
-            //生产IActivityManager的代理对象
-            Object proxy = Proxy.newProxyInstance(classLoader, new Class[]{iActivityManagerInterface}, new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    Log.i(TAG, "invoke: method " + method.getName());
-                    if ("startActivity".equals(method.getName())) {
-                        Log.i(TAG, "准备启动activity");
-                        for (Object obj : args) {
-                            Log.i(TAG, "invoke: obj= " + obj);
-                        }
+                            //偷梁换柱
+                            //真正要启动的activity目标
+                            Intent raw = null;
+                            int index = -1;
+                            if ("startActivity".equals(method.getName())) {
+                                Log.i(TAG, "invoke: startActivity 启动准备");
+                                for (int i = 0; i < args.length; i++) {
+                                    if(args[i] instanceof  Intent){
+                                        raw = (Intent)args[i];
+                                        index = i;
+                                    }
+                                }
+                                Log.i(TAG, "invoke: raw: " + raw);
+                                //代替的Intent
+                                Intent newIntent = new Intent();
+                                newIntent.setComponent(new ComponentName("com.zero.activityhookdemo", StubActivity.class.getName()));
+                                newIntent.putExtra(EXTRA_TARGET_INTENT,raw);
 
-                        //偷梁换柱 把Target 换成我们的Stub,欺骗AMS的权限验证
-                        //拿到原始的Intent,然后保存
-                        Intent raw = null;
-                        int index = 0;
-                        for (int i = 0; i < args.length; i++) {
-                            if (args[i] instanceof Intent) {
-                                raw = (Intent) args[i];
-                                index = i;
-                                break;
+                                args[index] = newIntent;
+
                             }
+
+                            return method.invoke(rawIActivityManager, args);
                         }
-                        Log.i(TAG, "invoke: raw= " + raw);
-
-                        //替换成Stub
-                        Intent newIntent = new Intent();
-                        String stubPackage = "com.zero.activityhookdemo";
-                        newIntent.setComponent(new ComponentName(stubPackage, StubActivity.class.getName()));
-                        //把这个newIntent放回到args,达到了一个欺骗AMS的目的
-                        newIntent.putExtra(EXTRA_TARGET_INTENT, raw);
-                        args[index] = newIntent;
-
-                    }
-                    return method.invoke(rawIActivityManager, args);
-                }
-            });
-
-            //把我们的代理对象融入到framework
-            mInstanceField.set(gDefault, proxy);
+                    });
+            //            7. IActivityManagerProxy 融入到framework
+            mInstanceField.set(singleton, proxy);
 
 
         } catch (Exception e) {
-            Log.e(TAG, "hookIActivityManager: " + e.getMessage());
             e.printStackTrace();
+            //根据业务来处理异常
         }
+
     }
 
     public static void hookHandler() {
@@ -146,22 +114,6 @@ public class HookHelper {
                     Log.i(TAG, "handleMessage: " + msg.what);
                     switch (msg.what) {
                         case 100: {
-                            // final ActivityClientRecord r = (ActivityClientRecord) msg.obj;
-//                            static final class ActivityClientRecord {
-//                                IBinder token;
-//                                int ident;
-//                                Intent intent;//hook 恢复
-                            //恢复真身
-                            try {
-                                Field intentField = msg.obj.getClass().getDeclaredField("intent");
-                                intentField.setAccessible(true);
-                                Intent intent = (Intent) intentField.get(msg.obj);
-                                Intent targetIntent = intent.getParcelableExtra(EXTRA_TARGET_INTENT);
-                                intent.setComponent(targetIntent.getComponent());
-
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
 
                         }
                         break;
@@ -171,7 +123,7 @@ public class HookHelper {
                             try {
                                 Field mActivityCallbacksField = obj.getClass().getDeclaredField("mActivityCallbacks");
                                 mActivityCallbacksField.setAccessible(true);
-                                List mActivityCallbacks = (List)mActivityCallbacksField.get(obj);
+                                List mActivityCallbacks = (List) mActivityCallbacksField.get(obj);
                                 Log.i(TAG, "handleMessage: mActivityCallbacks= " + mActivityCallbacks);
                                 //注意了 这里如果有同学debug调试会发现第一次size=0 原因如下
                                 //在Android O之前
@@ -205,12 +157,12 @@ public class HookHelper {
 //                                handleMessage: obj=android.app.servertransaction.ClientTransaction@9e98c6b
 //                                handleMessage: mActivityCallbacks= [LaunchActivityItem{intent=Intent { cmp=com.zero.activityhookdemo/.StubActivity (has extras) },ident=168243404,info=ActivityInfo{5b8d769 com.zero.activityhookdemo.StubActivity},curConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 0, 0) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mActivityType=undefined} s.6},overrideConfig={1.0 310mcc260mnc [en_US] ldltr sw411dp w411dp h659dp 420dpi nrml port finger qwerty/v/v -nav/h winConfig={ mBounds=Rect(0, 0 - 1080, 1794) mAppBounds=Rect(0, 0 - 1080, 1794) mWindowingMode=fullscreen mActivityType=standard} s.6},referrer=com.zero.activityhookdemo,procState=2,state=null,persistentState=null,pendingResults=null,pendingNewIntents=null,profilerInfo=null}]
 //                                handleMessage: size= 1
-                                if(mActivityCallbacks.size()>0){
+                                if (mActivityCallbacks.size() > 0) {
                                     Log.i(TAG, "handleMessage: size= " + mActivityCallbacks.size());
                                     String className = "android.app.servertransaction.LaunchActivityItem";
-                                    if(mActivityCallbacks.get(0).getClass().getCanonicalName().equals(className)){
+                                    if (mActivityCallbacks.get(0).getClass().getCanonicalName().equals(className)) {
                                         Object object = mActivityCallbacks.get(0);
-                                        Field intentField =object.getClass().getDeclaredField("mIntent");
+                                        Field intentField = object.getClass().getDeclaredField("mIntent");
                                         intentField.setAccessible(true);
                                         Intent intent = (Intent) intentField.get(object);
                                         Intent targetIntent = intent.getParcelableExtra(EXTRA_TARGET_INTENT);

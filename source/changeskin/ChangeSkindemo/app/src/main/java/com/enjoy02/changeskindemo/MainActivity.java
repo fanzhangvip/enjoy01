@@ -1,5 +1,6 @@
 package com.enjoy02.changeskindemo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.File;
 
@@ -22,7 +24,7 @@ import java.io.File;
  * TODO: VIP课程咨询伊娜老师QQ 2133576719
  * 类说明:
  */
-public class MainActivity extends SkinActivity {
+public class MainActivity extends Activity {
 
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -48,40 +50,46 @@ public class MainActivity extends SkinActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        verifyStoragePermissions(this);
-//        LayoutInflater.from(this).setFactory2(new LayoutInflater.Factory2() {
-//            @Override
-//            public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-//
-//                if(TextUtils.equals(name,"TextView")){
-//                    Button button = new Button(MainActivity.this);
-//                    button.setText("Hello Button");
-//                    return button;
-//                }
-//
-//                return null;
-//            }
-//
-//            @Override
-//            public View onCreateView(String name, Context context, AttributeSet attrs) {
-//                return null;
-//            }
-//        });
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+//        verifyStoragePermissions(this);
+        LayoutInflater.from(this).setFactory2(new LayoutInflater.Factory2() {
             @Override
-            public void onClick(View v) {
-                changeSkin();
+            public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
+
+                if(TextUtils.equals(name,"TextView")){
+                    Button button = new Button(MainActivity.this);
+                    button.setText("Hello Button");
+                    return button;
+                }
+
+                return null;
+            }
+
+            @Override
+            public View onCreateView(String name, Context context, AttributeSet attrs) {
+                return null;
             }
         });
+
+        super.onCreate(savedInstanceState);
+
+        //理论上都可以
+        setContentView(R.layout.activity_main);
+
+        TextView textView = findViewById(R.id.textView);
+        textView.setBackground(getDrawable(R.drawable.girl));
+        //setFactory/2
+//        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                changeSkin();
+//            }
+//        });
     }
 
 
-    public void changeSkin() {
-        File skinFile = new File(Environment.getExternalStorageDirectory(), "skin.apk");
-        SkinEngine.getInstance().load(skinFile.getAbsolutePath());
-        mSkinFactory.changeSkin();
-    }
+//    public void changeSkin() {
+//        File skinFile = new File(Environment.getExternalStorageDirectory(), "skin.apk");
+//        SkinEngine.getInstance().load(skinFile.getAbsolutePath());
+//        mSkinFactory.changeSkin();
+//    }
 }

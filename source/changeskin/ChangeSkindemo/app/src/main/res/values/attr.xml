@@ -2,5 +2,6 @@
 <resources>
     <declare-styleable name="Skinable">
         <attr name="isSupport" format="boolean" />
+        <attr name="tag" format="string"/>
     </declare-styleable>
 </resources>
