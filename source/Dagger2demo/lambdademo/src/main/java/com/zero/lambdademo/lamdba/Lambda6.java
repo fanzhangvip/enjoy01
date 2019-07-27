@@ -22,6 +22,9 @@ public class Lambda6 {
         Supplier<Person> x1 = ()->new Person();
 
         Supplier<Person> x2 = Person::new;
+
+        Person x3 = new Person();
+
    }
 
     //构造器引用  ClassName :: new

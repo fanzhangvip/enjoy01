@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         InjectViewUtils.injectView(this);
         InjectViewUtils.injectEvent(this);
 
+
     }
 
 

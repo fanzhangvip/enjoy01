@@ -41,6 +41,6 @@ public class Lambda2 {
         //语法格式六：Lambda 表达式的参数列表的数据类型可以省略不写，因为JVM编译器通过上下文推断出，数据类型，即“类型推断”
         Comparator<Integer> com =  (Integer x, Integer y) -> Integer.compare(x, y);
 
-        Comparator<Integer> com2 =  (Integer x, Integer y) -> Integer.compare(x, y);
+        Comparator<Integer> com2 =  ( x,  y) -> Integer.compare(x, y);
     }
 }
