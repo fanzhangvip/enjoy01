@@ -33,6 +33,132 @@ Zero 老师：
 	曾参加手机Rom开发，对Android 手机系统架构有深入理解；
 	精通Android 高级控件开发，性能优化，多种开源框架开发经验;
 	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+OSI 参考模型 jvm
+TCP/IP
+
+Http 
+
+
+tcpdump	-》 waveshark http 基于tcp  三次握手 
+
+fiddle charls
+
+SYN 
+tcp 数据包结构
+  0          15           31
+1 源端口     | 目的端口
+2         序号
+3		 确认号
+4 数据偏移 保留 URG ACK PSH RST SYN FIN |	 窗口大小
+5 
+6 
+7	
+
+三次握手
+1 C -》 S  SYN=1 seq = J (系统随机生成) CLOSED -》 SYN_SENT
+2 S -> C   SYN=1,ACK =1 ack= J + 1 seq = K established
+3 C -》 S  ACK=1，ack = K+ 1
+
+全双工
+半双工
+单工
+
+why ?  
+2 
+4
+
+三次握手是干了什么事情
+可靠性 
+fragment 段 序号 
+交换tcp 通信的初始序号   
+100 
+string  1000
+101 200 201 300 
+
+四次挥手 
+    C                    S 
+1.   FIN  -》 
+
+2          ACK                 
+
+3          FIN 
+
+4          ACK   
+
+
+C  established  发生FIN  —— 》 FIN-WAIT-1 - FIN-WAIT-2   ACK  TIME-WAIT  2MSL    
+
+MSL  Maxmun Segment Lifetime 报文最大生存时间         
+
+	
+tcpNoDelay	
+	
+	
+	
+资料	
+http://www.52im.net/thread-33-1-1.html	
+https://blog.csdn.net/qq_39436605/article/details/82734704
+
+
+
+
+	
+https://ke.qq.com/webcourse/index.html#cid=347420&term_id=100413130&taid=2824726976482588&type=1024&vid=f1432rnwa7y	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

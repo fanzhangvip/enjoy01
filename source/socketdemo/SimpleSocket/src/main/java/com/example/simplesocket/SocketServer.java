@@ -13,7 +13,7 @@ import java.net.Socket;
 public class SocketServer {
     public static void main(String[] args) throws IOException {
         //1.创建一个服务器端Socket，即ServerSocket，指定绑定的端口，并监听此端口
-        ServerSocket serverSocket = new ServerSocket(12345);
+        ServerSocket serverSocket = new ServerSocket(12346);
         InetAddress address = InetAddress.getLocalHost();
         String ip = address.getHostAddress();
         Socket socket = null;
