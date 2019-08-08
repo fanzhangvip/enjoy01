@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     //定义相关变量,完成初始化
-//    private static final String HOST = "192.168.0.185";
-    private static final String HOST = "169.254.177.122";
+    private static final String HOST = "192.168.0.185";
+//    private static final String HOST = "169.254.177.122";
     private static final int PORT = 10065;
 
     private Socket socket = null;
