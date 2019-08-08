@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     //定义相关变量,完成初始化
-    private static final String HOST = "192.168.0.185";
-    private static final int PORT = 12345;
+//    private static final String HOST = "192.168.0.185";
+    private static final String HOST = "169.254.177.122";
+    private static final int PORT = 10065;
 
     private Socket socket = null;
     private BufferedReader in = null;
@@ -66,6 +67,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        Log.i(TAG, "onCreate: is4G " + NetworkUtils.is4G(this));
+        Log.i(TAG, "onCreate: isAvailableByPing " + NetworkUtils.isAvailableByPing());
+        Log.i(TAG, "onCreate: isConnected " + NetworkUtils.isConnected(this));
+        Log.i(TAG, "onCreate: isWifiAvailable " + NetworkUtils.isWifiAvailable(this));
+        Log.i(TAG, "onCreate: isWifiConnected " + NetworkUtils.isWifiConnected(this));
+        Log.i(TAG, "onCreate: getDomainAddress " + NetworkUtils.getDomainAddress("192.168.0.185"));
+        Log.i(TAG, "onCreate: getIPAddress-true " + NetworkUtils.getIPAddress(true));
+        Log.i(TAG, "onCreate: getIPAddress-false " + NetworkUtils.getIPAddress(false));
+        Log.i(TAG, "onCreate: getIPAddress " + NetworkUtils.getIPAddress(this));
+        Log.i(TAG, "onCreate: getLocalIpAddress " + NetworkUtils.getLocalIpAddress());
+        Log.i(TAG, "onCreate: getNetworkOperatorName " + NetworkUtils.getNetworkOperatorName(this));
+        Log.i(TAG, "onCreate: getDataEnabled " + NetworkUtils.getDataEnabled(this));
+        Log.i(TAG, "onCreate: getWifiName " + NetworkUtils.getWifiName(this));
+        Log.i(TAG, "onCreate: getNetworkType " + NetworkUtils.getNetworkType(this));
+        Log.i(TAG, "onCreate: getWifiEnabled " + NetworkUtils.getWifiEnabled(this));
 
         tvIp.setText(NetworkUtils.getIPAddress(this));
 
