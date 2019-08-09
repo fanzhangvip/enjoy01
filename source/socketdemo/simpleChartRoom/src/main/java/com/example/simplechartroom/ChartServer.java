@@ -87,6 +87,8 @@ public class ChartServer {
                         if("bye".equals(msg)){//应用自己定义的协议
                             socket.close();
                             break;
+                        }else{
+                            sendMsg();
                         }
                     }
                 } catch (IOException e) {

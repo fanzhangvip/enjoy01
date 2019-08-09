@@ -44,7 +44,8 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".SocketService"/>
+        <service android:name=".SocketService"
+            android:process=":remote"/>
 
 
     </application>

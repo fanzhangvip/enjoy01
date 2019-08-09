@@ -387,7 +387,7 @@ public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
 
 ### 定义
 
-![measureSpec](D:/enjoy01/pre/view/assets/measureSpec.png)
+![measureSpec](./assets/measureSpec.png)
 测量规格,封装了父容器对 view 的布局上的限制，内部提供了宽高的信息（ SpecMode 、 SpecSize ），SpecSize是指在某种SpecMode下的参考尺寸，其中SpecMode 有如下三种：
 
 - UNSPECIFIED
@@ -396,7 +396,7 @@ public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
   父控件已经知道你所需的精确大小，你的最终大小应该就是这么大。
 - AT_MOST
   你的大小不能大于父控件给你指定的size，但具体是多少，得看你自己的实现。
-  ![measurespec1](D:/enjoy01/pre/view/assets/measurespec1.png)
+  ![measurespec1](./assets/measurespec1.png)
 
 ### MeasureSpecs 的意义
 
@@ -405,7 +405,7 @@ public ViewGroup.LayoutParams generateLayoutParams(AttributeSet attrs) {
 ### MeasureSpec值的确定
 
 MeasureSpec值到底是如何计算得来的呢?
-![measurespec2](D:\enjoy01\pre\view\assets\measurespec2.png)
+![measurespec2](.\assets\measurespec2.png)
 子View的MeasureSpec值是根据子View的布局参数（LayoutParams）和父容器的MeasureSpec值计算得来的，具体计算逻辑封装在getChildMeasureSpec()里
 
 ```java
@@ -497,7 +497,7 @@ MeasureSpec值到底是如何计算得来的呢?
     }
 ```
 
-![measurespec3](D:/enjoy01/pre/view/assets/measurespec3.png)
+![measurespec3](./assets/measurespec3.png)
 针对上表，这里再做一下具体的说明
 
 - 对于应用层 View ，其 MeasureSpec 由父容器的 MeasureSpec 和自身的 LayoutParams 来共同决定

@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class SocketService extends Service {
     private static final String TAG = "Zero";
     /**心跳频率*/
-    private static final long HEART_BEAT_RATE = 3 * 1000;
+    private static final long HEART_BEAT_RATE = 3 * 1000;//演示
     /**服务器ip地址*/
     public static final String HOST = "192.168.0.185";
     /**服务器端口号*/

@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.PortUnreachableException;
 import java.net.Socket;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -68,90 +69,74 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Log.i(TAG, "onCreate: is4G " + NetworkUtils.is4G(this));
-        Log.i(TAG, "onCreate: isAvailableByPing " + NetworkUtils.isAvailableByPing());
-        Log.i(TAG, "onCreate: isConnected " + NetworkUtils.isConnected(this));
-        Log.i(TAG, "onCreate: isWifiAvailable " + NetworkUtils.isWifiAvailable(this));
-        Log.i(TAG, "onCreate: isWifiConnected " + NetworkUtils.isWifiConnected(this));
-        Log.i(TAG, "onCreate: getDomainAddress " + NetworkUtils.getDomainAddress("192.168.0.185"));
-        Log.i(TAG, "onCreate: getIPAddress-true " + NetworkUtils.getIPAddress(true));
-        Log.i(TAG, "onCreate: getIPAddress-false " + NetworkUtils.getIPAddress(false));
-        Log.i(TAG, "onCreate: getIPAddress " + NetworkUtils.getIPAddress(this));
-        Log.i(TAG, "onCreate: getLocalIpAddress " + NetworkUtils.getLocalIpAddress());
-        Log.i(TAG, "onCreate: getNetworkOperatorName " + NetworkUtils.getNetworkOperatorName(this));
-        Log.i(TAG, "onCreate: getDataEnabled " + NetworkUtils.getDataEnabled(this));
-        Log.i(TAG, "onCreate: getWifiName " + NetworkUtils.getWifiName(this));
-        Log.i(TAG, "onCreate: getNetworkType " + NetworkUtils.getNetworkType(this));
-        Log.i(TAG, "onCreate: getWifiEnabled " + NetworkUtils.getWifiEnabled(this));
-
         tvIp.setText(NetworkUtils.getIPAddress(this));
 
         sb = new StringBuilder();
-        //当程序一开始运行的时候就实例化Socket对象,与服务端进行连接,获取输入输出流
-        //因为4.0以后不能再主线程中进行网络操作,所以需要另外开辟一个线程
-        new Thread() {
 
-            public void run() {
+        //网络操作不能放在UI主线程 4.0
+        new Thread(){
+            public void run(){
                 try {
+                    //和服务器连接
                     socket = new Socket(HOST, PORT);
-                    in = new BufferedReader(new InputStreamReader(socket.getInputStream(), "UTF-8"));
-                    out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
-                            socket.getOutputStream())), true);
+                    //获取输入流，读取服务器发送过来的信息
+                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    // 获取输出流 向服务器写数据
+                    out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }.start();
 
-        new Thread(socketRunnable).start();
+        new Thread(readRunnable).start();
+
     }
 
-    private Runnable socketRunnable = new Runnable() {
-        //重写run方法,在该方法中输入流的读取
-        @Override
-        public void run() {
-            try {
-                while (true) {
-                    if (socket.isConnected()) {
-                        if (!socket.isInputShutdown()) {
-                            if ((content = in.readLine()) != null) {
-                                content += "\n";
-                                handler.sendEmptyMessage(0x123);
-                            }
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    };
 
-    private Runnable socketWriteRunnable = new Runnable() {
+
+    private Runnable readRunnable = new Runnable() {
         @Override
         public void run() {
             while (true){
-                if (socket.isConnected()) {
-                    if (!socket.isOutputShutdown()) {
-                        try {
-                            String msg = msgs.take();
-                            out.println(msg);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                if(socket ==null)continue;
+                if(socket.isConnected() && !socket.isInputShutdown()){
+                    try {
+                        if((content = in.readLine()) !=null){
+                            content += "\n";
+                            handler.sendEmptyMessage(0x123);
                         }
-
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-                Log.i(TAG, "run: ");
             }
         }
     };
+
+    private Runnable writeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            while (true){
+                if(socket ==null)break;
+                if(socket.isConnected() && !socket.isOutputShutdown()){
+                    try {
+                        out.println(msgs.take());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    out.flush();
+                }
+            }
+        }
+    };
+
 
 
     @OnClick(R.id.btn_send)
     public void onViewClicked() {
         if(!writerFlag){
-            new Thread(socketWriteRunnable).start();
+            new Thread(writeRunnable).start();
         }
         writerFlag = true;
 
@@ -161,5 +146,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+
     }
 }

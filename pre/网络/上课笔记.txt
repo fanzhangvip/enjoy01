@@ -57,6 +57,14 @@ MSL  Maxmun Segment Lifetime 报文最大生存时间
 
 	
 tcpNoDelay	
+
+
+
+
+
+
+
+
 	
 	
 	
@@ -69,6 +77,7 @@ https://blog.csdn.net/qq_39436605/article/details/82734704
 
 	
 https://ke.qq.com/webcourse/index.html#cid=347420&term_id=100413130&taid=2824726976482588&type=1024&vid=f1432rnwa7y	
+
 
 
 
@@ -117,3 +126,44 @@ https://ke.qq.com/webcourse/index.html#cid=347420&term_id=100413130&taid=2824726
         3. 双方采用这个 秘钥来通信 		
 		
 		SSLSocketFactory 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
