@@ -1,0 +1,55 @@
+3433427729
+
+VIP咨询 2807762965（阿媛）
+
+往期视频加月亮老师：3433427729
+vip咨询加阿媛老师：1413650094
+
+
+自定义View
+
+流式布局 自定义ViewGroup 
+
+
+
+extends LinearLayout .... 重写某些方法
+extends ViewGroup  流式布局
+
+measure -> layout -> draw
+
+一般 measure -> layout
+
+1. 先重写onmeasure 
+度量我们的view的大小
+
+为什么需要measure这个过程？
+自适应android设备 不同尺寸的屏幕
+dp
+wrap_content
+match_parent/fill_parent
+
+通用的测量步骤是什么样的？ 
+1. ViewGroup先测量下自身的尺寸
+2. 获取每个子View
+getChildCount 获取ViewGroup里面一共有多少个子View
+getChildAt() 获取ViewGroup具体的某个子view
+
+3. 具体的测量子View的大小
+
+4. 根据业务规则 计算ViewGroup自身的尺寸
+5. 保存自身的尺寸
+
+
+交互
+
+
+对于ViewGroup 
+确定自身的大小
+负责测量子view的大小 树形 递归
+viewgroup.measure -> onmeasure -> 确定自身大小 
+
+
+2. 再重写onlayout
+才能知道view应该准确摆放在哪个位置
+
+自定义进度条 自定义View 

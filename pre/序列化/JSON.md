@@ -15,7 +15,7 @@ JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式
 
 ## JSON解析
 
-![jsonjiexiqi](D:\enjoy01\pre\序列化\assets\jsonjiexiqi.png)
+![jsonjiexiqi](.\assets\jsonjiexiqi.png)
 
 ## 语法
 JSON建构于两种结构：

@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
+import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -125,6 +126,16 @@ public class RetrofitTestActivity extends RxAppCompatActivity {
 //                .flatMap(dataBean -> wanAndroidApi.getProjectItem(1,dataBean.getId()))
 //                .observeOn(AndroidSchedulers.mainThread())
 //                .subscribe(projectItem -> Log.i(TAG, "projectItem: " + projectItem));
+
+        RxView.clicks(btn3)
+                .throttleFirst(1000,TimeUnit.MICROSECONDS)
+                .observeOn(Schedulers.io())
+                .concatMap( o ->wanAndroidApi.getProject())
+                .concatMap(projectBean -> Observable.fromIterable(projectBean.getData()))
+                .filter( dataBean -> dataBean.getId() > 1)
+                .concatMap(dataBean -> wanAndroidApi.getProjectItem(1,dataBean.getId()))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(projectItem -> Log.i(TAG, "projectItem: " + projectItem));
 
     }
 

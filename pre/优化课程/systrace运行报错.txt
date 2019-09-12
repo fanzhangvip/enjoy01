@@ -1,0 +1,103 @@
+报错: ImportError: No module named win32con 
+
+
+1. 安装pypiwin32 
+pip install pypiwin32
+
+2. 如果pip版本低了 先升级pip
+python -m pip install --upgrade pip
+
+/sdk/tools/目录下
+monitor.bat 打开Android Device Monitor
+
+
+线程：
+Process.setThreadPriority()/ Thread
+
+thread_priority_display = -4
+
+thread_priority_foreground = -2
+
+thread_priority_default = 0
+
+thread_priority_background = 10
+
+thread_priority_lowest = 19
+
+
+内存 
+内存大 -> GC -> stop the world 
+
+应用层
+ measure layout draw(在屏幕上绘制？  不是)
+ 
+ bitmap  软件绘制 复用机制
+         硬件加速 失效了
+		 
+view 无限大 屏幕大小有限	
+
+一个App -SurfaceFlinger  创建一个SharedClient 31 SharedBufferStack 
+
+白屏 黑屏 哪儿来的
+ 启动根Activity  ActivityStack#startActivityLocked 
+ call showStartingWindow 
+
+
+Application onCreate 看几个进程 3 
+
+
+D:\Android\sdk\platform-tools\systrace>adb shell
+generic_x86:/ $ am start -W com.example.myapplication/com.example.myapplication.AppStartActivity
+Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=com.example.myapplication/.AppStartActivity }
+Status: ok
+Activity: com.example.myapplication/.AppStartActivity
+ThisTime: 4696
+TotalTime: 4696
+WaitTime: 4768
+Complete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		 
