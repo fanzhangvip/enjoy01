@@ -1,0 +1,65 @@
+JNI
+java native interface
+使用环境：
+java api 不能满足我们程序的需要的时候。
+算法计算，图像渲染 效率要求非常高，
+当需要访问一些已有的本地库
+
+NDK
+工具的集合。帮助开放者快速开放C/C++ 动态库的工具。
+
+JNI 开发
+步骤：
+1.编写native 方法
+2.javah 命令，生成.h 文件 
+  java_类的全名_方法名
+  
+  或者自己手写
+  
+3.复制.h 头文件到cpp 工程
+4.复制jni.h 和jni_md.h
+5.实现.h 头文件中的声明函数
+6.生成一个dll 动态库
+7.在java中加载动态库
+8.触发native函数
+
+静态库和动态库
+都是函数库。
+静态库：.a
+动态库： .dll/.so
+
+JNIEnv 是什么？
+
+C：
+JNIEnv 结构体指针的别名
+env 是二级指针
+
+C++
+JNIEnv 是机构体的别名
+env 是一级指针
+
+每个native 函数，都至少有两个参数（JNIEnv * , jclass/jobject）
+jclass: native 静态方法
+jobject： native 非静态方法
+
+JNI基本数据类型：
+
+java —— JNI   —— C
+boolean  jboolean 
+byte jbyte;    
+char jchar;    
+short jshort;   
+int  jint;     
+long  jlong;    
+float jfloat;   
+double jdouble;  
+引用类型：
+String jstring
+Object jobject
+
+基本数据类型数组：
+//type[]  jTypeArray;
+byte[]  jByteArray;
+
+引用类型数组
+Object[](String[]) jobjectArray;
