@@ -15,6 +15,8 @@ project(c_study LANGUAGES C)
 
 #set(CMAKE_CXX_FLAGS "-g -Wall -I D:\\Lance\\MinGW\\include -L D:\\Lance\\MinGW\\lib")
 
+set(CMAKE_C_FLAGS  "-g -Wall")
+
 set(CMAKE_VERBOSE_MAKEFILE on) #显示执行构建过程中详细的信息
 #修改cmakelsit.txt配置文件：
 #MATH(EXPR stack_size "4*1024*1024")
