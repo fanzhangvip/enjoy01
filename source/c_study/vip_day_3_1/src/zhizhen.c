@@ -155,29 +155,26 @@ int main05() {
 }
 
 int main() {
-
-
     int array[5] = {0};
-
     printf("        array = %p\n", array);
     printf("       &array = %p\n", &array);
     printf("    array + 1 = %p\n", array + 1);
     printf("&array[0] + 1 = %p\n", &array[0] + 1);
     printf("   &array + 1 = %p\n", &array + 1);
-
     printf("\n");
+    printf(" sizeof(int*) = %d\n", sizeof(int*));
+    printf(" sizeof(array[0]) = %d\n", sizeof(&array[0]));
+    printf(" sizeof(0xffffcc04) = %d\n", sizeof(0xffffcc04));
+    printf(" sizeof(array) = %d\n", sizeof(array));//数组类型的长度
+    printf("sizeof(&array) = %d\n", sizeof(&array));//计算的是指针的长度
 
-    printf(" sizeof(int) = %d\n", sizeof(int));
-    printf(" sizeof(array[0]) = %d\n", sizeof(array[0]));
-    printf(" sizeof(array) = %d\n", sizeof(array));
-    printf("sizeof(&array) = %d\n", sizeof(&array));
-
+//    在C中， 在几乎所有使用数组的表达式中，数组名的值是个指针常量，也就是数组第一个元素的地址。 它的类型取决于数组元素的类型： 如果它们是int类型，那么数组名的类型就是“指向int的常量指针“。——《C和指针》
+//    在以下两中场合下，数组名并不是用指针常量来表示，就是当数组名作为sizeof操作符和单目操作符&的操作数时。 sizeof返回整个数组的长度，而不是指向数组的指针的长度。 取一个数组名的地址所产生的是一个指向数组的指针，而不是一个指向某个指针常量的指针。所以&a后返回的指针便是指向数组的指针，跟a（一个指向a[0]的指针）在指针的类型上是有区别的。——《C和指针》
     //"+1",偏移量的问题，一个类型为T的指针的移动，是以sizeof(T)为移动单位
     //即array+1：在数组首元素的首地址的基础上，偏移一个sizeof(array[0])单位,此处的类型T就是数组中的一个int型的首元素
     //即&array+1：在数组的首地址的基础上，偏移一个sizeof(array)单位。此处的类型T就是数组中的一个含有5个int型元素的数组
     printf("\n");
     return 0;
-
 
 }
 

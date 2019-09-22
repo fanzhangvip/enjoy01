@@ -26,7 +26,11 @@ int main()
     strcat(str, ": https://ke.qq.com/course/list/");
     printf("String = %s,  Address = %p\n", str, str);
 
-    free(str);
+    free(str);//调用free出错
+    int i = 10;
+    int *p = &i;
+    free(p);//这里会报错 ，栈上
+
     printf("String = %s,  Address = %p\n", str, str);
     str = NULL;
     printf("String = %s,  Address = %p\n", str, str);
