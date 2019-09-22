@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 int main(){
-    //TODO: hello world
-    printf("hello world\n");
+    //TODO: 文件操作演示
+    printf("文件操作演示\n");
 
-
+    
 
     return 0;
 }
