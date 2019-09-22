@@ -35,8 +35,8 @@ set(CMAKE_C_STANDARD 99)
 #add_subdirectory(vip_day_3_1/src)
 #add_subdirectory(vip_day_4_1/src)
 #add_subdirectory(stringdemo)
-add_subdirectory(vip_day_5_1)
-
+#add_subdirectory(vip_day_5_1)
+add_subdirectory(filedemo)
 
 #add_executable(c_study main.c.c)
 #add_executable(c_study zhizhen.c)
