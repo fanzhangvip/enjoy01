@@ -163,7 +163,7 @@ int main() {
     printf("   &array + 1 = %p\n", &array + 1);
     printf("\n");
     printf(" sizeof(int*) = %d\n", sizeof(int*));
-    printf(" sizeof(array[0]) = %d\n", sizeof(&array[0]));
+    printf(" sizeof(&array[0]) = %d\n", sizeof(&array[0]));
     printf(" sizeof(0xffffcc04) = %d\n", sizeof(0xffffcc04));
     printf(" sizeof(array) = %d\n", sizeof(array));//数组类型的长度
     printf("sizeof(&array) = %d\n", sizeof(&array));//计算的是指针的长度

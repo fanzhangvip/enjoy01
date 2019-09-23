@@ -688,3 +688,150 @@ Int * const p =&a;
 
 增加可靠性：不用担心p被修改或释放导致非预期结果； 
 增加执行效率：不用在子函数中对p做为空检查可以提高效率。
+
+
+
+# C 文件读写
+
+## 打开文件
+
+```c
+FILE *fopen( const char * filename, const char * mode );
+```
+
+| 模式 | 描述                                                         |
+| ---- | :----------------------------------------------------------- |
+| r    | 打开一个已有的文本文件，允许读取文件。                       |
+| w    | 打开一个文本文件，允许写入文件。如果文件不存在，则会创建一个新文件。在这里，您的程序会从文件的开头写入内容。如果文件存在，则该会被截断为零长度，重新写入。 |
+| a    | 打开一个文本文件，以追加模式写入文件。如果文件不存在，则会创建一个新文件。在这里，您的程序会在已有的文件内容中追加内容。 |
+| r+   | 打开一个文本文件，允许读写文件。                             |
+| w+   | 打开一个文本文件，允许读写文件。如果文件已存在，则文件会被截断为零长度，如果文件不存在，则会创建一个新文件。 |
+| a+   | 打开一个文本文件，允许读写文件。如果文件不存在，则会创建一个新文件。读取会从文件的开头开始，写入则只能是追加模式。 |
+
+> b:以二进制方式打开文件
+>
+> t:以文本方式打开文件(默认方式下以文本方式打开文件)
+
+
+
+## 字符读写
+字符读写主要使用两个函数fputc和fgetc，两个函数的原型是:
+
+``` c
+int fputc(int ch,FILE *fp);//若写入成功则返回写入的字符，否则返回-1
+int fgetc(FILE *fp);  //若读取成功则返回读取的字符，否则返回-1
+```
+## 字符串读写
+```c
+//将字符串写入文件，若写入成功则返回一个非负值，否则返回-1；
+int fputs(const char *s,FILE *fp);
+//从文件中读取不超过n-1个字符到字符数组中(若文件中字符少于n-1个，则只读取文件中存在的字符)，系统在字符数组末尾自动添加一个'\0'，返回字符数组的首地址
+//对于fgets函数，在读取过程中，若读取到字符'\n'，则读取过程提前结束
+char *fgets(char *s,int n,FILE *fp);
+```
+
+## 块读写
+```c
+//从文件读取一组数据存放在首地址为buffer的内存空间中，size为一个数据块的大小，n为要读取的数据块的个数，若读取成功，则返回读取的数据的数据块的个数，否则返回0.
+unsigned int fread(void *buffer,unsigned int size,unsigned int n,FILE *fp);
+//向文件中写入数据，写入成功返回写入数据块的个数，否则返回0.
+ unsigned int fwrite(const void *buffer,unsigned int size,unsigned int n,FILE *fp);
+```
+
+## 格式化读写
+- 格式化读写和其他几种读写有很大的不同。格式化读写是以我们人所能识别的格式将数据写入文件，即若以格式化方式写入一个整型数值65，则其实是写入的两个字符'6'和'5'，即占2字节，而不是4字节，但是若以块写方式写入，则其占4字节。即在使用格式化读写时系统自动进行了一些转换。
+- fprintf和fscanf函数一般成对出现，若数据是用fprintf进行写入的，则最好使用fscanf进行读取。
+- 在使用fprintf函数写入时，若文件是以文本方式打开，如果参数format中包含了'\n'，则最后文件中会被写入换行符；而若文件以二进制方式打开，则文件中不会被写入换行符
+```c
+//用于从文件格式化读取数据，若读取成功，则返回读取的数据个数，否则返回-1
+int fscanf(FILE *fp,const char *format[,argument]....);
+//用于向文件格式化写入数据，若写入成功，则返回写入的字符个数，否则返回-1
+int fprintf(FILE *fp,const char *format[,argument]....);
+//从字符串读取格式化输入。
+int sscanf(const char *str, const char *format, ...)
+//发送格式化输出到 str 所指向的字符串
+int sprintf(char *str, const char *format, ...)
+```
+##  其他几个常见的操作
+### 移动位置指针的函数
+```c
+// 将位置指针移动到文件首
+void rewind(FILE *fp);
+//将位置指针移动到距离origin的offset字节数的位置
+int fseek(FILE *fp,long int offset,int origin); 
+```
+> origin的值有三个:
+> SEEK_SET(0) 文件首,
+> SEEK_CUR(1) 当前位置,
+> SEEK_END(2) 文件尾
+> 若文件是以**a**追加方式打开，则当进行写操作时，这两个函数是不起作用的，无论将位置指针移动哪个位置，始终将添加的数据追加到文件末尾
+>
+> 只有用 **r+** 模式打开文件才能插入内容，**w** 或 **w+** 模式都会清空掉原来文件的内容再来写，**a** 或 **a+** 模式即总会在文件最尾添加内容，哪怕用 fseek() 移动了文件指针位置
+
+### stat函数
+```c
+//通过文件名filename获取文件信息，并保存在buf所指的结构体stat中
+#include<sys/stat.h>
+int stat(const char *filename,struct stat *_stat)
+
+//返回的结构体
+struct stat {
+        mode_t     st_mode;       //文件对应的模式，文件，目录等
+        ino_t      st_ino;       //inode节点号
+        dev_t      st_dev;        //设备号码
+        dev_t      st_rdev;       //特殊设备号码
+        nlink_t    st_nlink;      //文件的连接数
+        uid_t      st_uid;        //文件所有者
+        gid_t      st_gid;        //文件所有者对应的组
+        off_t      st_size;       //普通文件，对应的文件字节数
+        time_t     st_atime;      //文件最后被访问的时间
+        time_t     st_mtime;      //文件内容最后被修改的时间
+        time_t     st_ctime;      //文件状态改变时间
+        blksize_t st_blksize;    //文件内容对应的块大小
+        blkcnt_t   st_blocks;     //伟建内容对应的块数量
+      };
+```
+
+### ftell函数
+```c
+//计算当前位置指针距文件首的字节数，若出错，则返回-1L。
+//利用ftell函数可以计算出文件的大小。
+long int ftell(FILE *fp);
+```
+### feof函数
+```c
+//检测当前位置指针是否到达文件末尾，若到达文件末尾，则返回一个非零值，否则返回0。
+int feof(FILE *fp);
+```
+### ferror函数
+```c
+//检测文件操作过程中是否出错，若出错，则返回一个非零值，否则返回0
+int ferror(FILE *fp);
+```
+### remove函数
+```c
+//删除文件，若删除成功，则返回0，否则返回非零值
+int remove(const char *filename);
+```
+### rename函数
+```c
+//将文件重命名，重命名成功则返回0，否则返回非零值。
+int rename(const char *oldname,const char *newname);
+```
+### freopen函数
+```c
+//实现重定向输入输出。此函数在测试数据时用得比较多。
+FILE* freopen(const char *filename,const char *mode,FILE *stream);
+```
+### fclose函数
+```c
+//关闭一个流，若成功，则返回0，否则返回-1.注意每次对文件操作完之后需关闭流，否则可能会造成数据丢失。
+int fclose(FILE *stream);
+```
+### fflush函数
+- 由于fflush是实时的将缓冲区的内容写入磁盘，所以不要大量去使用，
+- 只要特别敏感的数据，需要及时写入防止丢失,比如密码
+```c
+//可以将缓冲区中任何未写入的数据写入文件中,成功返回0，失败返回EOF
+int fflush(FILE *_file);
+```
