@@ -73,6 +73,25 @@ arm-linux-androideabi-gcc.exe --sysroot=D:\Android\android-ndk-r17c\platforms\an
 
 
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+windows
+\r\n 
+
+linux 
+\n
+
+缓存函数
+
+
+
+
 
 
 
