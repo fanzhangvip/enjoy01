@@ -238,7 +238,7 @@ int fung2(){
     return 0;
 }
 
-int main(){
+int main67(){
     //TODO: 全局变量
     cout<<"全局变量"<<endl;
 //    // 局部变量声明
