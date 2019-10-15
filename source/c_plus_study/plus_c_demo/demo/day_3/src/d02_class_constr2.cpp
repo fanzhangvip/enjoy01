@@ -297,9 +297,16 @@ void objplay4()
     printf("因为用匿名对象=给m2, 匿名对象,被析构\n");
     cout<<m2.GetX()<<endl;;
 }
+
+struct Person{
+    int age;
+    int &a;
+};
 int main(){
     //TODO: 第四种 难点
     cout<<"第四种 难点"<<endl;
+    int a = 10;
+    Person person={3,a};
 
     //objplay2();
     //objplay3();

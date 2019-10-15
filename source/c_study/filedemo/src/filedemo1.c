@@ -880,7 +880,30 @@ int main34(){
     return 0;
 }
 
-int main(void) {
+
+int main() {
+//    printf("请输入要统计的内容:\n");
+    int c;  // 当前输入的字符
+    int charCount, lineCount, spaceCount, zhibiaoCount;
+
+    printf("init value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
+    // region 折叠注释代码
+    /**/while ((c = getchar()) != '#') {
+        ++charCount;
+        if (c == '\n')
+            ++lineCount;
+        if (c == ' ')
+            ++spaceCount;
+        if (c == '\t')
+            ++zhibiaoCount;
+    }
+
+    printf("after count value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
+    // endregion
+    return 0;
+}
+
+int main76(void) {
 //    假设工程目录下已经存在input.txt，文件中的数据为1 2 -1 3 4 5 7 8 9 10，则运行之后，
 //    不需要从控制台输入数据，程序直接从input.txt中读取数据，然后将结果输出到output.txt中，
 //    不直接向控制台输出结果。
