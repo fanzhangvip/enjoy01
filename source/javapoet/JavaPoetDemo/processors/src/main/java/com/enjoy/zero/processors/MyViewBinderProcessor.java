@@ -34,7 +34,7 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 public class MyViewBinderProcessor extends AbstractProcessor {
 
 

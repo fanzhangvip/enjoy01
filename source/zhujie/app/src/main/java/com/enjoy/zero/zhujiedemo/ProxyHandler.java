@@ -21,11 +21,24 @@ public class ProxyHandler implements InvocationHandler {
 
     private HashMap<String,Method> methodHashMap = new HashMap<>();
 
+    protected int a;
+    public int i;
+
     public ProxyHandler(Object target) {
         this.mTarget = target;
     }
 
-    public void setMethod(String methodName,Method method){
+    private void test(){
+
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        clone();
+    }
+
+    public void setMethod(String methodName, Method method){
         methodHashMap.put(methodName,method);
     }
 

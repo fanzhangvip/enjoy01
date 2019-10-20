@@ -31,7 +31,7 @@ import javax.lang.model.util.Types;
 /** 方案2
  * 每一个注解处理器类都必须有一个空的构造函数，默认不写就行;
  */
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 public class MyProcessor extends AbstractProcessor {
 
     /**

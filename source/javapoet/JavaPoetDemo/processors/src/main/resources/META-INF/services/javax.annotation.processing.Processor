@@ -1,1 +1,2 @@
-com.enjoy.zero.processors.MyProcessor
+#com.enjoy.zero.processors.MyProcessor
+com.enjoy.zero.processors.MyViewBinderProcessor
