@@ -881,24 +881,31 @@ int main34(){
 }
 
 
+
 int main() {
-//    printf("请输入要统计的内容:\n");
-    int c;  // 当前输入的字符
-    int charCount, lineCount, spaceCount, zhibiaoCount;
 
-    printf("init value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
-    // region 折叠注释代码
-    /**/while ((c = getchar()) != '#') {
-        ++charCount;
-        if (c == '\n')
-            ++lineCount;
-        if (c == ' ')
-            ++spaceCount;
-        if (c == '\t')
-            ++zhibiaoCount;
+
+
+    for(int i = 0; i < 10; i++){
+
     }
-
-    printf("after count value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
+//    printf("请输入要统计的内容:\n");
+//    int c;  // 当前输入的字符
+//    int charCount, lineCount, spaceCount, zhibiaoCount;
+//
+//    printf("init value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
+//    // region 折叠注释代码
+//    /**/while ((c = getchar()) != '#') {
+//        ++charCount;
+//        if (c == '\n')
+//            ++lineCount;
+//        if (c == ' ')
+//            ++spaceCount;
+//        if (c == '\t')
+//            ++zhibiaoCount;
+//    }
+//
+//    printf("after count value - char : %d, line : %d, space : %d, zhibiao : %d\n", charCount, lineCount, spaceCount, zhibiaoCount);
     // endregion
     return 0;
 }

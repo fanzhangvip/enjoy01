@@ -164,7 +164,7 @@ public:
     }
 
     void print(){
-        cout <<"Complex: ("<<a<<"+"<<i<<")"<<endl;
+        cout <<"Complex: ("<<a<<"+"<<i<<"i)"<<endl;
     }
 private:
     friend Complex myAdd(Complex c1, Complex c2);
@@ -219,7 +219,7 @@ int main(){
      *  5.  ?: 三目运算符
      *  6.  # 预处理符
      */
-     // new/delet new[] delete[] 可以的
+     // new/delete new[] delete[] 可以的
     return 0;
 }
 

@@ -187,7 +187,8 @@ void objTest5() {
 
 //    getTest2();
 
-    Test2 t1 = getTest2();//初始化 t1, 创建一个匿名对象，(扶正)从匿名转成了有名字了 t1
+    Test2 t1 = getTest2();//初始化 t1, 创建一个匿名对象，(扶正)从匿名转成了有名字了 t1 只产生一个对象
+    t1 = getTest2();//赋值 2个对象
     cout << "getTest2调用完毕" << endl;
     t1.print();
 

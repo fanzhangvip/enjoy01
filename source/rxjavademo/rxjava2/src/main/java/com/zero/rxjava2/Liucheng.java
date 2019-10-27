@@ -11,7 +11,6 @@ import io.reactivex.schedulers.Schedulers;
 public class Liucheng {
 
     public static void main(String ... args){
-            //TODO:
         Observable observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
@@ -42,6 +41,5 @@ public class Liucheng {
         };
         observable.subscribeOn(Schedulers.io());
         observable.subscribe(observer);
-
     }
 }
