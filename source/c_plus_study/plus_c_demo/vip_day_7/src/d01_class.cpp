@@ -285,7 +285,7 @@ void testPrint(parent& base){
     base.print();
 }
 
-int main04(){
+int main(){
     //TODO: 兼容性问题
     cout<<"兼容性问题"<<endl;
 
@@ -388,7 +388,7 @@ void testObj(){
     b2.print();
 }
 
-int main(){
+int main09(){
     //TODO: 继承中的构造析构问题
     cout<<"继承中的构造析构问题"<<endl;
 

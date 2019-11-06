@@ -216,6 +216,63 @@ y1 =  cy  + r * sinθ
 6 属性动画  
 
 
+面试：
+1. AMS如何启动
+2. 应用是怎样启动
+3. Activity是怎样启动
+4. activity/application 哪个函数里面  attachbasecontext
+
+multidex dex加载流程
+
+系统加载 手动加载dex
+热修复
+第一次启动： 微信 支付宝 头条
+data/data -> 
+热修复 -> 慢一次
+
+
+5G ,流量完全不是问题 -》 音视频 人工智能 智能家居 NDK
+知识体系
+热修复：
+3个小时手写热修复
+dex1 av bug
+dex2 av  服务器 
+dex2 -> dex1 ： 修复bug的目的
+
+发射 动态代理 classloader file
+想通的
+glide okhttp 
+技术的  -> 提升自己的能力 -》 面
+
+你会不会
+面试 搞不懂
+copy的
+工作 1：5 年一样的技术
+5年 1年一样的
+
+匹配不上 你应该具备的薪资 你工作年限 -》 这个年限应该具备的能力 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

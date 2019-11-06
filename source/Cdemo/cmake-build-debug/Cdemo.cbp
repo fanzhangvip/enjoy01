@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="demo">
-				<Option output="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/demo.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option output="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/demo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -53,15 +53,15 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 demo"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 demo"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="demo/fast">
-				<Option output="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/demo.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option output="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/demo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -75,15 +75,15 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 demo/fast"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 demo/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Cdemo">
-				<Option output="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Cdemo.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option output="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Cdemo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -97,15 +97,15 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cdemo"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cdemo"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="Cdemo/fast">
-				<Option output="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Cdemo.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug"/>
+				<Option output="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Cdemo.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -119,32 +119,32 @@
 					<Add directory="/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/../../../../lib/../include/w32api"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cdemo/fast"/>
-					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cdemo/fast"/>
+					<CompileFile command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make.exe -j8 -f &quot;/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/CppTemplateTutorial.cpp">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/CppTemplateTutorial.cpp">
 			<Option target="demo"/>
 			<Option target="Cdemo"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.cpp">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.cpp">
 			<Option target="demo"/>
 			<Option target="Cdemo"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.h">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.h">
 			<Option target="Cdemo"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/main.cpp">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/main.cpp">
 			<Option target="demo"/>
 			<Option target="Cdemo"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/stdafx.h">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/stdafx.h">
 			<Option target="Cdemo"/>
 		</Unit>
-		<Unit filename="/cygdrive/d/xiangxue/source/Cdemo/CMakeLists.txt">
+		<Unit filename="/cygdrive/d/enjoy01/source/Cdemo/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

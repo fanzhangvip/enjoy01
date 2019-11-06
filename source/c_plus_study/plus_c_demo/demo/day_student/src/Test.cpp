@@ -15,7 +15,7 @@ void objTest1(){
     delete[] parray;
 }
 
-int main() {
+int main_biter() {
 
 
     objTest();

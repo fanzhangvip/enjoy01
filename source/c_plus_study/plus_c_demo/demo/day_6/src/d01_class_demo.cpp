@@ -172,9 +172,8 @@ int main06() {
 }
 
 
-
 template<typename T>
-void swap1(T& a, T& b){
+void swap1(T &a, T &b) {
     T temp(a);
     a = b;
     b = temp;
@@ -183,10 +182,11 @@ void swap1(T& a, T& b){
 class Num {
 public:
     Num() {
-      cout<<"构造"<<endl;
+        cout << "构造" << endl;
     }
-    ~Num(){
-        cout<<"析构"<<endl;
+
+    ~Num() {
+        cout << "析构" << endl;
     }
 
     vector<int> *v;
@@ -194,16 +194,16 @@ public:
 
 void printV(vector<int> *v) {
     vector<int>::iterator it;
-    for(it = v->begin(); it!= v->end(); ++it){
-        cout <<*it << " ";
+    for (it = v->begin(); it != v->end(); ++it) {
+        cout << *it << " ";
     }
-    cout <<endl;
+    cout << endl;
 }
 
 template<>
-void swap1( Num& left,  Num& right) {
-    cout <<"特殊化"<<endl;
-    swap1(left.v,right.v);
+void swap1(Num &left, Num &right) {
+    cout << "特殊化" << endl;
+    swap1(left.v, right.v);
 }
 
 void swap2(int &left, int &right) {
@@ -280,7 +280,7 @@ void func(string *s) { //普通函数
 }
 
 
-int main() {
+int main08() {
     //TODO: 成员函数模板
     cout << "成员函数模板" << endl;
 
@@ -314,26 +314,62 @@ int main() {
 //    func(&s1); //调用普通函数，通用版本和特殊版本虽然也都可以用，但是编译器选择最特化的版本
 //    func<>(&s1); //调用指针版本，通过<>告诉编译器我们需要用template而不是普通函数
 
-    cout <<"========="<<endl;
-    vector<int> v1{1,2,3,4,5};
+    cout << "=========" << endl;
+    vector<int> v1{1, 2, 3, 4, 5};
 
-    vector<int> v2{6,7,8};
+    vector<int> v2{6, 7, 8};
 
-     Num num1;
-     num1.v = &v1;
-    cout<<" num1.v: ";
+    Num num1;
+    num1.v = &v1;
+    cout << " num1.v: ";
     printV(num1.v);
-     Num num2;
-     num2.v = &v2;
-    cout<<" num2.v: ";
+    Num num2;
+    num2.v = &v2;
+    cout << " num2.v: ";
     printV(num2.v);
-    swap1(num1,num2);
-    cout<<"============swap=========="<<endl;
-    cout<<" num1.v: ";
+    swap1(num1, num2);
+    cout << "============swap==========" << endl;
+    cout << " num1.v: ";
     printV(num1.v);
-    cout<<" num2.v: ";
+    cout << " num2.v: ";
     printV(num2.v);
-    cout <<"=========1======"<<endl;
+    cout << "=========1======" << endl;
+    return 0;
+}
+
+class B {
+public:
+    int b;
+protected:
+private:
+};
+
+class B1 : virtual public B {
+public:
+    int b1;
+protected:
+private:
+};
+
+class B2 : virtual public B {
+public:
+    int b2;
+protected:
+private:
+};
+
+class C : public B1, public B2 {
+public:
+    int c;
+protected:
+private:
+};
+
+int main() {
+    C myc;
+    myc.c = 10;
+    myc.b = 100;//二义性  error C2385: 对“b”的访问不明确
+
     return 0;
 }
 

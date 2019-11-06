@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/d/xiangxue/source/Cdemo/CppTemplateTutorial.cpp" "/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/CppTemplateTutorial.cpp.o"
-  "/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.cpp" "/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/ThreadDemo.cpp.o"
-  "/cygdrive/d/xiangxue/source/Cdemo/main.cpp" "/cygdrive/d/xiangxue/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/main.cpp.o"
+  "/cygdrive/d/enjoy01/source/Cdemo/CppTemplateTutorial.cpp" "/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/CppTemplateTutorial.cpp.o"
+  "/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.cpp" "/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/ThreadDemo.cpp.o"
+  "/cygdrive/d/enjoy01/source/Cdemo/main.cpp" "/cygdrive/d/enjoy01/source/Cdemo/cmake-build-debug/CMakeFiles/demo.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Cdemo.dir/main.cpp.o"
   "CMakeFiles/Cdemo.dir/CppTemplateTutorial.cpp.o"
   "CMakeFiles/Cdemo.dir/ThreadDemo.cpp.o"
-  "Cdemo.pdb"
+  "CMakeFiles/Cdemo.dir/main.cpp.o"
   "Cdemo.exe"
+  "Cdemo.pdb"
   "libCdemo.dll.a"
 )
 

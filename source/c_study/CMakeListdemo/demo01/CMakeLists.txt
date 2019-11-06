@@ -50,7 +50,7 @@ set(SRC_LIST main.c)
 #ninja
 
 
-add_executable(hello ${SRC_LIST})
+add_executable(hello main.c)
 
 
 # Link against LLVM libraries

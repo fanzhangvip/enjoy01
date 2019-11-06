@@ -38,7 +38,32 @@ getChildAt() 获取ViewGroup具体的某个子view
 
 4. 根据业务规则 计算ViewGroup自身的尺寸
 5. 保存自身的尺寸
+同学们是否觉得现在android开发越来越简单了
+网络请求 以前怎么样 现在怎么样
+图片加载 
+不清楚Android的原理了，就实实在在的搬砖
+这是一个初级工程师所做的
 
+如何定义高级
+
+在广度 和深度上学习
+如何学习
+那么zero老师现在来给大家指明一条道路
+
+现在的Android提供的api功能越来越丰富了，使用越来越简单了
+这对我们Android开发者来说是好事 也是坏事
+1.加快我们构建app的速度
+2. 只会使用api的开发者必将要淘汰
+
+BTA 造砖  小公司 搬砖
+
+Zero 老师：
+曾就职于阿里/Nubia，移动架构师
+
+精通领域：
+    Android FrameWork层源码，性能优化，NDK开发；
+	曾参加手机Rom开发，对Android 手机系统架构有深入理解；
+	精通Android 高级控件开发，性能优化，多种开源框架开发经验;
 
 交互
 
@@ -54,8 +79,110 @@ viewgroup.measure -> onmeasure -> 确定自身大小
 
 自定义进度条 自定义View 
 
+面试：
+1. AMS如何启动
+2. 应用是怎样启动
+3. Activity是怎样启动
+4. activity/application 哪个函数里面  attachbasecontext
+
+multidex dex加载流程
+
+系统加载 手动加载dex
+热修复
+第一次启动： 微信 支付宝 头条
+data/data -> 
+热修复 -> 慢一次
 
 
+5G ,流量完全不是问题 -》 音视频 人工智能 智能家居 NDK
+知识体系
+热修复：
+3个小时手写热修复
+dex1 av bug
+dex2 av  服务器 
+dex2 -> dex1 ： 修复bug的目的
+
+发射 动态代理 classloader file
+想通的
+glide okhttp 
+技术的  -> 提升自己的能力 -》 面
+
+你会不会
+面试 搞不懂
+copy的
+工作 1：5 年一样的技术
+5年 1年一样的
+
+匹配不上 你应该具备的薪资 你工作年限 -》 这个年限应该具备的能力 
+ 
+知识的理解
+retrofit2 + okhttp2 +rxjava2 + dagger
+retrofit : @ + 反射 + 动态代理 + T + 封装的OKhttp
+深入学习 越学越简单
+体系-知识
+性能 
+ios很少提 Android 尤为重要 6000 600
+OOM？
+JVM GC/ 生命周期 AMS adj bitmap 编码的根底非常强大
+牛 1
+   2
+用 5mins
+写出来 一个比较长的时间
+
+HashMap: 5mins
+hashMap 你如何性能优化 看源码 arrayList + LinkedList +hash算法 + 红黑树
+
+高能的人少 而菜鸟太多
+glide.with(context).from(url).into(view)
+context activity fragment application
+子线程使用吗？ 
+glide google 提供的sdk 兼容性  NPx -> application -> 内存浪费 间接 -》 OOM？
+小公司
+if else 
+设计模式 隐蔽的方式 java语言的高级特性 但凡学习都很快 知识体系 
+找不到 
+2020 年 你在2019年 你的技术提升了吗？ 
+我应该如何快速提示自己的技能 正确的方式
+博客 找到了 他是你的吗 对，你学习了吗？ 体系-知识
+
+秋分：24
+24节气歌 
+为什么有
+2 4 7 晚上 8-10 6个小时
+遇到问题 谁教你  
+一个人学习 能坚持下去？ 
+心情郁闷的时候 有人跟你聊天吗？ 
+你有分量
+知道 我需要什么 我缺什么
+ 做到 8个月 6个小时 学习
+ 得到 高薪 升职
+ 
+ 架构体系
+ 懒  中年危机 
+做技术管理 技术能够说服别人
+一对一指导 2年
+
+设哈希表长m＝14，哈希函数H（key）＝key％11。表中已有4个结点：addr(15)=4，addr(38)=5，addr(61)=6，addr(84)=7，其余地址为空。
+如果用二次探测再散列处理冲突，关键字为49的结点的地址是？
+直接定址法
+哈希冲突（碰撞）以及处理
+开发定址法
+线性探测法
+二次探测法
+
+因为 f(49) = 5 与 f(38) 冲突
+所以需要采用二次探测再散列来处理冲突
+(f(49) + di) MOD 14(哈希表长m＝14)
+
+第一次 di = 1^2
+（5 + 1）MOD 14 = 6  与addr(61)=6冲突
+第二次 di = -1^2
+（5 - 1）MOD 14 = 4  与addr(15)=4 冲突
+第三次 di = 2^2
+ （5 + 2）MOD 14 = 9 没有冲突
+所以 addr(49)=9
+   
+ 
 
 
 

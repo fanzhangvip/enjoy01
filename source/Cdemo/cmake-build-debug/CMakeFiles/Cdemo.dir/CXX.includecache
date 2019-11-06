@@ -6,15 +6,15 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/d/xiangxue/source/Cdemo/CppTemplateTutorial.cpp
+/cygdrive/d/enjoy01/source/Cdemo/CppTemplateTutorial.cpp
 stdafx.h
-/cygdrive/d/xiangxue/source/Cdemo/stdafx.h
+/cygdrive/d/enjoy01/source/Cdemo/stdafx.h
 vector
 -
 cstdint
 -
 
-/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.cpp
+/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.cpp
 stdio.h
 -
 stdlib.h
@@ -34,19 +34,19 @@ atomic
 boost/thread.hpp
 -
 ThreadDemo.h
-/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.h
+/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.h
 
-/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.h
+/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.h
 
-/cygdrive/d/xiangxue/source/Cdemo/main.cpp
+/cygdrive/d/enjoy01/source/Cdemo/main.cpp
 iostream
 -
 thread
 -
 ThreadDemo.h
-/cygdrive/d/xiangxue/source/Cdemo/ThreadDemo.h
+/cygdrive/d/enjoy01/source/Cdemo/ThreadDemo.h
 
-/cygdrive/d/xiangxue/source/Cdemo/stdafx.h
+/cygdrive/d/enjoy01/source/Cdemo/stdafx.h
 stdio.h
 -
 tchar.h
