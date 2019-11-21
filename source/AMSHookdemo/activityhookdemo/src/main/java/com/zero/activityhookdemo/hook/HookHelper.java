@@ -27,10 +27,7 @@ public class HookHelper {
 
     public static void hookIActivityManager() {
 
-        try {
-//            1. 找hook点 IActivityManager
-//            2. hook 点 动态代理
-//            3. 获取到装了IActivityManager对象的单例对象gDefault/ IActivityManagerSingleton
+        try{
             Field singletonField = null;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 Class<?> actvityManager = Class.forName("android.app.ActivityManager");
@@ -80,19 +77,17 @@ public class HookHelper {
                             return method.invoke(rawIActivityManager, args);
                         }
                     });
+
             //            7. IActivityManagerProxy 融入到framework
             mInstanceField.set(singleton, proxy);
 
-
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
-            //根据业务来处理异常
         }
 
     }
 
     public static void hookHandler() {
-        //TODO:
         try {
             Class<?> atClass = Class.forName("android.app.ActivityThread");
             Field sCurrentActivityThreadField = atClass.getDeclaredField("sCurrentActivityThread");
@@ -186,6 +181,9 @@ public class HookHelper {
             e.printStackTrace();
         }
     }
+
+
+
 
     public static void hookInstrumentation(Activity activity) {
         //TODO:

@@ -2,36 +2,214 @@
 vip咨询加阿媛老师：1413650094
 zero老师QQ: 3422253348
 
+
 自定义view
+1. 实际项目中 经常要用
+2. android  view的绘制原理是什么？ view 系统是如何绘制
+3. android view的绘制流程 为什么要这个流程
 
-自定义view ondraw 
+measure -> layout -> draw 
+measure 到底干了 什么？ 
+系统为什么要有measure过程？ 
+绘制UI XML布局
+view layout_width layout_height
+1. 固定的大小 100dp  可能不需要measeure
+2. wrap_content
+3. match_parent  自适应尺寸 才需要measure过程
+ —— 》 屏幕尺寸
+ 更加优雅的GUI框架
+ 
+ 带着问题来思考整个measure过程。
+ 
 
-自定义viewgroup
-extends linearlayout 
+1、系统为什么要有measure过程？
+        开发人员在绘制UI的时候，基本都是通过XML布局文件的方式来配置UI，而每个View必须要设置的两个群属性就是layout_width和layout_height，这两个属性代表着当前View的尺寸。
 
-完全的自定义viewgroup  流式布局
-onmeasre onlayout 
-
-
-日历控件 性能 
-
-为什么需要measure
-android  自适应机制 match_parent wrap_content  -1 -2 
-具体的数值 -》 measure
-
-为什么需要layout 
-流式布局的规则 从左上角开始拜访控件，当我们后面的控件在当前行放不下了，自动换行
-
-根据我们的特定的layout规则，正确的计算出每隔子view的绘制位置 
-
-
-
-
+官方文档截图：
 
 
 
+        所以这两个属性的值是必须要指定的，这两个属性的取值只能为三种类型：
+
+                 1、固定的大小，比如100dp。
+
+                 2、刚好包裹其中的内容，wrap_content。
+
+                 3、想要和父布局一样大，match_parent / fill_parent。
+
+        由于Android希望提供一个更优雅的GUI框架，所以提供了自适应的尺寸，也就是 wrap_content 和 match_parent 。
+
+        试想一下，那如果这些属性只允许设置固定的大小，那么每个View的尺寸在绘制的时候就已经确定了，所以可能都不需要measure过程。但是由于需要满足自适应尺寸的机制，所以需要一个measure过程。
+
+ 
+
+ 
+
+2、measure过程都干了点什么事？
+        由于上面提到的自适应尺寸的机制，所以在用自适应尺寸来定义View大小的时候，View的真实尺寸还不能确定。但是View尺寸最终需要映射到屏幕上的像素大小，所以measure过程就是干这件事，把各种尺寸值，经过计算，得到具体的像素值。measure过程会遍历整棵View树，然后依次测量每个View真实的尺寸。具体是每个ViewGroup会向它内部的每个子View发送measure命令，然后由具体子View的onMeasure()来测量自己的尺寸。最后测量的结果保存在View的mMeasuredWidth和mMeasuredHeight中，保存的数据单位是像素。
+
+ 
+
+ 
+
+3、对于自适应的尺寸机制，如何合理的测量一颗View树？
+        系统在遍历完布局文件后，针对布局文件，在内存中生成对应的View树结构，这个时候，整棵View树种的所有View对象，都还没有具体的尺寸，因为measure过程最终是要确定每个View打的准确尺寸，也就是准确的像素值。但是刚开始的时候，View中layout_width和layout_height两个属性的值，都只是自适应的尺寸，也就是match_parent和wrap_content，这两个值在系统中为负数，所以系统不会把它们当成具体的尺寸值。所以当一个View需要把它内部的match_parent或者wrap_content转换成具体的像素值的时候，他需要知道两个信息。
+
+        1、针对于match_parent，父布局当前具体像素值是多少，因为match_parent就是子View想要和父布局一样大。
+
+        2、针对wrap_content，子View需要根据当前自己内部的content，算出一个合理的能包裹所有内容的最小值。但是如果这个最小值比当前父布局还大，那不行，父布局会告诉你，我只有这么大，你也不应该超过这个尺寸。
+
+        由于树这种数据结构的特殊性，我们在研究measure的过程时，可以只研究一个ViewGroup和2个View的简单场景。大概示意图如下：
 
 
+
+        也就是说，在measure过程中，ViewGroup会根据自己当前的状况，结合子View的尺寸数据，进行一个综合评定，然后把相关信息告诉子View，然后子View在onMeasure自己的时候，一边需要考虑到自己的content大小，一边还要考虑的父布局的限制信息，然后综合评定，测量出一个最优的结果。
+
+ 
+
+4、那么ViewGroup是如何向子View传递限制信息的？
+        谈到传递限制信息，那就是MeasureSpec类了，该类贯穿于整个measure过程，用来传递父布局对子View尺寸测量的约束信息。简单来说，该类就保存两类数据。
+
+                1、子View当前所在父布局的具体尺寸。
+
+                2、父布局对子View的限制类型。
+
+        那么限制类型又分为三种类型：
+
+                1、UNSPECIFIED，不限定。意思就是，子View想要多大，我就可以给你多大，你放心大胆的measure吧，不用管其他的。也不用管我传递给你的尺寸值。（其实Android高版本中推荐，只要是这个模式，尺寸设置为0）
+
+                2、EXACTLY，精确的。意思就是，根据我当前的状况，结合你指定的尺寸参数来考虑，你就应该是这个尺寸，具体大小在MeasureSpec的尺寸属性中，自己去查看吧，你也不要管你的content有多大了，就用这个尺寸吧。
+
+                3、AT_MOST，最多的。意思就是，根据我当前的情况，结合你指定的尺寸参数来考虑，在不超过我给你限定的尺寸的前提下，你测量一个恰好能包裹你内容的尺寸就可以了。
+
+ 
+
+ 
+
+ 
+
+源代码分析
+        在View的源代码中，提取到了下面一些关于measure过程的信息。
+
+        我们知道，整棵View树的根节点是DecorView，它是一个FrameLayout，所以它是一个ViewGroup，所以整棵View树的测量是从一个ViewGroup对象的measure方法开始的。
+
+ 
+
+View：
+1、measure
+/** 开始测量一个View有多大，parent会在参数中提供约束信息，实际的测量工作是在onMeasure()中进行的，该方法会调用onMeasure()方法，所以只有onMeasure能被也必须要被override */
+public final void measure(int widthMeasureSpec, int heightMeasureSpec);
+
+父布局会在自己的onMeasure方法中，调用child.measure ，这就把measure过程转移到了子View中。
+
+ 
+
+2、onMeasure
+
+/** 具体测量过程，测量view和它的内容，来决定测量的宽高（mMeasuredWidth  mMeasuredHeight ）。该方法中必须要调用setMeasuredDimension(int, int)来保存该view测量的宽高。 */
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec);
+
+子View会在该方法中，根据父布局给出的限制信息，和自己的content大小，来合理的测量自己的尺寸。
+
+ 
+
+3、setMeasuredDimension
+ 
+/** 保存测量结果 */
+protected final void setMeasuredDimension(int measuredWidth, int measuredHeight);
+
+当View测量结束后，把测量结果保存起来，具体保存在mMeasuredWidth和mMeasuredHeight中。
+ 
+ 学生答案
+MeasureSpec封装了从父级传递给子级的布局要求。 每个MeasureSpec代表宽度或高度的要求。
+MeasureSpecs实现为32位的int，由size和mode组成，高2位代表mode，低30位代表size，它通过将mode和size打包成一个int值来减少对象内存分配，并提供打包和解包的方法。
+mode分类：
+UNSPECIFIED：父容器不对View有任何限制，给它想要的任何尺寸。一般用于系统内部，表示一种测量状态。
+EXACTLY：父容器已经检测出view的精确大小，这时候view的大小就是size所指定的值。它对应于LayoutParams中的match_parent和具体数值两种模式。
+AT_MOST：父容器指定了一个可用大小，即size，子view的大小不能大于这个值，具体值要看vew的实现。它对应于LayoutParams中的wrap_content。
+
+还可以回答的更详细一些，比如为什么要把Mode和Size一起放到一个32位的int值里面，view的onMeasure是确定自身的大小，而viewgroup需要给出子view的限制信息，并且让子view去测量自身大小 然后再确定自身的大小
+
+ 还可以回答的更详细一些，比如为什么要把Mode和Size一起放到一个32位的int值里面，以及Mode和LayoutParams是如何一起决定子View的MeasureSpec的
+ 
+ 
+ 干了些什么事情？ 
+ 把各自尺寸值 经过计算 得到具体的像素值 
+
+ -》   mesure过程 遍历我们整个view的树
+ -》 依次测量每个view的真实尺寸 
+ -> view viewGroup 测量自己的尺寸，负责子view的测量 像子View发送测量的指令
+  onMeasure 测量的结果保存到view的 mMeasuredWidth/Height 数值 像素
+  
+  
+  如何合理的测量一颗view树？ 
+  wrap_content  -1
+  自己确定一个合理的大小 最小值
+  不能比老爸还长
+  
+  match_parent  -2  子View 老爸 精确的值 
+  
+  父view的限制 unspecified  exactly  at_most
+  自身的大小     综合的评测 -》 子Viewe在onMeasure里面测量出的一个最优的大小
+  
+  具体的业务场景 流式布局 viewgroup
+  
+  具体的measure 思路
+  1. viewgroup  开始测量自身的尺寸
+  2. 为每个child计算测量限制信息(MeasureSpec) = 限制Mode（高两位） + size(30) 32位 int 二进制 01
+  3. 把上面的限制信息 传递给每个child child 知道如何测量自己了child.measure()发指令 -》 onMeasure
+  4. child测量完毕后 viewgroup获取每个子View测量后的大小
+  5. viewgroup结合自身的情况 计算自己的大小
+  6. 保存自身的大小  
+  
+  layout 
+  根据业务规则摆放每个child 
+  view.layout()
+  
+  java基础
+  java 抽象类 接口
+  理解：
+  抽象类 接口 
+  内部类 
+  注解 
+  反射
+  泛型 
+  集合 
+  IO 
+  异常
+  其他
+  编程思想 六大原则 23中设计模式
+  
+  6000 600
+  
+
+
+
+
+
+
+
+
+
+
+怎么提升训练营的到课率、留存率？
+1. 在社群里面多活跃，和学生互动，讨论技术以及同学们遇到的各种问题，拉近和学生的距离
+2. 上课前发布上课的内容预告
+3. 多提醒学生去看预习资料，可以在预习资料里面弄两个有悬念的题目，让同学们讨论
+4. 课上多和学生互动，课后批改作业并且@到每个人
+5. 多发下自己的介绍，让学生知道你是谁
+6. 可以在社群多次强调掌握这个专题技术的重要性
+
+
+
+怎么提升训练营的转化率？
+1. 下课后要到社群和同学们沟通，收集同学们的意见，寻找学生们的痛点，然后想办法解决它
+2. 多在群里解决学生提的问题
+3. 督促完成作业，认真地给每位同学点评，提醒还没交作业的同学赶紧交作业
+4. 可以适当和同学们聊下家常，增进友谊，也可以一起聊聊职场的问题，多分享下自己的职场经验
+5. 要塑造自己的B格，用人格魅力去影响他们
+6. 解散群之前，发结业语，并祝福同学们 升职加薪，并适当的灌些心灵鸡汤，传递正能力
+7. 也可以告诉他们我们享学还有其他专题，请持续关注我们享学,加我们班主任的 QQ，微信，下次有干货分享会提醒他们
 
 
 

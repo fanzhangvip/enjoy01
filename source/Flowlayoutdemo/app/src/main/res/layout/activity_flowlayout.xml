@@ -22,7 +22,7 @@
 
         <com.zero.flowlayoutdemo.FlowLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:layout_margin="8dp">
 
             <TextView
@@ -104,7 +104,7 @@
             android:textSize="18sp" />
 
         <com.zero.flowlayoutdemo.FlowLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp">
 

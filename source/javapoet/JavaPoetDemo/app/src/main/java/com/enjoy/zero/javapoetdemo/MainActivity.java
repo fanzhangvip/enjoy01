@@ -3,11 +3,13 @@ package com.enjoy.zero.javapoetdemo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.enjoy.zero.annotations.BindView;
 import com.enjoy.zero.annotations.MyAnnotation;
 import com.enjoy.zero.api.MyButterknife;
+import com.squareup.picasso.Picasso;
 
 
 @MyAnnotation("Hello World")
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MyButterknife.bind(this);
         mTextView.setText("hahahahahah.....");
+        ImageView imageView;
+        Picasso.with(this).load(R.drawable.ic_launcher_foreground).fit();
+
 
     }
 

@@ -42,21 +42,17 @@ public class FlowLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {//调用多次
+        Log.i(TAG, "onMeasure: width=" + MeasureSpec.getSize(widthMeasureSpec)+", height="+ MeasureSpec.getSize(heightMeasureSpec) + ",getLeft="+ getLeft());
         initMeasureParams();
-        // viewgroup里面有很多子view viewgroup 计算子view的大小 MeasureSpec
-        //1. 为每个子view计算测量限制信息(MeasureSpec)
+//        具体的measure 思路
+//        1. viewgroup  开始测量自身的尺寸
+//        2. 为每个child计算测量限制信息(MeasureSpec) = 限制Mode（高两位） + size(30) 32位 int 二进制 01
+//        3. 把上面的限制信息 传递给每个child child 知道如何测量自己了child.measure()发指令 -》 onMeasure
+//        4. child测量完毕后 viewgroup获取每个子View测量后的大小
+//        5. viewgroup结合自身的情况 计算自己的大小
+//        6. 保存自身的大小
 
-        //2.把上一步计算好的限制信息传递给每个子view,然后子view就可以开始measure自己的大小
-
-        //3.子view测量完之后，我们就可以获取每个子view的测量后的尺寸，具体的数值
-
-        //4. 根据自身的状况 padding ... 计算自身的尺寸
-
-        //5. 保存自身的尺寸
-
-        //遍历所有的子View，对子View进行测量，分配到具体的行
-
-        int selfWidth = MeasureSpec.getSize(widthMeasureSpec);//父view预期的宽度，这个值不是最终的宽度
+        int selfWidth = MeasureSpec.getSize(widthMeasureSpec);
 
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
@@ -70,7 +66,6 @@ public class FlowLayout extends ViewGroup {
         //整个流式布局的宽度和高度
         int wantedWidth = 0;//所有行中宽度的最大值
         int wantedHeight = 0;// 所以行的高度的累加
-
         int childCount = this.getChildCount();
         for (int i = 0; i < childCount; i++) {
             //获取子View
@@ -81,7 +76,7 @@ public class FlowLayout extends ViewGroup {
                             childLayoutParams.width),
                     getChildMeasureSpec(heightMeasureSpec, paddingTop + paddingBottom,
                             childLayoutParams.height));
-            //获取到当前子View的测量的宽度/高度
+
             int childMeasureWidth = childView.getMeasuredWidth();
             int childMeasureHeight = childView.getMeasuredHeight();
             if (lineWidthUsed + childMeasureWidth + mHorizontalSpacing > selfWidth) {
@@ -94,7 +89,6 @@ public class FlowLayout extends ViewGroup {
                 lineWidthUsed = 0;
                 lineHeight = 0;
             }
-
             lineViews.add(childView);
             lineWidthUsed = lineWidthUsed + childMeasureWidth +  mHorizontalSpacing;
             lineHeight = Math.max(lineHeight, childMeasureHeight);//取当前行中高度最大的作为当前行高
@@ -106,6 +100,7 @@ public class FlowLayout extends ViewGroup {
                 wantedWidth = Math.max(wantedWidth, lineWidthUsed);
                 wantedHeight += lineHeight;
             }
+
         }
 
         //确定流式布局自身最终的宽高
@@ -116,24 +111,22 @@ public class FlowLayout extends ViewGroup {
 
         int realWidth = (widthMode == MeasureSpec.EXACTLY) ? selfWidth : wantedWidth;
         int realHeight = (heightMode == MeasureSpec.EXACTLY) ? selfHeight : wantedHeight;
+        Log.i(TAG, "onMeasure: selfWidth="+selfWidth+" , wantedWidth="+ wantedWidth+" , realWidth="+realWidth);
 
         //保存FlowLayout最终宽高
         setMeasuredDimension(realWidth, realHeight);
-
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
-
-        //根据特定的layout规则来计算子view的位置
-        //for遍历子view
-        //1. 自己当前的布局规则，比如是垂直放还是水平放
-        //2. 子view的测量尺寸
-        // 计算子view的位置
-        // child.layout()
         int lineCount = views.size();
         int currX = getLeft();
+        Log.i(TAG, "onLayout0: ");
+        Log.i(TAG, "onLayout1: "+ getLeft());
+        for(int i = 0; i < 101; i++){
+            Log.e(TAG, "onLayout: dp="+ i+" , px=" + dp2px(i) );
+        }
         int currY = 0;
 
         for (int i = 0; i < lineCount; i++) {//大循环，所有的子View 一行一行的布局
@@ -149,10 +142,10 @@ public class FlowLayout extends ViewGroup {
                 int bottom = top + child.getMeasuredHeight();
                 child.layout(left, top, right, bottom);
                 //确定下一个view的left
-                currX = currX + child.getMeasuredWidth() + mHorizontalSpacing;
+                currX = left + child.getMeasuredWidth() + mHorizontalSpacing;
             }
             currY = currY + lineHeight +  mVerticalSpacing;
-            currX = getLeft();
+            currX = 0;
         }
 
     }

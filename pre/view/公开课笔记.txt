@@ -4,7 +4,27 @@ VIP咨询 2807762965（阿媛）
 
 往期视频加月亮老师：3433427729
 vip咨询加阿媛老师：1413650094
+自定义view
 
+自定义view ondraw 
+
+自定义viewgroup
+extends linearlayout 
+
+完全的自定义viewgroup  流式布局
+onmeasre onlayout 
+
+
+日历控件 性能 
+
+为什么需要measure
+android  自适应机制 match_parent wrap_content  -1 -2 
+具体的数值 -》 measure
+
+为什么需要layout 
+流式布局的规则 从左上角开始拜访控件，当我们后面的控件在当前行放不下了，自动换行
+
+根据我们的特定的layout规则，正确的计算出每隔子view的绘制位置 
 
 自定义View
 

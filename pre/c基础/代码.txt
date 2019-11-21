@@ -1,0 +1,208 @@
+
+JNINativeMethod method[] ={
+        {"nativeDecodeStream", "(Ljava/io/InputStream;[B)Lcom/zero/giflibdemo/gif/GifFrame;",     (void*) decodeStream_jni},
+        {"nativeGetFrame",     "(JLandroid/graphics/Bitmap;I)J",                                (void*) getFrame_jni},
+};
+
+
+jint registerNativeMethod(JNIEnv *env) {
+    jclass cl = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
+    if ((env->RegisterNatives(cl, method, sizeof(method) / sizeof(method[0]))) < 0) {
+        return -1;
+    }
+    return 0;
+}
+
+jint unRegisterNativeMethod(JNIEnv *env) {
+    jclass cl = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
+    env->UnregisterNatives(cl);
+    return 0;
+}
+
+JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
+    JNIEnv *env;
+    if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) == JNI_OK) {
+        registerNativeMethod(env);
+
+        jclass clazz = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
+        gifFrameClazz = static_cast<jclass>(env->NewGlobalRef(clazz));
+        gifFrameInit = env->GetMethodID(gifFrameClazz, "<init>", "(JIII)V");
+
+
+        jclass inputStreamClazz = env->FindClass("java/io/InputStream");
+        JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz, "read", "([BII)I");
+        return JNI_VERSION_1_6;
+    } else if (vm->GetEnv((void **) &env, JNI_VERSION_1_4) == JNI_OK) {
+        registerNativeMethod(env);
+
+        jclass clazz = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
+        gifFrameClazz = static_cast<jclass>(env->NewGlobalRef(clazz));
+        gifFrameInit = env->GetMethodID(gifFrameClazz, "<init>", "(JIII)V");
+
+
+        jclass inputStreamClazz = env->FindClass("java/io/InputStream");
+        JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz, "read", "([BII)I");
+        return JNI_VERSION_1_4;
+    }
+    return JNI_ERR;
+}
+
+JNIEXPORT void JNI_OnUnload(JavaVM *vm, void *reserved) {
+    JNIEnv *env;
+    if (vm->GetEnv((void **) &env, JNI_VERSION_1_6) == JNI_OK) {
+        unRegisterNativeMethod(env);
+    } else if (vm->GetEnv((void **) &env, JNI_VERSION_1_4) == JNI_OK) {
+        unRegisterNativeMethod(env);
+    }
+}
+
+#include "GifFrame.h"
+#include <android/bitmap.h>
+
+#define ARGB_TO_COLOR8888(a, r, g, b) \
+    ((a) << 24 | (b) << 16 | (g) << 8 | (r))
+
+static int streamReader(GifFileType *fileType, GifByteType *out, int size) {
+    JavaInputStream *stream = (JavaInputStream *) fileType->UserData;
+    return (int) stream->read(out, size);
+}
+
+static long getDelayMs(GraphicsControlBlock &gcb) {
+    return gcb.DelayTime * 10;
+}
+
+GifFrame::GifFrame(JavaInputStream *stream) {
+    //用户数据 当需要读取更多数据时候会调用 streamReader 函数
+    mGif = DGifOpen(stream, streamReader, NULL);
+    //初始化结构体
+    DGifSlurp(mGif);
+    GraphicsControlBlock gcb;
+    long durationMs = 0;
+    for (int i = 0; i < mGif->ImageCount; i++) {
+        //获得显示时间
+        DGifSavedExtensionToGCB(mGif, i, &gcb);
+        durationMs += getDelayMs(gcb);
+    }
+}
+
+int GifFrame::getWidth() {
+    return mGif ? mGif->SWidth : 0;
+}
+
+int GifFrame::getHeight() {
+    return mGif ? mGif->SHeight : 0;
+}
+
+int GifFrame::getFrameCount() {
+    return mGif ? mGif->ImageCount : 0;
+}
+
+long GifFrame::drawFrame(JNIEnv *env, jobject bitmap, int frameIndex) {
+    AndroidBitmapInfo info;
+    uint32_t *pixels;
+    AndroidBitmap_getInfo(env, bitmap, &info);
+    AndroidBitmap_lockPixels(env, bitmap, reinterpret_cast<void **>(&pixels));
+    SavedImage savedImages = mGif->SavedImages[frameIndex];
+    GifImageDesc imageDesc = savedImages.ImageDesc;
+    ColorMapObject *colorMapObject = mGif->SColorMap ? mGif->SColorMap : imageDesc.ColorMap;
+    for (int i = 0; i < imageDesc.Height; ++i) {
+        for (int j = 0; j < imageDesc.Width; ++j) {
+            int index = i * imageDesc.Width + j;
+            //得到的是压缩数据
+            GifByteType gifByteType = savedImages.RasterBits[index];
+            GifColorType gifColorType = colorMapObject->Colors[gifByteType];
+            uint32_t color = ARGB_TO_COLOR8888(0xff, gifColorType.Red, gifColorType.Green,
+                                               gifColorType.Blue);
+            pixels[index] =  color;
+        }
+    }
+    AndroidBitmap_unlockPixels(env,bitmap);
+    GraphicsControlBlock gcb;
+    DGifSavedExtensionToGCB(mGif, frameIndex, &gcb);
+    return gcb.DelayTime * 10;
+}
+
+
+
+giflib 
+//gif api: 可以一次性读取gif的信息， 这种简单
+           流：解析加载
+		   
+giflib 集成到Android 工程 把源码集成到Android 
+
+LZW字典压缩算法
+
+字母表：ABCD
+init #0 = A，#1 = B #2 = C #3 = D #4=AB
+
+ABAC#4A
+
+#0#1#0#2#4#0
+
+listview 
+ contentview.setTag(xxx)
+ 
+ 帧动画
+ 
+ java：ImageView  bitmap; Drawable
+ 
+ gif 解压 一帧  -> Drawable
+ 
+ BitMapDrawable
+ 
+ GifDrawable 
+ 
+ 
+ GifFrame:
+ width
+ height
+ frameCount
+ 
+         a          r         g         b
+ 0000 0000  0000 0000 0000 0000 0000 0000
+        24         16         8         0 
+		
+
+java类型 c类型  签名字符		
+void     void    V
+jlong     long   J
+GifFrame         Lcom/zero/giflibdemo/gif/GifFrame;   
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

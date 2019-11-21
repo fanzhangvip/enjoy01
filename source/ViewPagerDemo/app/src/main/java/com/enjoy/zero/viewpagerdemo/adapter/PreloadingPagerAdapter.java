@@ -17,6 +17,10 @@ public class PreloadingPagerAdapter extends PagerAdapter {
     private int mCount = 6000;
     private Context mContext;
 
+    @Override
+    public void setPrimaryItem(@NonNull final ViewGroup container, final int position, @NonNull final Object object) {
+        super.setPrimaryItem(container, position, object);
+    }
 
     public PreloadingPagerAdapter(Context context) {
         this.mContext = context;

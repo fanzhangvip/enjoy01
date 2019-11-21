@@ -1,1 +1,309 @@
-往期视频+vip咨询加阿媛老师：2807762965
+往期视频加月亮老师：3433427729
+vip咨询加阿媛老师：1413650094
+zero老师QQ: 3422253348
+
+同学们晚上好
+课程20:05分马上就开始了，
+大家稍等一下路上的小伙伴们
+
+
+
+移动架构班  今晚 最后的8个名额 4880  5888
+
+
+插件化 2012年 AndroidDynamicLoader 开山鼻祖
+2014  dynamic-load-apk 插件Activity  管理生命周期
+2015 DroidPlugin 
+
+    Small
+	
+	插件？
+	
+	宿主app : 当前运行的app
+	插件： 插件化 要加载运行的apk类文件
+	补丁： 热修复 要加载运行的.patch .dex apk 一系列的dex修复内容的文件
+	
+	独立的进程：
+	类加载？
+	资源如何加载？
+	插件里面的四大组件的生命周期？class -》 生命周期管理？
+
+重点：
+Activity?    	 onCreate -> onDestory 写业务是没问题的
+生命周期管理
+
+tecent activity 加载流程？ 
+framework 
+
+面试造火箭 ，工作拧螺丝  1 层次没到 tinker?  ,2
+
+hook Activity 这个点？ 熟悉Activity的加载流程
+
+1. class加载进来
+2. 生命周期管理 要讲的
+
+Activity 必须在AndroidManifest.xml注册 
+
+加载不注册的Activity?
+android.content.ActivityNotFoundException: Unable to find explicit activity class {com.zero.activityhookdemo/com.zero.activityhookdemo.TargetActivity}; have you declared this activity in your AndroidManifest.xml?
+
+1. 请求 AMS 我需要启动XXActivity 进程1
+2. AMS 验证                      进程2     跨进程通信？ Binder -> AIDL  
+3. XXActivity 合法 启动 
+
+如何做？ 
+偷梁换柱  
+A 插件 
+hook Activity？ 1 
+startActivity(A) ->  请求AMS验证 -> stub (宿主AndroidManifest.xml注册) 
+ -> AMS (stub) -> 没问题 -> (stub) -> (stub 换成 A) -> A 
+
+hook技术  java
+
+反射 java基础 
+代理
+静态代理 动态代理
+
+hook应用程序的Java层，主要是通过反射和代理来实现，用于修改SDK代码的执行流程
+
+1. 找hook点 IActivityManager
+2. hook ? 动态代理
+3. 获取到一个IActivityManager对象 gDefault -> Singleton类 -> mInstance
+4.  IActivityManager代理对象 startActivity (A -> stub)
+5.  IActivityManager代理对象 替换原有的 IActivityManager（framework）
+
+vip 学生 ： 1节课
+
+android知识体系
+
+用 5mins
+
+怎么去学 不难？ 
+看博客
+看公开课视频
+看书
+跟着享学 学习  时间 
+
+
+长沙 7  北京 
+走路 
+绿皮火车 20h
+高铁 7h
+飞机 3h 
+
+2 3 年 
+
+8 10 月
+2 4 日 8-10 2小时 比别人多花6个小时
+
+明天永远不会来 
+懒  坚持不了 
+
+30 
+不断的学习
+
+
+
+
+
+知识体系
+
+自定义view measure 
+MesureSpec Mode  + size
+                100dp   wrap_content  match_parent
+
+精准模式:
+AT_MOST:
+不确定:
+
+size：
+100dp
+wrap_content
+match_parent
+5G  1G  1mins 
+
+使用API 门槛低
+应届 2-3 掌握API  
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+基础好，越学越快
+对源码的要求很高
+12年的发展
+大公司占大头的市场，大公司的要求
+大公司的开发者，小公司 领导
+
+面试造火箭，工作拧螺丝
+简历
+裁员潮
+压缩成本
+裁员
+降薪
+11年-15年
+
+生产代码的能力的工程师
+
+自学
+买书
+到享学课堂
+
+7天
+长沙-》新疆
+步行
+火车 3天 1000K
+飞机 
+
+5G：网速
+1080P： 3mins
+NDK 下一个风口
+
+
+5年啦 
+
+6个月的时间：
+
+SDK
+网络，图片
+UI：
+
+2 4 日 2小时 ，6小时
+8 ~ 10 个月
+懒：坚持不了
+
+成功的人，在找捷径
+失败的人，在找借口
+感觉现在自己还行 工作稳定
+
+我们以稳定的名义维持着现有的一切
+其实是因为内心慌的一逼
+我30岁了
+2~3年之后 晚了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+就目前大环境来看，跳槽成功的难度比往年高很多。一个明显的感受：今年的面试，
+无论一面还是二面，都很考验Java程序员的技术功底。
+
+
+
+最近我搜集了93套阿里、腾讯、美团、网易等公司19年的面试题，把技术点梳理成一
+份大而全的“Java高级工程师”面试xmind（实际上比预期多花了不少精力），包含
+知识脉络 + 分支细节，由于篇幅有限，这里以图片的形式给大家展示一部分。
+
+
+
+这份资料尤其适合：
+
+1.近期想跳槽，要面试的Java程序员，查漏补缺，以便尽快弥补短板；
+
+2.想了解“一线互联网公司”最新技术要求，对比找出自身的长处和弱点所在，评估自
+己在现有市场上的竞争力如何；
+
+3.做了几年Java开发，但还没形成系统的Java知识体系，缺乏清晰的提升方向和学习路
+径的程序员。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

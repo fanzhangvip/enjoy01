@@ -23,6 +23,5 @@ public class MainActivity extends AppCompatActivity {
         //TODO: 4.提交事务，真正去执行添加动作
         transaction.commit();
 
-        AnimationDrawable
     }
 }
