@@ -45,11 +45,11 @@ public class FlowLayout1 extends ViewGroup {
     private int measureHeight;//代表本身的测量高度
     private int realHeight;//表示内容的高度
 
-    private OverScroller mScroller;
     private EdgeEffect mEdgeGlowTop;
     private EdgeEffect mEdgeGlowBottom;
 
 
+    private OverScroller mScroller;
     private VelocityTracker mVelocityTracker;
     private int mTouchSlop;
     private int mMinimumVelocity;
