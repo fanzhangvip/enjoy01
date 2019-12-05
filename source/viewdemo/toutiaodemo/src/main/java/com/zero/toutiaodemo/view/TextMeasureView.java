@@ -96,7 +96,7 @@ public class TextMeasureView extends View {
         return result;
     }
 
-    private void measureText() {
+    private void measureText() {//Paint 画笔
         mPaint.getTextBounds(mText, 0, mText.length(), mTextBounds);
         Log.i(TAG, "mTextBounds = " + mTextBounds);
         mMeasureWidth = mPaint.measureText(mText);

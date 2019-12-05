@@ -3,6 +3,7 @@ package com.zero.toutiaodemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartBottom(View view){
-        mView1.setDirection(ColorChangeTextView1.DIRECTION_BOTTOM);
-        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
+        Intent intent = new Intent(this,ViewPagerActivity.class);
+        startActivity(intent);
+//        mView1.setDirection(ColorChangeTextView1.DIRECTION_BOTTOM);
+//        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
     }
 }

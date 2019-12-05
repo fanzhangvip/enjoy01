@@ -22,12 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ColorChangeTextView1 extends View {
     private static final String TAG = "Zero";
-    //    <attr name="text"/>
-//        <attr name="text_size"/>
-//        <attr name="text_color"/>
-//        <attr name="text_color_change"/>
-//        <attr name="progress"/>
-//        <attr name="direction"/>
+
     private String mText = "享学课堂";
     private int mTextSize = sp2px(30);
     private int mTextColor = Color.BLACK;
@@ -66,25 +61,16 @@ public class ColorChangeTextView1 extends View {
         mDirection = direction;
     }
 
-    public ColorChangeTextView1(final Context context) {
-        super(context);
-        init();
+    public ColorChangeTextView1(Context context) {
+        this(context, null);
     }
 
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs) {
-        super(context, attrs);
-        init();
-        initAttr(context, attrs);
+    public ColorChangeTextView1(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-        initAttr(context, attrs);
-    }
-
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr, final int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+    public ColorChangeTextView1(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
         init();
         initAttr(context, attrs);
     }
@@ -93,7 +79,7 @@ public class ColorChangeTextView1 extends View {
         mPaint = new Paint();
         mLinePaint = new Paint();
         mLinePaint.setAntiAlias(true);
-        mLinePaint.setStrokeWidth(dp2px(0.5f));
+        mLinePaint.setStrokeWidth(dp2px(3));
         mLinePaint.setStyle(Paint.Style.STROKE);
         mLinePaint.setColor(Color.GREEN);
     }

@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -14,6 +15,7 @@ import android.view.View;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.zero.toutiaodemo.R;
 
@@ -22,12 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 
 public class ColorChangeTextView1 extends View {
     private static final String TAG = "Zero";
-    //    <attr name="text"/>
-//        <attr name="text_size"/>
-//        <attr name="text_color"/>
-//        <attr name="text_color_change"/>
-//        <attr name="progress"/>
-//        <attr name="direction"/>
+
     private String mText = "享学课堂";
     private int mTextSize = sp2px(30);
     private int mTextColor = Color.BLACK;
@@ -66,39 +63,28 @@ public class ColorChangeTextView1 extends View {
         mDirection = direction;
     }
 
-    public ColorChangeTextView1(final Context context) {
-        super(context);
-        init();
+    public ColorChangeTextView1(Context context) {
+        this(context, null);
     }
 
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs) {
-        super(context, attrs);
-        init();
-        initAttr(context, attrs);
+    public ColorChangeTextView1(Context context, AttributeSet attrs) {
+        this(context, attrs, 0);
     }
 
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
-        initAttr(context, attrs);
+    public ColorChangeTextView1(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context, attrs);
     }
 
-    public ColorChangeTextView1(final Context context, @Nullable final AttributeSet attrs, final int defStyleAttr, final int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        init();
-        initAttr(context, attrs);
-    }
 
-    private void init() {
+    private void init(final Context context, @Nullable final AttributeSet attrs) {
         mPaint = new Paint();
         mLinePaint = new Paint();
         mLinePaint.setAntiAlias(true);
         mLinePaint.setStrokeWidth(dp2px(3));
         mLinePaint.setStyle(Paint.Style.STROKE);
         mLinePaint.setColor(Color.GREEN);
-    }
 
-    private void initAttr(final Context context, @Nullable final AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs,
                 R.styleable.ColorChangeTextView1);
         mText = ta.getString(R.styleable.ColorChangeTextView1_text);
@@ -122,16 +108,29 @@ public class ColorChangeTextView1 extends View {
     protected void onMeasure(final int widthMeasureSpec, final int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        //1. 先测量文字
-        measureText();
-        //2. 测量自身
+        //应该如何合理的测量view的尺寸？
+        //1.  测量文字大小
+        mPaint.getTextBounds(mText, 0, mText.length(), mTextBound);
+        Log.i(TAG, "mTextBound = " + mTextBound);
+        mTextWidth = (int) (mPaint.measureText(mText) + .5f);//24.3 -> 24  25
+        Log.i(TAG, "mTextWidth = " + mTextWidth);
+        Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
+        mPaint.getFontMetrics(fontMetrics);
+
+        //一种获取高度的办法
+
+        mTextHeight = (int) (fontMetrics.descent - fontMetrics.ascent + .5f);
+        Log.i(TAG, "mTextHeight = " + mTextHeight);
+
+        //2.  决定view大小
         int width = measureWidth(widthMeasureSpec);
         int height = measureHeight(heightMeasureSpec);
-        //3. 保持测量尺寸
+
+        //3.  setMeasuredDimension
         setMeasuredDimension(width, height);
 
-        mTextStartX = getMeasuredWidth() / 2 - mTextWidth / 2;
-        mTextStartY = getMeasuredHeight() / 2 - mTextHeight / 2;
+        mTextStartX = width / 2 - mTextWidth / 2;
+        mTextStartY = height / 2 - mTextHeight / 2;
 
     }
 
@@ -141,16 +140,14 @@ public class ColorChangeTextView1 extends View {
         int result = 0;
         switch (mode) {
             case MeasureSpec.EXACTLY:
-                Log.i(TAG, "measureWidth: EXACTLY");
                 result = size;
                 break;
-            case MeasureSpec.AT_MOST:
             case MeasureSpec.UNSPECIFIED:
-                result = (int) (mTextWidth + .5f) + getPaddingLeft() + getPaddingRight();
+            case MeasureSpec.AT_MOST:
+                result = mTextWidth + getPaddingLeft() + getPaddingRight();
                 break;
         }
-        //如果是AT_MOST,不能超过父布局的尺寸
-        result = (mode == MeasureSpec.AT_MOST) ? Math.min(result, size) : result;
+        result =(mode == MeasureSpec.AT_MOST) ? Math.min(result,size): result;
         return result;
     }
 
@@ -160,107 +157,64 @@ public class ColorChangeTextView1 extends View {
         int result = 0;
         switch (mode) {
             case MeasureSpec.EXACTLY:
-                Log.i(TAG, "measureWidth: EXACTLY");
                 result = size;
                 break;
-            case MeasureSpec.AT_MOST:
             case MeasureSpec.UNSPECIFIED:
-                result = (int) (mTextBound.height() + .5f) + getPaddingTop() + getPaddingBottom();
+            case MeasureSpec.AT_MOST:
+                result = mTextBound.height() + getPaddingTop() + getPaddingBottom();
                 break;
         }
-        //如果是AT_MOST,不能超过父布局的尺寸
-        result = (mode == MeasureSpec.AT_MOST) ? Math.min(result, size) : result;
+        result =(mode == MeasureSpec.AT_MOST) ? Math.min(result,size): result;
         return result;
     }
 
-    private void measureText() {
-        mPaint.getTextBounds(mText, 0, mText.length(), mTextBound);
-        Log.i(TAG, "mTextBound = " + mTextBound);
-        mTextWidth = (int) (mPaint.measureText(mText) + .5f);
-        Log.i(TAG, "mTextWidth = " + mTextWidth);
 
-        Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
-
-        mPaint.getFontMetrics(fontMetrics);
-
-        mTextHeight = (int) (fontMetrics.descent - fontMetrics.ascent + .5f);
-        Log.i(TAG, "mTextHeight = " + mTextHeight);
-
-    }
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
 
-        switch (mDirection) {
+        //文字绘制
+//        canvas.drawText(mText,mTextStartX,mTextStartY,mPaint);
+        switch (mDirection){
             case DIRECTION_LEFT:
-                Log.i(TAG, "DIRECTION_LEFT = " + DIRECTION_LEFT);
-                //先绘制改变的颜色
-                drawTextHorizontal(canvas, mTextColorChange, mTextStartX,
-                        (int) (mTextStartX + mProgress * mTextWidth));
-                //后绘制没改变的
-                drawTextHorizontal(canvas, mTextColor,
-                        (int) (mTextStartX + mProgress * mTextWidth), mTextStartX + mTextWidth);
+
+                //1 先绘制改变的颜色的文字  ？
+                mPaint.setColor(mTextColorChange);
+                //起始
+                int starx = 0;
+                starx =  mTextStartX;
+                //绘制的终点
+                int finalx = 0;
+                finalx = (int)(mTextStartX + mProgress * mTextWidth);
+                canvas.save();
+                //剪裁的画布
+                canvas.clipRect(starx,0,finalx,getMeasuredHeight());
+                Log.i(TAG, "finalx = " + finalx + " ,mProcess: " + mProgress);
+                canvas.drawRect(canvas.getClipBounds(),mLinePaint);
+                canvas.drawText(mText,mTextStartX
+                ,getMeasuredHeight()/2 - (mPaint.descent()/2 + mPaint.ascent()/2),mPaint);
+                canvas.restore();
+
+                //2.绘制没有改变 底色
+                canvas.save();
+                mPaint.setColor(mTextColor);
+                canvas.drawText(mText,finalx,getMeasuredHeight()/2 - (mPaint.descent()/2 + mPaint.ascent()/2),mPaint);
+                canvas.restore();
                 break;
             case DIRECTION_RIGHT:
-                Log.i(TAG, "DIRECTION_RIGHT = " + DIRECTION_RIGHT);
-                //先绘制改变的颜色
-
-                canvas.drawRect((int) (mTextStartX + (1 - mProgress) * mTextWidth), 0, mTextStartX + mTextWidth, getMeasuredHeight(), mLinePaint);
-                drawTextHorizontal(canvas, mTextColorChange,
-                        (int) (mTextStartX + (1 - mProgress) * mTextWidth), mTextStartX + mTextWidth);
-                //后绘制没改变的
-                drawTextHorizontal(canvas, mTextColor, mTextStartX,
-                        (int) (mTextStartX + (1 - mProgress) * mTextWidth));
                 break;
             case DIRECTION_TOP:
-                Log.i(TAG, "DIRECTION_TOP = " + DIRECTION_TOP);
-                //先绘制改变的颜色
-                drawTextVertical(canvas, mTextColorChange, mTextStartY,
-                        (int) (mTextStartY + mProgress * mTextHeight));
-                //后绘制没改变的
-
-                drawTextVertical(canvas, mTextColor,
-                        (int) (mTextStartY + mProgress * mTextHeight), mTextStartY + mTextHeight);
                 break;
             case DIRECTION_BOTTOM:
-                Log.i(TAG, "DIRECTION_BOTTOM = " + DIRECTION_BOTTOM);
-                //先绘制改变的颜色
-                drawTextVertical(canvas, mTextColorChange,
-                        (int) (mTextStartY + (1 - mProgress) * mTextHeight), mTextStartY + mTextHeight);
-                //后绘制没改变的
-                drawTextVertical(canvas, mTextColor, mTextStartY,
-                        (int) (mTextStartY + (1 - mProgress) * mTextHeight));
                 break;
-            default:
-                break;
-
         }
 
     }
 
-    private void drawTextHorizontal(Canvas canvas, int color, int startX, int endX) {
-        mPaint.setColor(color);
 
-        canvas.save();
-        canvas.clipRect(startX, 0, endX, getMeasuredHeight());
 
-        canvas.drawText(mText, mTextStartX,
-                getMeasuredHeight() / 2
-                        - ((mPaint.descent() + mPaint.ascent()) / 2), mPaint);
-        canvas.restore();
-    }
 
-    private void drawTextVertical(Canvas canvas, int color, int startY, int endY) {
-        mPaint.setColor(color);
-
-        canvas.save();
-        canvas.clipRect(0, startY, getMeasuredWidth(), endY);
-        canvas.drawText(mText, mTextStartX,
-                getMeasuredHeight() / 2
-                        - ((mPaint.descent() + mPaint.ascent()) / 2), mPaint);
-        canvas.restore();
-    }
 
     public float getProgress() {
         return mProgress;
