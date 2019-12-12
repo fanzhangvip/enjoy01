@@ -8,11 +8,12 @@ import com.zero.demo01.domain.commands.RequestForecastCommand
 import com.zero.demo01.extensions.DelegatesExt
 import com.zero.demo01.ui.adapters.ForecastListAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 
-class MainActivity : CoroutineScopeActivity(), ToolbarManager {
+class MainActivity : CoroutineScopeActivity() , ToolbarManager{
 
     private val zipCode: Long by DelegatesExt.preference(
         this, SettingsActivity.ZIP_CODE,
