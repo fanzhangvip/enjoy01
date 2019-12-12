@@ -1,0 +1,95 @@
+1. 同学们现在开发者的项目用的是什么语言
+A  Java  B  Kotlin  C Java/Kotlin混合
+2. 同学们现在开发是使用什么语言
+A  Java  B Kotlin 
+3. 同学们对kotlin的熟悉程度？
+A 了解， B  熟悉   C 精通
+4. 同学们使用Kotlin的时间有多长？
+
+5. 同学们在使用 或者学习Kotlin的时候的障碍是什么？
+
+
+
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation  'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
+    implementation 'org.jetbrains.anko:anko:0.10.8'
+    implementation "com.google.code.gson:gson:2.8.5"
+    implementation "com.squareup.picasso:picasso:2.5.2"
+	
+	implementation group: 'org.jetbrains.kotlin', name: 'kotlin-script-runtime', version: '1.3.61'
+	
+	  apply plugin: 'kotlin-kapt'
+      接下来，引入依赖包和编译器
+
+   compile "com.google.dagger:dagger:2.14.1"
+    kapt "com.google.dagger:dagger-compiler:2.14.1"
+	
+	api 'com.google.dagger:dagger-android:2.x'
+api 'com.google.dagger:dagger-android-support:2.x' // if you use the support libraries
+annotationProcessor 'com.google.dagger:dagger-android-processor:2.x'
+	retrofitVersion = "2.4.0"
+    gsonVersion = "2.8.2"
+    cookieVersion = "v1.0.1"
+	implementation 'com.jakewharton:butterknife:10.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
+    implementation 'com.google.dagger:dagger-android:2.15'
+    implementation 'com.google.dagger:dagger-android-support:2.15' // if you use the support libraries
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.15.'
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+
+    implementation 'com.facebook.stetho:stetho:1.4.2'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.4.2'
+    //网络请求相关
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:retrofit-mock:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.5.0'
+    implementation "com.squareup.retrofit2:converter-scalars:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
+
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.1'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.1'
+	
+	ext {
+    roomVersion = '2.2.1'
+    archLifecycleVersion = '2.2.0-rc02'
+    androidxArchVersion = '2.1.0'
+    coreTestingVersion = "2.1.0"
+    coroutines = '1.3.2'
+    materialVersion = "1.0.0"
+   }
+	
+	// Room components
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    // Lifecycle components
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.archLifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.archLifecycleVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.androidxArchVersion"
+
+    // ViewModel Kotlin support
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.archLifecycleVersion"
+
+    // Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutines"
+
+    // UI
+    implementation "com.google.android.material:material:$rootProject.materialVersion"

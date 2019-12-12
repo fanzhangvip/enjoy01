@@ -224,6 +224,24 @@ public class ColorChangeTextView1 extends View {
         }
 
     }
+	/*
+                //1 先绘制改变的颜色的文字  ？
+                mPaint.setColor(mTextColorChange);
+                //起始
+                //绘制的终点
+                canvas.save();
+                canvas.clipRect(mTextStartX,0,(int)(mTextStartX + mProgress * mTextWidth),getMeasuredHeight());
+                canvas.drawRect(canvas.getClipBounds(),mLinePaint);
+                canvas.drawText(mText,mTextStartX
+                ,getMeasuredHeight()/2 - (mPaint.descent()/2 + mPaint.ascent()/2),mPaint);
+                canvas.restore();
+
+                //2.绘制没有改变 底色
+                mPaint.setColor(mTextColor);
+                canvas.save();
+                canvas.clipRect((int)(mTextStartX + mProgress * mTextWidth),0,mTextStartX + mTextWidth,getMeasuredHeight());
+                canvas.drawText(mText,mTextStartX,getMeasuredHeight()/2 - (mPaint.descent()/2 + mPaint.ascent()/2),mPaint);
+                canvas.restore();*/
 
     private void drawTextHorizontal(Canvas canvas, int color, int startX, int endX) {
         mPaint.setColor(color);

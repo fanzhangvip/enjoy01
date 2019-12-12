@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SimpleActivity">
 
 
     <LinearLayout
@@ -20,8 +20,8 @@
             android:layout_weight="1"
             app:progress="1"
             app:text="关注"
-            app:text_color="#ffff0000"
-            app:text_color_change="#ff000000"
+            app:text_color="#ff000000"
+            app:text_color_change="#ffff0000"
             app:text_size="18sp" />
 
         <com.zero.toutiaodemo.view.ColorChangeTextView1
@@ -30,8 +30,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:text="热点"
-            app:text_color="#ffff0000"
-            app:text_color_change="#ff000000"
+            app:text_color="#ff000000"
+            app:text_color_change="#ffff0000"
             app:text_size="18sp" />
 
         <com.zero.toutiaodemo.view.ColorChangeTextView1
@@ -40,8 +40,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:text="推荐"
-            app:text_color="#ffff0000"
-            app:text_color_change="#ff000000"
+            app:text_color="#ff000000"
+            app:text_color_change="#ffff0000"
             app:text_size="18sp" />
 
         <com.zero.toutiaodemo.view.ColorChangeTextView1
@@ -50,8 +50,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:text="长沙"
-            app:text_color="#ffff0000"
-            app:text_color_change="#ff000000"
+            app:text_color="#ff000000"
+            app:text_color_change="#ffff0000"
             app:text_size="18sp" />
 
 

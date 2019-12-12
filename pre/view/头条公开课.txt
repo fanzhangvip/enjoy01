@@ -114,6 +114,146 @@ vip咨询加月亮老师：2807762965
 zero老师QQ: 3422253348
 免费
 
+自定义控件 高级Android 
+
+apk  - > 给测试
+release - > 运营 
+allen gradle 
+andy 
+
+
+知道的 1  不知道 2 
+
+1.5 h  
+ 
+  canvas clipRect原理
+
+1. canvas.drawText  文字如何测量？
+2. canvas 画布 分层 ps 图层
+3. 文字 绘制 拆开  canvas 剪裁 
+
+
+
+layoutparamns 
+10dp
+match_parent
+wrap_content
+
+确定一个view的尺寸
+
+layoutparamns + 父view的Mode限制 =决定view的尺寸
+
+中心(x，y)
+w   h
+
+drawText（x - w/2, y + h/2）
+
+view  measure 
+1 像素点  二次  过渡绘制
+
+体系化 知识点 
+retrofit:
+ okhttp + @ + 发射 + 动态代理 + T
+ 自己 代码 性能 
+ 
+ 不缺乏 反射   
+ 看
+ 练习 
+ 
+ tinker
+
+5 mins 
+写一个热修复 vip  2h 
+dex classloader  ams 
+
+没机会  空想派
+机会 行动派 
+
+看博客 找书 
+成本
+
+时间
+8 -12
+
+
+
+
+
+
+
+
+
+
+
+
+
+往期视频加阿媛老师：1413650094
+vip咨询加阿媛老师：1413650094
+
+文字 剪裁 
+
+drawText(@NonNull String text, float x, float y, @NonNull Paint paint)
+（x,y） 起始点
+
+view  w  h 
+
+中心点 (w/2,h/2)  文字  tw th
+startx = w/2 - tw/2
+starty = h/2 + th/2
+drawText (text,w/2,h/2,paint) 是： 1 ,不是：  2
+
+
+自定义属性 ？
+
+emun 
+
+12.3 => 12
+12.3 + .5 => 13
+
+retrofit 
+T  
+
+butterknife 
+greendao 
+glide 
+
+arouter
+
+懒加载 viewpager + fragment 
+       viewpager2 + fragment  recycleview 热点 
+	   
+	   初级 工程  用sdk cv  《 15K  4K 800元 
+	   3 -5年  初级 工程  -》 外卖 10000W  -》AI
+	    结婚 单身 
+		0-10  吃
+		10-20 玩
+		20-30 性
+	    30 - 40 	钱
+		
+		看书 看博客 
+		实战 大量 老师
+		
+		 6个小时
+		5K 
+ 
+
+2019-12-09 15:48:25.957 21854-21854/? I/Zero: 换行 flowlayoutHeight = 126
+2019-12-09 15:48:25.957 21854-21854/? I/Zero: 换行 flowlayoutHeight = 252
+2019-12-09 15:48:25.958 21854-21854/? I/Zero: 最后一个 flowlayoutHeight = 378
+2019-12-09 15:48:25.958 21854-21854/? I/Zero: 最后结果 flowlayoutHeight = 378
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 换行 flowlayoutHeight = 126
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 换行 flowlayoutHeight = 252
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 最后一个 flowlayoutHeight = 378
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 最后结果 flowlayoutHeight = 378
+
+
+
+
+
+
+
+
+
 
 
 

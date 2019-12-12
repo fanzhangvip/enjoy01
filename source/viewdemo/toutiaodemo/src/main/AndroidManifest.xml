@@ -16,7 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".TextMeasureActivity"/>
+        <activity android:name=".OverDrawActivity"/>
+        <activity android:name=".SimpleActivity"/>
         <activity android:name=".ViewPagerActivity"/>
+        <activity android:name=".DrawTestActivity"/>
     </application>
 
 </manifest>

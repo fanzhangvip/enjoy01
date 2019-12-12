@@ -1,0 +1,101 @@
+APP_ID = "15646a06818f61f7b8d7823ca833e1ce"
+URL = "http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7"
+
+COMPLETE_URL = "$URL&APPID=$APP_ID&zip="
+url = COMPLETE_URL + zipCode
+请求接口:
+http://api.openweathermap.org/data/2.5/forecast/daily?mode=json&units=metric&cnt=7&APPID=15646a06818f61f7b8d7823ca833e1ce&zip=94043
+
+数据:
+{
+	"city": {
+		"id": 0,
+		"name": "Mountain View",
+		"coord": {
+			"lon": -122.0775,
+			"lat": 37.4056
+		},
+		"country": "US",
+		"population": 0,
+		"timezone": -28800
+	},
+	"cod": "200",
+	"message": 2.6235698,
+	"cnt": 7,
+	"list": [{
+		"dt": 1575921600,
+		"sunrise": 1575904265,
+		"sunset": 1575939028,
+		"temp": {
+			"day": 16.08,
+			"min": 9.2,
+			"max": 16.08,
+			"night": 11.15,
+			"eve": 13.03,
+			"morn": 9.2
+		},
+		"pressure": 1020,
+		"humidity": 58,
+		"weather": [{
+			"id": 800,
+			"main": "Clear",
+			"description": "sky is clear",
+			"icon": "01d"
+		}],
+		"speed": 1.23,
+		"deg": 338,
+		"clouds": 0
+	}]
+}
+//转化的类
+data class ForecastResult(
+    val city: City,//city.name,city.country
+    val cnt: Int,
+    val cod: String,
+    val list: List<Forecast>,
+    val message: Double
+)
+
+data class City(
+    val coord: Coordinates,
+    val country: String,//country
+    val id: Int,
+    val name: String,//name
+    val population: Int,
+    val timezone: Int
+)
+
+data class Coordinates(
+    val lat: Double,
+    val lon: Double
+)
+
+data class Forecast(
+    val clouds: Int,
+    val deg: Int,
+    val dt: Long,//dt
+    val humidity: Int,
+    val pressure: Int,
+    val speed: Double,
+    val sunrise: Int,
+    val sunset: Int,
+    val temp: Temperature,//temp.max,temp.min
+    val weather: List<Weather>//weather.description,weather.icon
+)
+
+data class Temperature(
+    val day: Double,
+    val eve: Double,
+    val max: Double,//max
+    val min: Double,//min
+    val morn: Double,
+    val night: Double
+)
+
+data class Weather(
+    val description: String,//description
+    val icon: String,//icon
+    val id: Int,
+    val main: String
+)
+

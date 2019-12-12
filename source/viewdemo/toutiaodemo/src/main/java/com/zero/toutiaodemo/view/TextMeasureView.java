@@ -187,7 +187,7 @@ public class TextMeasureView extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.GREEN);
-        mPaint.setTextSize(sp2px(80));
+        mPaint.setTextSize(sp2px(120));
 
         mLinePaint = new Paint();
         mLinePaint.setStyle(Paint.Style.STROKE);

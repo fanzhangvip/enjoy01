@@ -3,28 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.zero.flowlayoutdemo.FlowLayout2
+    <com.zero.flowlayoutdemo.MyViewGroup1
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorAccent"
-        android:padding="30dp">
-
-
+        android:padding="0dp">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="button1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="40dp"
-            android:text="你在看谁" />
+            android:text="你在看谁aaaaaaaa" />
 
         <Button
             android:layout_width="wrap_content"
@@ -34,7 +27,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
+            android:text="哎呀" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="哎呀" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="哎呀" />
 
         <Button
@@ -42,5 +44,5 @@
             android:layout_height="wrap_content"
             android:text="哎呦我去，哎呦我去，真漂亮end" />
 
-    </com.zero.flowlayoutdemo.FlowLayout2>
+    </com.zero.flowlayoutdemo.MyViewGroup1>
 </ScrollView>

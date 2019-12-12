@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import java.util.List;
  * 6、触摸反馈：滑动事件
  */
 public class FlowLayout2 extends ViewGroup {
-    private static final String TAG = "FlowLayout";
+    private static final String TAG = "Zero";
     private List<View> lineViews;//每一行的子View
     private List<List<View>> views;//所有的行  一行一行的存储
     private List<Integer> heights;//每一行的高度
@@ -71,6 +72,7 @@ public class FlowLayout2 extends ViewGroup {
 
         //遍历所有子View，对子View进行测量，分配到具体行
         int childCount = getChildCount();
+        int count = 0;
         for (int i = 0; i < childCount; i++) {
             View child = getChildAt(i);
 
@@ -89,11 +91,14 @@ public class FlowLayout2 extends ViewGroup {
 
             //看下当前的行的剩余的宽度是否可以容纳下一个子View,
             // 如果放不下，换行 保存当前行的所有子View,累加行高，当前的宽度，高度 置零
+            Log.i(TAG, "childView = " + ((TextView)child).getText());
             if (lineWidth + childWidth > widthSize - getPaddingRight() - getPaddingLeft()) {//就得换行
+                count++;
                 views.add(lineViews);
                 lineViews = new ArrayList<>();//创建新的一行
                 flowlayoutWidth = Math.max(flowlayoutWidth, lineWidth);
                 flowlayoutHeight += lineHeight;
+                Log.i(TAG, "换行 flowlayoutHeight = " + flowlayoutHeight +" 第： " + count + "行");
                 heights.add(lineHeight);
                 lineWidth = 0;
                 lineHeight = 0;
@@ -107,11 +112,14 @@ public class FlowLayout2 extends ViewGroup {
             if (i == childCount - 1) {
                 flowlayoutWidth = Math.max(flowlayoutWidth, lineWidth);
                 flowlayoutHeight += lineHeight;
+                Log.i(TAG, "最后一个 flowlayoutHeight = " + flowlayoutHeight);
                 heights.add(lineHeight);
                 views.add(lineViews);
             }
+            Log.i(TAG, "i =========================== " + i);
         }
         //FlowLayout最终宽高
+        Log.i(TAG, "最后结果 flowlayoutHeight = " + flowlayoutHeight);
         setMeasuredDimension(widthMode == MeasureSpec.EXACTLY ? widthSize + getPaddingLeft() + getPaddingRight() : flowlayoutWidth
                 , heighMode == MeasureSpec.EXACTLY ? heighSize + getPaddingTop() + getPaddingBottom() : flowlayoutHeight);
 

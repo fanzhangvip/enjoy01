@@ -1,7 +1,9 @@
 //@file:JvmMultifileClass("Basic01")
 package com.zero.lib.kotlin.basic01
 
-import javafx.application.Application.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 data class Basic01List(val i: Int, val str: String)
@@ -125,8 +127,10 @@ fun main() {
         println("索引为${index}的元素是:$value")
     }
 
-    launch{
-
+    GlobalScope.launch {
+        println("hello world....")
+        delay(1000)
     }
+
 }
 

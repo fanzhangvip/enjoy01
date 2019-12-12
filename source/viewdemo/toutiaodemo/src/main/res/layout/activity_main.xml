@@ -1,63 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="今日头条demo" />
-
-    <com.zero.toutiaodemo.view.ColorChangeTextView1
-        android:id="@+id/color_change_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#C8FE2E"
-        android:padding="8dp"
-        app:direction="left"
-        app:progress="0"
-        app:text="享学课堂"
-        app:text_color="#000000"
-        app:text_color_change="#FF0000"
-        app:text_size="50sp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:onClick="onStartLeft"
-        android:text="StartLeft" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:onClick="onStartRight"
-        android:text="StartRight" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:onClick="onStartTop"
-        android:text="StartTop" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:onClick="onStartBottom"
-        android:text="StartBottom" />
-
-
-    <!--    <com.zero.toutiaodemo.view.TextMeasureView1-->
-    <!--        android:text="今日头条"-->
-    <!--        android:textSize="50sp"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"/>-->
-
-</LinearLayout>
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
