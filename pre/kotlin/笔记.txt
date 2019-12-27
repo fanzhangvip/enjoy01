@@ -1,0 +1,165 @@
+1，kotlin表达式，高级函数
+2，kotlin面向对象
+
+
+泛型
+
+高级函数
+
+扩展函数
+
+协程
+
+
+1. 泛型
+kotlin泛型搞不定
+
+java泛型不熟悉
+
+Object   等同于 Any?
+String? 根 Any? 1  2
+String   Any  -> Any?
+
+// PECS Producer extends Consumer Super
+        取                存
+        ？extends         ？ super
+	    out 取出来        in  存进去
+		协变              逆变
+		
+	   
+//泛型 擦除 上下界
+//T <? super B> 下界  ？元素类型B 基类 没有统一的基类 Object
+//T <? extend B> 上界 ? B 是所以元素的基类
+  
+kotlin jvm 泛型 从java 继承过来的
+
+什么时候用in  什么时候用out  
+
+@kotlin.internal.InlineOnly
+public inline fun <T, R> T.run(block: T.() -> R): R {
+    contract {
+        callsInPlace(block, InvocationKind.EXACTLY_ONCE)
+    }
+    return block()
+}
+
+T.()
+T.xxx()  T  类型T.() 扩展函数
+
+
+Explicit
+concurrent copying 
+GC freed 73607(3MB) 
+AllocSpace objects, 
+0(0B) LOS objects, 
+50% free, 
+4MB/9MB, 
+paused 337us total 17.542ms
+
+Explicit 
+concurrent mark sweep 
+GC freed 104710(7MB) 
+AllocSpace objects, 
+21(416KB) LOS objects, 
+33% free, 
+25MB/38MB, 
+paused 1.230ms total 67.216ms
+
+<GC_Reason> 
+<GC_Name> 
+<Objects_freed>(<Size_freed>) 
+AllocSpace Objects, 
+<Large_objects_freed>(<Large_object_size_freed>) LOS objects, 、
+<Heap_stats>
+<Pause_time(s)>
+
+MVP 
+1. Base presenter view model
+
+2. Login模块
+login presenter  有什么接口？
+xxx
+
+一下仅代表zero老师的个人观点：
+
+0 —— 》 1
+写代码？
+
+迭代 重构 
+思想改变  重构是时刻进行
+
+MVP：MVC 
+M: 数据bean  业务模块 业务处理
+V: View层 Activity/Fragment View
+P: 连接M V 控制层 业务处理写在P层 
+ 低耦合 ，高内聚
+
+MVP实现的第一步：
+把页面拆分成 M/V/P 三个模块
+
+如何拆分？
+数据获取 M
+loginWanAndroid获取网络数据
+
+UI刷新 交互  V
+获取用户名密码
+校验密码长度（P 涉及到View ）
+点击事件事件 V 
+
+登录逻辑 P -》 M 
+
+原子性操作 
+
+协程 ： rxjava  线程切换  Dispatchers 
+ 
+context:上下文 
+
+回调 
+
+c1
+c2
+c3
+
+A c1
+  c2
+B c3(c1)
+
+递归 -》 非递归
+t1       t4(t3(t3)) 
+t4
+t3
+t2
+t1
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

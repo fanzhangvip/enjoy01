@@ -1,0 +1,314 @@
+往期视频加月亮老师：3433427729
+vip咨询加月亮老师：2807762965
+加月亮老师wx:3433427729
+zero老师QQ: 3417671365
+免费
+
+
+小伙伴们 20:05 发车
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+不去学，成功率0%
+试着学，成功率20%
+好好学，成功率60%
+努力学，成功率80%
+坚持学，成功率100%
+站着不动永远是观众
+二八定律永存在，因为选择，所以不同
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Activity是从哪儿来的
+startActivity最终通过AMS的一系列调用验证了Activity的合法性后
+最终会调用到ActivityThread.H#handleMessage
+然后在LAUNCH_ACTIVITY消息里面调用了handleLaunchActivity
+
+在handleLaunchActivity里面先初始化WindowManagerGlobal#initialize
+接着调用performLaunchActivity创建出Activity
+然后在handleResumeActivity里面先调用performResumeActivity走Activity的onResume生命周期
+然后再调用Activity的makeVisible方法把视图呈现给用户
+
+2. View到底是经历了怎样的过程才显示给用户的
+在 makeVisible里面调用getWindowManager的addView把mDecor添加到系统
+而getWindowManager的mWindowManager是在Activity的attach方法里面从mWindow获取的
+而mWindow是一个PhoneWindow，PhoneWindow是继承自Window的
+在Window的setWindowManager里面我们创建了mWindowManager，
+具体实现是在WindowManagerImpl的createLocalWindowManager创建的
+然后在createLocalWindowManager把当前Activity的PhoneWindow传递过来作为mParentWindow
+接着在makeVisible调用getWindowManager的addView方法实际上是调用了mGlobal的addView
+在WMG的addView里面调用了ViewRootImpl的setView
+然后在ViewRootImpl的setView里面调用ViewRootImpl#requestLayout
+scheduleTraversals
+TraversalRunnable.run
+ViewRootImpl.doTraversal
+ViewRootImpl.performTraversals
+
+
+ActivityThread#performLaunchActivity
+通过mInstrumentation#newActivity创建出Activity
+然后再调用Activity#attach方法
+在attach方法里面创建出了PhoneWindow
+然后调用 mInstrumentation.callActivityOnCreate，就会走到Activity的onCreate生命周期
+在onCreate里面我们通过setContentView创建我们的视图
+//如果我们没有调用setContentView，那么在handleResumeActivity里面调用PhoneWindow的
+//getDecorView的时候发现decor==null，也会调用installDecor创建出decorView
+然后decorView里面有一个contentParent
+setContentView的  
+mLayoutInflater.inflate(layoutResID, mContentParent);
+在这里把我们的xml布局转化成view添加进去的
+
+
+Handler原理机制？
+Handler   android的消息机制就是指Handler机制，Handler机制的运行需要MeeageQueue和Looper的辅助。
+λ   MessageQueue：消息队列，用于将所有收到的消息以队列的形式进行排列，
+并提供入队和出队的方法。在looper的构造函数中创建,因此一个Looper也就对应了一个MessageQueue.
+通过enqueueMessage实现消息的入队，通过next方法实现出队
+Looper 轮询器  作用：与当前线程绑定，保证一个线程只会有一个Looper实例，同时一个Looper实例也只有一个- MessageQueue。Looper 通过loop()方法调用messagequeue的next方法，不断从 MessageQueue中去取消息
+
+
+mvc，mvp，mvvm
+三个架构模式:
+
+MVC：Model-View-Controller，经典模式，很容易理解，主要缺点有两个：
+1，View对Model的依赖，会导致View也包含了业务逻辑；
+2，Controller会变得很厚很复杂。
+MVP：Model-View-Presenter，MVC的一个演变模式，将Controller换成了Presenter，  主要为了解决上述第一个缺点，将View和Model解耦，
+不过第二个缺点依然没有解决。
+MVVM：Model-View-ViewModel，是对MVP的一个优化模式，
+采用了双向绑定：View的变动，自动反映在ViewModel，反之亦然。
+MVC, MVP, MMVM用来解决业务逻辑和视图之间的耦合
+
+Mvc和mvp的最主要区别：
+Mvc中model可以直接和view交互
+mvp中model   与view   的交互由presenter完成
+
+app启动遇见黑屏或者白屏问题
+
+1，产生原因
+其实显示黑屏或者白屏实属正常，这是因为还没加载到布局文件，就已经显示了window窗口背景，黑屏白屏就是window窗口背景
+2，解决办法
+通过设置设置Style
+（1）设置背景图Theme
+通过设置一张背景图。 当程序启动时，首先显示这张背景图，避免出现黑屏
+
+<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> 
+    <item name="android:screenOrientation">portrait</item> 
+    <item name="android:windowBackground">>@mipmap/splash</item> 
+  
+    <item name="android:windowIsTranslucent">true</item> 
+    <item name="android:windowNoTitle">true</item> 
+</style>
+
+设置透明Theme
+通过把样式设置为透明，程序启动后不会黑屏而是整个透明了，等到界面初始化完才一次性显示出来
+<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar"> 
+    <item name="android:windowNoTitle">true</item> 
+    <item name="android:windowBackground">@android:color/transparent</item> 
+    <item name="android:windowIsTranslucent">true</item> 
+    <item name="android:screenOrientation">portrait</item> 
+  </style>
+
+两者对比：
+Theme1 程序启动快，界面先显示背景图，然后再刷新其他界面控件。给人刷新不同步感觉。
+Theme2 给人程序启动慢感觉，界面一次性刷出来，刷新同步
+
+七，listview优化
+1，convertView复用
+2，viewholder使用
+3，图片优化
+4，getView()中不要写过多的逻辑代码，不要创建很多的对象，逻辑代码放在别的地方，
+5，item的布局减少层级
+6，通过getItemViewType实现复杂布局的复用
+7，简单布局可以将listview的scrollingCache和animateCache属性设置false。
+如果设置为true会提高显示效果，但是需要消耗更多内存和更长的初始化时间
+
+九，JVM内存模型
+1，什么是jvm
+JVM是Java Virtual Machine（Java虚拟机）的缩写，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机。
+JVM在执行字节码时，实际上最终还是把字节码解释成具体平台上的机器指令执行
+
+
+多线程相关
+
+1，进程和线程的区别
+进程：表示一个运行的程序
+线程：进程(程序)的执行单元，执行路径
+
+多进程的意义? 提高CPU的使用率
+多线程的意义? 提高应用程序的使用率
+
+2，多线程的三种实现方式
+
+1，继承Thread类，
+2，实现Runnable接口（推荐，方便的实现资源的共享）
+3，通过Callable和Future创建线程
+
+
+3，start和run方法的区别
+start会先启动线程，再由jvm调用run方法
+run方法只是thread的一个普通方法调用，还是在主线程里执行。
+4，线程池
+程序启动一个新线程成本比较高，因为它涉及到要与操作系统进行交互，而使用线程池可以很好的提高性能，尤其是当程序要创建大量生存期很短的线程时，更应该使用线程池。
+线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。
+JKD5之前，我们手动实现自己的线程池，JDK5以后，java内置支持线程池。
+
+代码演示    //创建一个线程池对象，控制要创建几个线程对象
+        ExecutorService pool=Executors.newFixedThreadPool(2);
+        //可以执行Runnable对象或者Callable对象的线程
+        pool.submit(new MyRunnable());
+        pool.submit(new MyRunnable());
+        //结束线程池
+        pool.shutdown();
+
+
+5，synchronized与Lock的区别
+synchronized关键字是防止多个线程同时执行一段代码，那么就会很影响程序执行效率
+Lock和synchronized有以下几点不同：
+
+1）Lock是一个接口，jdk5后出现，而synchronized是Java中的关键字，synchronized是内置的语言实现；
+2）synchronized在发生异常时，会自动释放线程占有的锁，因此不会导致死锁现象发生；而Lock在发生异常时，如果没有主动通过unLock()去释放锁，则很可能造成死锁现象，因此使用Lock时需要在finally块中释放锁；
+3）Lock可以让等待锁的线程响应中断，而synchronized却不行，使用synchronized时，等待的线程会一直等待下去，不能够响应中断；
+4）通过Lock可以知道有没有成功获取锁，而synchronized却无法办到。
+5）Lock可以提高多个线程进行读操作的效率。
+
+在性能上来说，如果竞争资源不激烈，两者的性能是差不多的，而当竞争资源非常激烈时（即有大量线程同时竞争），此时Lock的性能要远远优于synchronized。所以说，在具体使用时要根据适当情况选择
+
+6，volatile关键字
+volatile关键字修饰变量，用来确保将变量的更新操作通知到其他线程
+在访问volatile变量时不会执行加锁操作，因此也就不会使执行线程阻塞，因此volatile变量是一种比sychronized关键字更轻量级的同步
+一旦一个共享变量（类的成员变量、类的静态成员变量）被volatile修饰之后，那么就具备了两层语义：
+1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。
+2）禁止进行指令重排序
+7，ThreadLocal
+ThreadLocal类的作用：是为每个线程都创建一个变量副本, 每个线程都可以修改自己所拥有的变量副本, 而不会影响其他线程的副本. 其实这也是解决线程安全的问题的一种方法。在很多情况下，ThreadLocal比直接使用synchronized同步机制解决线程安全问题更简单，更方便，且结果程序拥有更高的并发性
+ThreadLocal原理：在ThreadLocal类中有一个Map，用于存储每一个线程的变量副本。
+8，死锁
+死锁就是指两个或者两个以上的线程在执行过程中，因争夺资源产生的一种相互等待现象。（比如两个人吃饭，一人一根筷子）
+
+圆形bitmap的实现原理
+主要靠paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));这行代码实现圆形图片
+SRC_IN这种模式，取两个绘制的效果叠加后的交集，第一个绘制的是个圆形，第二个绘制的是个Bitmap，于是交集为圆形，展现的是BItmap，就实现了圆形图片效果

@@ -79,6 +79,8 @@ for(i in 0 .. 6){
 }
 println()
 
+println("同学们 ")
+
 
 
 

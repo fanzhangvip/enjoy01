@@ -52,7 +52,6 @@ public class Client {
                     @Override
                     public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
                         System.out.println("小张在洽谈业务。。。");
-                        o.hashCode();
                         method.invoke(qiangge,objects);
                         return null;
                     }

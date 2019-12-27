@@ -1,0 +1,8 @@
+fragment的五种状态
+static final int INITIALIZING = 0;     // Not yet created.
+static final int CREATED = 1;          // Created.
+static final int ACTIVITY_CREATED = 2; // Fully created, not started.
+static final int STARTED = 3;          // Created and started, not resumed.
+static final int RESUMED = 4;          // Created started and resumed.
+
+int mState = INITIALIZING;

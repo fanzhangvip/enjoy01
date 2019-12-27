@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux_demo/ParentWidgetC.dart';
 import 'package:flutter_redux_demo/action_reducer.dart';
 import 'package:flutter_redux_demo/second_page.dart';
 import 'package:flutter_redux_demo/count_state.dart';
@@ -55,6 +56,7 @@ class FirstPage extends StatelessWidget {
                   return () => store.dispatch(IncreAction(3));
                 }),
                 AddAsyncButton(),
+                ParentWidgetC(),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: RaisedButton(

@@ -90,7 +90,7 @@ public interface Context1{
     }
 }
 
-class CombContext : Context1{
+class CombContext : Context1{//链表
     override fun add(key: Context1.Key<*>): Context1 {
         return this
     }
@@ -106,12 +106,17 @@ fun coroutineTest(){
     val coroutineScope = CoroutineScope(EmptyCoroutineContext)
 
 
-    coroutineScope.let {
-        it.async {
+    GlobalScope.launch {
+
+    }
+
+    coroutineScope.launch {
+        val deferred = async {
             //异步
             getConpanyLogo()
+
         }
-        it.launch {
+        launch {
             println("coroutineTest launch: ${Thread.currentThread().name}")
             withContext(Dispatchers.IO){
                 println("coroutineTest withContext launch: ${Thread.currentThread().name}")
@@ -121,19 +126,23 @@ fun coroutineTest(){
             getInfo()
             delay(2000)
         }
+        deferred.start()
+       val result =  deferred.await()
 
-        GlobalScope.launch {
+        val job = GlobalScope.launch {
             println("0000")
             withContext(Dispatchers.IO){
                 delay(5000)
                 println("111")
             }
-            withContext(Dispatchers.IO){
+            withContext(Dispatchers.Unconfined){
                 println("2222")
             }
             println("3333")
             delay(1000)
         }
+
+        job.cancel()
 
         GlobalScope.launch {
             repeat(3){
@@ -168,7 +177,8 @@ suspend fun getAvatar(){
     println("getAvatar")
 }
 
-suspend fun getConpanyLogo(){
+suspend fun getConpanyLogo():Int{
     delay((getRandom() * 100).toLong())
     println("getConpanyLogo")
+    return 1
 }

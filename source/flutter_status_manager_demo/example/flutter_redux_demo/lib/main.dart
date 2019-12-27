@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_redux_demo/ParentWidgetC.dart';
 import 'package:flutter_redux_demo/action_reducer.dart';
 import 'package:flutter_redux_demo/count_state.dart';
 import 'package:flutter_redux_demo/first_page.dart';
@@ -8,11 +9,11 @@ import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 void main() {
-  ;
   ///第五步 创建store
   final store = Store<CountState>(reducers,
       initialState: CountState.initState(), middleware: initialMiddleware());
-  runApp(MyApp(store));
+//  runApp(MyApp(store));
+runApp(ParentWidgetC());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,7 +31,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: FirstPage(title: "第一个页面"),
+//        home: FirstPage(title: "第一个页面"),
+      home: ParentWidgetC(),
       ),
     );
   }

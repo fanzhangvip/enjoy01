@@ -75,9 +75,14 @@ open class Base{
     }
 }
 
-
+var nstr: String? = null
 
 fun main() {
+
+    if(nstr!=null){
+//        println(nstr.length)
+    }
+
     println("hello world")
 
     var str3: String? = ""

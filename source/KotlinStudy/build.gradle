@@ -39,6 +39,10 @@ buildscript {
         classpath deps.navigation.safe_args_plugin
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+    repositories {
+        google()
     }
 }
 
@@ -61,7 +65,11 @@ allprojects {
     }
 
 }
-
+project.ext {
+    retrofitVersion = "2.4.0"
+    gsonVersion = "2.8.2"
+    cookieVersion = "v1.0.1"
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
@@ -88,3 +96,4 @@ task clean(type: Delete) {
 //task clean(type: Delete) {
 //    delete rootProject.buildDir
 //}
+

@@ -1,8 +1,9 @@
 package com.enjoy.zero.zhujiedemo;
 
-import android.app.Activity;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -18,10 +19,10 @@ import java.lang.reflect.Proxy;
  */
 public class InjectViewUtils {
 
-    public static void injectView(Activity activity) {
+    public static void injectView(AppCompatActivity activity) {
         if (null == activity) return;
 
-        Class<? extends Activity> activityClass = activity.getClass();
+        Class<? extends AppCompatActivity> activityClass = activity.getClass();
         Field[] declaredFields = activityClass.getDeclaredFields();
         for (Field field : declaredFields) {//获取Activity类里面声明的所有成员变量
             if (field.isAnnotationPresent(InjectView.class)) {//找出标注了@InjectView的成员变量
@@ -43,11 +44,11 @@ public class InjectViewUtils {
 
     }
 
-    public static void injectEvent(Activity activity) {
+    public static void injectEvent(AppCompatActivity activity) {
         if (null == activity) {
             return;
         }
-        Class<? extends Activity> activityClass = activity.getClass();
+        Class<? extends AppCompatActivity> activityClass = activity.getClass();
         Method[] declaredMethods = activityClass.getDeclaredMethods();
 
         for (Method method : declaredMethods) {
