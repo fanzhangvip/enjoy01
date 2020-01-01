@@ -4,11 +4,11 @@ import kotlin.reflect.KProperty0
 
 class User(id: Int) {
     //字段 属性
-    var id: Int
+    var id: Int = 0
         // 是一个属性  + get + set
         get() = 0
         set(value) {
-            id = value
+            field = value+1
         }
     var name: String
 

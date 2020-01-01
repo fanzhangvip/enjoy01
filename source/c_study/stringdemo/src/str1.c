@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <w32api/wsman.h>
 
 #pragma pack(8)    //设置4字节对齐
 //#pragma pack()     //取消4字节对齐
@@ -81,20 +82,40 @@ typedef struct node5
     int c;
 }S5;
 
+void test_05(){
+    char *p1 = (char*)malloc(10);
+    char *p2 = (char*)realloc(p1,10);
+    char a = 'p';
+    p2 = &a;
+    for(int i = 0; i < 20; ++i){
+        printf("%c\n",p2[i]);
+    }
+    free(p1);
+    p1 = NULL;
+    free(p2);
+    p2 = NULL;
+
+}
+
 int main(){
     //TODO:
     printf("Hello world!\n");
+    test_05();
+    char* str = "ssss";
 
-    S1 s1;
-    S2 s2;
-    S3 s3;
-    S4 s4;
-    S5 s5;
-    printf("sizeof(s1)=%d\n", sizeof(s1));
-    printf("sizeof(s2)=%d\n", sizeof(s2));
-    printf("sizeof(s3)=%d\n", sizeof(s3));
-    printf("sizeof(s4)=%d\n", sizeof(s4));
-    printf("sizeof(s5)=%d\n", sizeof(s5));
+//
+//    S1 s1;
+//    S2 s2;
+//    S3 s3;
+//    S4 s4;
+//    S5 s5;
+//    printf("sizeof(s1)=%d\n", sizeof(s1));
+//    printf("sizeof(s2)=%d\n", sizeof(s2));
+//    printf("sizeof(s3)=%d\n", sizeof(s3));
+//    printf("sizeof(s4)=%d\n", sizeof(s4));
+//    printf("sizeof(s5)=%d\n", sizeof(s5));
+
+
 
 
     return 0;

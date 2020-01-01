@@ -12,4 +12,5 @@ fun main() {//函数 不是在类里面的   在类里面  方法
     println(str)
 
     println("sum: ${sum(1,2)}")
+    "sss".apply {  }
 }

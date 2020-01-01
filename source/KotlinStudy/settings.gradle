@@ -1,2 +1,2 @@
-include ':app', ':lib', ':kotlinapp', ':demo01', ':wanandroiddemo'
+include ':app', ':lib', ':kotlinapp', ':demo01', ':wanandroiddemo', ':X5WebDemo'
 rootProject.name = 'KotlinStudy'

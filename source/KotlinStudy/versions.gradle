@@ -22,7 +22,7 @@
 ext.deps = [:]
 def versions = [:]
 versions.activity = '1.0.0-rc01'
-versions.android_gradle_plugin = '3.5.2'
+versions.android_gradle_plugin = '3.5.3'
 versions.apache_commons = "2.5"
 versions.appcompat = "1.1.0-rc01"
 versions.arch_core = "2.0.1"
@@ -32,7 +32,7 @@ versions.atsl_rules = "1.2.0"
 versions.atsl_runner = "1.2.0"
 versions.benchmark = "1.0.0"
 versions.constraint_layout = "2.0.0-alpha2"
-versions.core_ktx = "1.0.0"
+versions.core_ktx = '1.0.0'
 versions.dagger = "2.16"
 versions.dexmaker = "2.2.0"
 versions.espresso = "3.2.0"
