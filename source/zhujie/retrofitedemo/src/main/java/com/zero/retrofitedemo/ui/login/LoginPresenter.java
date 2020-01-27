@@ -50,7 +50,7 @@ public class LoginPresenter extends AbsPresenter<LoginContract.Model, LoginContr
     @Override
     public void setModel(LoginContract.Model model) {
         this.mModel = model;
-        ((LoginModel)mModel).setWanAndroidApi(HttpUtil.getOnlineCookieRetrofit().create(WanAndroidApi.class));
+//        ((LoginModel)mModel).setWanAndroidApi(HttpUtil.getOnlineCookieRetrofit().create(WanAndroidApi.class));
 
 
     }

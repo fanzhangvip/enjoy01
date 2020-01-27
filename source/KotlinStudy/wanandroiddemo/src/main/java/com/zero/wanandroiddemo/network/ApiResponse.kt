@@ -60,6 +60,7 @@ abstract class ApiResponse<T>(private val context: Context) : Observer<ResponseW
             is UnknownHostException -> ApiErrorType.NETWORK_NOT_CONNECT
             is ConnectException -> ApiErrorType.NETWORK_NOT_CONNECT
             is SocketTimeoutException -> ApiErrorType.CONNECT_TIMEOUT
+
             else -> ApiErrorType.UNKNOWN_ERROR
         }
         failure(apiErrorType.code, apiErrorType.getApiError(context))

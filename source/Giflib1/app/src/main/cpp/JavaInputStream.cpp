@@ -11,9 +11,6 @@ JavaInputStream::JavaInputStream(JNIEnv *env, jobject inputStream, jbyteArray by
         mInputStream(inputStream),
         mByteArray(byteArray),
         mByteArrayLength(env->GetArrayLength(byteArray)) {
-
-
-
 }
 
 #define min(a,b) a < b ? a:b

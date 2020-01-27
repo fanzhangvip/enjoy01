@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 public abstract class DelayFragment extends BaseFragment {
-    //http://www.cnblogs.com/dasusu/p/6745032.html
     private boolean isFragmentVisible;
     private boolean isReuseView;
     private boolean isFirstVisible;

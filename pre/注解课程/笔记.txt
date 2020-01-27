@@ -4,8 +4,459 @@ vip咨询加阿媛老师：1413650094
 zero老师QQ: 3417671365
 免费
 
+14：10开始
+
+同学们 14：10发车 等下还在路上的小伙伴们
+
+Retrofit  = Okhttp + ?  再次封装 泛型  反射 动态代理  
+
+
+1. Retrofit 对象 如何创建？ 
+2. WanAndroidApi interface  如何转化成实例
+3. 注解的参数 如何解析？ 
+4. 参数如何转化成request , json 在哪儿转化成bean
+5. 真正执行的地方在哪儿？ 如何执行？ 
+
+Okhttp  HttpClient HttpUrlConnection  快 
+OKio 
+
+
+
+io java io 
+
+
+rxjava + reretrofit + kotlin
+
+1. bean 
+2. api
+
+
+迷茫？ 
+java 基础 
+设计模式 门面模式 建造者 适配器 观察者 代理模式  23种
+
+高内聚 低耦合
+
+
+独门秘籍 
+
+面向接口编程 ？ 
+
+数据 -》  加工  。。 》 产品
+
+
+Builder  建造者模式
+
+call 
+rxjava 
+java8 
+kotlin 
+
+ArrayList<String> lists = new ArrayList<>();
+lists.add()
+String str =  lists.get()
+java 基础
+
+Java高级基础？ 
+
+Handler
+
+Retrofit.Builder
+.build()
+1. OkHttpClient //执行网络请求 
+2. CallAdapter  // T 
+3. Converter   // json 
+
+
+
+Retrofit中ExecutorCallbackCall 包装  OkHttpCall  调用Okhttp的call 执行网络请求
+
+
+Call<ProjectBean> call = wanAndroidApi.getProject1() 返回： ExecutorCallbackCall OkHttpCall
+
+
+
+
+从基础 原理 应用 
+
+
+
+工作年限 技术能力 不匹配
+
+看书 看博客  学完就忘  原因出在哪儿？ allen MVx c p vm 
+8- 10 知识体系
+小公司 视野  大公司 招人的标准 
+3-4 面试 5K
+
+很忙 996 越需要学习 
+金三银四 找工作季节 5K 
+想办法多挣5K 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 小伙伴们 20:10 发车
+
+Android知识体系  技术栈 
+
+注解 
+retrofit glide eventbus arouter ... 
+
+Okhttp volley 
+
+retrofit why?  
+rxjava livedata 回调地狱
+
+
+interface  接口  1 不可以 2
+WanAndroidApi wanAndroidApi = retrofit.create(WanAndroidApi.class);
+
+使用如此简单 ？ -》 
+
+HttpClient HttpUrlconnection 
+
+如何正确的阅读源码？ 
+What 能做什么？ 
+How  采用什么的方式去实现的？
+Why  为什么这么做？  还有没有更好的方式？ 
+//断点调试大法 
+饿汉式单例
+http 结果  文本 string -> Bean
+
+1. 注解的使用？ 
+2. 接口 转换为 请求实例
+3. 什么时候进入子线程执行请求
+4. 什么把结果返回到UI主线程 如何返回？ 
+
+F ->convert 返回 T 
+request  请求（请求参数）后台
+response 响应 （结果）
+
+Call newCall(Request var1); 根据请求request 返回一个Call(执行网络请求)  
+
+DefaultCallAdapterFactory
+
+Adapter 适配器模式 rxjava java8 AndroidcallAdpter livedata
+
+ Proxy.newProxyInstance//动态代理  1.  不知道的走 2
+ 
+ 某强哥  演员  找他 
+ 客户端 小公司  不能直接找到 某强哥   
+ 宋代理   公司资质 价格  在哪儿拍 
+ 某强哥 拍小广告  
+ 静态代理
+ 
+ 代理公司 给你找一个具体的代理者  小张  公司资质 价格  在哪儿拍 
+ 
+ 基础 泛型 注解  动态代理 设计模式  并发编程
+ 外观模式 retrofit
+ 动态代理 
+ 适配器模式 
+ 单例 建造者模式
+ 面向流程 面向接口
+ 
+ 
+ 高级Android开发 必备 
+ 平级跳  降级 
+ 跳槽  20%-30%  肯学 50% 
+ 工作 好多年 技术一直提升不上去  3-5 ？ retrofit 
+ 10  j2ee -> ios -> android 
+ 怎么办？  不断的学习 
+ 
+ 想学 1  
+ 1年的时间  技术体系  扩充了多少？
+ 
+ csdn  2019  
+ 
+ 方法论  快速的构建自己的技术知识体系 不读也罢 
+ 自己看 博客 越学越难 
+ 
+ 
+ 资源加载原理
+ 热修复  插件化 四大组件的生命周期管理
+ 从基础 从原理 （有限）- 》 应用  越来越轻松
+  
+  dart 大前端的技术栈 
+
+2年 
+
+ 大牛带    
+ 
+ 
+  3-5   用API   应届生👍饭碗 
+     输： 肯干 能加班  工资要求低 
+  结婚 生小孩  家庭开支   技能  都是会用api的 cv工程师
+      没时间加班   
+	  转化 后台 不行
+	       送外卖 开滴滴   1W 
+		   
+	  深耕  有前景 钱途  30K 
+      
+	  意识android有前景 肯学 肯定有回报
+	  如何快速的提升？ 
+	  大牛带  8-10 多花 6小时  被优化 手里有钱  优化能力不强 能力强
+    	  
+	  遇到难点卡住  
+ 
+ 终生制 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 java  注解 
@@ -28,32 +479,58 @@ retrofit
 
 
 
+Retrofit#loadServiceMethod 149
+loadServiceMethod 185
+result = ServiceMethod.parseAnnotations 192
+
+//解析注解
+ServiceMethod#parseAnnotations 25
+RequestFactory#parseAnnotations 66
+Builder 161
+build 169  在build方法内解析注解
+parseMethodAnnotation 171
+parseHttpMethodAndPath 216
+parseHttpMethodAndPath 249
+parsePathParameters 274
+parseParameter 193
+new  RequestFactory 82
+
+ServiceMethod#method.getGenericReturnType 28
+这这里根据泛型信息创建出callAdapter和responseConverter
+HttpServiceMethod#parseAnnotations 36
+createCallAdapter 99 
+retrofit.callAdapter 103
+Retrofit#callAdapter 226
+nextCallAdapter 236
 
 
+HttpServiceMethod#createResponseConverter 109
+Retrofit#responseBodyConverter 334
+nextResponseBodyConverter 344
 
 
+HttpServiceMethod#invoke 130
+new OkHttpCall 47
+HttpServiceMethod#adapt 147
 
+DefaultCallAdapterFactory#adapt 54
 
+发起请求
+DefaultCallAdapterFactory#enqueue 71
+OkHttpCall#enqueue 87
+createRawCall 191 
+构建请求的Request
+RequestFactory#create 96
+RequestBuilder#get 224
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//真正的利用OKHttp执行网络请求
+call.enqueue 117
+OkHttpCall# parseResponse 199
+body = responseConverter.convert(catchingBody); 225
+Response#success 72
+ callback.onResponse(OkHttpCall.this, response); 129
+DefaultCallAdapterFactory#onResponse 75
+MainThreadExecutor#execute 111  到UI主线程
 
 
 

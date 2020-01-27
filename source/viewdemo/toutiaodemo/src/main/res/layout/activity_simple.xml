@@ -12,7 +12,11 @@
         android:layout_height="wrap_content"
         android:text="今日头条demo" />
 
-    <com.zero.toutiaodemo.view.ColorChangeTextView
+<!--    <com.zero.toutiaodemo.view.CustomView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <com.zero.toutiaodemo.view.ColorChangeTextView2
         android:id="@+id/color_change_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

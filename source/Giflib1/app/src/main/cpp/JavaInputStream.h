@@ -21,5 +21,4 @@ public:
     static jmethodID  readMethodId;
 };
 
-
 #endif //GIFLIBDEMO_JAVAINPUTSTREAM_H

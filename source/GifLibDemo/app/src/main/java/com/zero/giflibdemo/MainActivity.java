@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 666);
         }
         mImageView = findViewById(R.id.image);
+
         GifDrawable gifDrawable = null;//BitmapDrawable
 
 

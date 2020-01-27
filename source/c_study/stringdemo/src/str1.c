@@ -99,9 +99,9 @@ void test_05(){
 
 int main(){
     //TODO:
-    printf("Hello world!\n");
-    test_05();
-    char* str = "ssss";
+//    printf("Hello world!\n");
+//    test_05();
+//    char* str = "ssss";
 
 //
 //    S1 s1;

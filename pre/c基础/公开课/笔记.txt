@@ -5,7 +5,187 @@ zero老师QQ: 3417671365
 免费
 
 
+
+
+glide gif 非常大  解码 java jvm (art dilvik)
+app:  8M   32M  64M 
+流畅的加载gif 虚拟机内存有限  卡顿 降低卡顿、
+giflib 1 2 
+
+android  linux  
+
+android  
+app  java 
+     kotlin  4节课kotlin开发高手  java oracle sun
+	 jbreans kotlin -> class ->  jvm 
+
+giflib c/c++ 解码gif  JNI 
+imageview 
+
+指针  地址 java层 GifFrame 持有c/c++的GifFrame的地址
+
+gif  包含多张图片 帧动画 io 
+
+c/c++ 层iO 
+
+图片信息
+控制信息
+ext
+gif解码出来 -》 SavedImage？  一帧一帧的图片 Bitmap -》 drawable -> imageview 
+ImageView  
+setImageDrawable 
+ setImageBitmap
+ 
+ Drawable 可绘制的对象 view canvas画布
+ JNI   java  
+ NDK 编程  1 2  面试的一个考点  Android c/c++ 编程 android程序的sdk 
+ 
+ 
+ bitmap  c/c++  对应的就是一块内存 vip  
+ vip抽取出来的体验课  3节课
+ 
+ so 才能使用 
+ 
+ build.gradle java  - > apk  
+ cmakelists.txt  c/c++ -> so  system.loadlib
+ bitmap  有一些颜色不同的像素点构成
+ R 
+ G 
+ B 
+ A
+ 
+ c/c++  
+ NDK android 
+ 5G 网上非常快 1G  1天  5G  1G  1-2分钟
+ giflib  java  giflib 卡顿  
+ mp4  java  NDK ffmepg
+性能优化 
+ 
+ 
+ 
+ #define ARGB_TO_COLOR8888(a,r,g,b) \
+((a) << 24 | (b) << 16 | (g) << 8 | (r))
+
+0000 0000 0000 0000 0000 0000 0000 0000
+a         r         g         b
+int 32  表示一个像素点的颜色 
+a
+r
+g
+b
+
+csdn  
+自定义view 
+github baidu  
+热修复 tinker  1 
+classloader apk  dex dex[class]
+四大组件的生命周期的管理 AMS 
+hook技术
+ 3-8
+cv 初级工程师  应届生  市场很多苦力  代码  薪资要求低 能加班 
+ 3-5  android 优化掉  能力跟工龄不太匹配啦的
+ flutter  半边天
+ 
+ 如何快速的学习
+ 2020 1. 8  回顾下  2019  40W要求的技术栈
+ 时间 1 8-10  
+ 3 -4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 小伙伴们 20:10 发车
+
+glide gif 
+
+jvm gradle
+
+做过JNI 开发 1  没做过的 2
+
+eclipse ndk-build -> so -> 加载java   makefile   .mk
+
+AS（Android Studio） 2.2   CMakeLists.txt（可读性） -> mk 
+
+
+gif图片为什么不适合在java层解码加载？ 
+gif  有很多帧图片 Android 帧动画  一次性 加载到内存  一帧一帧的解析 耗内存 32M 64M 
+
+Giflib
+其他人 .so 把这个.so  调用起来 
+Giflib 源码 集成到Android
+
+listview setTag(object) getTag()
+UserData
+
+gif 本质 file 特殊的格式
+iO流 读取gif 自己去解析
+DGifOpenFileName 打开gif图片文件  GifFileType表示
+
+1. 从GifFileType 获取每一帧图形 每帧的显示时间
+2. 播放gif 
+3. Giflib NDK  c/c++  java 如何去控制这个giflib的api 然后获取图片
+   ImageView 
+   
+4. 使用Giflib 加载gif    
+
+jni  把java层的 bitmap对象 传递到jni层   在java imageview
+     jni创建java层的对象 
+	 
+java  AS 方法是native 	 
+
+/app/build/tmp/kotlin-classes/debug/com/zero/giflib1/gif com.zero.giflib1.gif.GifFrame
+
+10  30
+
+功能完成  体验更好 性能更流畅
+tinker     写一个tinker 
+
+深圳  东北 
+绿皮  7   - 6  = 1
+飞机   7 - 1  = 6 
+2-3 年 
+老司机  8 -10 月
+
+面试 2020 1.1  3 月 5K
+知识体系  3到5 1年  api  
+应届生 公司 吃苦 勤快     工资低
+3-5         吃苦 勤快 技术能力 潜力  30  10K  ——》 10K  薪资高
+                       10K ——》 30K  前端 后台  深入学习 
+					   正确的职业生涯 40 35 
+					   
+					   
+					高中生 富士康
+					公司 白领 你要找工作 难找
+					博士 研究所   工作找你
+					   
+					   
+ 
+	 
+
+
+
+
 
 
 
@@ -93,6 +273,112 @@ void     void    V
 jlong     long   J
 GifFrame         Lcom/zero/giflibdemo/gif/GifFrame;  
 
+
+
+
+
+
+
+
+
+
+
+
+extern "C"
+JNIEXPORT jobject JNICALL
+Java_com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jclass clazz, jobject stream,
+                                                         jbyteArray buffer) {
+    // TODO: 把gif图片解析 GifFrame 创建一个java的GifFrame 返回给java层
+
+    //先要创建出C++层的GifFrame
+    jclass inputStreamClazz = env->FindClass("java/io/InputStream");
+    JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz,"read","([BII)I");
+    JavaInputStream inputStream(env,stream,buffer);
+    GifFrame* gifFrame = new GifFrame(&inputStream);
+    //调用Java层的GifFrame的构造函数
+    //1. Java层的GifFrame的jclass
+    jclass gifFrameClazz = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    //2  构造方法的jmethdId
+    jmethodID gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");//方法的签名
+    return env->NewObject(gifFrameClazz,gifFrameInit,
+                          reinterpret_cast<jlong>(gifFrame)
+                          ,gifFrame->getWidth()
+                          ,gifFrame->getHeight()
+                          ,gifFrame->getFrameCount());
+
+}
+
+extern "C"
+JNIEXPORT jlong JNICALL
+Java_com_zero_giflib1_gif_GifFrame_nativeGetFrame(JNIEnv *env, jobject thiz, jlong native_handle,
+                                                     jobject bitmap, jint frame_index) {
+    // TODO: GifFrame -> 拿出index帧的数据 loadFrame
+    //获取C++层的GifFrame
+    GifFrame* gifFrame = reinterpret_cast<GifFrame*>(native_handle);
+    jlong delayMs = gifFrame->loadFrame(env,bitmap,frame_index);
+    return delayMs;
+}
+extern "C"
+JNIEXPORT jobject JNICALL
+decode_jni(JNIEnv *env, jclass clazz, jobject assetManager, jstring gifPath){
+
+   const char* filename = env->GetStringUTFChars(gifPath,0);
+    GifFrame* gifFrame = new GifFrame(env,assetManager,filename);
+    env->ReleaseStringUTFChars(gifPath,filename);
+    //调用Java层的GifFrame的构造函数
+    //1. Java层的GifFrame的jclass
+    jclass gifFrameClazz = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    //2  构造方法的jmethdId
+    jmethodID gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");//方法的签名
+    return env->NewObject(gifFrameClazz,gifFrameInit,
+                          reinterpret_cast<jlong>(gifFrame)
+            ,gifFrame->getWidth()
+            ,gifFrame->getHeight()
+            ,gifFrame->getFrameCount());
+}
+
+JNINativeMethod method[] = {
+        {"nativeDecodeStreamJNI"
+                ,"(Landroid/content/res/AssetManager;Ljava/lang/String;)Lcom/zero/giflib1/gif/GifFrame;",(void*) decode_jni },//
+};
+
+jint registNativeMethod(JNIEnv* env){
+    jclass cl = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    if(env->RegisterNatives(cl,method,sizeof(method)/ sizeof(method[0])) < 0){
+        return -1;
+    }
+    return 0;
+}
+
+jint unRegistNativeMethod(JNIEnv* env){
+    jclass cl = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    if(env->UnregisterNatives(cl)){
+        return -1;
+    }
+    return 0;
+}
+
+JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* param){//动态注册
+    JNIEnv* env;
+    if(vm->GetEnv(reinterpret_cast<void**>(&env),JNI_VERSION_1_6) == JNI_OK){
+        registNativeMethod(env);
+        return JNI_VERSION_1_6;
+    }else if(vm->GetEnv(reinterpret_cast<void**>(&env),JNI_VERSION_1_4) == JNI_OK){
+        registNativeMethod(env);
+        return JNI_VERSION_1_4;
+    }
+    return JNI_ERR;
+
+}
+
+JNIEXPORT void JNI_OnUnload(JavaVM* vm, void* param){
+    JNIEnv* env;
+    if(vm->GetEnv(reinterpret_cast<void**>(&env),JNI_VERSION_1_6) == JNI_OK){
+        unRegistNativeMethod(env);
+    }else if(vm->GetEnv(reinterpret_cast<void**>(&env),JNI_VERSION_1_4) == JNI_OK){
+        unRegistNativeMethod(env);
+    }
+}
 
 
 

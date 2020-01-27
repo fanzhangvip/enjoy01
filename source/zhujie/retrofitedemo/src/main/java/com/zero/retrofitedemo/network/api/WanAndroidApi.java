@@ -29,7 +29,7 @@ public interface WanAndroidApi {
     //  RxJava 方式：Observable<..>接口形式
     Observable<ProjectBean> getProject();
 
-    @Headers("Cache-Control:max-age=640000")
+//    @Headers("Cache-Control:max-age=640000")
     @GET("project/tree/json")
     Call<ProjectBean> getProject1();
 

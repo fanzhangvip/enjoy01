@@ -14,7 +14,7 @@ class MainActivity : BaseActivity<BasePresenter<IBaseView>>(){//extends implemen
 //    private TextView mTextView
     private var test by Perference("key","23")
 
-    lateinit var mTextView: TextView
+    private lateinit var mTextView: TextView
 
     class User{
 

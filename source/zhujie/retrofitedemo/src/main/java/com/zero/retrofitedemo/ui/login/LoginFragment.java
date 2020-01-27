@@ -55,7 +55,7 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
         String username = et_username.getText().toString();
         String password = et_password.getText().toString();
         //MVP retrofit + rxjava
-        mPresenter.login(username, password);
+//        mPresenter.login(username, password);
 
         //断点调试大法
         //基本用法
@@ -63,13 +63,13 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
                 .baseUrl("https://www.wanandroid.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        WanAndroidApi wanAndroidApi = retrofit.create(WanAndroidApi.class);
+        WanAndroidApi wanAndroidApi = retrofit.create(WanAndroidApi.class);//代理实例
 
-        Call<ProjectBean> call = wanAndroidApi.getProject1();
+        Call<ProjectBean> call = wanAndroidApi.getProject1();//获取具体的某个业务
         call.enqueue(new Callback<ProjectBean>() {
             @Override
             public void onResponse(final Call<ProjectBean> call, final Response<ProjectBean> response) {
-                Log.i("Zero","response: " + response.toString());
+                Log.i("Zero","response: " + response.body());
             }
 
             @Override

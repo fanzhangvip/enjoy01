@@ -1,99 +1,71 @@
 往期视频加月亮老师：3433427729
-vip咨询加月亮老师：2807762965
+vip咨询加月亮老师：3433427729
 加月亮老师wx:3433427729
-zero老师QQ: 3417671365
-免费
+zero老师QQ: 3422253348
+免费 Android学习大纲
 
 
 小伙伴们 20:05 发车
 
-自定义控件
-
-最熟悉的陌生人 
 
 
-百度 github  1 
+3-5 年 你还没自己完整的写过自定义view
 
-京东 流式布局
+TextView 不能
 
-extends view 
+extends view 自己实现
 
-onDraw 
-画笔 Paint
-画布 canvas 
+onMeasure 决定大小
+onDraw
 
-测量：
-onMeasure  为什么需要这么做？
+w h 
 
-xml 布局
-width  height
+view中心点 (w/2,h/2)
 
-100dp 精确的值
-match_parent -1
-wrap_content -2    ?  android: 自适应机制 绘制到屏幕上 具体值
+canvas.drawText(text,x,y,paint)
+起始点（w/2 - w1/2,h/2 + h1/2 ）
 
-view
-确定控件的具体尺寸
-viewgroup
-自身的尺寸
-负责子View的尺寸
 
-如何合理的测量
-view 树型结构
+clipRect原理
 
-MeasureSpec  32 int  高2位 Mode  30 size
-Mode
-精确：
-AT_MOST:
-UNSpectid:
- 父Mode限制 + 自身的layoutparam  =  尺寸
- 
- 文字 一个 拆开 1，错 2 对
- 
-   享学课堂
-   
-   眼高手低 避免
-   api < 26 
-   
- 自定义属性 attr
-text
-text_color
-text_color_change
+自定义view原理
 
-direction:
+广度 深度 全面人才 
 
-process 
+基础 原理 - 》 应用 层层深入
 
-碎片化  不成体系  
-高级 Android  必须
+8-10
 
-面试造火箭 工作拧螺丝 
-技能
 
-3-5  能力  初中级 
-应届生 抢饭碗  
-改变
-Android 高级
-心得 ：
 
-工作 几年 ！= 能力 
 
-基础 深入 一步一步
 
-retrofit 热修复
 
-glide 
-glide.with(context).load(url).into(imageview);
-context  application activity fragment 
 
-tinker 
-类加载 dex分别 反射 activity ams
 
-OOM 
 
-Binder 
 
-8 -12 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

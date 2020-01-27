@@ -37,6 +37,9 @@ public class GifFrame {
     private static native GifFrame nativeDecodeStream(InputStream stream,byte[] buffer);
     private static native GifFrame nativeDecodeStreamJNI(AssetManager assetManager, String gifPath);
 
+
+     native String  Test(String name);
+
     private native long nativeGetFrame(long nativeHandle, Bitmap bitmap, int frameIndex);
 
     public long getFrame(Bitmap bitmap,int frameIndex){

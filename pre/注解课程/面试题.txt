@@ -1,0 +1,20 @@
+1.retrofit
+1. retrofit是如何把@GET 转化为get请求？
+2. retrofit如何上传多个文件
+3. retrofit适合大文件下载吗？如果需要下载大文件应该如何做？
+4. retrofit是如何把数据解析成返回的类型的
+5. retrofit的核心原理是什么? 
+
+2.giflib
+1. JNI与NDK的区别？
+2. 如何在JNI层调用Java的方法
+3. JNI动态注册的流程
+4. Kotlin如何使用JNI?
+5. 在JNI中如何改变bitmap
+
+3. 自定义view
+1. view的绘制原理
+2. 如何合理的测量viewtree
+3. 如何避免过度绘制
+4. MeasureSpec的作用
+5. 说说对view的canvas的理解

@@ -99,7 +99,7 @@ long GifFrame::loadFrame(JNIEnv *env,jobject bitmap,int frameIndex){
     SavedImage savedImage = mGif->SavedImages[frameIndex];
     GifImageDesc imageDesc = savedImage.ImageDesc;
     ColorMapObject* colorMapObject = mGif->SColorMap ?
-            mGif->SColorMap : imageDesc.ColorMap;
+                                     mGif->SColorMap : imageDesc.ColorMap;
     //colorMapObject -> pixels
     for(int i = 0; i < imageDesc.Height; ++i){
         for(int j = 0; j < imageDesc.Width; ++j){

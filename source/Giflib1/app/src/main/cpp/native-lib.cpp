@@ -6,34 +6,35 @@
 #include "GifFrame.h"
 
 
+
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jclass clazz, jobject stream,
-                                                         jbyteArray buffer) {
-    // TODO: 把gif图片解析 GifFrame 创建一个java的GifFrame 返回给java层
+com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jobject thiz,jobject stream,jbyteArray buffer){
 
-    //先要创建出C++层的GifFrame
-    jclass inputStreamClazz = env->FindClass("java/io/InputStream");
+    //类似java的反射 Java 的InputStream jclass
+    jclass  inputStreamClazz = env->FindClass("java/io/InputStream");
     JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz,"read","([BII)I");
+
     JavaInputStream inputStream(env,stream,buffer);
+    //jni层的GifFrame
     GifFrame* gifFrame = new GifFrame(&inputStream);
-    //调用Java层的GifFrame的构造函数
-    //1. Java层的GifFrame的jclass
-    jclass gifFrameClazz = env->FindClass("com/zero/giflib1/gif/GifFrame");
-    //2  构造方法的jmethdId
-    jmethodID gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");//方法的签名
-    return env->NewObject(gifFrameClazz,gifFrameInit,
-                          reinterpret_cast<jlong>(gifFrame)
-                          ,gifFrame->getWidth()
-                          ,gifFrame->getHeight()
-                          ,gifFrame->getFrameCount());
+    //创建java层的GifFrame
+    jclass  gifFrameClazz = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    // 调用构造方法
+    jmethodID gifFrameInitId = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");
+
+    return env->NewObject(gifFrameClazz,gifFrameInitId,
+                          reinterpret_cast<jlong>(gifFrame),
+                          gifFrame->getWidth(),
+                          gifFrame->getHeight(),
+                          gifFrame->getFrameCount());
 
 }
 
 extern "C"
 JNIEXPORT jlong JNICALL
 Java_com_zero_giflib1_gif_GifFrame_nativeGetFrame(JNIEnv *env, jobject thiz, jlong native_handle,
-                                                     jobject bitmap, jint frame_index) {
+                                                  jobject bitmap, jint frame_index) {
     // TODO: GifFrame -> 拿出index帧的数据 loadFrame
     //获取C++层的GifFrame
     GifFrame* gifFrame = reinterpret_cast<GifFrame*>(native_handle);
@@ -42,9 +43,9 @@ Java_com_zero_giflib1_gif_GifFrame_nativeGetFrame(JNIEnv *env, jobject thiz, jlo
 }
 extern "C"
 JNIEXPORT jobject JNICALL
-decode_jni(JNIEnv *env, jclass clazz, jobject assetManager, jstring gifPath){
+decode_jni(JNIEnv *env, jobject thiz, jobject assetManager, jstring gifPath){
 
-   const char* filename = env->GetStringUTFChars(gifPath,0);
+    const char* filename = env->GetStringUTFChars(gifPath,0);
     GifFrame* gifFrame = new GifFrame(env,assetManager,filename);
     env->ReleaseStringUTFChars(gifPath,filename);
     //调用Java层的GifFrame的构造函数
@@ -58,7 +59,6 @@ decode_jni(JNIEnv *env, jclass clazz, jobject assetManager, jstring gifPath){
             ,gifFrame->getHeight()
             ,gifFrame->getFrameCount());
 }
-
 
 JNINativeMethod method[] = {
         {"nativeDecodeStreamJNI"

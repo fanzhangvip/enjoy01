@@ -38,7 +38,7 @@ class LoginActivity : RxAppCompatActivity(),LoginView {
 //        loginPresenter = LoginPresenterImpl(this)
         login.setOnClickListener(onClickListener)
         register.setOnClickListener(onClickListener)
-        loginPresenter.attachView()
+//        loginPresenter.attachView()
     }
 
     override fun onDestroy() {

@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.4.1)
-
+# 定义了一个libgif_src
 file(GLOB libgif_src ${CMAKE_SOURCE_DIR}/giflib/*.c)
 
 include_directories(${CMAKE_SOURCE_DIR}/giflib)
 
-
+# so
 add_library(
         native-lib
         SHARED

@@ -209,7 +209,7 @@ public class ColorChangeTextView1 extends View {
                 Log.i(TAG, "DIRECTION_RIGHT = " + DIRECTION_RIGHT);
                 //先绘制改变的颜色
 
-//                canvas.drawRect((int) (mTextStartX + (1 - mProgress) * mTextWidth), 0, mTextStartX + mTextWidth, getMeasuredHeight(), mLinePaint);
+                canvas.drawRect((int) (mTextStartX + (1 - mProgress) * mTextWidth), 0, mTextStartX + mTextWidth, getMeasuredHeight(), mLinePaint);
                 drawTextHorizontal(canvas, mTextColorChange,
                         (int) (mTextStartX + (1 - mProgress) * mTextWidth), mTextStartX + mTextWidth);
                 //后绘制没改变的
@@ -265,7 +265,6 @@ public class ColorChangeTextView1 extends View {
 
         canvas.save();
         canvas.clipRect(startX, 0, endX, getMeasuredHeight());
-
         canvas.drawText(mText, mTextStartX,
                 getMeasuredHeight() / 2
                         - ((mPaint.descent() + mPaint.ascent()) / 2), mPaint);
