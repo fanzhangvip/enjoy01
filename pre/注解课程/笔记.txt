@@ -1,12 +1,233 @@
-往期视频月亮老师3433427729
+往期视频加阿媛老师：1413650094
 vip咨询加阿媛老师：1413650094
 加阿媛老师wx:1413650094
 zero老师QQ: 3417671365
 免费
 
-14：10开始
+20：10开始
 
-同学们 14：10发车 等下还在路上的小伙伴们
+同学们 20：10发车 等下还在路上的小伙伴们
+
+
+retrofit vs OKhttp  最大的优势的解耦做的好
+
+BAT  
+用了某个开源框架
+原理 -》 read the fuck source 
+
+retrofit 基础用法 -》 原理 
+
+阅读源码的技巧
+
+为什么？
+能做什么？
+采用什么方式实现？如果是你 你会如何做？
+3-5 调用API 水平
+
+1. retrofit对象如何构建？
+2. 声明一个接口就能完成请求？ 动态代理 
+3. 注解？ 在什么地方如何去解析这些注解
+4. 真正执行请求是哪里
+5. 类型的转换，适配？ 
+
+
+new HttpClient  UI
+1次？  多次请求？   
+
+extends super
+out     in
+
+rxJava  流的概念  从输入开始 -》 流  。。。。。。 -》 
+rxjava + retrofit 的再次封装 kotlin 
+网络请求出错  直接把这个错误信息展示给用户 
+产品的要求
+
+技术水平 与时俱进  淘汰
+kotlin 4-5次 
+
+主流程 脉络 
+java高级基础 (泛型 注解 并发 类加载 ) Android基础（framework ） 设计模式  算法 
+
+建造者模式： 很适合自定义一些东西 
+
+网络请求在子线程 返回结果 Ui主线程
+
+
+Android
+MainThreadExecutor 
+json -> rx kotlin java8 call 
+
+
+CallAdapter retrofit 所有的请求 call 通过Call来调用 
+CallAdapter适配出一个合适的Call 
+adapt方法
+
+retrofit Call对象（request ,response 转换）  包裹着    OkHttp  Call对象（真正执行网络请求）
+
+
+DefaultCallAdapterFactory
+
+Retrofit.build
+核心 
+OkHttpClient  真正执行网络请求的
+
+CallAdapter  返回一个合适的Call  Call对象(rx kotlin java8 call )
+
+Converter    返回一个合适的Converter (json  Gson fastjson xml ) -> T 
+
+执行具体的业务
+1. 如何获取具体的业务实例 Proxy.newProxyInstance 
+
+
+loadServiceMethod().invoke() 返回一个Call 
+
+ServiceMethod
+HttpServiceMethod<ResponseT, ReturnT> extends ServiceMethod
+CallAdapted<ResponseT, ReturnT> extends HttpServiceMethod
+
+retrofit 
+OkHttpCall 包装了OkHttp  Call对象
+ Call
+
+作业： 
+类图 时序图  写博客 
+
+有扎实的数据结构
+基本功逻辑清晰，可以熟练编写代码
+有面向对象思想，熟悉常用设计模式
+熟悉JDK
+常用API熟悉View绘制，会自定义View
+熟悉Android Layout
+熟悉Handler使用
+对多线程模型有认识，可以正确处理同步，异步等问题
+熟悉安卓常用存储方式，如SharedPreference, SQLite等,有GreenDao,Realm使用经验更好
+至少熟悉Gson,Jackson,FastJson中的一个
+有内存优化，性能优化的经验加分
+有自动化测试经验(AndroidJUnit Mockito UiAutomator等)加分
+注意，我无权讨论薪资。薪资与能力有关，我们会有行业竞争力的package.
+工作职责：
+参与产品需求讨论，与PM配合，负责功能的实现
+设计优良的代码，保证代码的设计符合规范，并编写测试用例，保证模块的质量
+与测试配合，解决测试或用户发现的bug
+
+
+体系化 从基础到原理再到应用 
+
+8-12个月 
+如何学习？  自学？ 看博客 
+跟着老师学 
+
+¥9762.22
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Retrofit  = Okhttp + ?  再次封装 泛型  反射 动态代理  
 
