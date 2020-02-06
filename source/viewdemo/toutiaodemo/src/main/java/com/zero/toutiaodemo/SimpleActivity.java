@@ -6,7 +6,7 @@ import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
 
-import com.zero.toutiaodemo.view.ColorChangeTextView2;
+import com.zero.toutiaodemo.kotlin.ColorChangeTextView2;
 
 
 public class SimpleActivity extends AppCompatActivity {

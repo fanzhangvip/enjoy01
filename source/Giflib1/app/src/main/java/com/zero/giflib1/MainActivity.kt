@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
         var gifDrawable: GifDrawable? = null //BitmapDrawable
         try {
 //            gifDrawable =  GifDrawable(GifFrame.decodeStream(FileInputStream("aaa.gif")))
-//            gifDrawable =  GifDrawable(GifFrame.decodeStream(this,"time_1.gif"))
-            gifDrawable = GifDrawable(GifFrame.decodeStream(null, "/sdcard/timg_2.gif"))
+            gifDrawable =  GifDrawable(GifFrame.decodeStream(this,"time_1.gif"))
+//            gifDrawable = GifDrawable(GifFrame.decodeStream(null, "/sdcard/timg_2.gif"))
             image.setImageDrawable(gifDrawable)
             gifDrawable.start()
         } catch (e: Exception) {

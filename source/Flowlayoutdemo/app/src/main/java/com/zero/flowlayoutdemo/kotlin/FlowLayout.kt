@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import java.util.*
 
-class FlowLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRes: Int = 0)
+class FlowLayout
+@JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRes: Int = 0)
     : ViewGroup(context, attrs, defStyle, defStyleRes){
 
     companion object{
@@ -34,33 +35,22 @@ class FlowLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
         heights = arrayListOf()
     }
 
+    init {
+//        initMeasureParams()
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        //        具体的measure 思路
-//        1. viewgroup  开始测量自身的尺寸
-//        2. 为每个child计算测量限制信息(MeasureSpec) = 限制Mode（高两位） + size(30) 32位 int 二进制 01
-//        3. 把上面的限制信息 传递给每个child child 知道如何测量自己了child.measure()发指令 -》 onMeasure
-//        4. child测量完毕后 viewgroup获取每个子View测量后的大小
-//        5. viewgroup结合自身的情况 计算自己的大小
-//        6. 保存自身的大小
+    //1. 确定自身的大小
+    //2. 计算子view的大小
         initMeasureParams()
         val selfWidth = MeasureSpec.getSize(widthMeasureSpec)
 
-        val paddingLeft = paddingLeft
-        val paddingTop = paddingTop
-        val paddingRight = paddingRight
-        val paddingBottom = paddingBottom
-
-        //记录当前行的宽度和高度
         //记录当前行的宽度和高度
         var lineWidthUsed = 0 // 宽度是当前行子view的宽度之和
-
         var lineHeight = 0 // 高度是当前行所有子View中高度的最大值
 
-
-        //整个流式布局的宽度和高度
         //整个流式布局的宽度和高度
         var wantedWidth = 0 //所有行中宽度的最大值
-
         var wantedHeight = 0 // 所以行的高度的累加
 
         val childCount: Int = childCount
@@ -85,17 +75,17 @@ class FlowLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
             }
             lineViews.add(childView)
             lineWidthUsed = (lineWidthUsed + childMeasureWidth + mHorizontalSpacing).toInt()
-            lineHeight = Math.max(lineHeight, childMeasureHeight) //取当前行中高度最大的作为当前行高
+            lineHeight = lineHeight.coerceAtLeast(childMeasureHeight) //取当前行中高度最大的作为当前行高
             //如果当前childView是最后一行的最后一个
             if (i == childCount - 1) { //最后一行
                 heights.add(lineHeight)
                 views.add(lineViews)
-                wantedWidth = Math.max(wantedWidth, lineWidthUsed)
+                wantedWidth = wantedWidth.coerceAtLeast(lineWidthUsed)
                 wantedHeight += lineHeight
             }
         }
 
-        //确定流式布局自身最终的宽高
+
         //确定流式布局自身最终的宽高
         val widthMode = MeasureSpec.getMode(widthMeasureSpec)
         val heightMode = MeasureSpec.getMode(heightMeasureSpec)
@@ -107,20 +97,15 @@ class FlowLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet
         Log.i(TAG, "onMeasure: selfWidth=$selfWidth , wantedWidth=$wantedWidth , realWidth=$realWidth,realHeight=$realHeight")
 
         //保存FlowLayout最终宽高
-        //保存FlowLayout最终宽高
         setMeasuredDimension(realWidth, realHeight)
 
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
 
+
         val lineCount = views.size
         var currX = left
-        Log.i(TAG, "onLayout0: $lineCount")
-        Log.i(TAG, "onLayout1: $left")
-//        for (i in 0..100) {
-//            Log.e(TAG, "onLayout: dp=" + i + " , px=" + dp2px(i.toFloat()))
-//        }
         var currY = 0
 
         for (i in 0 until lineCount) { //大循环，所有的子View 一行一行的布局

@@ -16,7 +16,7 @@ add_library(
 find_library(
         log-lib
         log)
-
+# NDK
 find_library(
         android-lib
         android

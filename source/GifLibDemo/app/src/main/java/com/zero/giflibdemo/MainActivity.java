@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 //            fileInputStream.read(buffer,0,buffer.length);
 
 //            gifDrawable = new GifDrawable(GifFrame.decodeStream(getAssets().open("fire.gif")));
-//            gifDrawable = new GifDrawable(GifFrame.decodeStream(this,"time_1.gif"));
-            gifDrawable = new GifDrawable(GifFrame.decodeStream(null,"/sdcard/timg_2.gif"));
+            gifDrawable = new GifDrawable(GifFrame.decodeStream(this,"time_1.gif"));
+//            gifDrawable = new GifDrawable(GifFrame.decodeStream(null,"/sdcard/timg_2.gif"));
             mImageView.setImageDrawable(gifDrawable);
             gifDrawable.start();
         } catch (Exception e) {

@@ -1,8 +1,343 @@
-往期视频加阿媛老师：1413650094
+往期视频加月亮老师：3433427729
 vip咨询加阿媛老师：1413650094
 加阿媛老师wx:1413650094
-zero老师QQ: 3417671365
+zero老师QQ: 33417671365
 免费
+
+同学们 晚上好
+我们听完这首歌就开始发车拉
+
+
+Android 如何调用C语言写的库
+
+glide gif  
+
+gif 
+
+giflib c/c++ 高效 内存
+glide  java jvm 
+JNI编程  用过 1  没用过2 
+5G  ffmepg  人工智能 移动端 JNI NDK  网络安全 Android系统 window 
+私密 c/c++ Java 通过jni  so 
+BAT  
+
+
+1  java  2
+kotlin  jvm  java 封装了一层语法糖
+dart
+
+JNI  NDK 的区别 ？  
+ JNI Java的一套api接口 Java 跨平台 
+ 
+ NDK -> c/c++    google android 平台的功能的api  SDK -> java /kotlin
+ 
+ 静态注册
+ methodName - > Java_包名_类名_methodName
+ Java_com_zero_giflibdemo_gif_GifFrame_nativeDecodeStream
+ 
+ 动态注册 
+ private static native GifFrame nativeDecodeStreamJNI(AssetManager assetManager, String gifPath)
+ 
+ decode_jni
+ 
+ System.loadLibrary -> JNI_OnLoad
+ 做了一个映射表
+ typedef struct {
+    const char* name;  nativeDecodeStreamJNI
+    const char* signature;
+    void*       fnPtr; (void*) decode_jni
+} JNINativeMethod;
+
+"(Landroid/content/res/AssetManager;Ljava/lang/String;)Lcom/zero/giflibdemo/gif/GifFrame;"
+ (形参)返回值
+ 
+ 
+ png jeg bmp 一张图 
+ gif 多张图片+控制信息  Android帧动画
+ 
+ 
+ 
+ JNIEnv *env -> context 
+ , jclass clazz,
+ 
+ build  -> build.gradle (编译Java appt )
+ 
+ externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
+        }
+    }
+
+cmake - >  CMakeLists.txt的脚本 （c/c++）
+
+
+
+像素点 颜色值
+int 32
+
+
+热点
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+应该如何去学习  进去
+Android 知识体系 
+BAT 有邀请过 
+
+retrofit 泛型  @ 
+handler 
+
+应届生 0-1 技能  api 
+3-5 
+
+热修复 插件化
+
+代码 搬运工 
+生产 代码 
+自学  
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define ARGB_TO_COLOR8888(a,r,g,b) \
+((a) << 24 | (b) << 16 | (g) << 8 | (r))
+
+0000 0000 0000 0000 0000 0000 0000 0000
+a         r         g         b
+int 32  表示一个像素点的颜色 
+a
+r
+g
+b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -63,7 +398,7 @@ setImageDrawable
  
  
  
- #define ARGB_TO_COLOR8888(a,r,g,b) \
+#define ARGB_TO_COLOR8888(a,r,g,b) \
 ((a) << 24 | (b) << 16 | (g) << 8 | (r))
 
 0000 0000 0000 0000 0000 0000 0000 0000
