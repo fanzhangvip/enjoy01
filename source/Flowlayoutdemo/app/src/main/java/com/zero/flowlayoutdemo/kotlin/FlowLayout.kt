@@ -56,12 +56,15 @@ class FlowLayout
         val childCount: Int = childCount
         for (i in 0 until childCount) { //获取子View
             val childView: View = this.getChildAt(i)
+
             val childLayoutParams = childView.layoutParams
-            childView.measure(
-                    getChildMeasureSpec(widthMeasureSpec, paddingLeft + paddingRight,
-                            childLayoutParams.width),
-                    getChildMeasureSpec(heightMeasureSpec, paddingTop + paddingBottom,
-                            childLayoutParams.height))
+
+            val childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, paddingLeft + paddingRight,
+                    childLayoutParams.width)
+            val childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, paddingTop + paddingBottom,
+                    childLayoutParams.height)
+            childView.measure(childWidthMeasureSpec,childHeightMeasureSpec)
+
             val childMeasureWidth = childView.measuredWidth
             val childMeasureHeight = childView.measuredHeight
             if (lineWidthUsed + childMeasureWidth + mHorizontalSpacing > selfWidth) { //换行

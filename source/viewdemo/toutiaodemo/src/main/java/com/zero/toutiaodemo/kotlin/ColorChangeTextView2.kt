@@ -11,8 +11,19 @@ import android.util.Log
 import android.view.View
 import com.zero.toutiaodemo.R
 
-class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRes: Int = 0)
+class ColorChangeTextView2
+@JvmOverloads
+constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRes: Int = 0)
     : View(context, attrs, defStyle, defStyleRes) {
+
+    private var mPaint = Paint()//绘制文字
+    private var mLinePaint = Paint()//辅助框
+
+    private var mTextBound = Rect()
+    private var mTextWidth = 0
+    private var mTextHeight = 0
+
+    private var mTextStartX = 0
 
     companion object{
         const val TAG = "Zero"
@@ -23,10 +34,8 @@ class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: At
         const val DIRECTION_BOTTOM = 3
     }
 
-    private var mPaint = Paint()
-    private var mLinePaint = Paint()
 
-    var text: String = "享学课堂"
+    var text: String = "享学课堂"//属性  = java成员变量 + get set
         set(value) {
             field = value
             requestLayout()
@@ -60,19 +69,6 @@ class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: At
 
     var direction: Int = DIRECTION_LEFT
 
-    private var mTextBound = Rect()
-    private var mTextWidth = 0
-    private var mTextHeight = 0
-    private var mTextStartX = 0
-    private var mTextStartY = 0
-
-
-    init {
-        mLinePaint.isAntiAlias = true
-        mLinePaint.strokeWidth = sp2px(3f)
-        mLinePaint.color = Color.GREEN
-    }
-
     init {
         val ta: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.ColorChangeTextView1)
         text = ta.getString(R.styleable.ColorChangeTextView1_text) as String
@@ -89,37 +85,34 @@ class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: At
         mPaint.textSize = textSize
     }
 
+    init {
+        mLinePaint.isAntiAlias = true
+        mLinePaint.strokeWidth = sp2px(3f)
+        mLinePaint.color = Color.GREEN
+    }
+
+
+
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        //1.  先测量文字
+//        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        //确定自身的宽高
+        //1. 测量出文字的大小
         measureText()
-        //2.  测量自身
+        //2. 确定自身的大小
         val width = measureWidth(widthMeasureSpec)
         val height = measureHeight(heightMeasureSpec)
         //3. 保存测量的尺寸 setMeasuredDimension()
         setMeasuredDimension(width,height)
-
         mTextStartX = measuredWidth/2 - mTextWidth/2
-        mTextStartY = measuredHeight/2 - mTextHeight/2
-
-    }
-
-    private fun measureText(){
-        mPaint.getTextBounds(text,0,text.length,mTextBound)
-        mTextWidth = (mPaint.measureText(text) + .5f).toInt()
-
-        val fontMetrics = Paint.FontMetrics()
-        mPaint.getFontMetrics(fontMetrics)
-
-        mTextHeight = (fontMetrics.descent - fontMetrics.ascent + .5f).toInt()
 
     }
 
     private fun measureWidth(measureSpec: Int): Int{
         var result = 0
 
-        val mode =  MeasureSpec.getMode(measureSpec)
-        val size = MeasureSpec.getSize(measureSpec)
+        val mode =  MeasureSpec.getMode(measureSpec)//父view的mode
+        val size = MeasureSpec.getSize(measureSpec)//父view的size
 
         when(mode){
             MeasureSpec.EXACTLY ->{
@@ -150,13 +143,24 @@ class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: At
         return result
     }
 
+    private fun measureText(){
+        mPaint.getTextBounds(text,0,text.length,mTextBound)
+        mTextWidth = (mPaint.measureText(text) + .5f).toInt()
+
+//        val fontMetrics = Paint.FontMetrics()
+//        mPaint.getFontMetrics(fontMetrics)
+//
+//        mTextHeight = (fontMetrics.descent - fontMetrics.ascent + .5f).toInt()
+
+    }
+
+
     override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
+        //可空对象 ？
+        //不可空
 
         when(direction){
             DIRECTION_LEFT ->{
-
-
                 canvas?.apply {
                     //绘制颜色改变的层
                     save()
@@ -188,7 +192,6 @@ class ColorChangeTextView2 @JvmOverloads constructor(context: Context, attrs: At
 
             }
         }
-
     }
 
 }

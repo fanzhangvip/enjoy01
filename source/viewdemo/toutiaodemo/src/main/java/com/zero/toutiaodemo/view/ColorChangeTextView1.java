@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
 public class ColorChangeTextView1 extends View {
     private static final String TAG = "Zero";
 
-    private String mText = "享学课堂";
+    private String mText = "享学课堂";//成员变量
     private int mTextSize = sp2px(30);
     private int mTextColor = Color.BLACK;
     private int mTextColorChange = Color.RED;
@@ -165,12 +165,12 @@ public class ColorChangeTextView1 extends View {
         mTextWidth = (int) (mPaint.measureText(mText) + .5f);
         Log.i(TAG, "mTextWidth = " + mTextWidth);
 
-        Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
-
-        mPaint.getFontMetrics(fontMetrics);
-
-        mTextHeight = (int) (fontMetrics.descent - fontMetrics.ascent + .5f);
-        Log.i(TAG, "mTextHeight = " + mTextHeight);
+//        Paint.FontMetrics fontMetrics = new Paint.FontMetrics();
+//
+//        mPaint.getFontMetrics(fontMetrics);
+//
+//        mTextHeight = (int) (fontMetrics.descent - fontMetrics.ascent + .5f);
+//        Log.i(TAG, "mTextHeight = " + mTextHeight);
 
     }
 
@@ -209,7 +209,7 @@ public class ColorChangeTextView1 extends View {
                 Log.i(TAG, "DIRECTION_RIGHT = " + DIRECTION_RIGHT);
                 //先绘制改变的颜色
 
-                canvas.drawRect((int) (mTextStartX + (1 - mProgress) * mTextWidth), 0, mTextStartX + mTextWidth, getMeasuredHeight(), mLinePaint);
+//                canvas.drawRect((int) (mTextStartX + (1 - mProgress) * mTextWidth), 0, mTextStartX + mTextWidth, getMeasuredHeight(), mLinePaint);
                 drawTextHorizontal(canvas, mTextColorChange,
                         (int) (mTextStartX + (1 - mProgress) * mTextWidth), mTextStartX + mTextWidth);
                 //后绘制没改变的

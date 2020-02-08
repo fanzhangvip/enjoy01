@@ -26,17 +26,17 @@ public class SimpleActivity extends AppCompatActivity {
     }
 
     public void onStartRight(View view){
-        mView1.setDirection(ColorChangeTextView2.DIRECTION_RIGHT);
-        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
+//        mView1.setDirection(ColorChangeTextView2.DIRECTION_RIGHT);
+//        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
     }
 
     public void onStartTop(View view){
-        mView1.setDirection(ColorChangeTextView2.DIRECTION_TOP);
-        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
+//        mView1.setDirection(ColorChangeTextView2.DIRECTION_TOP);
+//        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
     }
 
     public void onStartBottom(View view){
-        mView1.setDirection(ColorChangeTextView2.DIRECTION_BOTTOM);
-        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
+//        mView1.setDirection(ColorChangeTextView2.DIRECTION_BOTTOM);
+//        ObjectAnimator.ofFloat(mView1,"progress",0,1).setDuration(2500).start();
     }
 }

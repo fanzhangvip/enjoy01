@@ -582,6 +582,16 @@ zero，你保存一下
 2，字体变色原理解析？
 3，实现今日头条字体动态变色的ViewPager指示器
 
+今日课题：fragment你应该知道的一切
+摘要：
+上课时间：2020/02/08 20:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，fragment的生命周期
+2，fragment的异常销毁，状态保持和恢复机制
+3，Android屏幕旋转如何处理AsysncTask和ProgressDialog?
+
 
 
 

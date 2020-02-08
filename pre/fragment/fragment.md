@@ -38,7 +38,7 @@
   * 与onCreateView想对应，当该Fragment的视图被移除时调用
 > onDetach()
   * 与onAttach相对应，当Fragment与Activity关联被取消时调用
-  
+
   ![](fragment_status.jpg) 
 --------------------------
 ##### 生命周期探究

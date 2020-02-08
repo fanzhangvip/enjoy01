@@ -1,6 +1,6 @@
 package com.enjoy02.enjoyfragmentdemo02.fragment;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 public class FragmentUtils {

@@ -1,11 +1,176 @@
 往期视频加月亮老师：3433427729
-vip咨询加月亮老师：3433427729
-加月亮老师wx:3433427729
-zero老师QQ: 3422253348
+VIP咨询 阿媛老师：1413650094
+zero老师QQ: 3417671365
 免费 Android学习大纲
 
 
 小伙伴们 20:05 发车
+
+
+
+
+
+完整的自定义view  1 2 
+调用API  ？  
+
+
+代码的搬运工 应届生 API 
+
+代码的生产者 3-5同学
+
+改变 学习 view/viewgroup 自定义view 原理 
+
+
+xml   构造函数？ 
+
+onMeasure -> onlayout -> ondraw
+
+
+kotlin 开发app  主流  BAT 
+
+kotlin 在java的基础上上封装了一层语法糖  jvm
+
+/**
+     * Draw the text, with origin at (x,y), using the specified paint. The origin is interpreted
+     * based on the Align setting in the paint.
+     *
+     * @param text The text to be drawn
+     * @param start The index of the first character in text to draw
+     * @param end (end - 1) is the index of the last character in text to draw
+     * @param x The x-coordinate of the origin of the text being drawn
+     * @param y The y-coordinate of the baseline of the text being drawn
+     * @param paint The paint used for the text (e.g. color, size, style)
+     */
+    public void drawText(@NonNull String text, int start, int end, float x, float y,
+            @NonNull Paint paint) {
+        super.drawText(text, start, end, x, y, paint);
+    }
+	
+	
+android:layout_width="match_parent"
+android:layout_width="wrap_content"
+android:layout_width="10dp"
+
+LayoutParams  MeasureSpec   size = 10dp
+
+int  是32位的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

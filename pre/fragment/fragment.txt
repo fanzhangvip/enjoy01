@@ -1,8 +1,63 @@
 fragment的五种状态
-static final int INITIALIZING = 0;     // Not yet created.
-static final int CREATED = 1;          // Created.
-static final int ACTIVITY_CREATED = 2; // Fully created, not started.
-static final int STARTED = 3;          // Created and started, not resumed.
-static final int RESUMED = 4;          // Created started and resumed.
+static final int INITIALIZING = 0;     // Not yet created.销毁。
+static final int CREATED = 1;          // Created.没有视图但fragment已创建，比如：fragment处于返回栈中。
+static final int ACTIVITY_CREATED = 2; // The activity has finished its creation.宿主Activity已创建完毕，就是fragment生命周期已调用到onActivityCreated()，已创建视图。
+static final int STOPPED = 3;          // Fully created, not started.不显示
+static final int STARTED = 4;          // Created and started, not resumed.不聚焦
+static final int RESUMED = 5;          // Created started and resumed.聚焦
+
 
 int mState = INITIALIZING;
+
+
+fragment viewtree状态保存
+Activity.onSaveInstanceState
+FragmentController.saveAllState
+FragmentManager.saveAllState
+FragmentManager.saveFragmentBasicState
+	FragmentManager.performSaveInstanceState //mActive前台的Fragment
+	fragment.performSaveInstanceState
+	fragment.onSaveInstanceState
+FragmentManager.saveFragmentViewState
+ViewGroup.saveHierarchyState // f.mView.saveHierarchyState(mStateArray);
+ViewGroup.dispatchSaveInstanceState
+View.dispatchSaveInstanceState
+View.onSaveInstanceState
+
+
+Activity viewtree状态保存
+Activity.onSaveInstanceState
+PhoneWindow.saveHierarchyState
+ViewGroup.saveHierarchyState --mContentParent
+
+事务进栈：
+Fragment事务加入返回栈导致时是如何触发active fragment 的View tree 的深度遍历并保存状态的？流程如下：
+
+getFragmentManager().beginTransation()：获得BackStackRecord
+BackStackRecord：addToBackStack()
+BackStackRecord：commit()
+BackStackRecord：commitInternal()
+FragmentManagerImpl：enqueueAction()：BackStackRecord加入mPendingActions。
+FragmentManagerImpl：generateOpsForPendingActions()：mPendingActions转换为mTmpRecords 和mTmpIsPop。
+FragmentManagerImpl：executeOpsTogether() ：遍历mTmpRecords。1、将Op是replace 的替换为多个remove 和一个add。2、执行所有Op，更新mAdded 和mActive，最后一个Op时，对mAdded 和mActive 中所有Fragment 切换生命周期到预期的状态，同时，在此过程中对每一个从前台退回到返回栈的Fragment调用它的顶级View 的saveHierarchyState() 保存View状态。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

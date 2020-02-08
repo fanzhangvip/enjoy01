@@ -1,15 +1,15 @@
 package com.enjoy02.enjoyfragmentdemo02.fragment;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.enjoy02.enjoyfragmentdemo02.BaseFragment;
 import com.enjoy02.enjoyfragmentdemo02.R;
-import com.enjoy02.enjoyfragmentdemo02.arch.FragmentObservable;
 import com.enjoy02.enjoyfragmentdemo02.arch.FragmentObserver;
 
 /**
