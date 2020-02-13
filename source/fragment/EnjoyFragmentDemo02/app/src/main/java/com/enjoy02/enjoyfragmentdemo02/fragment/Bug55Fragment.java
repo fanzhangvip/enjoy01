@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.enjoy02.enjoyfragmentdemo02.BaseFragment;
+import com.enjoy02.enjoyfragmentdemo02.FragmentDelegater;
 import com.enjoy02.enjoyfragmentdemo02.R;
 
 
@@ -24,6 +25,7 @@ public class Bug55Fragment extends BaseFragment {
 
     public static Fragment newIntance(final String name) {
         Bug55Fragment fragment = new Bug55Fragment();
+        fragment.setFragmentDelegater(new FragmentDelegater(fragment));
         count++;
         Bundle args = new Bundle();
         args.putString("name", name);

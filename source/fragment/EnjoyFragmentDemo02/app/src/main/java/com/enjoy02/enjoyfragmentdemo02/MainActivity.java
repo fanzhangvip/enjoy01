@@ -18,6 +18,8 @@ public class MainActivity extends FragmentActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         //TODO: 3.向FrameLayout容器添加MainFragment,现在并未真正执行
         transaction.add(R.id.frameLayout, MainFragment.newIntance(), MainFragment.class.getName());
+
+
         //TODO: 4.提交事务，真正去执行添加动作
         transaction.commit();
     }

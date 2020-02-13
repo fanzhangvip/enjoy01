@@ -3,6 +3,7 @@ package com.enjoy02.enjoyfragmentdemo02.dialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,7 @@ import com.enjoy02.enjoyfragmentdemo02.R;
 public class RetainedFragment extends Fragment
 {
     // data object we want to retain
-    private Bitmap data;
+    private AsyncTask data;
     // this method is only called once for this fragment
     @Override
     public void onCreate(Bundle savedInstanceState)

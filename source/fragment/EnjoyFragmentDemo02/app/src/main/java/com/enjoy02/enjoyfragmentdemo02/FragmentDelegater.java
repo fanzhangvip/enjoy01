@@ -35,26 +35,26 @@ public class FragmentDelegater extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-//        dumpLifeCycle("onCreateView");
+        dumpLifeCycle("onCreateView");
         return null;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        dumpLifeCycle("onViewCreated");
+        dumpLifeCycle("onViewCreated");
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        dumpLifeCycle("onActivityCreated");
+        dumpLifeCycle("onActivityCreated");
     }
 
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-//        dumpLifeCycle("onViewStateRestored");
+        dumpLifeCycle("onViewStateRestored");
     }
 
     @Override
@@ -108,7 +108,7 @@ public class FragmentDelegater extends Fragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        //        Log.i("Zero", "setUserVisibleHint isVisibleToUser: " + isVisibleToUser);
+                Log.i("Zero", "setUserVisibleHint isVisibleToUser: " + isVisibleToUser);
     }
 
     /**
@@ -121,30 +121,30 @@ public class FragmentDelegater extends Fragment {
      */
     @Override
     public void onHiddenChanged(boolean hidden) {
-//        Log.i("Zero", "onHiddenChanged hidden: " + hidden);
+        Log.i("Zero", "onHiddenChanged hidden: " + hidden);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        Log.i("Zero", "requestCode: " + requestCode + " resultCode: " + resultCode + " data: " + data);
+        Log.i("Zero", "requestCode: " + requestCode + " resultCode: " + resultCode + " data: " + data);
     }
 
     @Override
     public void onInflate(Activity activity, AttributeSet attrs, Bundle savedInstanceState) {
         super.onInflate(activity, attrs, savedInstanceState);
-//        dumpLifeCycle("onInflate");
+        dumpLifeCycle("onInflate");
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-//        dumpLifeCycle("onSaveInstanceState");
+        dumpLifeCycle("onSaveInstanceState");
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-//        dumpLifeCycle("onConfigurationChanged");
+        dumpLifeCycle("onConfigurationChanged");
     }
 
     private void dumpLifeCycle(final String method) {

@@ -3,6 +3,9 @@ package com.enjoy02.enjoyfragmentdemo02.activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.PersistableBundle;
+import android.util.Log;
+
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,20 +31,41 @@ public class Bug3Activity extends FragmentActivity {
         }
     };
 
+    private Handler handler = new Handler(msg -> {
+        Log.i("Zero","sdf"); 
+        return false;
+    });
+
+    private Runnable runnable = ()->{};
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bug3);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.frameLayout, Bug3Fragment.newIntance(mHandler), Bug3Fragment.class.getName());
-        transaction.commit();
+        if(savedInstanceState == null){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.add(R.id.frameLayout, Bug3Fragment.newIntance(mHandler), Bug3Fragment.class.getName());
+            transaction.commit();
 
-        fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.frameLayout, Bug31Fragment.newIntance(mHandler), Bug31Fragment.class.getName());
-        transaction.commit();
+            fragmentManager = getSupportFragmentManager();
+            transaction = fragmentManager.beginTransaction();
+            transaction.add(R.id.frameLayout, Bug31Fragment.newIntance(mHandler), Bug31Fragment.class.getName());
+            transaction.commit();
+        }
+
+
     }
     /**
      * 原因分析

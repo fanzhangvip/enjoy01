@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.enjoy02.enjoyfragmentdemo02.BaseFragment;
+import com.enjoy02.enjoyfragmentdemo02.FragmentDelegater;
 import com.enjoy02.enjoyfragmentdemo02.R;
 
 /**
@@ -22,7 +23,7 @@ public class Bug4Fragment extends BaseFragment {
 
     public static Fragment newIntance() {
         Bug4Fragment fragment = new Bug4Fragment();
-//        fragment.setFragmentDelegater(new FragmentDelegater(fragment));
+        fragment.setFragmentDelegater(new FragmentDelegater(fragment));
         return fragment;
     }
 

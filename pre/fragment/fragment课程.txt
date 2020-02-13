@@ -1,0 +1,15 @@
+fragment课程 vip
+第一节课：
+1. fragment基本使用
+2. fragment使用需要注意的点
+    2.1 fragment重叠问题
+    2.2 fragment的onActivityResult分发的问题
+3. fragment应用
+   3.1 保存大数据
+   3.2 处理屏幕旋转的问题
+
+
+第二节课：
+1. framentManager的作用
+2. fragment的事务，真正实现/回退栈原理
+3. fragment的生命周期 
