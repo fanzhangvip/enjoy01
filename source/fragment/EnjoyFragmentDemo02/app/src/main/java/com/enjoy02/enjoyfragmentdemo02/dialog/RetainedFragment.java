@@ -18,7 +18,7 @@ import com.enjoy02.enjoyfragmentdemo02.R;
 public class RetainedFragment extends Fragment
 {
     // data object we want to retain
-    private AsyncTask data;
+    private Object data;
     // this method is only called once for this fragment
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -33,7 +33,7 @@ public class RetainedFragment extends Fragment
         this.data = data;
     }
 
-    public Bitmap getData()
+    public Object getData()
     {
         return data;
     }

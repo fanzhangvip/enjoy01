@@ -7,12 +7,15 @@
     android:layout_height="match_parent">
 
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <TextView
+        android:layout_gravity="center"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:id="@+id/text"
+        android:background="#cccccc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:textSize="30sp"
+        android:text="@string/fragment_text"/>
 
-    </FrameLayout>
 </LinearLayout>
