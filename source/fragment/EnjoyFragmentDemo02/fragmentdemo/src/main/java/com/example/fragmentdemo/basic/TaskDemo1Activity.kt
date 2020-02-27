@@ -16,14 +16,12 @@ class TaskDemo1Activity : AppCompatActivity() {
     private var listView: ListView? = null
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.e(TAG, "onCreate")
+        Log.i(TAG, "onCreate")
         setContentView(R.layout.activity_list)
         listView = findViewById(R.id.listview)
-        // find the retained fragment on activity restarts
         val fm = supportFragmentManager
         dataFragment = fm.findFragmentByTag("data") as OtherRetainedFragment?
-        // create the fragment and data the first time
-        if (dataFragment == null) { // add the fragment
+        if (dataFragment == null) {
             dataFragment = OtherRetainedFragment()
             fm.beginTransaction().add(dataFragment!!, "data").commit()
         }
@@ -35,12 +33,11 @@ class TaskDemo1Activity : AppCompatActivity() {
             dataFragment!!.data = mMyTask
             mMyTask!!.execute()
         }
-        // the data is available in dataFragment.getData()
     }
 
     override fun onRestoreInstanceState(state: Bundle) {
         super.onRestoreInstanceState(state)
-        Log.e(TAG, "onRestoreInstanceState")
+        Log.i(TAG, "onRestoreInstanceState")
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -65,6 +62,6 @@ class TaskDemo1Activity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "MainActivity"
+        private const val TAG = "Zero"
     }
 }

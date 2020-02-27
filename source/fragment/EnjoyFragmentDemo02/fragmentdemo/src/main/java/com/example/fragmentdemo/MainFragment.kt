@@ -20,7 +20,7 @@ class MainFragment : ListFragment() {
                 "静态使用",
                 "动态使用",
                 "保存bitmap",
-                "ProcessDialog",
+                "保存Task",
                 "Can not perform this action after onSaveInstanceState",
                 "Fragment重叠异常",
                 "嵌套的fragment不能在onActivityResult()中接收到返回值",

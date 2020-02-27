@@ -41,7 +41,7 @@ public class Bug111Fragment extends BaseFragment {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
         public void onDetach() {
-            isCancel = true;
+//            isCancel = true;
             Log.i("Zero", "观察到fragment生命周期走到onDetach了，任务取消。。。");
         }
 
@@ -80,7 +80,9 @@ public class Bug111Fragment extends BaseFragment {
     }
 
 
-    //TODO: [解决方案]在onAttach(Activity activity)里赋值，使用mActivity代替getActivity()，保证Fragment即使在onDetach后，仍持有Activity的引用（有引起内存泄露的风险，但是异步任务没停止的情况下，本身就可能已内存泄漏，相比Crash，这种做法“安全”些）
+    //TODO: [解决方案]在onAttach(Activity activity)里赋值，使用mActivity代替getActivity()，
+    // 保证Fragment即使在onDetach后，仍持有Activity的引用（
+    // 有引起内存泄露的风险，但是异步任务没停止的情况下，本身就可能已内存泄漏，相比Crash，这种做法“安全”些）
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

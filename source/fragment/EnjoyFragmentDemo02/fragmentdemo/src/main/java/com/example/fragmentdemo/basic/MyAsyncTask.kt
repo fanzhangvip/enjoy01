@@ -13,7 +13,7 @@ class MyAsyncTask(private var activity: TaskDemo1Activity?) : AsyncTask<Void?, V
     /**
      * 进度框
      */
-    private var mLoadingDialog: ProgressDialog? = null
+    private lateinit var mLoadingDialog: ProgressDialog
     var items: List<String>? = null
         private set
 
@@ -22,6 +22,7 @@ class MyAsyncTask(private var activity: TaskDemo1Activity?) : AsyncTask<Void?, V
      */
     override fun onPreExecute() {
         mLoadingDialog = ProgressDialog()
+        mLoadingDialog.show(activity!!.supportFragmentManager,"loading")
 //        mLoadingDialog.show(activity.supportFragmentManager!!, "LOADING");
     }
 
@@ -39,10 +40,10 @@ class MyAsyncTask(private var activity: TaskDemo1Activity?) : AsyncTask<Void?, V
             Thread.sleep(5000)
         } catch (e: InterruptedException) {
         }
-        return ArrayList(Arrays.asList("通过Fragment保存大量数据",
-                "onSaveInstanceState保存数据",
-                "getLastNonConfigurationInstance已经被弃用", "RabbitMQ", "Hadoop",
-                "Spark"))
+        return ArrayList(listOf("fragment 基本使用",
+                "fragment动态添加",
+                "getActivity == null", "fragment重叠", "add replace的区别",
+                "popstack"))
     }
 
     /**
@@ -52,14 +53,14 @@ class MyAsyncTask(private var activity: TaskDemo1Activity?) : AsyncTask<Void?, V
      */
     fun setActivity(activity: TaskDemo1Activity?) { // 如果上一个Activity销毁，将与上一个Activity绑定的DialogFragment销毁
         if (activity == null) {
-            mLoadingDialog!!.dismiss()
+            mLoadingDialog.dismiss()
         }
         // 设置为当前的Activity
         this.activity = activity
         // 开启一个与当前Activity绑定的等待框
         if (activity != null && !isCompleted) {
             mLoadingDialog = ProgressDialog()
-            //            mLoadingDialog.show(activity.getFragmentManager(), "LOADING");
+            mLoadingDialog.show(activity.supportFragmentManager, "loading")
         }
         // 如果完成，通知Activity
         if (isCompleted) {

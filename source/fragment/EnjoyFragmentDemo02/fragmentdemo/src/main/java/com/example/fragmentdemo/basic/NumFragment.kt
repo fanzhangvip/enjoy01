@@ -11,7 +11,7 @@ import com.example.fragmentdemo.LifeCycleFragment
 import com.example.fragmentdemo.R
 import org.jetbrains.anko.support.v4.find
 
-class NumFragment : LifeCycleFragment() {
+class NumFragment @JvmOverloads constructor(val name:String = "", val age: Int = 0) : LifeCycleFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return if (arguments != null) {

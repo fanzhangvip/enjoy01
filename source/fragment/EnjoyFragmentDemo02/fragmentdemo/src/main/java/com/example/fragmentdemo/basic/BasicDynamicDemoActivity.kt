@@ -79,12 +79,12 @@ class BasicDynamicDemoActivity : AppCompatActivity() {
 
     fun pop1(view: View) {
 //        supportFragmentManager.popBackStack(3.toString(),FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        supportFragmentManager.popBackStack(3.toString(), 0)
+        supportFragmentManager.popBackStack(2.toString(), 1)
     }
 
     fun add1(view: View) {//演示add replace的区别
         supportFragmentManager.commit {
-            //            hide(supportFragmentManager.findFragmentByTag("0")!!)
+//            hide(supportFragmentManager.findFragmentByTag("0")!!)
             add(R.id.frameLayout0, NumFragment.newInstance(R.layout.fragment_num1, count), "")
         }
     }
@@ -108,7 +108,11 @@ class BasicDynamicDemoActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             replace(R.id.frameLayout0, ReplaceFragment.newInstance("replace"), "replace")
 //            addToBackStack(null)
-        }
+        } 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
 

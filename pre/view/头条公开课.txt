@@ -4,7 +4,149 @@ zero老师QQ: 3417671365
 免费 Android学习大纲
 
 
-小伙伴们 20:05 发车
+
+
+小伙伴们 14:35 发车
+
+同学们 下午好
+
+多少同学做过自定义view
+1.   代码的搬运工  应届生 API 
+
+
+2.   代码的生产者 3-5 
+系统学习Android  
+学原理，学源码 google tinker  retrofit  大牛
+
+
+
+
+自定义view  绘制流程
+
+onMeasure  -> onLayout -> onDraw 
+
+View主要是实现 onMeasure + onDraw
+
+ViewGroup主要是实现onMeasure + onLayout
+
+android:layout_width="0dp"
+android:layout_height="0dp"
+
+LayoutParams
+
+100dp
+match_parent ？ -1
+wrap_content    -2  =》 具体的像素值
+
+多少像素
+
+为什么要measure过程？  measure过程具体干了什么事情？ 
+
+viewgroup 向内部的每个子view 发生送一个measure  -> 子view  onMeasure -> mMasuredWidth/Height 
+
+
+MeasureSpec  32 int 
+
+撸码 
+自我提升  去学习  换皮肤 
+
+java  成员变量 +get  set  
+kotlin  成员属性： =变量（幕后字段 field）+ set  get 
+
+av  2 3 4  体验课  链接 自定义view知识体系
+Android 
+
+文字测量： 
+getTextBounds 
+
+getFontMetrics
+
+measureText
+
+ public void drawText(@NonNull String text, float x, float y,
+            @NonNull Paint paint) {
+
+
+
+天花板 
+
+tinker classloader  反射  + AMS 如何管理4大组件生命周期 hook 
+retrofit 泛型 + @ + 动态代理
+
+
+明天  立刻行动 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
