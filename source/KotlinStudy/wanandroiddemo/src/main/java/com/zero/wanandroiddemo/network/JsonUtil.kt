@@ -17,9 +17,9 @@ object JsonUtil {
         var last = '\u0000'
         var current = '\u0000'
         var indent = 0
-        for (i in 0 until jsonStr.length) {
+        for (element in jsonStr) {
             last = current
-            current = jsonStr[i]
+            current = element
             when (current) {
                 '{', '[' -> {
                     sb.append(current)

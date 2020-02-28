@@ -74,7 +74,7 @@ call.enqueue(new Callback<ProjectBean>() {
 
 ```java
 @GET("project/tree/json")
-    Call<ProjectBean> getProject1();
+Call<ProjectBean> getProject1();
 ```
 
 #### 序号 8
@@ -238,6 +238,7 @@ MediaType textType = MediaType.parse("text/plain");
 ```
 
 #### 参数类
+
 | 分类     | 名称           | 备注                             |
 | -------- | -------------- | -------------------------------- |
 |作用于方法|	Headers	|用于添加固定请求头，可以同时添加多个。通过该注解添加的请求头不会相互覆盖，而是共同存在|

@@ -35,7 +35,7 @@ class LoginModuleImpl : LoginModue{
             })
     }
 
-    fun valide(loginBean: LoginBean):LoginBean{
+    fun valide(loginBean: LoginBean):LoginBean {
         return loginBean
     }
 
