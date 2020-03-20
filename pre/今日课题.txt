@@ -9,7 +9,6 @@ github token e40cff925e7717ea17b9c4a6b0daf8b525d12713
 2，五步实现Navigation的使用
 3，站在设计者的角度理解Navigation
 4，jetPack简介
-5，互动答疑。
 
 
 
@@ -625,11 +624,50 @@ zero，你保存一下
 2，重构成Mvp结构的页面
 3，使用Retrofit+RxJava实现网络请求功能
 
+今日课题：Android的jetpack架构组件-Navigation
+上课时间：2020/03/03 14:30
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，Fragment这样使用有什么问题？
+2，五步实现Navigation的使用
+3，站在设计者的角度理解Navigation
+4，jetPack简介
+
+
+今日课题：Kotlin中使用giflib实现高效gif动画加载
+上课时间：2020/03/07 20:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，Android如何集成第三方c/c++代码库
+2，Kotlin然后使用JNI通信
+3，使用giflib加载gif动画
+
+
+今日课题：hook源码实现换肤
+上课时间：2020/03/10 15:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，换肤流程详解 
+2，LayoutInflater布局解析器
+3，AssetManager资源大管家
+4，换肤都有哪些元素需要替换？
+5，换肤大实战
+6，互动答疑。
 
 
 
-
-
+今日课题：自定义今日头条炫酷ViewPager指示器
+摘要：
+上课时间：2020/03/15 20:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，自定义控件具体应该如何绘制？
+2，字体变色原理解析？
+3，实现今日头条字体动态变色的ViewPager指示器
 
 
 

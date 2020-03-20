@@ -32,3 +32,86 @@ retrofit 请求 -》 返回结果 （默认 一次性返回 内存） 文件 -�
 
 Streaming 表示响应体的数据用流的方式返回，适用于返回的数据比较大，该注解在在下载大文件的特别有用
 
+
+
+
+debug:
+线程栈
+
+interface WanAndroidApi： 不能实例化
+
+@GET("project/tree/json")
+fun getProject(): Call<ProjectBean>
+
+parseAnnotations
+
+ServiceMethod == 》 getProject()
+
+面试  实用性()
+
+{
+errorCode:0
+errorMsg: ""
+data:{
+}
+data: null []
+
+}
+
+单步调试 ： 
+
+Retrofit Glide  
+
+Retrofit：Call
+  Response<T> execute() throws IOException;
+  void enqueue(Callback<T> callback);
+
+创建retrofit对象的时候 创建了一个OkHttpClient 其实是OKHttp里面Call.Factory 
+
+OkHttp: Call 真正执行网络请求
+这个Call对象 并不是创建Retrofit对象的时候创建
+
+  
+ android 2.3 HttpClient 
+ 
+HttpConnection 
+
+HttpStack
+
+OkHttp 请求速度快  连接池复用 Okio   socket链接
+
+HttpConnection HttpClient socket链接
+
+
+volley   OkHttp
+Retrofit 
+
+作业：
+自定义CallAdapter Converter
+画 类图  时序图
+UML类图 时序图
+
+TCP/IP - 》 Http  -》 OKHttp - > Retrofit 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

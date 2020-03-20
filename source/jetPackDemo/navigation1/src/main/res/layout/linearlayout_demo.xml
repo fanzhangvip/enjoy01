@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="right"
+       android:layout_gravity="right"
+       android:foregroundGravity="right"
+       android:orientation="horizontal"
+       >
+       <Button
+           android:id="@+id/button2"
+           android:textSize="24sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="AAAAAAAAAAAAAAAAAAAAA" />
+
+       <Button
+           android:id="@+id/button3"
+           android:textSize="24sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="BBBBBBBBB" />
+   </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_margin="16dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/button21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AAAAAAAAAAAAAAAAAAA"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/button31"
+            android:textSize="24sp"
+            android:layout_toEndOf="@id/button21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BBBB"
+            tools:ignore="NotSibling" />
+    </RelativeLayout>
+</LinearLayout>

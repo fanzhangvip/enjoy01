@@ -125,6 +125,7 @@ public class TextMeasureView extends View {
     protected void onDraw(final Canvas canvas) {
         super.onDraw(canvas);
 
+        //偏移量
         float offsetx = (mTextBounds.left + mTextBounds.right) / 2;
         float offsety = (mTextBounds.top + mTextBounds.bottom) / 2;
 
@@ -132,13 +133,16 @@ public class TextMeasureView extends View {
         int height = getMeasuredHeight();
         float halfWidth = getMeasuredWidth() / 2;
         float halfHeight = getMeasuredHeight() / 2;
+
+        float x = halfWidth - offsetx;
+        float y = halfHeight - offsety;
+        //文字绘制在中心点
+        canvas.drawText(mText, 0, mText.length(), x, y, mPaint);
+
+
         mLinePaint.setPathEffect(new DashPathEffect(new float[]{5, 5}, 0));
         canvas.drawLine(0, halfHeight, width, halfHeight, mLinePaint);
         canvas.drawLine(halfWidth, 0, halfWidth, height, mLinePaint);
-        float x = halfWidth - offsetx;
-        float y = halfHeight - offsety;
-        canvas.drawText(mText, 0, mText.length(), x, y, mPaint);
-
         //绘制 x,y
         mLinePaint.setColor(Color.BLUE);
         canvas.drawLine(x, 0, x, height, mLinePaint);

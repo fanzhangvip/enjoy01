@@ -24,6 +24,6 @@ Debug.stopMethodTracing();
 
 **重点关注项:**
 
-- `Cpu Time/Call` 函数平均执行时间较长的函数；
+- Cpu Time/Call` 函数平均执行时间较长的函数；
 - `Call+Recur Calls/Total`，调用次数非常频繁的函数。
 

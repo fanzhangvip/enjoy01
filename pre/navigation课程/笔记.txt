@@ -1,0 +1,338 @@
+往期视频加月亮老师：3433427729
+VIP咨询 阿媛老师：1413650094
+zero老师QQ: 3417671365
+免费 Android学习大纲
+
+小伙伴们 14:35 发车
+
+Kotlin 编码 Android开发的主流
+Kotlin  1  java  2
+
+同学们  听完这首歌就发车拉
+还没上车的就赶紧拉
+容我听完这首李宗盛的歌 ~~~
+
+av  自定义View 
+leo 插件化 
+
+mvc  -> mvp  -> mvvm
+数据存储 
+fragment setRetaintance
+
+2018 google IO 
+
+
+navigation  使用过么？  1 ， 2 
+
+多个Activity
+
+单Activity架构   知乎 
+
+fragment  view + state + 属性
+
+Activity  A-》B  
+A startActivity  应用进程1             系统进程
+                           binder ->   AMS 
+						               验证真身
+								  <- 	   
+new ActivityB 显示
+						   
+
+Activity -> fragment 
+fragment使用 	
+Activity - > .... fragment 	v4 24 
+fragment 	
+
+BottomNavigationView
+
+Navigation: ‘’
+
+风口： 
+3-5  能力 不匹配 
+
+ 
+
+			   
+
+
+
+初级 
+
+高级  
+
+区别
+activity_main.xml 
+setContentView(R.layout.activity_main);
+LayoutInflater.inflater()
+createview()
+反射 xml - > view对象
+
+NavHostFragment 
+
+NavController  1
+
+onCreate 生命周期 1 
+
+NavController  大管家
+
+所有的事情都自己做？ 
+
+分配给他下面的管理者 
+
+NavDest目的地：fragment Activity  graph
+fragment 切换 fragmentmanager 
+activity  startactivity         ActivityNavigator
+graph 迭代  fragment activity   NavGraphNavigator
+
+mNavigatorProvider hashmap  key value 
+key  fragment  activity                                     include
+
+     FragmentNavigator          ActivityNavigator
+	 
+	 
+	 replace
+	 remove + add 
+	 add  
+	 remove
+
+
+navigation  内存泄漏 
+
+大公司 要求 Android 掌握某块知识 
+Android整体的知识  不全面 
+
+retrofit
+@ + T + 反射 + 动态代理 封装OKhttp
+ hotfix tinker
+ 反射 classloader  AMS 
+ 
+ 小公司： 代码 自己写  cp  代码搬运工 工资低，门槛低 没保障
+ 
+ 大公司： 代码生产者 
+ 
+ 
+
+
+
+
+ def nav_version = "2.3.0-alpha01"
+    // Java language implementation
+//    implementation "androidx.navigation:navigation-fragment:$nav_version"
+//    implementation "androidx.navigation:navigation-ui:$nav_version"
+
+    // Kotlin
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Dynamic Feature Module Support
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    // Testing Navigation
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+不考虑架构 -》 MVC -》 MVP 
+
+P: 应该放什么？ 
+M: 业务逻辑
+V: 用户交互
+
+相通的地方：C/P 负责逻辑处理 
+M： 业务逻辑
+V:  负责显示
+
+项目： MVP 需要吗？ MVx (C ,P VM )
+main mvc 
+2 
+3 
+重构：伴随着功能开发一直在进行
+
+但是：领导不给我时间？
+
+
+
+{
+  errorCode: 0,
+  errorMsg: ""
+  data: {}
+}
+
+面试过不了？ 
+回答的很好？
+原理？ 架构理念 源码
+
+Android知识 零碎 体系化 
+
+整体的驾驭
+
+tinker: classloader 反射  AMS管理四大组件的生命周期
+retrofit: @ + T + 反射 + 动态代理 （设计模式应用最多的一个框架）
+
+应届毕业生：
+API CV github google copy 
+
+3-5 ： API CV github google copy 
+原理不懂 源码？ 
+代码的搬运工
+工作年限 能力 不匹配
+
+天花板低
+瓶颈：
+java - > Android 四大组件 API -》 
+java  并发是？ 
+
+怎么突破： ？ 
+NDK下一个 风口： 猪都能飞起来
+
+混合Flutter : 风口 
+
+如何快速的掌握？ 
+自学？ 多久？ 6个月 1 年 2年 3年
+忘得快？ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+设哈希表长m＝14，哈希函数H（key）＝key％11。表中已有4个结点：addr(15)=4，addr(38)=5，addr(61)=6，addr(84)=7，其余地址为空。
+如果用二次探测再散列处理冲突，关键字为49的结点的地址是？
+
+
+
+
+
+

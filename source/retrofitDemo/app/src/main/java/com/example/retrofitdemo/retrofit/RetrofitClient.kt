@@ -1,6 +1,8 @@
 package com.example.retrofitdemo.retrofit
 
 import com.example.retrofitdemo.BuildConfig
+import com.example.retrofitdemo.retrofit.calladapter.LiveDataCallAdapterFactory
+import com.example.retrofitdemo.retrofit.converter.MyGsonConvertFactory
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 //双重校验锁式
 class RetrofitClient private constructor(){
 
-    private lateinit var retrofit: Retrofit
+    lateinit var retrofit: Retrofit
 
     companion object{
         const val TAG = "Zero"
@@ -27,10 +29,12 @@ class RetrofitClient private constructor(){
             //Retrofit2的baseUrl 必须以 /(斜杆)结束，抛出一个IllegalArgumentException
             .baseUrl(BuildConfig.API_BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory.create())
+            .addConverterFactory(MyGsonConvertFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 
-    fun <T> getService(service: Class<T>): T = retrofit.create(service)
+    inline fun  <reified T> getService(service: Class<T>): T = retrofit.create(service)
 
 }

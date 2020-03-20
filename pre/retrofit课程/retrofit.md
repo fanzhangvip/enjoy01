@@ -421,18 +421,154 @@ Call<ResponseBody> example4(@Url String url);
 
 
 
+## 关键类功能说明
+
+### Retrofit
+
+Retrofit提供的子系统
+
+1. serviceMethodCache(自定义的接口映射对象集合)
+
+2. baseUrl（请求地址）
+
+3. callFactory（默认为OKHttpCall）
+
+4. converterFactories（数据解析器工厂集合）
+
+5. callAdapterFactories（Call适配器工厂集合）
+
+6. callbackExecutor（回调执行，Android平台默认为MainThreadExecutor）
+
+使用Builder模型构建(把对象依赖的零件创建、零件的组装封装起来；以使客户很方便的获取一个复杂对象；)
+
+### Platform
+
+Retrofit中用来管理多平台的方法，支持Android、Java8。通过findPlatform获取对应的平台，同时也初始化了defaultCallAdapterFactory工厂
+
+### ServiceMethod
+
+接口映射的网络请求对象，通过动态代理，将自定义接口的标注转换为该对象，将标注及参数生成OkHttp所需的Request对象。Retrofit的create通过动态代理拦截，将每一个自定义接口转换成为一个ServiceMethod对象，并通过通过serviceMethodCache进行缓存
+
+### Call<T>
+
+Retrofit定义的网络请求接口，包含execute、enqueue等方法
+
+### OkHttpCall
+
+Ohttp的Call实现，通过createRawCall得到真正的 okhttp3.Call对象，用于进行实际的网络请求
+
+### CallAdapter.Factory
+
+CallAdapter的静态工厂，包含get的抽象方法，用于生产CallAdapter对象
+
+### ExecutorCallAdapterFactory
+
+Android平台默认的CallAdapter工厂，get方法使用匿名内部类实现CallAdapter，返回ExecutorCallbackCall，实现了Call
+
+### ExecutorCallbackCall
+
+采用静态代理设计，delegate实际为OkHttpCall，使用callbackExecutor实现回调在主线程中执行
+
+### RxJavaCallAdapterFactory
+
+Rxjava平台的CallAdapter工厂，get方法返回RxJavaCallAdapter对象
+
+### RxJavaCallAdapter
+
+Rxjava平台的设配器，返回observable对象
+
+### Converter.Factory
+
+数据解析器工厂，用于生产Converter实例
+
+### GsonConverterFactory
+
+数据解析工厂实例，返回了GsonResponseBodyConverter数据解析器
+
+### GsonResponseBodyConverter
+
+Gson的数据解析器，将服务端返回的json对象转换成对应的java模型
+
+### Response<T>
+
+Retrofit网络请求响应的Response
 
 
 
+### 关键的几个流程
+
+1.  Retrofit 如何将定义的interface转换成网络请求？
+
+2.  Retrofit的Converter机制是如何实现？
+3.  Retrofit的CallAdapter机制是如何实现？
 
 
 
+## Converter种类
+
+Retrofit支持多种数据解析方式，使用时需要在Gradle添加依赖。
+
+| 数据解析器 | Gradle依赖                                         |
+| ---------- | -------------------------------------------------- |
+| Gson       | com.squareup.retrofit2:converter-gson:version      |
+| Jackson    | com.squareup.retrofit2:converter-jackson:version   |
+| Simple XML | com.squareup.retrofit2:converter-simplexml:version |
+| Protobuf   | com.squareup.retrofit2:converter-protobuf:version  |
+| Moshi      | com.squareup.retrofit2:converter-moshi:version     |
+| Wire       | com.squareup.retrofit2:converter-wire:version      |
+| Scalars    | com.squareup.retrofit2:converter-scalars:version   |
 
 
 
+## CallAdapter种类
+
+| 网络请求适配器 | Gradle依赖                                    |
+| -------------- | --------------------------------------------- |
+| guava          | com.squareup.retrofit2:adapter-guava:version  |
+| Java8          | com.squareup.retrofit2:adapter-java8:version  |
+| rxjava         | com.squareup.retrofit2:adapter-rxjava:version |
 
 
+
+###  如何自定义一个Converter及CallAdapter？
+
+
+
+### Retrofit中的设计模式
+
+
+
+1. 建造者模式
+
+Retrofit对象的创建、ServiceMethod对象创建都使用Build模式，将复杂对象的创建和表示分离，调用者不需要知道复杂的创建过程，使用Build的相关方法进行配置创建对象。
+
+2. 外观模式
+
+Retrofit对外提供了统一的调度，屏蔽了内部的实现，使得使用该网络库简单便捷。
+
+门面模式: 提供一个统一的接口去访问多个子系统的多个不同的接口，它为子系统中的一组接口提供一个统一的高层接口。使用子系统更容易使用
+
+![](retrofit.assets/menmianmoshi1.jpg)
+
+![](retrofit.assets/menmianmoshi2.jpg)
+
+3. 动态代理模式
+
+通过动态代理的方式，当调用Retrofit的create()方法时，会进行动态代理监听。当执行具体的接口方法时，会回调InvocationHandler。通过反射解析method的标注及参数，生成ServiceMethod对象。
+
+4. 静态代理模式
+   Android平台默认的适配器ExecutorCallbackCall，采用静态代理的模式。具体的实现delegate为OkHttpCall。
+
+5. 工厂模式
+   Converter及CallAdapter的创建都采用了工厂模式进行创建。
+
+6. 适配器模式
+   CallAdapter的adapt采用了适配器模式，使得interface的返回对象可以动态扩展，增强了灵活性
 
 
 
 ## OkHttp, Retrofit, Volley应该如何选择?
+
+![](retrofit.assets/wangluo.jpg)
+
+![](retrofit.assets/wangluoduibi.jpg)

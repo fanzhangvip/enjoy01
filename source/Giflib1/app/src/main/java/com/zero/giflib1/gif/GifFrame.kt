@@ -17,7 +17,7 @@ private constructor(
     constructor() : this(0, 0, 0, 0)
 
 
-    companion object {
+    companion object {//伴生对象
         init {
             System.loadLibrary("native-lib")
         }

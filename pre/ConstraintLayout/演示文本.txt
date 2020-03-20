@@ -1,0 +1,4 @@
+However, things become more complicated if we need to support multiple languages. If we add a German translation then we have a problem because in the English version the text in textView1 is longer than that in textView2, whereas in German the text in textView2 is longer than that in textView1
+
+
+但是当需要支持多语言的时候事情就变得复杂了。如果我们添加德语就出现了问题，因为在英语里面textView1的文字是长于textView2的，但是在德语中却是textView2的文字比textView1长

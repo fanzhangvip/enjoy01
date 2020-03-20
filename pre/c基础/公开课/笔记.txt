@@ -5,6 +5,231 @@ zero老师QQ: 33417671365
 免费
 
 同学们 晚上好
+
+1. kotlin jni 
+java 1  kotlin 2
+
+kotlin flutter大前端(RN  weex) jetpack(mvc mvp mvvm databinding live viewmodle ) 
+
+2. ndk编程 
+Android风口 雷军 风口上的猪都能飞起来
+
+3. 使用giflib 加载gif
+giflib? 开源库
+
+glide 可以加载gif java /kotlin  jvm语言 跨平台  性能问题 内存
+gif 好多个图片 打包zip 解码 
+
+giflib c/c++解码 
+
+4. Android工程 如何支持NDK？ 
+3.6 
+
+
+Android NDK 面试题
+java  android  sdk
+什么是JNI java语言的一个特性
+JNI开发 NDK开发
+JNI 是属于 Java 的，与 Android 无直接关系
+NDK c/c++ Android 
+app java/kotlin jni ->  giflib（NDK） 
+总结：
+JNI java语言实现沟通c/c++的一个目的 NDK Android 实现JNI的功能的手段 
+
+
+
+5G
+电脑我可以没有 手机我必须有 winphone ios Android  
+
+
+高效率的数学运算、游戏的实时渲染、音视频的编码和解码
+AI                                 ffmepg opengl
+
+
+NDK 开发能力 
+
+Drawable  可绘制的 
+自定义view 
+ondraw(canvas )
+
+GifDrawable的原理
+Animatable
+start -> scheduleSelf -> draw 一直刷新 Runnable
+
+bitmap 内容从哪儿来的？ 
+giflib 
+gif 一帧一帧图片
+GifFrame 抽象  
+nativeDecodeStreamJNI 解码 -》 width/height count
+获取每一帧 getFrame(Bitmap bitmap,int frameIndex)
+
+1.canvas.draw(bitmap)  java层
+
+2. gif图片是在c/c++ 被giflib解码 
+
+3. Java层需要把bitmap传递c/c++ 层iO
+
+4. giflib把解码的gif图片信息填充到bitmap 
+
+
+java调用jni  static native的方法
+private static native GifFrame nativeDecodeStream(InputStream stream,byte[] buffer);
+
+kotlin 静态 external关键字 @JvmStatic 兼容 GifFrame$Companion.class
+
+成员方法
+
+ @JvmStatic
+        private external fun nativeDecodeStream(
+            stream: InputStream,
+            buffer: ByteArray
+        ): GifFrame
+		
+		
+		
+		静态注册 
+		
+		extern "C"
+JNIEXPORT jobject JNICALL
+Java_com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jclass clazz, jobject stream,
+                                                      jbyteArray buffer) {
+
+
+}
+Java_+ 包名_+  方法名称（）
+JNIEnv *env   上下文 context.getXXX 
+jclass clazz
+
+javah命令-》 .h 
+
+动态注册 
+
+
+重点 
+
+so -》 system.loadLibrary -> JNI_OnLoad（）
+卸载 JNI_OnUnload
+
+对应？ 
+对应的原理  hashmap kotlin/java（native方法） -》 JNI 本地 映射 
+                                       key           value
+									   
+
+typedef struct {
+    const char* name; java方法名称
+    const char* signature; 签名
+    void*       fnPtr;
+} JNINativeMethod;	
+
+								   
+signature; 签名
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define ARGB_TO_COLOR8888(a,r,g,b) \
+((a) << 24 | (b) << 16 | (g) << 8 | (r))
+
+0000 0000 0000 0000 0000 0000 0000 0000
+a         r         g         b
+int 32  表示一个像素点的颜色 
+a
+r
+g
+b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 我们听完这首歌就开始发车拉
 
 

@@ -68,6 +68,7 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
     private var mTextStartX = 0
     private var mTextStartY = 0
 
+
     init {
         mLinePaint.isAntiAlias = true
         mLinePaint.strokeWidth = sp2px(3f)
@@ -103,6 +104,7 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
 
         mTextStartX = measuredWidth/2 - mTextWidth/2
         mTextStartY = measuredHeight/2 - mTextHeight/2
+
 
     }
 
@@ -152,8 +154,8 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
         return result
     }
 
+
     override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
 
         when(direction){
             DIRECTION_LEFT ->{
@@ -190,6 +192,7 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
 
             }
         }
+
     }
 
 }

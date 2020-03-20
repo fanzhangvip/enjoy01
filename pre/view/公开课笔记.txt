@@ -4,6 +4,340 @@ vip咨询加阿媛老师：1413650094
 zero老师QQ: 3417671365
 免费 Android学习大纲
 
+同学们晚上好
+20：05分发车
+
+写过自定义view  1   2 
+
+3-5 工作经验
+MeasureSpec 是什么？ 
+app 写界面  
+copy 代码
+
+自定义view 
+onmeasure -》  onlayout  -》ondraw 
++ 动画技巧 
++ 触摸反馈
+
+
+extends view 
+自定义View主要是实现 onMeasure + onDraw 不需要重新onlayout 
+实现特定的效果
+
+
+自定义ViewGroup主要是实现onMeasure + onLayout
+FlowLayout  放其他view
+
+自从课程都使用kotlin  
+
+面试考点：
+onMeasure 做测量？ 
+1. 系统为什么要有measure
+
+layout_width/height view的宽高
+100dp px pt 
+wrap_content  -1 -2 
+match_parent
+
+相对值 -measure》  绝对 具体值
+view显示出来 它需要一个具体的像素值
+onMeasure 完成自身的测量
+
+view的 measuredWidth/Height
+
+2. 如何合理的测量view的大小？
+
+
+EXACTLY 父容器已经知道你的大小：
+onmeasure 
+
+1. 文字绘制
+canvas.drawText
+
+2. public void getTextBounds(String text, int start, int end, Rect bounds)
+、
+
+
+ measureText(String text)
+ public float getFontMetrics(FontMetrics metrics)
+
+
+文字绘制在view的中心点： 
+.drawText(text, start, end, x, y, paint)
+w h
+ x= w/2 , y= h/2 
+ 
+ 
+save()
+画布的一次
+restore()
+
+save()
+画布的一次
+restore()
+
+save()
+画布的一次
+restore()
+
+ 
+
+毛坯： 
+QQ音乐歌词 
+
+1. 测量
+2. 绘制
+ 自定义view 知识体系 搞定 你玩转自定义控件
+ 3-5 
+ 其实 1年 熟练的使用api
+ 
+ java 很多年
+ hashmap 
+retrofit @GET  请求
+@ + T + 反射+ 动态代理  封装okhttp
+
+tinker? 
+反射 + hook 
+AMS 管理四大组件的生命周期  
+
+
+glide 5mins 
+glide.with(context) application 看源码 
+Android高级  生产能力 0 - 1 
+
+知识不成体系？ 
+
+Android高级  
+
+
+搬运代码 
+
+前景： 
+NDK 混合开发 Android的下一个风口 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 小伙伴们 20:05 发车
 大家等一下，等待正在路上的小伙伴哈，谢谢

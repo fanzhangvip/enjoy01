@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopping"
+    app:startDestination="@id/shoppingFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.zero.navigationdemo.shopping.ShoppingFragment"
+        android:label="ShoppingFragment" >
+        <action
+            android:id="@+id/action_shoppingFragment_to_oppoFragment"
+            app:destination="@id/oppoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/oppoFragment"
+        android:name="com.zero.navigationdemo.shopping.OppoFragment"
+        android:label="OppoFragment" >
+        <action
+            android:id="@+id/action_oppoFragment_to_couponFragment"
+            app:destination="@id/couponFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/couponFragment"
+        android:name="com.zero.navigationdemo.shopping.CouponFragment"
+        android:label="CouponFragment" />
+</navigation>

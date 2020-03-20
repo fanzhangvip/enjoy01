@@ -1,0 +1,680 @@
+往期视频加月亮老师：3433427729
+VIP咨询 阿媛老师：1413650094
+zero老师QQ: 3417671365
+免费 Android学习大纲
+
+14：35开始
+同学们 下午好
+
+
+theme 
+ 插件化的换肤方案
+ 
+
+产品 app 漂亮 受用户喜欢 需求
+1 ，2 
+
+
+为什么要做换肤
+
+apk瘦身
+插件化的换肤
+皮肤模块 独立 
+
+皮肤资源 服务器
+预览 选择了某款
+网络下载 
+皮肤资源加载到app里面
+实现切换
+Android 核心技能
+
+app 皮肤是什么 ?
+QSkinloeader  xSkinLoader   思考过它的原理 阅读过源码？ 
+
+什么叫Hook? 
+Android 应用广泛 插件化 热修复 
+app run 
+android 平台上 
+xml 
+activity  framework 定 {加一些自己的操作}义好的 
+
+java hook  反射挂钩  framwork流程
+hook 修改系统 没有公开的流程 
+版本兼容
+
+
+
+private Factory mFactory;
+    private Factory2 mFactory2;
+    private Factory2 mPrivateFactory;
+	
+	1.  反射 设置mFactory2
+	
+
+xml  ->  显示的view 
+
+android 
+2年  sdk api 
+2年以上 应该知道  工作年限 能力值不匹配  找工作就困难了
+
+activity  window(虚拟)管理view   view 
+
+看源码？ 
+1. 带着问题看
+2. 找自己看得懂的代码
+
+if (-1 == name.indexOf('.')) {
+   //android sdk 原生提供 
+   TextView 
+   
+    view = onCreateView(parent, name, attrs);
+} else {
+   //自定义的 
+   <com.enjoy02.changeskindemo.ZeroView
+   反射熟悉 
+   className com.enjoy02.changeskindemo.ZeroView
+   class 对象
+   通过反射来创建实例
+   
+   
+    view = createView(name, null, attrs);
+}
+面试 
+Android高级
+
+系统是如何实例化view的 ？
+ 1
+ 
+  Object lastContext = mConstructorArgs[0];
+            if (mConstructorArgs[0] == null) {
+                // Fill in the context if not already within inflation.
+                mConstructorArgs[0] = mContext;
+            }
+            Object[] args = mConstructorArgs;
+            args[1] = attrs;
+			context  attrs
+ final View view = constructor.newInstance(args);
+ 
+ 哪些view支持换肤？ 
+ res都可以换
+ 产品 
+ view attr 
+ 
+ 自定义属性 
+ tag 表示哪些属性支持换肤 
+ 
+ 
+ 资源包是什么？
+
+apk  是一个 zip 
+代码 dex
+资源  aapt R.java   res resources.arsc  
+
+id    activity_main.xml layout 
+
+id 0x pp                tt                             eeee
+     com.zero.xx,      llayout/drawable/color          id 
+	 
+	 id - 》name 
+	    ->  locale 语言 
+		
+		hashmap  key-value
+		
+		
+		addAssetPath 
+		
+		 mOutResource = new Resources(createAssetManager(path), mContext.getResources().getDisplayMetrics(), mContext.getResources().getConfiguration());
+		 成功的加载了外部资源
+		 
+		 
+		 应用皮肤
+		 如何查找到对应的外部资源
+		 app内部的id                             外部的id（mOutResource）     
+          id name 
+ 
+  app内部 aapt2 activity_main 0x00113322
+   String resName = mOutResource.getResourceEntryName(resId);
+   
+   
+  外部资源包  aapt2 activity_main  0x0011332x
+  id =  mOutResource.getIdentifier(resName, "drawable", mOutPkgName);
+  
+  面试问你换肤的原理 ？ 
+  自己实现一个换肤框架 思路有没有？ 
+  
+2年  sdk api 
+2年以上 应该知道  工作年限 能力值不匹配  找工作就困难了
+Android凉凉 寒冬
+J2ee 前端 
+0-2 白纸 sdk api  开源框架api 
+
+3 5 7 9  没什么区别 
+态度 
+
+本科及以上学历，3 年以上工作经验；
+熟悉 Java 语言，熟练掌握并应用面向对象的编程思想，熟悉虚拟机工作原理；
+数据结构和算法等基础扎实；
+熟悉 Android Framework 层，对 Android 系统性能调优有较深刻的理解，能够定制裁剪系统功能；
+有较强的责任心，上进心及良好的表达和沟通能力；
+良好的团队合作精神；
+有知名 Android 客户端项目开发经验者优先
+
+
+3 年以上工作经验  
+重复调用api 面向 cv github 百度 Google 
+
+自己有创造有价值的代码的能力 ARouter Retrofit Tinker 
+迭代 。。。。。。
+remove  .... 
+3  .... 
+
+代码不断的重构 扩展 稳定 
+handler 
+Android的风口   NDK flutter 
+
+  
+ 如何正确的学习？ 
+ QSkinloeader ?  快
+ 1. 不到两个小时 换肤的原理思路 快
+ 2. 公司有技术牛逼    
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+通过aapt打包res资源文件，生成R.java、resources.arsc和res文件（二进制 & 非二进制如res/raw和pic保持原样）
+处理.aidl文件，生成对应的Java接口文件
+通过Java Compiler编译R.java、Java接口文件、Java源文件，生成.class文件
+通过dex命令，将.class文件和第三方库中的.class文件处理生成classes.dex
+通过apkbuilder工具，将aapt生成的resources.arsc和res文件、assets文件和classes.dex一起打包生成apk
+通过Jarsigner工具，对上面的apk进行debug或release签名
+通过zipalign工具，将签名后的apk进行对齐处理。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+小伙伴们 15:10 发车
+等下还在路上的小伙伴们。。。
+
+android  换肤的需求 1 ，  2
+为什么要做换肤(动态)
+变态的产品
+组件化
+皮肤模块 独立出来
+整体的思路：
+皮肤资源 存到服务器 
+给个下载皮肤url
+下载到本地
+加载外部资源的方案
+hook换肤
+
+皮肤指什么？ 
+打包成apk的时候
+java ->javac -》 class -> dex
+
+res ->aapt2 
+id 编码 key-value  hashmap
+id     -》  R.java  getXXX（R.XXX.XXX） - 具体的一个资源
+二进制的编码 1010
+就是资源包 .skin .apk  .zip 
+
+apk 其实本质是zip
+aapt2
+zip,skin, 压缩包
+
+替换的就是这些属性
+
+ LayoutInflater.from(mContext).inflate
+ recyleview fragmen
+ 
+ 
+if (-1 == name.indexOf('.')) {//Android系统原生提供的view
+//button textview listview 
+//android.view.
+  view = onCreateView(parent, name, attrs);
+} else {
+     //自定义的view google官方自定义v4 androidx
+     view = createView(name, null, attrs);
+}
+xml -> view 
+//
+View createView(String name, String prefix, AttributeSet attrs)
+
+//自定义一个view
+ final View view = constructor.newInstance(args);
+ 
+ 如果能拿到需要换肤的具体的view的引用 
+ 需要替换的资源id
+ 
+ 1 如何拿到需要换肤的view 
+    1.1 收集所有的view,已经它的属性  1
+	1.2 知道具体哪个view的哪个属性需要替换？ 
+	  通过自定义属性告诉系统哪个view的哪个属性需要替换？ 
+ 2 如何拿到需要替换的资源的id
+ 3 插件化的换肤 如何加载外部的资源
+ 
+ 通过反射创建一个AssetManager 调用addAssetPath 加载外部资源包
+ 外部资源包 从后台服务器下载到sdcard
+ 
+ 需要加载的是外部的资源包里面的资源
+ 外部：
+ id -> 资源
+ 
+ aapt2 
+ id int  具体的资源 - 资源名称(drawable,layout,color + xxx)
+ 
+ 
+ 但是：
+ bgId app内部的id  Resource id 
+ 内部的id
+ -> getResourceEntryName 
+ name 资源名称
+——》getIdentifier(String name, String defType, String defPackage)
+ 外部的id（mOutResource.getxxx）
+ 
+  
+  mOutResource.getColor(outResId);
+  
+  门都摸不到？ 
+  1 2 3 
+  
+  调用api SDK 第三方开源库的api 
+  retrofit tinker 问开源的原理 
+  
+  开源码看不懂 
+  知识不成体系 
+  基础到原理 -》 应用 体系化
+  
+  1.良好的Java/C++语言基础，熟悉常用数据结构和算法，熟悉设计模式；
+2.熟悉Android基础架构、组件、UI、性能优化、内存优化等，对于Android的新版本新特性有一定程度的了解;
+3.熟悉Android系统框架、熟悉下列一个或多个模块机制原理AMS、WMS、SurfaceFlinger、View体系架构等，或其他Framework模块有开发经验者优先，或者具有丰富Android应用开发经验，且对framework学习和开发有强烈兴趣；
+4.熟悉hwui、opengl、skia、图像编解码优先;
+5.熟练使用常用调试工具Android Studio、Eclipse、GDB，具备良好的分析解决问题的能力，能独立承担任务，有良好的进度把控能力；
+6.具备良好的团队精神和沟通意识，责任心强，工作认真细致，有良好的抗压能力；
+7.有在开源社区如GitHub或Google Code上做过贡献，或在Stack Overflow上做过Android相关问题回答经验者优先；
+  
+  插件化 热修复 没办法注册 四大组件是如何启动？ 
+  
+  
+ Hook
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Kotlin 编码 Android开发的主流
+Kotlin  1  java  2
+
+不考虑架构 -》 MVC -》 MVP 
+
+P: 应该放什么？ 
+M: 业务逻辑
+V: 用户交互
+
+相通的地方：C/P 负责逻辑处理 
+M： 业务逻辑
+V:  负责显示
+
+项目： MVP 需要吗？ MVx (C ,P VM )
+main mvc 
+2 
+3 
+重构：伴随着功能开发一直在进行
+
+但是：领导不给我时间？
+
+
+
+{
+  errorCode: 0,
+  errorMsg: ""
+  data: {}
+}
+
+面试过不了？ 
+回答的很好？
+原理？ 架构理念 源码
+
+Android知识 零碎 体系化 
+
+整体的驾驭
+
+tinker: classloader 反射  AMS管理四大组件的生命周期
+retrofit: @ + T + 反射 + 动态代理 （设计模式应用最多的一个框架）
+
+应届毕业生：
+API CV github google copy 
+
+3-5 ： API CV github google copy 
+原理不懂 源码？ 
+代码的搬运工
+工作年限 能力 不匹配
+
+天花板低
+瓶颈：
+java - > Android 四大组件 API -》 
+java  并发是？ 
+
+怎么突破： ？ 
+NDK下一个 风口： 猪都能飞起来
+
+混合Flutter : 风口 
+
+如何快速的掌握？ 
+自学？ 多久？ 6个月 1 年 2年 3年
+忘得快？ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+设哈希表长m＝14，哈希函数H（key）＝key％11。表中已有4个结点：addr(15)=4，addr(38)=5，addr(61)=6，addr(84)=7，其余地址为空。
+如果用二次探测再散列处理冲突，关键字为49的结点的地址是？
+
+
+
+
+
+

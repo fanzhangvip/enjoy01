@@ -1,0 +1,4 @@
+rootProject.name='jetPackDemo'
+include ':app'
+include ':navigationdemo'
+include ':navigation1'

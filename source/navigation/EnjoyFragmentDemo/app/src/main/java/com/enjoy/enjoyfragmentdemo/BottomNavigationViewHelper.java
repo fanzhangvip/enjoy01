@@ -1,5 +1,6 @@
 package com.enjoy.enjoyfragmentdemo;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.RestrictTo;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -14,6 +15,7 @@ import java.lang.reflect.Field;
 
 public class BottomNavigationViewHelper {
 
+    @SuppressLint("RestrictedApi")
     public static void disableShiftMode(BottomNavigationView view) {
         BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
         try {

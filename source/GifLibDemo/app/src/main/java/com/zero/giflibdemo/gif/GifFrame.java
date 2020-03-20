@@ -38,7 +38,6 @@ public class GifFrame {
     private static native GifFrame nativeDecodeStreamJNI(AssetManager assetManager, String gifPath);
 
 
-     native String  Test(String name);
 
     private native long nativeGetFrame(long nativeHandle, Bitmap bitmap, int frameIndex);
 

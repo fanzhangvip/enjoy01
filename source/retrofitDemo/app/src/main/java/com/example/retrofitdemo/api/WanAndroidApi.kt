@@ -1,5 +1,6 @@
 package com.example.retrofitdemo.api
 
+import androidx.lifecycle.LiveData
 import com.example.retrofitdemo.bean.ProjectBean
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -12,6 +13,9 @@ interface WanAndroidApi {
     // https://www.wanandroid.com/project/tree/json
     @GET("project/tree/json")
     fun getProject(): Call<ProjectBean>
+
+    @GET("project/tree/json")
+    fun getProject1(): LiveData<ProjectBean>
 
     @HTTP(method = "get",path = "project/tree/json",hasBody = false)
     fun example(): Call<ResponseBody>//ResponseBody convert（GsonConverterFactory）-》ProjectBean
@@ -36,7 +40,7 @@ interface WanAndroidApi {
 
     @FormUrlEncoded
     @POST("xxx")
-    fun exmaple4(@Field("name") name:String,
+    fun exmaple4(@Field("name") vararg name:String,
                  @Field("array") array: Array<String>,//name=xxx&age=22
                  @FieldMap map: Map<String,String>
                  ): Call<ResponseBody>

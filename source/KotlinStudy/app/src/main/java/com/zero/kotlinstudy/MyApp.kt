@@ -22,7 +22,11 @@ open class BasicModel constructor(any: Any): CommonModel(any){}
 abstract class BaseView:IBaseView{}
 interface ApiResponseCallback {}
 interface IBasePresenter:ApiResponseCallback{}
-abstract class BasePresenter<out M: IBaseModel,out V: IBaseView> : IBasePresenter {}
+abstract class BasePresenter<out M: IBaseModel,out V: IBaseView> : IBasePresenter {
+
+    var  m: @UnsafeVariance M? = null
+
+}
 class TestView: BaseView() {}
 class TestModel constructor(any: Any) : BasicModel(any) {}
 class TestPresenter: BasePresenter<TestModel, TestView>() {}

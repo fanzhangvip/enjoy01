@@ -1,0 +1,25 @@
+HttpServiceMethod.
+
+CallAdapted
+
+CallAdapter
+
+parseResponse
+
+Error:Internal error: (java.lang.ClassNotFoundException) com.intellij.execution.ExecutionException
+java.lang.ClassNotFoundException: com.intellij.execution.ExecutionException
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	at io.github.liias.monkey.jps.builder.MonkeyBuilderService.createBuilders(MonkeyBuilderService.java:30)
+	at org.jetbrains.jps.incremental.BuilderRegistry.<init>(BuilderRegistry.java:55)
+	at org.jetbrains.jps.incremental.BuilderRegistry.<init>(BuilderRegistry.java:34)
+	at org.jetbrains.jps.incremental.BuilderRegistry$Holder.<clinit>(BuilderRegistry.java:37)
+	at org.jetbrains.jps.incremental.BuilderRegistry.getInstance(BuilderRegistry.java:45)
+	at org.jetbrains.jps.cmdline.BuildRunner.runBuild(BuildRunner.java:135)
+	at org.jetbrains.jps.cmdline.BuildSession.runBuild(BuildSession.java:297)
+	at org.jetbrains.jps.cmdline.BuildSession.run(BuildSession.java:130)
+	at org.jetbrains.jps.cmdline.BuildMain$MyMessageHandler.lambda$channelRead0$0(BuildMain.java:232)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)

@@ -6,19 +6,14 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
+import android.util.Log;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.File;
 import java.lang.reflect.Method;
 
-/**
- * [享学课堂] {@link https://enjoy.ke.qq.com}
- * 学无止境，让学习成为一种享受
- * TODO: 主讲Zero老师QQ 2124346685
- * TODO: 往期课程咨询芊芊老师QQ 2130753077
- * TODO: VIP课程咨询伊娜老师QQ 2133576719
- * 类说明:
- */
+
 public class SkinEngine {
 
     private final static SkinEngine instance = new SkinEngine();
@@ -53,6 +48,7 @@ public class SkinEngine {
     private String getOutPkgName(final String path) {
         PackageManager mPm = mContext.getPackageManager();
         PackageInfo mInfo = mPm.getPackageArchiveInfo(path, PackageManager.GET_ACTIVITIES);
+        mOutPkgName = mInfo.packageName;
         return mOutPkgName;
     }
 
@@ -75,12 +71,14 @@ public class SkinEngine {
     }
 
     public int getColor(int resId) {
+        Log.i("Zero","resId: " + resId);
         try {
             if (mOutResource == null) {
                 return resId;
             }
             String resName = mOutResource.getResourceEntryName(resId);//bg
             int outResId = mOutResource.getIdentifier(resName, "color", mOutPkgName);
+            Log.i("Zero","outResId: " + outResId);
             if (outResId == 0) {
                 return resId;
             }
@@ -92,12 +90,14 @@ public class SkinEngine {
     }
 
     public Drawable getDrawable(int resId) {//获取图片
+        Log.i("Zero","resId: " + resId);
         try {
             if (mOutResource == null) {
                 return ContextCompat.getDrawable(mContext, resId);
             }
             String resName = mOutResource.getResourceEntryName(resId);
             int outResId = mOutResource.getIdentifier(resName, "drawable", mOutPkgName);
+            Log.i("Zero","outResId: " + outResId);
             if (outResId == 0) {
                 return ContextCompat.getDrawable(mContext, resId);
             }

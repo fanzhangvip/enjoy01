@@ -2,10 +2,9 @@ package com.enjoy02.changeskindemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -15,14 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * [享学课堂] {@link https://enjoy.ke.qq.com}
- * 学无止境，让学习成为一种享受
- * TODO: 主讲Zero老师QQ 2124346685
- * TODO: 往期课程咨询芊芊老师QQ 2130753077
- * TODO: VIP课程咨询伊娜老师QQ 2133576719
- * 类说明:
- */
+
 public class SkinFactory implements LayoutInflater.Factory2 {
 
     private AppCompatDelegate mDelegate;
@@ -64,6 +56,25 @@ public class SkinFactory implements LayoutInflater.Factory2 {
                 if (!TextUtils.isEmpty(attrsMap.get("textColor"))) {
                     int textColorId = Integer.parseInt(attrsMap.get("textColor").substring(1));
                     ((TextView) view).setTextColor(SkinEngine.getInstance().getColor(textColorId));
+                }
+            }
+        }
+
+        public void resetSkin(Context context) {
+            if (!TextUtils.isEmpty(attrsMap.get("background"))) {
+                int bgId = Integer.parseInt(attrsMap.get("background").substring(1));
+                String attrType = view.getResources().getResourceTypeName(bgId);
+                if (TextUtils.equals(attrType, "drawable")) {
+                    view.setBackgroundDrawable(context.getDrawable(bgId));
+                } else if (TextUtils.equals(attrType, "color")) {
+                    view.setBackgroundColor(context.getColor(bgId));
+                }
+            }
+
+            if (view instanceof TextView) {
+                if (!TextUtils.isEmpty(attrsMap.get("textColor"))) {
+                    int textColorId = Integer.parseInt(attrsMap.get("textColor").substring(1));
+                    ((TextView) view).setTextColor(context.getColor(textColorId));
                 }
             }
         }
@@ -156,6 +167,12 @@ public class SkinFactory implements LayoutInflater.Factory2 {
     public void changeSkin() {
         for (SkinView skinView : cacheSkinView) {
             skinView.changeSkin();
+        }
+    }
+
+    public void resetSkin(Context context) {
+        for (SkinView skinView : cacheSkinView) {
+            skinView.resetSkin(context);
         }
     }
 

@@ -16,9 +16,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Multipart
 import java.io.File
 
 class MainActivity : AppCompatActivity() {
+
+    private val wanAndroidApi = RetrofitClient.instance.getService(WanAndroidApi::class.java)
 
     companion object{
         const val TAG = "Zero"
@@ -28,28 +31,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         testRetrofit()
+    }
 
-
+    private fun testupload3(){
+        val files = listOf<File>()
+        val map = mutableMapOf<String,MultipartBody.Part>()
+        files.forEachIndexed { index, file ->
+            val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
+            val part = MultipartBody.Part.createFormData("上传的key${index}",file.name,requestBody)
+            map["上传的key${index}"] = part
+        }
+        wanAndroidApi.upload4(map)
     }
 
     private fun testupload2(){
-        val wanAndroidApi = RetrofitClient.instance.getService(WanAndroidApi::class.java)
 
         //图片集合
-        val files = ArrayList<File>()
-        val map = HashMap<String,RequestBody>()
-        for(file in files){
+        val files = listOf<File>()
+        val map = mutableMapOf<String,RequestBody>()
+        files.forEach() {file ->
             val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
-            map.put("file\";filename=\"test.png",requestBody)
+            map["file\";filename=\"test.png"] = requestBody
         }
-
+        wanAndroidApi.upload3(map)
 
     }
 
+
+
     private fun testupload1(){
-        val wanAndroidApi = RetrofitClient.instance.getService(WanAndroidApi::class.java)
         val file = File("")
         val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
         val filePart =  MultipartBody.Part.createFormData("上传的key",
@@ -60,8 +71,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun testupload(){
-        val wanAndroidApi = RetrofitClient.instance.getService(WanAndroidApi::class.java)
-
         //上传单个文件
         val file = File("")
         val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
@@ -81,16 +90,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun testRetrofit(){
         //1. 构建一个retrofit对象
-//        val retrofit = Retrofit.Builder()
-//             //Retrofit2的baseUrl 必须以 /(斜杆)结束，抛出一个IllegalArgumentException
-//            .baseUrl("https://www.wanandroid.com/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
         val retrofit = Retrofit.Builder()
+             //Retrofit2的baseUrl 必须以 /(斜杆)结束，抛出一个IllegalArgumentException
             .baseUrl("https://www.wanandroid.com/")
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-//            .client(okHttpClient)
             .build()
 
         //2. 获取WanAndroidApi接口的代理对象
