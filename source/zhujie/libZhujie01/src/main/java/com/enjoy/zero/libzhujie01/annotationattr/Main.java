@@ -1,8 +1,7 @@
 package com.enjoy.zero.libzhujie01.annotationattr;
 
 
-import org.xml.sax.ext.Attributes2;
-
+ class Test1{}
 @interface AttrTest1{
     int id();
     String name();
@@ -15,17 +14,13 @@ import org.xml.sax.ext.Attributes2;
 
 @interface AttrSingle{
     String value();
-    AttrTest2 test();
-//    Test test();
 }
 
 @interface AttrVoid{
-
 }
 
 
 @interface AttrSupports{
-
 }
 
 

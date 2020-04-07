@@ -79,7 +79,7 @@ class BasicDynamicDemoActivity : AppCompatActivity() {
 
     fun pop1(view: View) {
 //        supportFragmentManager.popBackStack(3.toString(),FragmentManager.POP_BACK_STACK_INCLUSIVE)
-        supportFragmentManager.popBackStack(2.toString(), 1)
+        supportFragmentManager.popBackStack(2.toString(), 0)
     }
 
     fun add1(view: View) {//演示add replace的区别

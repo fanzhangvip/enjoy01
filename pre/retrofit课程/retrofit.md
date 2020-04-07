@@ -457,6 +457,14 @@ Retrofit定义的网络请求接口，包含execute、enqueue等方法
 
 Ohttp的Call实现，通过createRawCall得到真正的 okhttp3.Call对象，用于进行实际的网络请求
 
+### ExecutorCallbackCall
+
+采用静态代理设计，delegate实际为OkHttpCall，使用callbackExecutor实现回调在主线程中执行
+
+### CallAdapter
+
+采用适配器模式，为Call增强功能
+
 ### CallAdapter.Factory
 
 CallAdapter的静态工厂，包含get的抽象方法，用于生产CallAdapter对象
@@ -465,10 +473,6 @@ CallAdapter的静态工厂，包含get的抽象方法，用于生产CallAdapter�
 
 Android平台默认的CallAdapter工厂，get方法使用匿名内部类实现CallAdapter，返回ExecutorCallbackCall，实现了Call
 
-### ExecutorCallbackCall
-
-采用静态代理设计，delegate实际为OkHttpCall，使用callbackExecutor实现回调在主线程中执行
-
 ### RxJavaCallAdapterFactory
 
 Rxjava平台的CallAdapter工厂，get方法返回RxJavaCallAdapter对象
@@ -476,6 +480,10 @@ Rxjava平台的CallAdapter工厂，get方法返回RxJavaCallAdapter对象
 ### RxJavaCallAdapter
 
 Rxjava平台的设配器，返回observable对象
+
+### Converter
+
+数据转换接口，采用策略模式为不同数据做不同的转换
 
 ### Converter.Factory
 

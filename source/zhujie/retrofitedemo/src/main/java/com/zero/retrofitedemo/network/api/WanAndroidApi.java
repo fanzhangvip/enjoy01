@@ -43,7 +43,7 @@ public interface WanAndroidApi {
     //  RxJava 方式：Observable<..>接口形式
     Observable<ProjectBean> getProject();
 
-    //    @Headers("Cache-Control:max-age=640000")
+    @Headers("Cache-Control:max-age=640000")
     @GET("project/tree/json")
     Call<ProjectBean> getProject1();
 
@@ -108,7 +108,8 @@ public interface WanAndroidApi {
 
 
     /**
-     * 12.Streaming注解:表示响应体的数据用流的方式返回，适用于返回的数据比较大，该注解在在下载大文件的特别有用
+     * 12.Streaming注解:表示响应体的数据用流的方式返回，
+     * 适用于返回的数据比较大，该注解在在下载大文件的特别有用
      */
     @Streaming
     @GET

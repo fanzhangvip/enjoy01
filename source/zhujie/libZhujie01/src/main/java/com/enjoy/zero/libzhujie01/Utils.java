@@ -2,13 +2,13 @@ package com.enjoy.zero.libzhujie01;
 
 import java.io.FileOutputStream;
 
-//import sun.misc.ProxyGenerator;
+import sun.misc.ProxyGenerator;
 
 public class Utils {
 
-    /**
-     * 生成代理类文件
-     */
+//    /**
+//     * 生成代理类文件
+//     */
 //    public static void generyProxyFile(String classFileName,Class<?>[] classes) {//.class.getInterfaces()
 //        byte[] classFile = ProxyGenerator.generateProxyClass(classFileName, classes);
 //        String path = "./"+classFileName+".class";

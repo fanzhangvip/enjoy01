@@ -29,6 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -125,14 +126,14 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
         WanAndroidApi wanAndroidApi = retrofit.create(WanAndroidApi.class);//代理实例
 
 
-        //RequestBody startTowerId = RequestBody.create(MediaType.parse("multipart/form-data"), "xx");
         MediaType textType = MediaType.parse("text/plain");
         RequestBody name = RequestBody.create(textType, "zero");
         RequestBody password = RequestBody.create(textType, "123456");
 
         File file = new File("");
         RequestBody requestBody = RequestBody.create(MediaType.parse("image/png"), file);
-        MultipartBody.Part part = MultipartBody.Part.createFormData("上传的key", file.getName(), requestBody);
+        MultipartBody.Part part = MultipartBody.Part.createFormData("上传的key"
+                , file.getName(), requestBody);
 
         wanAndroidApi
                 .upload6(name, password, part)
@@ -189,6 +190,7 @@ public class LoginFragment extends BaseFragment<LoginContract.Presenter> impleme
         //基本用法
         Retrofit retrofit = new Retrofit.Builder()//建造者模式
                 .baseUrl("https://www.wanandroid.com/")
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 //Retrofit2 的baseUlr 必须以 /（斜线） 结束，不然会抛出一个IllegalArgumentException
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

@@ -1,0 +1,129 @@
+Choreographer.java
+doFrame 630
+doCallbacks(Choreographer.CALLBACK_TRAVERSAL, frameTimeNanos) 696
+doCallbacks 712
+c.run(frameTimeNanos) 761
+((Runnable)action).run() 949,那这个run是谁呢 
+是ViewRootImpl.java中的TraversalRunnable
+
+ViewRootImpl.java
+TraversalRunnable 7181
+doTraversal() 7184
+performTraversals() 1460
+performTraversals  1676
+
+measureHierarchy() 1856  第一次调用测量的入口
+measureHierarchy 1518
+performMeasure() 1558
+performMeasure 2713
+mView.measure  这个view就是DecorView
+
+View.java
+measure 23132
+onMeasure 23169
+
+DecorView.java
+onMeasure 636
+super.onMeasure(widthMeasureSpec, heightMeasureSpec) 716
+
+FrameLayout.java
+onMeasure 170
+measureChildWithMargins 185
+
+ViewGroup.java
+measureChildWithMargins 6737
+child.measure 6749  LinearLayout
+
+View.java
+measure 23132
+onMeasure 23169
+
+LinearLayout.java 
+onMeasure
+measureVertical
+measureChildBeforeLayout
+
+ViewGroup.java
+measureChildWithMargins 6737
+child.measure 6749  FrameLayout
+
+View.java
+measure 23132
+onMeasure 23169
+
+FrameLayout.java
+onMeasure 170
+measureChildWithMargins 185
+
+...
+
+onMeasure(int, int):97, ColorChangeTextView2 (com.zero.toutiaodemo.kotlin), ColorChangeTextView2.kt
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+measureChildBeforeLayout(View, int, int, int, int, int):1552, LinearLayout (android.widget), LinearLayout.java
+measureVertical(int, int):842, LinearLayout (android.widget), LinearLayout.java
+onMeasure(int, int):721, LinearLayout (android.widget), LinearLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+onMeasure(int, int):143, ContentFrameLayout (androidx.appcompat.widget), ContentFrameLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):403, ActionBarOverlayLayout (androidx.appcompat.widget), ActionBarOverlayLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+measureChildBeforeLayout(View, int, int, int, int, int):1552, LinearLayout (android.widget), LinearLayout.java
+measureVertical(int, int):842, LinearLayout (android.widget), LinearLayout.java
+onMeasure(int, int):721, LinearLayout (android.widget), LinearLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+onMeasure(int, int):742, DecorView (com.android.internal.policy), DecorView.java
+measure(int, int):24530, View (android.view), View.java
+performMeasure(int, int):3006, ViewRootImpl (android.view), ViewRootImpl.java
+measureHierarchy(View, WindowManager$LayoutParams, Resources, int, int):1833, ViewRootImpl (android.view), ViewRootImpl.java
+performTraversals():2122, ViewRootImpl (android.view), ViewRootImpl.java
+
+
+
+
+
+
+
+
+
+
+
+onMeasure(int, int):97, ColorChangeTextView2 (com.zero.toutiaodemo.kotlin), ColorChangeTextView2.kt
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+measureChildBeforeLayout(View, int, int, int, int, int):1552, LinearLayout (android.widget), LinearLayout.java
+measureVertical(int, int):842, LinearLayout (android.widget), LinearLayout.java
+onMeasure(int, int):721, LinearLayout (android.widget), LinearLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+onMeasure(int, int):143, ContentFrameLayout (androidx.appcompat.widget), ContentFrameLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):403, ActionBarOverlayLayout (androidx.appcompat.widget), ActionBarOverlayLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+measureChildBeforeLayout(View, int, int, int, int, int):1552, LinearLayout (android.widget), LinearLayout.java
+measureVertical(int, int):842, LinearLayout (android.widget), LinearLayout.java
+onMeasure(int, int):721, LinearLayout (android.widget), LinearLayout.java
+measure(int, int):24530, View (android.view), View.java
+measureChildWithMargins(View, int, int, int, int):6828, ViewGroup (android.view), ViewGroup.java
+onMeasure(int, int):194, FrameLayout (android.widget), FrameLayout.java
+onMeasure(int, int):742, DecorView (com.android.internal.policy), DecorView.java
+measure(int, int):24530, View (android.view), View.java
+performMeasure(int, int):3006, ViewRootImpl (android.view), ViewRootImpl.java
+performTraversals():2541, ViewRootImpl (android.view), ViewRootImpl.java
+
+
