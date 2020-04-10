@@ -4,20 +4,19 @@
     <!--TODO: 第二步：创建菜单列表-->
     <item
         android:id="@+id/shopping"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_view_list_black_48dp"
         android:title="商品" />
     <item
         android:id="@+id/history"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_wb_incandescent_black_48dp"
         android:title="历史"
         />
     <item
         android:id="@+id/mine"
-        android:icon="@mipmap/ic_launcher"
-        android:title="我的"
-        />
+        android:icon="@drawable/ic_assignment_black_24dp"
+        android:title="我的" />
     <item
         android:id="@+id/about"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_wb_incandescent_black_48dp"
         android:title="关于"/>
 </menu>
