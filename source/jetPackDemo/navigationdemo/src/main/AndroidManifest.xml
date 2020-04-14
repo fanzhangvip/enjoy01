@@ -16,6 +16,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".basic.BasicActivity"/>
+        <activity android:name=".safeargs.SafeArgsActivity"/>
+        <activity android:name=".deeplinks.DeepLinksActivity">
+            <!-- 为Activity设置<nav-graph/>标签 -->
+            <nav-graph android:value="@navigation/deeplink" />
+        </activity>
+        <activity android:name=".toolbar.ToolBarActivity"/>
+        <activity android:name=".toolbar.ToolBarAdvancedActivity" android:theme="@style/AppTheme_Material"/>
+        <activity android:name=".drawerlayout.DrawerLayoutActivity" android:theme="@style/AppTheme"/>
+        <activity android:name=".menu.MenuActivity" android:theme="@style/AppTheme"/>
+
+        <activity android:name=".bottomnavigationview.BottomNavigationAdvancedActivity"/>
+        <activity android:name=".bottomnavigationview.BottomNavigationAdvanceKotlinActivity"/>
+        <activity android:name=".fix.BasicFixActivity"/>
     </application>
 
 </manifest>

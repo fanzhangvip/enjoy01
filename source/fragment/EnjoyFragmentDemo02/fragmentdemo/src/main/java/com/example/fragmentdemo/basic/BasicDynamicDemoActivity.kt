@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.fragment.app.commitNow
 import com.example.fragmentdemo.R
 
 class BasicDynamicDemoActivity : AppCompatActivity() {
@@ -17,11 +18,16 @@ class BasicDynamicDemoActivity : AppCompatActivity() {
         var count = 0
     }
 
+    private val fragment = NumFragment.newInstance(1)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dynamic_basic)
         count = 0
         Log.i("Zero", "${this::class.simpleName} onCreate")
+        supportFragmentManager.commit {
+            add(getFrameLayoutId(0),fragment)
+        }
     }
 
 
@@ -109,6 +115,21 @@ class BasicDynamicDemoActivity : AppCompatActivity() {
             replace(R.id.frameLayout0, ReplaceFragment.newInstance("replace"), "replace")
 //            addToBackStack(null)
         } 
+    }
+
+    fun attach(view: View){
+        Log.i(TAG,"attach")
+        supportFragmentManager.commitNow {
+            attach(fragment)
+            setPrimaryNavigationFragment(fragment)
+        }
+    }
+
+    fun detach(view: View){
+        Log.i(TAG,"detach")
+        supportFragmentManager.commitNow {
+            detach(fragment)
+        }
     }
 
     override fun onBackPressed() {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main"
+    app:startDestination="@id/oneFragment">
+
+
+    <fragment
+        android:id="@+id/oneFragment"
+        android:name="com.zero.navigationdemo.basic.OneFragment"
+        android:label="OneFragment" >
+        <action
+            android:id="@+id/action_oneFragment_to_twoFragment"
+            app:destination="@id/twoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/twoFragment"
+        android:name="com.zero.navigationdemo.basic.TwoFragment"
+        android:label="TwoFragment" >
+        <action
+            android:id="@+id/action_twoFragment_to_threeFragment"
+            app:destination="@id/threeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/threeFragment"
+        android:name="com.zero.navigationdemo.basic.ThreeFragment"
+        android:label="ThreeFragment" >
+        <action
+            android:id="@+id/action_threeFragment_to_fourFragment"
+            app:destination="@id/fourFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fourFragment"
+        android:name="com.zero.navigationdemo.basic.FourFragment"
+        android:label="FourFragment" >
+        <action
+            android:id="@+id/action_fourFragment_to_oneFragment"
+            app:destination="@id/oneFragment" />
+    </fragment>
+</navigation>

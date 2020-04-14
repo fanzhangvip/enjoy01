@@ -1,9 +1,313 @@
 往期视频加月亮老师：3433427729
-VIP咨询 阿媛老师：1413650094
-zero老师QQ: 3417671365
+
+zero老师微信：xiangxue_zero
 免费 Android学习大纲
 
-小伙伴们 14:35 发车
+小伙伴们 20：10发车
+
+2个小时  我终于有微信拉  xiangxue_zero
+
+
+两种页面架构
+
+Activity(Fragment) ...  
+多Activity页面+ 多fragment： ActA  -》（跨进程 ） ActB
+startActiviy(ActB)  -> AMS通信（1.验证ActB,2. 保存状态） -> app（new ActB）
+1
+
+单Activity架构（Fragment）:google提倡
+Fragment页面切换（view）
+2
+
+
+性能：
+
+小公司： 完成老板的任务 简单UI 大量业务堆砌 
+app:0 -> 1  .....  玩不下去
+换家公司 （厌倦：app）
+
+大厂 （）
+
+单Activity架构（Fragment)
+fragment 3.0 android 平板 v4 24 < 
+传统的使用：
+navigation:
+
+androidx fragment 
+BottomNavigationView + FrameLayout
+
+TabLayout + viewpager
+
+BottomNavigationView  1, 2 
+Material design库
+
+eclipse -> AS 
+kotlin: AS 4.1稳定 new java 
+c++
+navigation: 导航 （百度 高德）
+
+findviewbyid 
+butterknife
+databinding
+anko 
+
+viewBinding { //AS 3.6.2
+            enabled = true
+        }
+		
+		gralde transform 
+		
+		by lazy
+		
+		Navigation.findNavController(it).navigate
+
+导航图
+
+app:navGraph="@navigation/basic"//指定导航图
+
+app:defaultNavHost="true"
+
+
+NavHostFragment:fragment容器
+
+NavController：大管家
+
+FragmentContainerView 只能放fragment
+FragmentContainerView extends FrameLayout
+
+
+//安全参数
+def nav_version = "2.3.0-alpha01"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+		
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+
+data class SafeArgsOneFragmentArgs 
+
+2个星期 一个版本
+
+DeepLink是什么？ 网页 链接 url
+
+FragmentContainerView 容器
+动态的创建NavHostFragment 
+
+1.  add  默认显示一个 其他detach
+attach 
+detach
+fragmentTag -> graphId
+
+2. 切换
+   Item 
+   
+   体系化的学习
+   BottomNavigationView 
+   kotlin 
+   navigation 
+   
+   
+   cv 工程师
+   一个半小时 navigation  快
+   
+   高级Android 伪高级 
+   掌握完整的Android体系 
+   
+   navigation api  5 mins
+   
+   第三方库 阅读源码，都原理
+   复用fragment 
+   
+   retrofit api 
+    @GET("xxxx")
+    fun  Call<XXXBean> getXXX() XXXBean
+	动态代理 
+	
+	UI 
+	cv
+	
+	Handler 内存泄漏 哪些场景 
+	
+	OOM 内存溢出  加载大图 200M图片  BitmapRegionDecoder
+	 自定义view 
+	 触摸反馈 事件机制
+	 
+	 OkHttp 构建自己的网络访问框架
+	 
+	
+Android  Java  前端 初级  薪资都差不多 
+
+	
+	
+	不具备 怎么办？ 
+	转行 Java后台（） 前端 送外卖（1W）
+	
+	学习 
+	
+	
+	ondraw() new 对象 gc app卡顿 耗电
+	
+	具有一定网络编程经验
+	socket 
+	tcp 三次握手 4次
+	
+	retrfot 下载大文件
+	
+	特点 ：源码 1. navigation  缺陷
+	
+	为什么看不懂？  
+	学习能力特别差  天花板就在那 18cm zero
+	6cm 
+	
+	快速的学习：跟着zero学  8-10 办事 
+	5280 K  
+	教你知识体系 -》 转化 能力 
+	加班： 效率低 大图片加载 区域解码器 自定义view 
+	cv  1一个星期
+	
+	
+	
+	
+	
+	
+	
+	
+   
+   
+-Android开发需要Java基础知识扎实，对Android平台和架构有较深入的理解，同时熟悉UI图形编程、基本算法和数据结构
+-iOS开发需要基础知识扎实，精通C/C++和OC编程，熟悉cocoa touch框架和IOS runtime机制，精通oc内存管理机制、并行开发、GUI开发
+-具有一定网络编程经验，熟悉基于http、socket的网络编程方法
+-精通面向对象编程，熟悉常用设计模式，拥有较好程序设计思想
+-学习能力强，强烈的责任心,具有较强的沟通能力及团队合作精神
+-具有1年以上Android/iOS客户端开发经验
+-具有其他平台客户端开发经验者优先
+-已发布过作品者优先
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Kotlin 编码 Android开发的主流
 Kotlin  1  java  2

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/test"
+    app:startDestination="@id/lifeCycleFragment">
+
+    <fragment
+        android:id="@+id/lifeCycleFragment"
+        android:name="com.zero.navigationdemo.LifeCycleFragment"
+        android:label="LifeCycleFragment" >
+        <action
+            android:id="@+id/action_lifeCycleFragment_to_onefragment1"
+            app:destination="@id/onefragment1" />
+        <action
+            android:id="@+id/action_lifeCycleFragment_to_twofragment"
+            app:destination="@id/twofragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/onefragment1"
+        android:name="com.zero.navigationdemo.basic.OneFragment"
+        android:label="提示"
+        />
+
+    <fragment
+        android:id="@+id/twofragment"
+        android:name="com.zero.navigationdemo.basic.TwoFragment"/>
+</navigation>

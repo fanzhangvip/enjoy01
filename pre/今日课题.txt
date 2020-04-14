@@ -682,6 +682,18 @@ zero，你保存一下
 3，实现今日头条字体动态变色的ViewPager指示器
 
 
+今日课题：jetpack之navigation应用
+上课时间：2020/04/12 20:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，app架构演进
+2，Navigation基本使用
+3，动态加载 Navigation
+4，Navigation原理解析
+
+
+
 
 
 

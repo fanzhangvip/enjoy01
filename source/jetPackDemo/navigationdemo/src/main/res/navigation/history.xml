@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.zero.navigationdemo.history.HistoryFragment"
+        android:name="com.zero.navigationdemo.bottomnavigationview.HistoryFragment"
         android:label="HistoryFragment" />
 </navigation>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/graph_bottom"
+    app:startDestination="@id/shoppingFragment2">
+    <fragment
+        android:id="@+id/shoppingFragment2"
+        android:name="com.zero.navigationdemo.bottomnavigationview.shopping.ShoppingFragment"
+        android:label="ShoppingFragment" />
+    <fragment
+        android:id="@+id/historyFragment2"
+        android:name="com.zero.navigationdemo.bottomnavigationview.HistoryFragment"
+        android:label="HistoryFragment" />
+    <fragment
+        android:id="@+id/mineFragment2"
+        android:name="com.zero.navigationdemo.bottomnavigationview.MineFragment"
+        android:label="MineFragment" />
+    <fragment
+        android:id="@+id/aboutFragment2"
+        android:name="com.zero.navigationdemo.bottomnavigationview.AboutFragment"
+        android:label="AboutFragment" />
+</navigation>

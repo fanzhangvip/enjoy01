@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/primary">
+        <item
+            android:id="@+id/oneFragment"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="第一页" />
+        <item
+            android:id="@+id/twoFragment"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="第二页" />
+        <item
+            android:id="@+id/threeFragment"
+            android:icon="@drawable/ic_launcher_foreground"
+            android:title="第三页" />
+    </group>
+</menu>
