@@ -50,7 +50,7 @@ class MainFragment : ListFragment() {
                 startActivity<BitmapDemoActivity>()
             }
             3 -> {
-                startActivity<TaskDemo1Activity>()
+                startActivity<ProgressDialogDemoActivity>()
             }
             else -> {
             }

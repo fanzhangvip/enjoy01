@@ -13,7 +13,7 @@ class GifDrawable(private val mGifFrame: GifFrame) : Drawable(),
     //2. gif 解压出来之后每一帧(Screen) 填充 成Bitmap
     //3. 成Bitmap 绘制到Canvas
     //4. Bitmap是要Java端初始化出来的
-    private val mBitmap: Bitmap
+    private val mBitmap: Bitmap //成员属性 Java成员变量 + get + set
     private val srcRect //gif的矩形区域
             : Rect
     //gif在C++解码  width,height
@@ -62,6 +62,7 @@ class GifDrawable(private val mGifFrame: GifFrame) : Drawable(),
     }
 
     override fun start() {
+
         if (!isRunning) {
             runFlag = true
             scheduleSelf(this, SystemClock.uptimeMillis())

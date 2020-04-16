@@ -68,10 +68,8 @@ public class AnnotationTest {
         System.out.println("hasAnnotation= " + hasAnnotation);
         if(hasAnnotation){
             ClassAnnotation classAnnotation = Test2.class.getAnnotation(ClassAnnotation.class);
-
             System.out.println("id= " + classAnnotation.id() + " ,className= " + classAnnotation.className());
         }
-
         try{
             Field  myIntField = Test2.class.getDeclaredField("myInt");
             myIntField.setAccessible(true);
@@ -81,6 +79,7 @@ public class AnnotationTest {
                 System.out.println("valueAnnotation= " + valueAnnotation.value());
             }
 
+            //1. 拿到method对象
             Method testMethod = Test2.class.getDeclaredMethod("testMethod");
             if(testMethod!=null){
                 // 获取方法中的注解
@@ -88,7 +87,6 @@ public class AnnotationTest {
                     for(int i = 0; i < ans.length; i++){
                         System.out.println("method testMethod ans= " +ans[i].annotationType().getSimpleName());
                     }
-
             }
 
         }catch (Exception e){

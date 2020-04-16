@@ -2,6 +2,7 @@ package com.zero.jetpackdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.zero.jetpackdemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

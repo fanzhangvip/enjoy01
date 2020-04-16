@@ -94,6 +94,7 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        Log.e(TAG,"onMeasure")
         //1.  先测量文字
         measureText()
         //2.  测量自身

@@ -1,0 +1,33 @@
+Measure详情(android N)：
+ViewRootImpl.performTraversals L2014
+
+https://www.cnblogs.com/nanxiaojue/p/3536381.html
+http://www.idtkm.com/page/2/
+https://blog.csdn.net/singwhatiwanna/article/details/38168103
+https://blog.csdn.net/singwhatiwanna/article/details/38426471
+https://blog.csdn.net/yisizhu/article/details/51527557
+http://www.apkbus.com/blog-873055-77395.html
+https://blog.csdn.net/yisizhu/article/details/51679219
+https://hencoder.com/ui-1-1/
+https://www.cnblogs.com/xyhuangjinfu/p/5435201.html
+https://www.cnblogs.com/xyhuangjinfu/p/5433688.html
+https://www.cnblogs.com/itgungnir/p/6217447.html
+
+https://blog.csdn.net/qq_24675479/article/details/81411996
+https://blog.csdn.net/u013135085/article/details/81205830
+
+https://www.cnblogs.com/itgungnir/p/6217447.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+

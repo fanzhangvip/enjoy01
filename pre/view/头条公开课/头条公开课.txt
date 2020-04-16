@@ -1,0 +1,660 @@
+往期视频加月亮老师：3433427729
+VIP咨询 阿媛老师：1413650094
+zero老师QQ: 3417671365
+免费 Android学习大纲
+
+
+
+
+小伙伴们 14:35 发车
+
+同学们 下午好
+
+多少同学做过自定义view
+1.   代码的搬运工  应届生 API 
+
+
+2.   代码的生产者 3-5 
+系统学习Android  
+学原理，学源码 google tinker  retrofit  大牛
+
+
+
+
+自定义view  绘制流程
+
+onMeasure  -> onLayout -> onDraw 
+
+View主要是实现 onMeasure + onDraw
+
+ViewGroup主要是实现onMeasure + onLayout
+
+android:layout_width="0dp"
+android:layout_height="0dp"
+
+LayoutParams
+
+100dp
+match_parent ？ -1
+wrap_content    -2  =》 具体的像素值
+
+多少像素
+
+为什么要measure过程？  measure过程具体干了什么事情？ 
+
+viewgroup 向内部的每个子view 发生送一个measure  -> 子view  onMeasure -> mMasuredWidth/Height 
+
+
+MeasureSpec  32 int 
+
+撸码 
+自我提升  去学习  换皮肤 
+
+java  成员变量 +get  set  
+kotlin  成员属性： =变量（幕后字段 field）+ set  get 
+
+av  2 3 4  体验课  链接 自定义view知识体系
+Android 
+
+文字测量： 
+getTextBounds 
+
+getFontMetrics
+
+measureText
+
+ public void drawText(@NonNull String text, float x, float y,
+            @NonNull Paint paint) {
+
+
+
+天花板 
+
+tinker classloader  反射  + AMS 如何管理4大组件生命周期 hook 
+retrofit 泛型 + @ + 动态代理
+
+
+明天  立刻行动 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+完整的自定义view  1 2 
+调用API  ？  
+
+
+代码的搬运工 应届生 API 
+
+代码的生产者 3-5同学
+
+改变 学习 view/viewgroup 自定义view 原理 
+
+
+xml   构造函数？ 
+
+onMeasure -> onlayout -> ondraw
+
+
+kotlin 开发app  主流  BAT 
+
+kotlin 在java的基础上上封装了一层语法糖  jvm
+
+/**
+     * Draw the text, with origin at (x,y), using the specified paint. The origin is interpreted
+     * based on the Align setting in the paint.
+     *
+     * @param text The text to be drawn
+     * @param start The index of the first character in text to draw
+     * @param end (end - 1) is the index of the last character in text to draw
+     * @param x The x-coordinate of the origin of the text being drawn
+     * @param y The y-coordinate of the baseline of the text being drawn
+     * @param paint The paint used for the text (e.g. color, size, style)
+     */
+    public void drawText(@NonNull String text, int start, int end, float x, float y,
+            @NonNull Paint paint) {
+        super.drawText(text, start, end, x, y, paint);
+    }
+	
+	
+android:layout_width="match_parent"
+android:layout_width="wrap_content"
+android:layout_width="10dp"
+
+LayoutParams  MeasureSpec   size = 10dp
+
+int  是32位的
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3-5 年 你还没自己完整的写过自定义view
+
+TextView 不能
+
+extends view 自己实现
+
+onMeasure 决定大小
+onDraw
+
+w h 
+
+view中心点 (w/2,h/2)
+
+canvas.drawText(text,x,y,paint)
+起始点（w/2 - w1/2,h/2 + h1/2 ）
+
+
+clipRect原理
+
+自定义view原理
+
+广度 深度 全面人才 
+
+基础 原理 - 》 应用 层层深入
+
+8-10
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+往期视频加月亮老师：3433427729
+vip咨询加月亮老师：2807762965
+加月亮老师wx:3433427729
+zero老师QQ: 3422253348
+免费
+
+自定义控件 高级Android 
+
+apk  - > 给测试
+release - > 运营 
+allen gradle 
+andy 
+
+
+知道的 1  不知道 2 
+
+1.5 h  
+ 
+  canvas clipRect原理
+
+1. canvas.drawText  文字如何测量？
+2. canvas 画布 分层 ps 图层
+3. 文字 绘制 拆开  canvas 剪裁 
+
+
+
+layoutparamns 
+10dp
+match_parent
+wrap_content
+
+确定一个view的尺寸
+
+layoutparamns + 父view的Mode限制 =决定view的尺寸
+
+中心(x，y)
+w   h
+
+drawText（x - w/2, y + h/2）
+
+view  measure 
+1 像素点  二次  过渡绘制
+
+体系化 知识点 
+retrofit:
+ okhttp + @ + 发射 + 动态代理 + T
+ 自己 代码 性能 
+ 
+ 不缺乏 反射   
+ 看
+ 练习 
+ 
+ tinker
+
+5 mins 
+写一个热修复 vip  2h 
+dex classloader  ams 
+
+没机会  空想派
+机会 行动派 
+
+看博客 找书 
+成本
+
+时间
+8 -12
+
+
+
+
+
+
+
+
+
+
+
+
+
+往期视频加阿媛老师：1413650094
+vip咨询加阿媛老师：1413650094
+
+文字 剪裁 
+
+drawText(@NonNull String text, float x, float y, @NonNull Paint paint)
+（x,y） 起始点
+
+view  w  h 
+
+中心点 (w/2,h/2)  文字  tw th
+startx = w/2 - tw/2
+starty = h/2 + th/2
+drawText (text,w/2,h/2,paint) 是： 1 ,不是：  2
+
+
+自定义属性 ？
+
+emun 
+
+12.3 => 12
+12.3 + .5 => 13
+
+retrofit 
+T  
+
+butterknife 
+greendao 
+glide 
+
+arouter
+
+懒加载 viewpager + fragment 
+       viewpager2 + fragment  recycleview 热点 
+	   
+	   初级 工程  用sdk cv  《 15K  4K 800元 
+	   3 -5年  初级 工程  -》 外卖 10000W  -》AI
+	    结婚 单身 
+		0-10  吃
+		10-20 玩
+		20-30 性
+	    30 - 40 	钱
+		
+		看书 看博客 
+		实战 大量 老师
+		
+		 6个小时
+		5K 
+ 
+
+2019-12-09 15:48:25.957 21854-21854/? I/Zero: 换行 flowlayoutHeight = 126
+2019-12-09 15:48:25.957 21854-21854/? I/Zero: 换行 flowlayoutHeight = 252
+2019-12-09 15:48:25.958 21854-21854/? I/Zero: 最后一个 flowlayoutHeight = 378
+2019-12-09 15:48:25.958 21854-21854/? I/Zero: 最后结果 flowlayoutHeight = 378
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 换行 flowlayoutHeight = 126
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 换行 flowlayoutHeight = 252
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 最后一个 flowlayoutHeight = 378
+2019-12-09 15:48:26.023 21854-21854/? I/Zero: 最后结果 flowlayoutHeight = 378
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+阿里巴巴
+LRUCache原理
+图片加载原理
+模块化实现（好处，原因）
+JVM
+视频加密传输
+统计启动时长,标准
+如何保持应用的稳定性
+ThreadLocal 原理
+谈谈classloader
+动态布局
+热修复,插件化
+HashMap源码,SpareArray原理
+性能优化,怎么保证应用启动不卡顿
+怎么去除重复代码
+SP是进程同步的吗?有什么方法做到同步
+介绍下SurfView
+HashMap实现原理，ConcurrentHashMap 的实现原理
+BroadcastReceiver，LocalBroadcastReceiver 区别
+Bundle 机制
+Handler 机制
+android 事件传递机制
+线程间 操作 List
+App启动流程，从点击桌面开始
+动态加载
+类加载器
+OSGI
+Https请求慢的解决办法，DNS，携带数据，直接访问IP
+GC回收策略
+画出 Android 的大体架构图
+描述清点击 Android Studio 的 build 按钮后发生了什么，大体说清一个应用程序安装到手机上时发生了什么；
+对 Dalvik、ART 虚拟机有基本的了解；
+Android 上的 Inter-Process-Communication 跨进程通信时如何工作的；
+App 是如何沙箱化，为什么要这么做；
+权限管理系统（底层的权限是如何进行 grant 的）
+进程和 Application 的生命周期；
+系统启动流程 Zygote进程 –> SystemServer进程 –> 各种系统服务 –> 应用进程
+recycleview listview 的区别,性能
+排序，快速排序的实现
+树：B 树的介绍
+图：有向无环图的解释
+TCP/UDP的区别
+synchronized与Lock的区别
+volatile
+Java线程池
+Java中对象的生命周期
+类加载机制
+双亲委派模型
+Android事件分发机制
+MVP模式
+RxJava
+抽象类和接口的区别
+集合 Set实现 Hash 怎么防止碰撞
+JVM 内存区域 开线程影响哪块内存
+垃圾收集机制 对象创建，新生代与老年代
+二叉树 深度遍历与广度遍历
+B树、B 树
+消息机制
+进程调度
+进程与线程
+死锁
+进程状态
+JVM内存模型
+并发集合了解哪些
+ConCurrentHashMap实现
+CAS介绍
+开启线程的三种方式,run()和start()方法区别
+线程池
+常用数据结构简介
+判断环（猜测应该是链表环）
+排序，堆排序实现
+链表反转
+动态权限适配方案，权限组的概念
+网络请求缓存处理，okhttp如何处理网络缓存的
+图片加载库相关，bitmap如何处理大图，如一张30M的大图，如何预- - 防OOM
+进程保活
+listview图片加载错乱的原理和解决方案
+https相关，如何验证证书的合法性，https中哪里用了对称加密，哪里用了非对称加密，对加密算法（如RSA）等是否有了解

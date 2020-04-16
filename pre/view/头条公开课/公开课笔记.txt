@@ -1,0 +1,973 @@
+往期视频加肉兰老师微信
+vip咨询加阿媛老师：1413650094
+zero老师微信: xiangxue_zero
+
+免费 Android学习大纲
+
+同学们晚上好
+20：10分发车
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+写过自定义view  1   2 
+
+3-5 工作经验
+MeasureSpec 是什么？ 
+app 写界面  
+copy 代码
+
+自定义view 
+onmeasure -》  onlayout  -》ondraw 
++ 动画技巧 
++ 触摸反馈
+
+
+extends view 
+自定义View主要是实现 onMeasure + onDraw 不需要重新onlayout 
+实现特定的效果
+
+
+自定义ViewGroup主要是实现onMeasure + onLayout
+FlowLayout  放其他view
+
+自从课程都使用kotlin  
+
+面试考点：
+onMeasure 做测量？ 
+1. 系统为什么要有measure
+
+layout_width/height view的宽高
+100dp px pt 
+wrap_content  -1 -2 
+match_parent
+
+相对值 -measure》  绝对 具体值
+view显示出来 它需要一个具体的像素值
+onMeasure 完成自身的测量
+
+view的 measuredWidth/Height
+
+2. 如何合理的测量view的大小？
+
+
+EXACTLY 父容器已经知道你的大小：
+onmeasure 
+
+1. 文字绘制
+canvas.drawText
+
+2. public void getTextBounds(String text, int start, int end, Rect bounds)
+、
+
+
+ measureText(String text)
+ public float getFontMetrics(FontMetrics metrics)
+
+
+文字绘制在view的中心点： 
+.drawText(text, start, end, x, y, paint)
+w h
+ x= w/2 , y= h/2 
+ 
+ 
+save()
+画布的一次
+restore()
+
+save()
+画布的一次
+restore()
+
+save()
+画布的一次
+restore()
+
+ 
+
+毛坯： 
+QQ音乐歌词 
+
+1. 测量
+2. 绘制
+ 自定义view 知识体系 搞定 你玩转自定义控件
+ 3-5 
+ 其实 1年 熟练的使用api
+ 
+ java 很多年
+ hashmap 
+retrofit @GET  请求
+@ + T + 反射+ 动态代理  封装okhttp
+
+tinker? 
+反射 + hook 
+AMS 管理四大组件的生命周期  
+
+
+glide 5mins 
+glide.with(context) application 看源码 
+Android高级  生产能力 0 - 1 
+
+知识不成体系？ 
+
+Android高级  
+
+
+搬运代码 
+
+前景： 
+NDK 混合开发 Android的下一个风口 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+小伙伴们 20:05 发车
+大家等一下，等待正在路上的小伙伴哈，谢谢
+
+同学们，新年好
+今天有没有武汉的小伙伴来听课呀
+今年这个年过的有点特别，都是宅家里过的，让我们为武汉加油，中国加油
+现在还没上班的，认真学习，积蓄能量，等可以上班后马力全开
+
+听完这首歌就开始吧
+写过 1 没写过 2
+3-5 年 使用别人的代码构建自己的app
+
+
+
+
+extends view 
+onmeasure  ondraw 实现一些特殊的效果 不规则形状的view 
+
+extends viewgroup 
+onmeasure onlayout 
+
+搞懂自定义view 套路 原理
+
+
+onmeasure -> onlayout -> ondraw
+
+项目 kotlin 1  java  2
+
+kotlin  google 替代 Java 做 Android开发的
+kotlin java 封装了一层语法糖  jvm虚拟机上的
+
+
+
+int: 32位 
+
+完整的自定义
+view: onmeasure -> onlayout -> ondraw + touch
+view: 绘制： canvas + paint + path + matrix
+      动态： 属性动画
+	  自定义View的基础
+	  26个字母 48个音标 
+	  学了多少个单词？ 
+	  构建了自定view的知识体系
+越学越快，越学越轻松 
+
+热修复 插件化 
+
+输入 -》  输出 成果 
+作业：
+流式布局 自己写出来
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+自定义view
+自定义view ondraw 
+
+自定义viewgroup
+extends linearlayout 
+
+完全的自定义viewgroup  流式布局
+onmeasre onlayout 
+
+
+日历控件 性能 
+
+为什么需要measure
+android  自适应机制 match_parent wrap_content  -1 -2 
+具体的数值 -》 measure
+
+为什么需要layout 
+流式布局的规则 从左上角开始拜访控件，当我们后面的控件在当前行放不下了，自动换行
+
+根据我们的特定的layout规则，正确的计算出每隔子view的绘制位置 
+
+自定义View
+
+流式布局 自定义ViewGroup 
+
+
+
+extends LinearLayout .... 重写某些方法
+extends ViewGroup  流式布局
+
+measure -> layout -> draw
+
+一般 measure -> layout
+
+1. 先重写onmeasure 
+度量我们的view的大小
+
+为什么需要measure这个过程？
+自适应android设备 不同尺寸的屏幕
+dp
+wrap_content
+match_parent/fill_parent
+
+通用的测量步骤是什么样的？ 
+1. ViewGroup先测量下自身的尺寸
+2. 获取每个子View
+getChildCount 获取ViewGroup里面一共有多少个子View
+getChildAt() 获取ViewGroup具体的某个子view
+
+3. 具体的测量子View的大小
+
+4. 根据业务规则 计算ViewGroup自身的尺寸
+5. 保存自身的尺寸
+同学们是否觉得现在android开发越来越简单了
+网络请求 以前怎么样 现在怎么样
+图片加载 
+不清楚Android的原理了，就实实在在的搬砖
+这是一个初级工程师所做的
+
+如何定义高级
+
+在广度 和深度上学习
+如何学习
+那么zero老师现在来给大家指明一条道路
+
+现在的Android提供的api功能越来越丰富了，使用越来越简单了
+这对我们Android开发者来说是好事 也是坏事
+1.加快我们构建app的速度
+2. 只会使用api的开发者必将要淘汰
+
+BTA 造砖  小公司 搬砖
+
+Zero 老师：
+曾就职于阿里/Nubia，移动架构师
+
+精通领域：
+    Android FrameWork层源码，性能优化，NDK开发；
+	曾参加手机Rom开发，对Android 手机系统架构有深入理解；
+	精通Android 高级控件开发，性能优化，多种开源框架开发经验;
+
+交互
+
+
+对于ViewGroup 
+确定自身的大小
+负责测量子view的大小 树形 递归
+viewgroup.measure -> onmeasure -> 确定自身大小 
+
+
+2. 再重写onlayout
+才能知道view应该准确摆放在哪个位置
+
+自定义进度条 自定义View 
+
+面试：
+1. AMS如何启动
+2. 应用是怎样启动
+3. Activity是怎样启动
+4. activity/application 哪个函数里面  attachbasecontext
+
+multidex dex加载流程
+
+系统加载 手动加载dex
+热修复
+第一次启动： 微信 支付宝 头条
+data/data -> 
+热修复 -> 慢一次
+
+
+5G ,流量完全不是问题 -》 音视频 人工智能 智能家居 NDK
+知识体系
+热修复：
+3个小时手写热修复
+dex1 av bug
+dex2 av  服务器 
+dex2 -> dex1 ： 修复bug的目的
+
+发射 动态代理 classloader file
+想通的
+glide okhttp 
+技术的  -> 提升自己的能力 -》 面
+
+你会不会
+面试 搞不懂
+copy的
+工作 1：5 年一样的技术
+5年 1年一样的
+
+匹配不上 你应该具备的薪资 你工作年限 -》 这个年限应该具备的能力 
+ 
+知识的理解
+retrofit2 + okhttp2 +rxjava2 + dagger
+retrofit : @ + 反射 + 动态代理 + T + 封装的OKhttp
+深入学习 越学越简单
+体系-知识
+性能 
+ios很少提 Android 尤为重要 6000 600
+OOM？
+JVM GC/ 生命周期 AMS adj bitmap 编码的根底非常强大
+牛 1
+   2
+用 5mins
+写出来 一个比较长的时间
+
+HashMap: 5mins
+hashMap 你如何性能优化 看源码 arrayList + LinkedList +hash算法 + 红黑树
+
+高能的人少 而菜鸟太多
+glide.with(context).from(url).into(view)
+context activity fragment application
+子线程使用吗？ 
+glide google 提供的sdk 兼容性  NPx -> application -> 内存浪费 间接 -》 OOM？
+小公司
+if else 
+设计模式 隐蔽的方式 java语言的高级特性 但凡学习都很快 知识体系 
+找不到 
+2020 年 你在2019年 你的技术提升了吗？ 
+我应该如何快速提示自己的技能 正确的方式
+博客 找到了 他是你的吗 对，你学习了吗？ 体系-知识
+
+秋分：24
+24节气歌 
+为什么有
+2 4 7 晚上 8-10 6个小时
+遇到问题 谁教你  
+一个人学习 能坚持下去？ 
+心情郁闷的时候 有人跟你聊天吗？ 
+你有分量
+知道 我需要什么 我缺什么
+ 做到 8个月 6个小时 学习
+ 得到 高薪 升职
+ 
+ 架构体系
+ 懒  中年危机 
+做技术管理 技术能够说服别人
+一对一指导 2年
+
+设哈希表长m＝14，哈希函数H（key）＝key％11。表中已有4个结点：addr(15)=4，addr(38)=5，addr(61)=6，addr(84)=7，其余地址为空。
+如果用二次探测再散列处理冲突，关键字为49的结点的地址是？
+直接定址法
+哈希冲突（碰撞）以及处理
+开发定址法
+线性探测法
+二次探测法
+
+因为 f(49) = 5 与 f(38) 冲突
+所以需要采用二次探测再散列来处理冲突
+(f(49) + di) MOD 14(哈希表长m＝14)
+
+第一次 di = 1^2
+（5 + 1）MOD 14 = 6  与addr(61)=6冲突
+第二次 di = -1^2
+（5 - 1）MOD 14 = 4  与addr(15)=4 冲突
+第三次 di = 2^2
+ （5 + 4）MOD 14 = 9 没有冲突
+所以 addr(49)=9
+   
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

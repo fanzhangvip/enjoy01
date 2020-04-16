@@ -30,7 +30,8 @@ interface WanAndroidApi {
     @GET("project/xxx")
     fun exmaple1(): Call<ResponseBody>
 
-    //使用 `@Header`注解动态更新请求头，匹配的参数必须提供给 @Header ，若参数值为 null ，这个头会被省略，否则，会使用参数值的 toString 方法的返回值
+    //使用 `@Header`注解动态更新请求头，匹配的参数必须提供给 @Header ，若参数值为 null ，这个头会被省略
+    // ，否则，会使用参数值的 toString 方法的返回值
     @GET("project/xxx1")
     fun exmaple2(@Header("Authorization") authorization: String): Call<ResponseBody>
 

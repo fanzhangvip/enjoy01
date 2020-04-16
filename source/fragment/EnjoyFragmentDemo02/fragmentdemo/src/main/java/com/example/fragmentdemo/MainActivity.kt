@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val mainFragment = MainFragment.newIntance()
         supportFragmentManager.commit {
             add(R.id.frameLayout,mainFragment)
-            setMaxLifecycle(mainFragment,Lifecycle.State.CREATED)
+//            setMaxLifecycle(mainFragment,Lifecycle.State.CREATED)
         }
 
         val  pagerAdapter = MyFragmentPagerAdapter(supportFragmentManager,FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)

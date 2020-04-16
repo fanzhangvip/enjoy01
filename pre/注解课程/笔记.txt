@@ -1,8 +1,219 @@
-往期视频加阿媛老师：1413650094
+往期视频加月亮老师：3433427729
 vip咨询加阿媛老师：1413650094
 加阿媛老师wx:1413650094
-zero老师QQ: 3417671365
-免费
+zero老师QQ: 33417671365
+免费 领取大纲
+
+同学们 下午好 15：10开始
+马上开始拉
+
+retrofit  glide  arouter room 
+
+Http 超文本传输协议
+Http  retrofit  okhttp volley 
+把请求的结果  一次性的装到内存
+
+下载文件   OOM
+
+retrofit图文混传如何做？
+Http协议有关
+
+retrofit request  转 OKhttp request 
+
+MultipartBody extends RequestBody 
+
+HttpClient  HttpUrlConnection
+get 字符串拼接
+post 参数拼接后 encode 
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+
+什么是注解?  
+简单 
+
+真的简单？ 
+retroft 99%  5mins api 
+原理  70% 
+
+注解 Java代码一部分 
+
+idea
+
+retrofit  只能解析json ? 
+xml  
+
+butterknife 
+@BindView
+
+retrofit 注解解析的关键入口
+
+loadServiceMethod 接口中的method全部加载进来 把注解解析出来 
+
+
+ServiceMethod： 代表WanAndroidApi method 
+ // 注解里传入 网络请求 的部分URL地址
+    @GET("project/tree/json")
+    // getProject()是接受网络请求数据的方法
+    //  RxJava 方式：Observable<..>接口形式
+    Observable<ProjectBean> getProject();
+	
+	
+this.methodAnnotations = method.getAnnotations();	
+
+((GET) annotation).value()
+
+反射 
+
+Class  String  int  MyTest  类类型Class
+
+Type 
+
+getReturnType
+
+getGenericReturnType  保留泛型
+
+java高阶基础 
+
+注解 反射  泛型 
+
+博客 
+构建自己知识体系 
+
+泛型通配符 T  E K V 区别  ？
+A B 具体的泛型 确定 
+？ 不确定的Java类型 
+
+
+List<T>  List<Object>  List<?>
+
+? extends E 
+? super E 
+
+List<string>[] arr1 = new ArrayList<String>[10]; error
+
+
+List<?>[] arr1 = new ArrayList<?>[10]; right
+
+android  几千份简历  僧多粥少  巅峰 
+Java  
+高级 自称
+
+Java 四种 
+Touch事件 Cancle 
+
+精通多线程 
+
+面试造火箭，工作拧螺丝 
+
+Android 
+gradle 
+rxjava   快过时
+协程
+
+mvc mvp  mvvm  jetpack 
+入门门槛低 应届 
+不幸：技术更新太快 学习更不上 太累
+幸运： 能够快速的学习 拉开差距  薪资与能力有关，我们会有行业竞争力的package
+
+8-10  而且 VIP 2  最新的技术课程 
+
+基础 原理： 快速学习的能力
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 20：10开始
 

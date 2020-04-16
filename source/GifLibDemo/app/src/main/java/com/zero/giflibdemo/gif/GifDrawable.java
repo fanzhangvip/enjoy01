@@ -21,7 +21,7 @@ public class GifDrawable extends Drawable implements Animatable ,Runnable{
     //2. gif 解压出来之后每一帧(Screen) 填充 成Bitmap
     //3. 成Bitmap 绘制到Canvas
     //4. Bitmap是要Java端初始化出来的
-    private Bitmap mBitmap;
+    private Bitmap mBitmap;//成员变量
 
 
     private Rect srcRect;//gif的矩形区域

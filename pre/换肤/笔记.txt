@@ -3,6 +3,240 @@ VIP咨询 阿媛老师：1413650094
 zero老师QQ: 3417671365
 免费 Android学习大纲
 
+
+同学们 下午好  15：10发车
+
+XSkin
+
+
+皮肤指什么？
+
+app-debug.apk  资源包  图片 
+
+插件化   默认的资源
+预览  选择了某款
+下载  后台
+应用  加载进来 替换
+
+看小说 白天 黑夜
+换 theme 
+
+apk 增大 
+
+apk  其实就是一个zip包
+
+java  编译 .class 
+res下面的资源  aapt (aapt2) -> R.java 
+                             assets文件和raw 不会改变
+							 二进制编码 
+							 resoure.arsc 
+							 
+							 
+1.  哪些控件 
+xml  转换成view  的过程？ 
+
+一个页面就是一个Activity 
+Activity 
+  Window 
+   DecorView
+     ContentView
+	    activity_main.xml -> view 
+		
+json 
+
+json 格式良好
+
+view -> AppCompatXXXView
+
+createViewFromTag  
+name  
+
+反射 ： 
+1. 不包含点 。 系统原生
+android.view.
+TextView
+
+
+2.  自定义view 
+androidx.constraintlayout.widget.ConstraintLayout -》  Class对象
+com.enjoy02.changeskindemo.ZeroView
+
+final Object[] mConstructorArgs = new Object[2];
+Context ，attrs 
+
+
+ public ZeroView(Context context, AttributeSet attrs) {
+        this(context, attrs,0);
+}
+
+final View view = constructor.newInstance(args);
+
+做过自定义view  1 
+		
+		
+LayoutInflater 
+Pull解析 
+哪几种xml解析方式？ 
+pull  dom  sax  基本功 
+
+		
+
+
+2.  换哪些属性 
+自定义属性 
+
+3. 外部的资源如何加载  - >   getResources 	context 
+Resource  
+
+打包 
+aapt2 
+res/    除去asset   /raw（id） 
+
+id  -  name 
+
+apk 本身
+id - name 
+getResourceEntryName  -> name 
+
+资源包 
+getIdentifier(name, "drawable", mOutPkgName) ->  id1 
+
+id1 - name 
+插件化换肤  难 
+做Android 几年了 
+3年以上  能力  年限 不匹配
+ 很不幸 ： 技术迭代太快  
+           rxjava  -> 快过时了 (协程)
+		   mvp 
+		   jetpack compose 
+		   
+		   80%  kotlin 
+		   eclipse -> AS 
+		   
+幸运： 	有快速学习的能力  更多更先进的技术  多拿 
+
+ 	
+
+1多小时： 
+       xml -> view 
+       插件化 资源加载 
+	   
+	   看书  看博客   zero老师  快 
+	   
+	   点 -》  vip  知识体系 
+	   
+	   1，计算机或相关专业本科及以上学历，5年以上工作经验，至少参加过一个完整的中型商业级手机应用开发项目。
+2，精通Java语言，熟悉Android系统架构及相关技术、精通Android平台UI设计，熟悉Android SDK不同版本的主要性。
+3，对网络编程、多线程、设计模式、高可用程序架构等有深入的理解。
+4，理解行业内流行的Android开源代码的结构和核心底层库，对Android底层接口有一定的认识。
+5，掌握tcp/ip协议、HTTP协议，对数据加密、防破解有较强的理解。
+6，熟练掌握kotlin者、利用工具能有效提高开发效率者优先。
+7、熟悉跨平台开发，对RN有深度开发者优先；有自己开源项目者优先。
+8，具备强烈的进取心和责任感, 极强的学习能力及良好的和跨团队合作能力,善于沟通,定期分享。
+	   
+Android高级工程师必备的知识体系  8 - 10 
+高级  伪 
+3-5 BAT 面试通知  ——》 面不过 
+
+知识体系	   
+		   
+		   retrofit  api  interface  method  泛型 注解  反射 动态代理  OKhttp Requst
+		   
+		   class<T>  具体的Java类型
+		   class<?> ? 不确定的java类型
+		   
+		   List<String>[] array = new ArrayList<string>[10];//error
+		   
+		   List<？>[] array = new ArrayList<？>[10]；//right 
+
+
+不规则的UI 
+
+ble 蓝牙项目 
+广播 
+
+tinker 占坑 管理 activity 
+
+性能优化  写框架 
+风口 NDK 混合开发 
+人  1 岗位 -》 1000 入门
+
+5980  知识体系 8-10   25K 16个 
+一个星期 
+vip  20% 
+
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 14：35开始
 同学们 下午好
 
