@@ -7,13 +7,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.commit
 import androidx.lifecycle.Lifecycle
+import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+toast("")
         val mainFragment = MainFragment.newIntance()
         supportFragmentManager.commit {
             add(R.id.frameLayout,mainFragment)

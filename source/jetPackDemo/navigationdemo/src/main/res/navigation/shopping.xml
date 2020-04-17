@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/shoppingFragment"
-        android:name="com.zero.navigationdemo.shopping.ShoppingFragment"
+        android:name="com.zero.navigationdemo.bottomnavigationview.shopping.ShoppingFragment"
         android:label="ShoppingFragment" >
         <action
             android:id="@+id/action_shoppingFragment_to_oppoFragment"
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/oppoFragment"
-        android:name="com.zero.navigationdemo.shopping.OppoFragment"
+        android:name="com.zero.navigationdemo.bottomnavigationview.shopping.OppoFragment"
         android:label="OppoFragment" >
         <action
             android:id="@+id/action_oppoFragment_to_couponFragment"
@@ -24,6 +24,6 @@
     </fragment>
     <fragment
         android:id="@+id/couponFragment"
-        android:name="com.zero.navigationdemo.shopping.CouponFragment"
+        android:name="com.zero.navigationdemo.bottomnavigationview.shopping.CouponFragment"
         android:label="CouponFragment" />
 </navigation>

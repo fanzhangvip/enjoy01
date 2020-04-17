@@ -16,6 +16,7 @@ class ColorChangeTextView2
 constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRes: Int = 0)
     : View(context, attrs, defStyle, defStyleRes) {
 
+
     companion object{
         const val TAG = "Zero"
 
@@ -94,7 +95,6 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        Log.e(TAG,"onMeasure")
         //1.  先测量文字
         measureText()
         //2.  测量自身
@@ -105,7 +105,6 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
 
         mTextStartX = measuredWidth/2 - mTextWidth/2
         mTextStartY = measuredHeight/2 - mTextHeight/2
-
 
     }
 
@@ -155,12 +154,11 @@ constructor(context: Context, attrs: AttributeSet, defStyle: Int = 0, defStyleRe
         return result
     }
 
-
     override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
 
         when(direction){
             DIRECTION_LEFT ->{
-
 
                 canvas?.apply {
                     //绘制颜色改变的层

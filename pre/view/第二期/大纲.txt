@@ -1,0 +1,90 @@
+高级UI大纲
+一· 自定义view
+1. 坐标系，角度(弧度)，颜色
+
+屏幕坐标系
+View坐标系
+MotionEvent中 get 和 getRaw 的区别
+android中的角度和弧度
+角度与弧度的定义
+角度和弧度的换算关系
+安卓支持的颜色模式(ARGB8888,ARGB4444 RGB565 Alpha8)
+
+2. View和ViewGroup
+自定义view的分类与流程
+onMeasure()测量View的大小
+MeasureSpec介绍
+ViewGroup的onMeasure 
+View的onMeasure
+onLayout计算View布局位置
+onDraw()绘制内容
+LayoutParams
+
+3. Canvas、Paint
+ Canvas、Paint基础API
+canvas 绘制背景
+canvas 绘制 点， 线，几何图形
+canvas 绘制图片，文字
+canvas 画布操作
+canvas 图层
+Shader(BitmapShader LinearGradient RadiaGradient)
+Matrix（原理以及使用详解）
+Path(基本操作，ColorMatrix setXfermode，贝塞尔曲线)
+PathMeasure
+
+4. 事件分发机制
+
+5. MotionEvent
+
+6. 多点触控
+
+7. 手势（GestureDetector,ScaleGestureDecetor）
+
+8. 动画
+alpha scal translate rotate set的用法
+Interpolator插值器
+Valueanimator
+ObjectAnimator
+PropertyValuesHoder与Keyframe
+动画组合
+
+
+二· 常见控件
+1.RecyclerView
+基本使用与原理
+自定义ItemDecoration
+自定义LayoutManager
+
+2. ViewPager2
+
+3. webview
+
+三· Material Design的使用与原理
+Toolbar
+FloatingActionButton
+Snackbar
+NestedScrollView
+CoordinatorLayout 使用
+Behavior(基本使用与自定义)
+CollapsingToolbarLayout 
+AppbarLayout
+TabLayout（自定义TabLayout）
+DrawLayout
+NaviagtionView  BottomNavigationView BottomSheet
+CardView
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

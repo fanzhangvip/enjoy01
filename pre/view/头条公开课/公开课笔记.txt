@@ -7,7 +7,138 @@ zero老师微信: xiangxue_zero
 同学们晚上好
 20：10分发车
 
+今天同学听完课 收获如何？  
 
+完整的自定义view  1  2
+
+app  UI 
+  api 
+  背后原理？ Android高级必备
+  面向百度 github  google 不行
+  
+  
+  自定义有哪几种类型？ 
+  组合 
+  
+  view
+  viewgroup
+  
+  view 是哪儿创建出来的？  xml -> LayoutInflater.inflate()
+  
+  
+  
+  onMeauser  一点要在onLayout之前  -》 onDraw
+  
+  kotlin  
+  java 为什么？ 
+  
+  4.1 AS new Project 没地方选Java
+  
+  Android最近几年 技术更新特别多，快  淘汰
+  
+  
+  基于jvm 
+  java学的好 kotlin  底层原理相通
+  
+  
+  onMeasure 合理的测量view大小 
+  
+  
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+
+LayoutParams
+
+MeasureSpec  32 int  mode + size 
+
+size 
+
+100dp 
+wrap_content   -2
+match_parent   -1
+约束布局 0dp 
+   onMeasure 计算出一个精准的数值 
+   
+   performTraversals 三件事情
+   
+   测量 -》 布局 -》 绘制 
+   
+   rootMeasureSpec -> +（边距,忽略）+ child.getLayoutParams
+   
+   测量一个子view 需要一个childWidthMeasureSpec = 父view MeasureSpec(Mode,Size) + 自身的layoutparams
+   
+   resultSize = size;
+   resultMode = MeasureSpec.AT_MOST;  子view size 我不知道  《  size
+   
+    父view 
+    case MeasureSpec.AT_MOST:  祖父不知道 父view的大小  《 size
+    子view 
+	
+	onMeasuer viewgroup
+	测试自身 + child.measure
+	view
+	测试自身 widthMeasureSpec
+	widthMeasureSpec
+	 resultSize = childDimension;
+     resultMode = MeasureSpec.EXACTLY;
+	 
+widthMeasureSpec 
+  resultSize = size;
+  resultMode = MeasureSpec.AT_MOST;
+  我们需要自己计算 childsize < resultSize
+  
+  体系化的学习？ 
+  动效？ 
+  
+  今日头条
+  QQ音乐歌词
+  
+  触摸反馈 事件机制
+  属性动画
+  view的原理
+  view onmeasure  onlayout ondraw (canvas  paint)
+  自定义view的体系 
+  
+  Android知识体系 Android高级  高薪  市场要求 
+  
+  博客 OOM  ANR  启动优化经验  自己的项目 无从下手
+  用的 分享 
+  为什么？  Android知识体系  原理，源码 
+  应届生 初级中级  不需要
+  
+  api 
+  retrofit  5mins 
+  原理 懂吗？ 泛型 + 注解 + 反射 + Okhttp  + 动态代理
+  
+  8-10学完 vip 快速的学习，提高同学们的天花板 ——》 提升学习能力
+  不愿意花 5380 报名快速学习 别人会学 
+  
+  二  四 日 直播授课  6个小时   效率
+  自定义 百度 gihub  google  改 1个星期  bug 
+  1h 自己写完
+  
+  
+  1、有扎实的Java语言基础,熟悉掌握面向对象化编程思想和设计模式;
+2、精通Android开发平台及框架原理，精通Android的基本组件使用，了解JNI;
+3、熟悉Android应用的性能优化，对页面卡顿及内存处理有自己见解，有相关经验者优先;
+4、对Android 系统应用管理、进程管理、内存管理机制有一定的理解;
+5、熟悉主流的开源组件以及框架，善于钻研&处理项目中遇到的难题;
+6、有较强的主动性，善于发现代码问题并积极主动优化;
+7、有强烈的责任心和团队精神，积极乐观认真负责，善于沟通和合作;
+8、有大型app项目开发经验者优先;
+9、211/985重点高校计算机科班出身优先考虑。
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 

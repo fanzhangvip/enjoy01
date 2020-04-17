@@ -5,6 +5,6 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.zero.navigationdemo.about.AboutFragment"
+        android:name="com.zero.navigationdemo.bottomnavigationview.AboutFragment"
         android:label="AboutFragment" />
 </navigation>

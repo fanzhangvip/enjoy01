@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/safeargs"
+    app:startDestination="@id/safeArgsOneFragment">
+
+    <fragment
+        android:id="@+id/safeArgsOneFragment"
+        android:name="com.zero.navigationdemo.safeargs.SafeArgsOneFragment"
+        android:label="SafeArgsOneFragment" >
+        <action
+            android:id="@+id/action_safeArgsOneFragment_to_normalTwoFragment"
+            app:destination="@id/normalTwoFragment" />
+        <action
+            android:id="@+id/action_safeArgsOneFragment_to_safeArgsTwoFragment"
+            app:destination="@id/safeArgsTwoFragment" />
+
+        <argument
+            android:name="user_name"
+            app:nullable="false"
+            app:argType="string"
+            android:defaultValue='"unknown"'/>
+
+        <argument
+            android:name="age"
+            app:nullable="false"
+            app:argType="integer"
+            android:defaultValue="0"/>
+    </fragment>
+    <fragment
+        android:id="@+id/safeArgsTwoFragment"
+        android:name="com.zero.navigationdemo.safeargs.SafeArgsTwoFragment"
+        android:label="SafeArgsTwoFragment" />
+    <fragment
+        android:id="@+id/normalTwoFragment"
+        android:name="com.zero.navigationdemo.safeargs.NormalTwoFragment"
+        android:label="NormalTwoFragment" />
+</navigation>

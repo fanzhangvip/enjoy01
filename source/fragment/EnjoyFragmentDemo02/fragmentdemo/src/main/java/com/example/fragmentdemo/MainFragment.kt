@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.ListFragment
 import com.example.fragmentdemo.basic.*
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 
 class MainFragment : ListFragment() {
     private lateinit var arrayAdapter: ArrayAdapter<String>
@@ -44,6 +45,7 @@ class MainFragment : ListFragment() {
               startActivity(Intent(activity,BasicDemoActivity::class.java))
             }
             1 -> {
+                toast("")
                 startActivity<BasicDynamicDemoActivity>()
             }
             2 -> {
