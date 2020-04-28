@@ -10,7 +10,29 @@
 
 extern "C"
 JNIEXPORT jobject JNICALL
-com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jobject thiz,jobject stream,jbyteArray buffer){
+Java_com_zero_giflib1_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jclass thiz,jobject stream,jbyteArray buffer){
+
+    //创建Java的InputStream的read
+    //1. 获取InputStream的类
+    jclass  inputStreamClazz = env->FindClass("java/io/InputStream");
+    //2. 找到方法id
+    JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz,"read","([BII)I");
+    JavaInputStream inputStream(env,stream,buffer);
+    //创建一个c++层的GifFrame
+    GifFrame* gifFrame = new GifFrame(&inputStream);
+    //创建java层的GifFrame
+    jclass gifFrameClazz = env->FindClass("com/zero/giflib1/gif/GifFrame");
+    //调用构造函数
+    jmethodID  gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");
+    return env->NewObject(gifFrameClazz,gifFrameInit,
+                          reinterpret_cast<jlong>(gifFrame)
+                          ,gifFrame->getWidth()
+                          ,gifFrame->getHeight()
+                          ,gifFrame->getFrameCount());
+
+
+
+
 
 }
 
@@ -18,6 +40,9 @@ extern "C"
 JNIEXPORT jlong JNICALL
 Java_com_zero_giflib1_gif_GifFrame_nativeGetFrame(JNIEnv *env, jclass thiz, jlong native_handle,
                                                   jobject bitmap, jint frame_index) {
+    GifFrame* gifFrame = reinterpret_cast<GifFrame*>(native_handle);
+    gifFrame->loadFrame(env,bitmap,frame_index);
+
 }
 extern "C"
 JNIEXPORT jobject JNICALL

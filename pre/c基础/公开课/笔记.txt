@@ -1,10 +1,212 @@
 往期视频加月亮老师：3433427729
 vip咨询加阿媛老师：1413650094
 加阿媛老师wx:1413650094
-zero老师QQ: 33417671365
+zero老师微信: xiangxue_zero
 免费 领取大纲
 
-同学们 下午好 15：10开始
+同学们 晚上好 20：10开始
+
+glide  gif   1
+
+giflib库 c库  
+
+glide 网络下载gif + giflib解码加载  最优
+
+
+png图片 颜色很多 细腻  体积很大 网络上传输
+ -》 Gif 
+
+100000
+
+256种 
+
+抖动  模糊处理
+
+LZW字典压缩算法
+
+新华字典
+
+cpu集中运算 操作 不适合Java上层
+
+giflib
+
+GifFileType  IO打开一个文件
+
+Android Studio  如何集成c/c++源码 
+
+逻辑上屏幕 
+Android 显示图片  每个像素的颜色值 填充 到位图 bitmap 
+把bitmap  ->canvas   ->ImageView
+
+eclipse (ADT) -> Android Studio (gradle)
+Java  -> Kotlin  Oracle 
+
+自定义View 
+
+自定义Drawable  1  可绘制的 对象
+
+BitmapDrawable 
+
+Android 高级  高薪  Drawable源码 
+
+APP 3-5 （没使用过JNI） 
+
+JNI编程  1  没用过2 区分应聘者 
+
+初级中级  API
+
+什么是JNI 
+
+
+
+
+
+
+两套
+NDK  要求很高
+SDK App 菜鸟 
+
+JNI开发流程步骤：
+1. Java声明native方法
+2. javac -》 .class 文件
+3. javah -jni 生成 JNI的.h头文件
+4. c/c++ 实现它
+5. 编译成 .so 
+6. System.load（"xxx.so"）
+kotlin 
+@JvmStatic  
+GifFrame$Companion
+GifFrame
+java
+GifFrame
+
+giflib 解析gif GifTypeFile结构体
+NDK 的API  操作bitmp  Asset 读取文件（c/c++）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#define ARGB_TO_COLOR8888(a,r,g,b) \
+((a) << 24 | (b) << 16 | (g) << 8 | (r))
+
+0000 0000 0000 0000 0000 0000 0000 0000
+a         r         g         b
+int 32  表示一个像素点的颜色 
+a
+r
+g
+b
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

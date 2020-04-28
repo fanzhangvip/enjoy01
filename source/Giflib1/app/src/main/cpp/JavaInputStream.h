@@ -6,6 +6,7 @@
 #define GIFLIBDEMO_JAVAINPUTSTREAM_H
 
 #include <jni.h>
+#include <cstdlib>
 
 class JavaInputStream {
 public:

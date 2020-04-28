@@ -34,7 +34,9 @@ public class GifFrame {
         return nativeDecodeStreamJNI((context == null)? null:context.getAssets(),fileName);
     }
 
-    private static native GifFrame nativeDecodeStream(InputStream stream,byte[] buffer);
+    private static native GifFrame nativeDecodeStream(
+            InputStream stream,byte[] buffer);
+
     private static native GifFrame nativeDecodeStreamJNI(AssetManager assetManager, String gifPath);
 
 

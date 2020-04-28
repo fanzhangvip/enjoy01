@@ -1,0 +1,170 @@
+泛型重讲
+20：05正式发车， 同学们快点准备
+
+虚构了一个故事 
+
+
+
+
+
+public interface Plate {
+    void set(Object t);
+
+    Object get();
+}
+
+public class AIPlate implements com.zero.genericsdemo02.demo02.Plate {
+    private java.util.List<T> items;
+
+    public AIPlate() { /* compiled code */ }
+
+    public void set(Comparable t) { /* compiled code */ }
+
+    public Comparable get() { /* compiled code */ }
+	
+	@Overide
+	public synthetic bridge get(){
+	}
+	
+	@Overide
+	public synthetic bridge set(Object t){
+	    set((Comparable)t)
+	}
+
+    public java.lang.String toString() { /* compiled code */ }
+	
+	
+}
+
+@GET("xxx/xxx")
+Call<Apple> getApple()
+擦除
+保留在类的常量池
+
+Type
+getGenericType
+
+Apple -> class<Apple>
+
+Gson 
+Apple() 
+
+JDK5 兼容
+
+javac  
+javap -c 
+虚拟机指令
+Java代码调优 
+
+
+A 父类 是 B
+
+A<T>[]  父类是 B<T>[] 数组的 协变
+
+List<Apple>[]
+List<Fruit>[]
+
+
+A 父类 是 B
+
+List<A>
+Plate<A> 不变 父类   会是Plate<B> ？
+
+？ 泛型<T> 有什么关系？
+通配符让泛型 转型更灵活
+
+
+Plate<?>  非限定通配符 是一个泛型类型 ？ 未知
+等价于 Plate<? extends Object>
+
+统称限定通配符
+Plate<? extends T> 上界
+Plate<? super T> 下界
+
+List 不进行安全检查
+
+List<?>  进行安全检查
+
+使用通配符 一个目的 灵活的转型 API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

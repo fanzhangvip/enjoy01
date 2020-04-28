@@ -1,0 +1,68 @@
+package com.zero.genericsdemo02.demo03;
+
+public class Test {
+
+    public static void main(String[] args) {
+
+        scene01();
+
+    }
+
+    public static void scene01() {
+        //先让几位角色上场
+        XiaoMing xiaoMing = new XiaoMing();
+        XiaoLi xiaoLi = new XiaoLi();
+        XiaoLiMa xiaoLiMa = new XiaoLiMa();
+
+//        Plate<Fruit> fruitPlate = new AIPlate<Apple>();
+
+    }
+
+    public static void scene02() {
+        //ColorPlate,BigPlate ->AIPlate ->Plate
+        Plate<Apple> applePlate = new AIPlate<Apple>();
+        Plate<Apple> applePlate1 = new BigPlate<Apple>();
+        Plate<Apple> applePlate2 = new ColorPlate<String, Apple>();
+    }
+
+
+    public static void scene03() {
+        //通配符 上限 只读
+        Plate<? extends Fruit> upfruitPlate = new AIPlate<Apple>();
+        //不能写泛型参数的信息
+//        upfruitPlate.set(new Apple());
+//        upfruitPlate.set(new Banana());
+        upfruitPlate.set(null);
+
+        //读取出来的东西只能存放Fruit或者他的基类
+        Fruit newFruit1 = upfruitPlate.get();
+        Object newFruit2 = upfruitPlate.get();
+//        Apple newFruit3 = upfruitPlate.get();
+    }
+
+    public static void scene04() {
+        //通配符 下限 只写
+        //存入元素正常
+        Plate<? super Fruit> lowerfruitPlate = new AIPlate<Fruit>();
+        lowerfruitPlate.set(new Apple());
+        lowerfruitPlate.set(new Banana());
+
+        //读取出来的东西只能存放Object类里
+//        Fruit newFruit1 = lowerfruitPlate.get();
+//        Apple newFruit3 = lowerfruitPlate.get();
+        Object newFruit2 = lowerfruitPlate.get();
+    }
+
+    public static void scene05() {
+        //通配符？ 不能存也不能写
+        Plate<?> fruitPlate = new AIPlate<Apple>();
+        fruitPlate.toString();
+//        Fruit fruit = fruitPlate.get();
+        Object object = fruitPlate.get();
+//        fruitPlate.set(new Apple());
+        fruitPlate.set(null);
+
+    }
+
+
+}

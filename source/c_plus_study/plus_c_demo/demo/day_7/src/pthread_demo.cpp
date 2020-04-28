@@ -12,6 +12,8 @@
 
 int main(){
 
+    int[5] *arr;
+    int (*arr1) [5];
 
     char c[65];
     int i = snprintf(c,4,"%s","avcdfg");

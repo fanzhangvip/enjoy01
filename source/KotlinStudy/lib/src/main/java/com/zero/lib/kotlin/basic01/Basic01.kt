@@ -4,7 +4,55 @@ package com.zero.lib.kotlin.basic01
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 import kotlin.properties.Delegates
+
+open class A<T>(t: T){
+    val aa = A("aaaa")
+}
+
+class B: A<String>("abc"){
+
+}
+interface OnInterceptListener{
+    fun onTopChild(b:Boolean):Boolean
+}
+class View : OnInterceptListener{
+    var parent:View = View()
+    override fun onTopChild(b: Boolean): Boolean {
+        TODO("Not yet implemented")
+    }
+
+}
+class Test11{
+
+    val parent:View = View()
+    var parentView: WeakReference<View> = WeakReference(parent)
+
+    private fun canScrollVertically(i:Int):Boolean{
+        return i == 2
+    }
+    private  fun test(){
+       induceParentOfChildTopStatus()
+    }
+
+    private fun induceParentOfChildTopStatus(){
+        /** true child在顶部*/
+        (parentView?.get() ?: {
+            var pv = parent
+            while (pv != null) {
+                if (pv is OnInterceptListener) {
+                    parentView = WeakReference(pv)
+                    break
+                }
+                pv = pv.parent
+            }
+            pv as? OnInterceptListener
+        }.invoke())?.onTopChild(!canScrollVertically(-1))
+    }
+}
+
+
 
 data class Basic01List(val i: Int, val str: String)
 data class Basic01(val a: Int, val b: Int, val list: Array<Basic01List>)

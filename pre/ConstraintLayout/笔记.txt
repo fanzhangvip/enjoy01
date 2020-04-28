@@ -5,6 +5,90 @@ zero老师微信: xiangxue_zero
 
 小伙伴们 15:10 发车
 
+RelativeLayout  复杂  嵌套
+2016 年
+好处：
+简化操作 
+解决布局嵌套
+自适应布局 （百分比布局）碎片化
+
+手写约束布局 属性太多
+
+2.0 
+ 
+ 对比相对布局
+ xxx_toXXX 
+ 
+ 4 ->  6 -> 12? 
+ 
+ 
+ top  bottom
+ left(start) right(end)    ->  (start end)
+ start_end
+ start_start
+ 
+ baseline 
+ 、
+ 约束布局
+ margin   有方向性
+ 
+ 16dp
+ 
+ 0dp
+ wrap_content
+ match_parent 没有用
+ 
+ onMeasure
+ 
+ 
+ 动态  快
+ Android高级 
+ 
+ 下载大文件 ？ 
+ 
+ retrofit T + @ + 反射  + 动态代理
+ 
+ 
+ @Get("xxx")
+ call<T> xxx（）； 具体执行代码
+ 
+ 体系化 
+ 
+ Activity  Window View  ? 
+ 资源加载
+ 
+ systrace  traceview adb dumpsys 
+ 
+ Handler  原理 
+ looper.loop() 死循环  不会导致ANR 
+ next 
+ 
+ linux 线程/进程
+ Handler Looper  Message MessageQueue 
+ AcitivityThread 是一个线程 main 
+ 
+ 子线程 loop 
+ linux pipe /epoll 机制
+ 
+ ANR 
+  5mins  应届生 
+  快速学习的能力  kotlin 
+  
+  多久  2 ‘
+ 
+ 
+ 跟着享学 zero 
+ retrofit  2 
+  
+  一对一的面试指导 从简历修改 模拟面试 重点 
+  
+  
+ 
+ 
+ 
+ 
+
+
 
 
 

@@ -1,0 +1,58 @@
+// class version 52.0 (52)
+// access flags 0x21
+// signature Lcom/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/Node<Ljava/lang/Integer;>;
+// declaration: com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode extends com.zero.genericsdemo.type_erasure_08.effects_type_erasure_brigde_methods.Node<java.lang.Integer>
+public class com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode extends com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/Node {
+
+  // compiled from: MyNode.java
+
+  // access flags 0x1
+  public <init>(Ljava/lang/Integer;)V
+   L0
+    LINENUMBER 4 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/Node.<init> (Ljava/lang/Object;)V
+    RETURN
+   L1
+    LOCALVARIABLE this Lcom/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode; L0 L1 0
+    LOCALVARIABLE data Ljava/lang/Integer; L0 L1 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x1
+  public setData(Ljava/lang/Integer;)V
+   L0
+    LINENUMBER 7 L0
+    GETSTATIC java/lang/System.out : Ljava/io/PrintStream;
+    LDC "MyNode.setData"
+    INVOKEVIRTUAL java/io/PrintStream.println (Ljava/lang/String;)V
+   L1
+    LINENUMBER 8 L1
+    ALOAD 0
+    ALOAD 1
+    INVOKESPECIAL com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/Node.setData (Ljava/lang/Object;)V
+   L2
+    LINENUMBER 9 L2
+    RETURN
+   L3
+    LOCALVARIABLE this Lcom/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode; L0 L3 0
+    LOCALVARIABLE data Ljava/lang/Integer; L0 L3 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  //桥接方法
+  // access flags 0x1041
+  public synthetic bridge setData(Ljava/lang/Object;)V
+   L0
+    LINENUMBER 3 L0
+    ALOAD 0
+    ALOAD 1
+    CHECKCAST java/lang/Integer
+    INVOKEVIRTUAL com/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode.setData (Ljava/lang/Integer;)V
+    RETURN
+   L1
+    LOCALVARIABLE this Lcom/zero/genericsdemo/type_erasure_08/effects_type_erasure_brigde_methods/MyNode; L0 L1 0
+    MAXSTACK = 2
+    MAXLOCALS = 2
+}

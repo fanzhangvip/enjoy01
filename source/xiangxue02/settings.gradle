@@ -1,0 +1,4 @@
+rootProject.name='xiangxue02'
+include ':app'
+include ':genericsdemo'
+include ':genericsdemo02'
