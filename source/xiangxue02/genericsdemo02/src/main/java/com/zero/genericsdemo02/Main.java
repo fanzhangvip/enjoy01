@@ -2,6 +2,7 @@ package com.zero.genericsdemo02;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -12,6 +13,12 @@ public class Main {
         List<Student> students = new ArrayList<>();
 //        sort(students);
         sort1(students);
+
+        List<String> strings = new ArrayList<>();
+        strings.add("aaa");
+        strings.add("bbb");
+        String[] arrays = new String[strings.size()];
+        System.out.println(Arrays.toString(arrays));
     }
 
     //没办法给Student排序

@@ -8,4 +8,30 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="constraint_text" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_7</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="constraint_circle" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_7</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="constraint_text_wrap" xmlns:app="http://schemas.android.com/apk/res-auto">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/color_1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

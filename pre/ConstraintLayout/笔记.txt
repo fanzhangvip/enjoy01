@@ -1,9 +1,244 @@
-往期视频加微微老师
+往期视频加可可老师
 VIP咨询 阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 免费 Android学习大纲
 
 小伙伴们 15:10 发车
+
+面试 问的 高频考点 
+
+约束布局：ConStraintLayout 2016
+ConStraintLayout 1 
+1.  拖拽 
+2.  手写 属性太多 搞不明白 从入门到放弃
+3.  屏幕适配 面试也经常问（今日头条 百分比布局 Auto）
+4.  ConStraintLayout 最大程度
+5.  解决布局嵌套
+
+
+解决 属性太多 记不住，不理解
+ConstraintLayout  增强版的 RelativeLayout 
+
+ConstraintLayout  比较  RelativeLayout
+    B   
+ B  A  B
+    B 
+	
+	12个属性  SDK >=17 LTR  RTL(阿拉伯)
+	left（start）  right (end)
+	top   bottom 
+	
+	left ->(left ,right)
+	
+	12
+	源控件     B  约束属性 
+	目标控件   A
+	
+	反约束属性 
+	left_left
+	right_right
+	
+	start_start
+	end_end
+	
+	top_top
+	bottom_bottom
+	
+	1 
+	gone  不在了 
+	ConstraintLayout  gone   点
+	
+	智能家居  电视遥控
+	
+	控件大小控制
+	
+	Guideline  不可见 
+	
+	Banner 16:9
+	 onMeasure 计算 宽高比
+	 
+	 weight
+	 
+	 
+	 大厂   源码 原理
+	 tinker  Arouter  
+	 
+	 插件化  
+	 Activity  
+	 
+	 
+	 代码搬运工 ，
+	 百度 copy  修改 
+	trace.log 
+	200M 
+	
+	Handler  
+	looper.loop() UI  ANR 
+	app
+	
+	retrofit  glide  okhttp 
+	知识体系  BATJ
+	8-10
+	
+	
+	
+注册登录 2D
+页面 2D
+蓝牙 2D
+wifi联通 	2D
+wifi组包 5D
+
+
+12天 
+ble传输功率	
+10天
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 RelativeLayout  复杂  嵌套
 2016 年

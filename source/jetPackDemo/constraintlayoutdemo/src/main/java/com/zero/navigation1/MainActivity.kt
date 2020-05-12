@@ -6,18 +6,20 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.transition.TransitionManager
-import com.zero.navigation1.databinding.ConstraintBasicBinding
 import com.zero.navigation1.databinding.ConstraintKeyframe1Binding
+import com.zero.navigation1.databinding.ConstraintMotion1Binding
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy {
-        ConstraintBasicBinding.inflate(layoutInflater)
+        ConstraintMotion1Binding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.root.postDelayed({binding.motionLayout.transitionToEnd()},1000)
 
 //        binding.button.setOnClickListener {
 //            val constraintSet = ConstraintSet()

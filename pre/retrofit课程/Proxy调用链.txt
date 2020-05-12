@@ -1,0 +1,7 @@
+newProxyInstance   854
+getProxyClass0     873
+proxyClassCache.get(loader, interfaces) 438
+proxyClassCache  251
+ProxyClassFactory 602
+generateProxy 692
+ative Class<?> generateProxy 802

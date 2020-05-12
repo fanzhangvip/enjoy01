@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">navigation1</string>
+    <string name="app_name">ConstraintLayout</string>
     <string name="desc" translatable="true">this is a desc</string>
     <string name="username_hint">username</string>
     <string name="pwd_hint">password</string>

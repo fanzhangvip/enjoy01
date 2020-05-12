@@ -135,7 +135,7 @@ int main14(){
     printf("&a:%p, &b:%p \n", &a,&b);
 
     modifyA1(&a);//指针，我们需手动取地址
-    //引用在C++的内部实现 就是一个常量指针
+    //引用在C++的内部实现 就是一个指针常量
 
 
     printf("sizeof(Teacher1): %d \n", sizeof(Teacher1));

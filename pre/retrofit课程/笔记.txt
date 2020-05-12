@@ -1,10 +1,202 @@
 往期视频加月亮老师：3433427729
 VIP咨询 阿媛老师：1413650094
-zero老师QQ: 3417671365
+zero老师微信: xiangxue_zero
 免费 Android学习大纲
-20：00开始
+20：10开始
 
 同学们 晚上午好
+
+没用过retroft  1 
+OKHttp
+
+retroft 本身不做网络请求
+通过Okhttp  
+
+为什么要用retrofit
+1. 网络请求统一放到一个接口文件 
+2. 参数 自己拼装
+
+kotlin  1 没用的 2 
+
+方法请求类 Http协议
+
+retroft 图片上传 ，图文混传
+
+@Streaming 
+下载文件  Http ->TCP/IP Socket  IO流（一次Http请求，一次性读取到内存中）
+OOM 
+
+retrofit不仅仅是在Android里面使用
+
+1. interface WanAndroidApi 如何转换成请求实例
+
+Retrofit.Builder.buid() -> retrofit对象
+Builder(findPlatform)  new Android()是一个Platform类
+
+网络请求 是耗时操作 背景线程
+retroft线程切换的原理 Handler
+
+callFactory = new OkHttpClient();
+new Request()
+callFactory.enqueue(request)
+
+Handler原理 
+
+设计模式 不理解 不会用
+单例模式
+建造者模式
+门面模式
+使用retroft做网络请求 需要准备以下的组件
+OkHttpClient
+Executor
+callAdapterFactories
+converterFactories json xml
+
+
+
+retroftit.create(Class对象WanAndroidAPI.class)
+-> 动态代理 -> WanAndroidAPI实例
+
+代理模式 
+给某一个对象提供一个代理对象，
+并且通过这个代理对象来控制原对象的行为
+
+
+微商 VPN  网络长城 
+静态代理 代理类 
+
+.class 来源于.java编译
+.java  编译器-> .class  加载（classloader）-> jvm虚拟机 -> 卸载
+
+动态代理 
+.class  在jvm 内存里面生成的 
+
+Proxy.newProxyInstance()生成 class字节码 -> 反射
+
+
+2. 注解是如何解析
+
+当我们调用api接口的方法 -》 InvocationHandler invoke
+
+-> loadServiceMethod -> parseAnnotations
+-> RequestFactory.parseAnnotations拿到请求参数
+
+关键点 
+拿方法上的注解
+this.methodAnnotations = method.getAnnotations();
+解析注解，拿到注解上面的值
+parseMethodAnnotation（）
+解析请求类的注解
+parseHttpMethodAndPath
+((GET) annotation).value() = project/xxx1
+@GET("project/xxx1")
+relativeUrl
+url = baseurl + relativeUrl
+拿到方法中的参数上的注解
+this.parameterAnnotationsArray = method.getParameterAnnotations();
+
+CallAdapter 适配器模式 策略模式 泛型 
+看不懂retrofit 
+
+java 高级基础 泛型 注解 反射 并发 类加载机制 重要性
+
+高级工程师 一将难求 
+
+高级工程师 ？ 3年 简历 高级工程师？ 
+
+原生view baidu google copy  搬砖 
+找不到 自己实现 掌握技术 牛B
+
+tinker 原理   AMS + 类加载机制 资源加载AssetManager
+网络：retrofit tcp
+tcp 全双工 ->   <- 
+初始序列号 随机 i
+client    server 
+i   ->      i
+
+
+ <-  i+1 j
+
+
+j+1  ->     
+
+交互双方的初始序列号 最少的次数  3
+
+socket  转成字节序列   分包（i编序列号） -》 server 组包（i）
+
+目前 Android开发 NDK 技术走在其他人的前面  money比别人拿的多
+报名后 
+2个月 BAT
+
+8个月
+5980  一个星期工资
+
+大纲的知识 构建完整的Android知识体系
+
+答疑 不好 压箱技能 
+面试  简历修改 
+
+技能： 
+ 
+项目   经历 自己封装了retrofit mvp 
+
+模拟面试
+知识体系 jvm GC 
+面试的公司 岗位职责要求 
+项目经历  看出个人的能力，深刻 rxjava retrofit 
+
+快速 进入BAT  镀金
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

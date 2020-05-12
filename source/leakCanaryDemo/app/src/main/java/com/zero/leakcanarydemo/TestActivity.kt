@@ -15,5 +15,8 @@ class TestActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         TestDataModel.getInstance().mRetainedTextView = binding.textview
+        TestDataModel.getInstance().activitys.add(this)
+
+        catTest()
     }
 }

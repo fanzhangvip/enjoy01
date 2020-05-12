@@ -1,0 +1,134 @@
+一、 什么是LeakCanary
+LeakCanary 是大名鼎鼎的 square 公司开源的内存泄漏检测工具。目前上大部分App在开发测试阶段都会接入此工具用于检测潜在的内存泄漏问题，做的好一点的可能会搭建一个服务器用于保存各个设备上的内存泄漏问题再集中处理。
+
+什么叫内存泄漏？内存溢出？
+内存溢出(out of memory)：是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory；比如申请了一个integer,但给它存了long才能存下的数，那就是内存溢出。
+
+内存泄漏(memory leak)：是指程序在申请内存后，无法释放已申请的内存空间，一次内存泄露危害可以忽略，但内存泄露堆积后果很严重，无论多少内存,迟早会被占光。
+
+
+
+so:  memory leak会最终会导致out of memory！
+
+二、 为什么要使用LeakCanary
+我们知道内存泄漏问题的排查有很多种方法， 比如说，Android Studio 自带的 Profile 工具、MAT(Memory Analyzer Tool)、以及LeakCanary。 选择 LeakCanary 作为首选的内存泄漏检测工具主要是因为它能实时检测泄漏并以非常直观的调用链方式展示内存泄漏的原因。
+
+
+四、 LeakCanary 源码解析 初始化
+
+leakcanary-leaksentry包
+LeakSentryInstaller的onCrate()方法种初始化
+
+InternalLeakSentry的install()方法 
+
+leakcanary-watcher包
+1. 构建一个RefWatcher,无论是Activity还是Fragment都是通过RefWatcher来监听
+
+leakcanary-leaksentry包
+2. ActivityDestroyWatcher.install里面注册registerActivityLifecycleCallbacks监听Activity的onDestroyed
+
+leakcanary-leaksentry包
+3. FragmentDestroyWatcher.install
+// >= 26 AndroidOFragmentDestroyWatcher
+//classAvailable androidx 使用 SupportFragmentDestroyWatcher
+//application.registerActivityLifecycleCallbacks中为每个fragment添加LifeCycleCallBack
+ override fun watchFragments(activity: Activity) {
+    val fragmentManager = activity.fragmentManager
+    fragmentManager.registerFragmentLifecycleCallbacks(fragmentLifecycleCallbacks, true)
+  }
+
+leakcanary-leaksentry包
+4. listener.onLeakSentryInstalled(application)具体实现要看LeakSentryListener.onLeakSentryInstalled
+然后看具体实现
+leakcanary-android-core包
+InternalLeakCanary.onLeakSentryInstalled
+heapDumper 用于确认内存泄漏之后进行heap dump工作
+gcTrigger 用于发现可能的内存泄漏之后手动调用GC确认是否真的是内存泄漏
+//到此初始化工作就完成了
+
+五、LeakCanary 源码解析 RefWatcher.watch() 核心原理
+
+Java的四种引用
+1. 强引用（Strong Reference）
+在代码中普遍使用的，类似Person person=new Person();如果一个对象具有强引用，则无论在什么情况下，GC都不会回收被引用的对象。当内存空间不足时，JAVA虚拟机宁可抛出OutOfMemoryError终止应用程序也不会回收具有强引用的对象。
+
+2. 软引用（Soft Reference）
+表示一个对象处在有用但非必须的状态。如果一个对象具有软引用，在内存空间充足时，GC就不会回收该对象；当内存空间不足时，GC会回收该对象的内存（回收发生在OutOfMemoryError之前）。
+
+软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被GC回收，Java虚拟机就会把这个软引用加入到与之关联的引用队列中，以便在恰当的时候将该软引用回收。但是由于GC线程的优先级较低，通常手动调用System.gc()并不能立即执行GC，因此弱引用所引用的对象并不一定会被马上回收。
+
+
+3. 弱引用（Weak Reference）
+用来描述非必须的对象。它类似软引用，但是强度比软引用更弱一些：弱引用具有更短的生命.GC在扫描的过程中，一旦发现只具有被弱引用关联的对象，都会回收掉被弱引用关联的对象。换言之，无论当前内存是否紧缺，GC都将回收被弱引用关联的对象。
+
+Person person=new Person();
+WeakReference wr=new WeakReference(person);
+同样弱引用也可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被GC回收了，Java虚拟机就会把这个弱引用加入到与之关联的引用队列中，以便在恰当的时候将该弱引用回收。
+
+4. 虚引用（Phantom Reference）
+虚引等同于没有引用，这意味着在任何时候都可能被GC回收，设置虚引用的目的是为了被虚引用关联的对象在被垃圾回收器回收时，能够收到一个系统通知。（被用来跟踪对象被GC回收的活动）虚引用和弱引用的区别在于：虚引用在使用时必须和引用队列（ReferenceQueue）联合使用，其在GC回收期间的活动如下：
+
+ReferenceQueue queue=new ReferenceQueue();
+PhantomReference pr=new PhantomReference(object.queue);
+也即是GC在回收一个对象时，如果发现该对象具有虚引用，那么在回收之前会首先该对象的虚引用加入到与之关联的引用队列中。程序可以通过判断引用队列中是否已经加入虚引用来了解被引用的对象是否被GC回收。
+
+1. ReferenceQueue含义及作用
+通常我们将其ReferenceQueue翻译为引用队列，换言之就是存放引用的队列，保存的是Reference对象。其作用在于Reference对象所引用的对象被GC回收时，该Reference对象将会被加入引用队列中（ReferenceQueue）的队列末尾。
+
+ReferenceQueue常用的方法：
+public Reference poll()：从队列中取出一个元素，队列为空则返回null；
+public Reference remove()：从队列中出对一个元素，若没有则阻塞至有可出队元素；
+public Reference remove(long timeout)：从队列中出对一个元素，若没有则阻塞至有可出对元素或阻塞至超过timeout毫秒；
+
+见如下代码：
+
+ReferenceQueue< Person> rq=new ReferenceQueue();
+Person person=new Person();
+SoftReference sr=new SoftReference(person,rq);
+这段代码中，对于Person对象有两种引用类型，一是person的强引用，而是sr的软引用。sr强引用了SoftReference对象，该对象软引用了Person对象。当person被回收时，sr所强引用的对象将会被放到rq的队列末尾。利用ReferenceQueue可以清除失去了软引用对象的SoftReference,如下操作：
+
+SoftReference ref=null;
+while((ref=(Person)rq.poll())!=null){
+    
+}
+2. Reference类
+Reference是SoftReference，WeakReference,PhantomReference类的父类，其内部通过一个next字段来构建了一个Reference类型的单向列表，而queue字段存放了引用对象对应的引用队列，若在Reference的子类构造函数中没有指定，则默认关联一个ReferenceQueue.NULL队列。
+
+基础知识 -hprof文件
+
+hprof 文件可以展示某一时刻java堆的使用情况，根据这个文件我们可以分析出哪些对象占用大量内存和未在合适时机释放，从而定位内存泄漏问题。
+Android 生成 hprof 文件整体上有两种方式:
+
+使用 adb 命令
+
+adb shell am dumpheap <processname> <FileName>
+复制代码
+使用 android.os.Debug.dumpHprofData 方法
+直接使用 Debug 类提供的 dumpHprofData 方法即可。
+
+Debug.dumpHprofData(heapDumpFile.getAbsolutePath());
+复制代码Android Studio 自带 Android Profiler 的 Memory 模块的 dump 操作使用的是方法一。这两种方法生成的 .hprof 文件都是 Dalvik 格式，需要使用 AndroidSDK 提供的 hprof-conv 工具转换成J2SE HPROF格式才能在MAT等标准 hprof 工具中查看。
+
+hprof-conv dump.hprof converted-dump.hprof  
+
+
+
+system.gc()和system.runFinalization()区别作用：
+System.gc(); //告诉垃圾收集器打算进行垃圾收集，而垃圾收集器进不进行收集是不确定的 
+System.runFinalization(); //强制调用已经失去引用的对象的finalize方法 
+
+java中的finalize()方法
+当垃圾收集器认为没有指向对象实例的引用时，会在销毁该对象之前调用finalize()方法。该方法最常见的作用是确保释放实例占用的全部资源。java并不保证定时为对象实例调用该方法，甚至不保证方法会被调用，所以该方法不应该用于正常内存处理。
+
+watchedReferences 比如一个fragment destory了，就加入到这里
+
+checkRetainedExecutor 5s后检查
+
+再次调用一次gc
+如果还在watchedReferences 里面，说明泄漏了
+把它添加到 retainedReferences
+
+retainedReferences
+
+queue
+

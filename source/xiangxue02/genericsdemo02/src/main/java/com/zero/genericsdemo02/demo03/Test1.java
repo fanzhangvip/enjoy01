@@ -11,7 +11,6 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
-import sun.text.normalizer.CharTrie;
 
 public class Test1 {
 
