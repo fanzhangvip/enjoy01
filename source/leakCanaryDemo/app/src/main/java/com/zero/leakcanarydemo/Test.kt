@@ -38,5 +38,5 @@ fun catTest(){
     val schrodingerCat = Cat()
     box.hiddenCat = schrodingerCat
     Docker.container = box
-    AppWatcher.objectWatcher.watch(schrodingerCat,"schrodingerCat");
+    AppWatcher.objectWatcher.watch(schrodingerCat,"schrodingerCat")
 }

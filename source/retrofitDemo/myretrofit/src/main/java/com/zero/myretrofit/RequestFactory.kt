@@ -2,8 +2,6 @@ package com.zero.myretrofit
 
 import okhttp3.HttpUrl
 import okhttp3.Request
-import okhttp3.internal.http.HttpHeaders.hasBody
-import retrofit2.Invocation
 import retrofit2.http.GET
 import retrofit2.http.POST
 import java.io.IOException

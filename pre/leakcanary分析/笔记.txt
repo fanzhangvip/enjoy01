@@ -1,19 +1,138 @@
 往期视频加月亮老师：3433427729
 VIP咨询 阿媛老师：1413650094
-zero老师QQ: 3417671365
+zero老师微信: xiangxue_zero
 免费 Android学习大纲
-20：00开始
+15：10开始
 
-同学们 晚上午好
+同学们 下午好
+
+OOM 
+new Object() 10KB内存  只剩8KB 
+
+LeakCanary  高贵 1秒杀
+检测 activity  fragment 自动监控
+监控其他对象
+AppWatcher.objectWatcher.watch(schrodingerCat,"schrodingerCat")
 
 
 
+ square  okhttp  retrofit 5mins
+ 
+ 内存溢出 OOM 
+ 
+ 内存泄漏 
+ 
+ 垃圾回收机制 
+ 强引用 
+ gsRoots  可达
+ 
+ 1. leakcanary 依赖进来之后 它在哪儿初始化的？
+ 
+ AndroidManifest.xml 　<provider> LeakSentryInstaller
+ onCreate() 初始化InternalLeakSentry.install(application)
+ 
+ app启动 -》 
+handleBindApplication
+创建
+makeApplication： DebugExampleApplication 
+如果你注册了ContentProvider
+installContentProviders
+localProvider.attachInfo(c, info);
+ ContentProvider.this.onCreate();
+
+mInstrumentation.callApplicationOnCreate(app);
+ app.onCreate();DebugExampleApplication
+
+ContentProvider.oncreate  先于 Application的onCreate调用的
+提醒：dev 
+
+启动速度优化 
+
+2. leakcanary初始化 干了些什么事情？ 
+1. 创建了RefWatcher对象  watch 
+2. activity  fragment自动监控 原理？ 
+   LifeCycle 
+3. 其他一些初始化工作
+heapDumper 当你确定了存在内存泄漏 dump 堆栈
+gcTrigger  gc
+启动了一个检测内存泄漏的工作线程   1.x UI主线程idle
+
+heapDumpTrigger 检测内存泄漏
+
+fun Application.registerVisibilityListener
+应用 从不可见-》 可见 
+     可见 -》 不可见
+
+1.x 通过轮询检测	
+
+可见 -》 不可见
+做一次内存泄漏 scheduleRetainedInstanceCheck
+watch 主动做一次内存泄漏检测
 
 
 
+System.gc
+Runtime.getRuntime()//主要这里不是使用System.gc,因为它仅仅是通知系统在合适的时间进行一次垃圾回收操作
+          .gc()
+
+Kotlin 还不学习kotlin  淘汰
+
+面试： leakcanary检测内存泄漏的核心原理？ 
 
 
 
+1. 把需要监控的对象 watchedReferences
+要监控的引用
+referenc  -- key 
+
+过5秒
+5秒之内 referenc =null 
+被加入到ReferenceQueue
+
+gc之后，如果我发现retainedReferences还有引用，说明可能存在内存
+泄漏
+2. retainedReferences
+
+3. ReferenceQueue
+
+最终retainedReferences.size > 0 可能存在内存泄漏
+dump  分析
+HAHA 
+Handle  Looper -> MessageQueue-> Meassage -> Handler ->Activity
+
+Context  application  activity  service contentprovider 
+
+内存问题：  leakcanary 
+
+Android 知识体系 
+
+面试  面不上 
+Android高级  一线 互联网
+市场上要求的高级工程师： 掌握  Android 知识体系
+造轮子 
+retrofit  
+new Thread 
+
+baidu google  666
+
+多长时间 学废了
+ 8个月 
+ 1. 不仅仅是直播课程
+ 2. 工作遇到问题 帮助解决
+ 3. 面试简历指导 收到大厂的面试通知 模拟面试 快速的进入大厂
+ 8个月 知识体系学废了
+ 
+ 3.0 大纲 升级
+ 
+ 5380钱多吗？
+ 再贵学费 % 365  很小的投资
+ 再小的学习*365  拉开巨大差距 
+ 学习，最高的不是学费
+ 而是一去不复返的黄金时间 
+ 
+ 
+ 
+ 
 
 
 

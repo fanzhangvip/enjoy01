@@ -1,8 +1,7 @@
 package com.zero.myretrofit
 
-import okhttp3.*
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.Call
+import okhttp3.OkHttpClient
 import java.lang.reflect.Method
 
 

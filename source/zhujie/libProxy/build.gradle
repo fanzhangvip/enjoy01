@@ -2,12 +2,16 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/cglib-3.2.9.jar')
+    implementation 'cglib:cglib-nodep:2.2.2'
+//    implementation 'org.ow2.asm:asm:8.0.1'
+//    implementation files('libs/cglib-3.2.9.jar')
 
     //ASM相关
-    implementation 'org.ow2.asm:asm:5.1'
-    implementation 'org.ow2.asm:asm-util:5.1'
-    implementation 'org.ow2.asm:asm-commons:5.1'
+//    implementation 'org.ow2.asm:asm:7.1'
+//    implementation 'org.ow2.asm:asm-util:7.1'
+//    implementation 'org.ow2.asm:asm-commons:7.1'
+//    implementation 'cglib:cglib:3.3.0'
+//    implementation 'asm:asm:4.0_RC2'
 }
 
 tasks.withType(JavaCompile){

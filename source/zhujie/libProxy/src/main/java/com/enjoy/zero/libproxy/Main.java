@@ -18,22 +18,22 @@ import sun.misc.ProxyGenerator;
 public class Main {
 
     public static void main(String[] args) {
-        //构造一个 牛耿
-        ILawsuit niugeng = new NiuGeng();
-        // 构造一个代理律师，并将牛耿作为构造参数传递进去
-        ILawsuit lawyer = new XXLayer(niugeng);
-
-        //律师提交诉讼材料
-        lawyer.submit();
-        //律师进行举证
-        lawyer.burden();
-        //律师代替牛耿辩护
-        lawyer.defend();
-        //完成诉讼
-        lawyer.finish();
-
-        System.out.println("====动态代理============");
-        dynamicProxyTest();
+//        //构造一个 牛耿
+//        ILawsuit niugeng = new NiuGeng();
+//        // 构造一个代理律师，并将牛耿作为构造参数传递进去
+//        ILawsuit lawyer = new XXLayer(niugeng);
+//
+//        //律师提交诉讼材料
+//        lawyer.submit();
+//        //律师进行举证
+//        lawyer.burden();
+//        //律师代替牛耿辩护
+//        lawyer.defend();
+//        //完成诉讼
+//        lawyer.finish();
+//
+//        System.out.println("====动态代理============");
+//        dynamicProxyTest();
         System.out.println("====cglib动态代理=========");
         cglibProxy();
     }
@@ -69,9 +69,16 @@ public class Main {
 
     public static void cglibProxy() {
         //；CGLIB通过继承的方式进行代理，无论目标对象有没有实现接口都可以代理，但是无法处理final的情况
+//        Enhancer enhancer =new Enhancer();
+//        enhancer.setSuperclass(MycglibTest.class);
+//        enhancer.setCallback(new CglibProxy());
+//        MycglibTest targetObject2=(MycglibTest)enhancer.create();
+//        targetObject2.method2(2);
+//
+        ILawsuit niugeng = new NiuGeng();
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(ILawsuit.class);
-        enhancer.setCallback(new CglibProxy());
+        enhancer.setCallback(new CglibProxy(niugeng));
         ILawsuit lawyer = (ILawsuit) enhancer.create();
         //律师提交诉讼材料
         lawyer.submit();

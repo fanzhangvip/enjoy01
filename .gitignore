@@ -9,6 +9,10 @@
 *.class
 # Generated files
 
+*.zip
+*.rar
+
+
 build/
 cmake-build-debug/
 

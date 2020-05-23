@@ -6,3 +6,13 @@
 1，retrofit中的注解的使用
 2，retrofit源码流程解读
 3，retrofit中的解耦思路
+
+
+今日课题：retrofit核心原理分析
+上课时间：2020/05/16 20:00
+授课讲师：Zero老师[享学课堂]
+课程链接：
+课程内容：
+1，retrofit图文混传
+2，retrofit中注解与反射的应用
+3，retrofit核心原理-代理模式

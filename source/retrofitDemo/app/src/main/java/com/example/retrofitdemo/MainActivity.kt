@@ -6,6 +6,7 @@ import android.util.Log
 import com.example.retrofitdemo.api.WanAndroidApi
 import com.example.retrofitdemo.bean.ProjectBean
 import com.example.retrofitdemo.retrofit.RetrofitClient
+import com.zero.myretrofit.MyRetrofit
 import okhttp3.MediaType
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -16,14 +17,21 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import retrofit2.http.Multipart
 import java.io.File
+import java.io.IOException
+
+interface WanAndroidApi1{
+    @GET("project/tree/json")
+    fun getProject(): okhttp3.Call
+}
 
 class MainActivity : AppCompatActivity() {
 
     private val wanAndroidApi = RetrofitClient.instance.getService(WanAndroidApi::class.java)
 
-    companion object{
+    companion object {
         const val TAG = "Zero"
     }
 
@@ -32,26 +40,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         testRetrofit()
+        okhttpTest()
+//        testRetrofit()
+//        testMyRetrofit()
+        mySimpleRetrofit()
     }
 
-    private fun testupload3(){
+    private fun testupload3() {
         val files = listOf<File>()
-        val map = mutableMapOf<String,MultipartBody.Part>()
+        val map = mutableMapOf<String, MultipartBody.Part>()
         files.forEachIndexed { index, file ->
-            val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
-            val part = MultipartBody.Part.createFormData("上传的key${index}",file.name,requestBody)
+            val requestBody = RequestBody.create(MediaType.parse("image/png"), file)
+            val part = MultipartBody.Part.createFormData("上传的key${index}", file.name, requestBody)
             map["上传的key${index}"] = part
         }
         wanAndroidApi.upload4(map)
     }
 
-    private fun testupload2(){
+    private fun testupload2() {
 
         //图片集合
         val files = listOf<File>()
-        val map = mutableMapOf<String,RequestBody>()
-        files.forEach() {file ->
-            val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
+        val map = mutableMapOf<String, RequestBody>()
+        files.forEach() { file ->
+            val requestBody = RequestBody.create(MediaType.parse("image/png"), file)
             map["file\";filename=\"test.png"] = requestBody
         }
         wanAndroidApi.upload3(map)
@@ -59,25 +71,26 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-    private fun testupload1(){
+    private fun testupload1() {
         val file = File("")
-        val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
-        val filePart =  MultipartBody.Part.createFormData("上传的key",
-            file.name,requestBody)
+        val requestBody = RequestBody.create(MediaType.parse("image/png"), file)
+        val filePart = MultipartBody.Part.createFormData(
+            "上传的key",
+            file.name, requestBody
+        )
         val call = wanAndroidApi.upload2(filePart)
         call.execute()
 
     }
 
-    private fun testupload(){
+    private fun testupload() {
         //上传单个文件
         val file = File("")
-        val requestBody = RequestBody.create(MediaType.parse("image/png"),file)
+        val requestBody = RequestBody.create(MediaType.parse("image/png"), file)
 
         val call = wanAndroidApi.upload(requestBody)
 
-        call.enqueue(object : Callback<ResponseBody>{
+        call.enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
             }
 
@@ -88,33 +101,54 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun testRetrofit(){
-        //1. 构建一个retrofit对象
-        val retrofit = Retrofit.Builder()
-             //Retrofit2的baseUrl 必须以 /(斜杆)结束，抛出一个IllegalArgumentException
-            .baseUrl("https://www.wanandroid.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+//    private fun testMyRetrofit() {
+//        val myretrofit = MyRetrofit.Builder()
+//            .baseUrl("https://www.wanandroid.com/")
+//            .build()!!
+//
+//        val wanAndroidApi = myretrofit.create(WanAndroidApi1::class.java)
+//        //3. 获取具体的请求业务方法
+//        val projectCall = wanAndroidApi.getProject()
+//        //异步
+//        projectCall.enqueue(object : okhttp3.Callback{
+//            override fun onFailure(call: okhttp3.Call, e: IOException) {
+//                Log.i(TAG, "错误：${e.message}")
+//            }
+//
+//            override fun onResponse(call: okhttp3.Call, response: okhttp3.Response) {
+//                Log.i(TAG, "成功： ${response.body()?.string()}")
+//            }
+//
+//        })
+//    }
 
-        //2. 获取WanAndroidApi接口的代理对象
-        val wanAndroidApi = retrofit.create(WanAndroidApi::class.java)
-
-        //3. 获取具体的请求业务方法
-        val projectCall = wanAndroidApi.getProject()
-
-        //发起请求
-        // 同步
-//        val projectBean  = projectCall.execute()
-        //异步
-        projectCall.enqueue(object : Callback<ProjectBean>{
-            override fun onFailure(call: Call<ProjectBean>, t: Throwable) {
-                Log.i(TAG,"错误：${t.message}")
-            }
-
-            override fun onResponse(call: Call<ProjectBean>, response: Response<ProjectBean>) {
-                Log.i(TAG,"成功： ${response.body()}")
-            }
-
-        })
-    }
+//    private fun testRetrofit() {
+//        //1. 构建一个retrofit对象
+//        val retrofit = Retrofit.Builder()
+//            //Retrofit2的baseUrl 必须以 /(斜杆)结束，抛出一个IllegalArgumentException
+//            .baseUrl("https://www.wanandroid.com/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        //2. 获取WanAndroidApi接口的代理对象
+//        val wanAndroidApi = retrofit.create(WanAndroidApi::class.java)
+//
+//        //3. 获取具体的请求业务方法
+//        val projectCall = wanAndroidApi.getProject()
+//
+//        //发起请求
+//        // 同步
+////        val projectBean  = projectCall.execute()
+//        //异步
+//        projectCall.enqueue(object : Callback<ProjectBean> {
+//            override fun onFailure(call: Call<ProjectBean>, t: Throwable) {
+//                Log.i(TAG, "错误：${t.message}")
+//            }
+//
+//            override fun onResponse(call: Call<ProjectBean>, response: Response<ProjectBean>) {
+//                Log.i(TAG, "成功： ${response.body()}")
+//            }
+//
+//        })
+//    }
 }

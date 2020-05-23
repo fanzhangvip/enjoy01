@@ -1,0 +1,141 @@
+同学们 晚上好
+20：05分开始
+
+序列化
+vip 作业 一定要交作业 
+
+QQ邮箱3417671365@qq.com 邮件标题[qq号]+课程名
+
+录播：看的时候有问题 记录下来 第一时间找我 
+
+序列化 没难点 
+
+有细节点：
+
+intent 
+socket  http 
+序列化，反序列化 概念
+序列化的用途：网络上，跨进程
+序列化方案： serializable parcelable (二进制)
+
+json  xml protobuf 
+
+协议：数据结构
+
+leader 你应该如何思考 你怎么去说服别人
+
+性能 时间成本 空间成本
+
+Serializable 标识
+
+ObjectOutputStream  ObjectInputStream
+
+1
+
+kotlin  jvm -> .class 字节码  反汇编 -》 .java
+
+细节
+C++
+A a
+
+
+Class A{} 
+
+serialVersionUID = 1L  有什么作用？ 
+
+client    service 
+
+A      <-   new A（）；
+             serialVersionUID =2 ‘
+			 控制版本 
+			 
+			 数据库  sqlite 
+			 
+writeObject -> writeObject0-> writeOrdinaryObject
+-> 
+
+
+readObject
+
+writeObject
+
+writeSerialData		
+ slotDesc.invokeWriteObject(obj, this);	 
+ 
+ @Throws(ClassNotFoundException::class, IOException::class)
+    private fun readObject(inputStream: ObjectInputStream) {
+   
+    }
+
+    @Throws(IOException::class)
+    private fun writeObject(outputStream: ObjectOutputStream) {
+     
+    }
+
+    private fun readResolve():Any{
+  
+    }
+
+    fun writeReplace(): Any {
+
+    }
+	
+	单例模式 
+	单例 序列化之后   -》 反序列化出来 
+	!!  断言操作符
+	
+	 kotlin @Transient
+	 java  transient 关键字
+	 static 静态变量  类
+	 序列化的 是对象 
+	 
+	 
+	 ?: eval 
+	 Any Java object
+      
+	  
+	  Parcel 包裹 
+	  大量的使用反射 产生大量临时对象
+	  
+	  对象的地址 是变了的
+	  
+	  equel  true
+
+
+Parcelable  Parcel  binder android 专有
+进程间通信
+
+intent  bitmap 
+
+intent  突破1M 
+
+4M
+大数据  
+写数据库  文件  路径文件名  
+
+startActivity(Intent )序列化
+activty启动 -》 AMS 
+
+json  
+
+gson 源码 
+
+反射 泛型 
+
+ReflectiveTypeAdapterFactory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

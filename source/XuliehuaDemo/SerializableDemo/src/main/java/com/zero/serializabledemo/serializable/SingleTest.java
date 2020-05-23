@@ -13,19 +13,19 @@ public class SingleTest {
 
     public static void main(String ... args) throws Exception {
             //TODO:
-        Single instance = Single.getInstance();
-        System.out.println(instance.hashCode());
-        System.out.println(copyInstance(instance).hashCode());
-
-        System.out.println("=================反射======================");
-        //使用反射方式直接调用私有构造器
-        Class<Single> clazz = (Class<Single>)Class.forName("com.zero.serializabledemo.serializable.Single");
-        Constructor<Single> con = clazz.getDeclaredConstructor(null);
-        con.setAccessible(true);//绕过权限管理，即在true的情况下，可以通过构造函数新建对象
-        Single instance1 = con.newInstance();
-        Single instance2 = con.newInstance();
-        System.out.println(instance1.hashCode());
-        System.out.println(instance2.hashCode());
+//        Single instance = Single.getInstance();
+//        System.out.println(instance.hashCode());
+//        System.out.println(copyInstance(instance).hashCode());
+//
+//        System.out.println("=================反射======================");
+//        //使用反射方式直接调用私有构造器
+//        Class<Single> clazz = (Class<Single>)Class.forName("com.zero.serializabledemo.serializable.Single");
+//        Constructor<Single> con = clazz.getDeclaredConstructor(null);
+//        con.setAccessible(true);//绕过权限管理，即在true的情况下，可以通过构造函数新建对象
+//        Single instance1 = con.newInstance();
+//        Single instance2 = con.newInstance();
+//        System.out.println(instance1.hashCode());
+//        System.out.println(instance2.hashCode());
 
     }
 

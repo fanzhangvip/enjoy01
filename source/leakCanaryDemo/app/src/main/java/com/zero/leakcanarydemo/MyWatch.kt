@@ -97,7 +97,7 @@ fun main() {
     println("创建一个对象o=$o")
     watch(o!!, "")
     sleep(2000)
-//    o = null
+    o = null
     if (o == null) {
         println("o=$o  释放了")
     }

@@ -2,6 +2,7 @@ package com.example.retrofitwanandroiddemo.network
 
 import android.util.Log
 import com.example.retrofitwanandroiddemo.BuildConfig
+import com.trello.rxlifecycle2.android.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

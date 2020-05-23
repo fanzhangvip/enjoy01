@@ -19,6 +19,23 @@ public class Main {
         strings.add("bbb");
         String[] arrays = new String[strings.size()];
         System.out.println(Arrays.toString(arrays));
+
+        ArrayList<A>  lista =  new ArrayList<A>();
+        ArrayList<? super B> list = lista;
+
+//        list.add(new A());
+        list.add(new B());
+        list.add(new C());
+
+    }
+    static class A{
+
+    }
+    static class B extends A{
+
+    }
+    static class C extends B{
+
     }
 
     //没办法给Student排序

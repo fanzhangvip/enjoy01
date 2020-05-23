@@ -13,7 +13,8 @@ fun weakReferenceTest() {
     val referenceQueue = ReferenceQueue<Any?>()
     var o: Any? = Object()
     val weakReference = WeakReference<Any?>(o, referenceQueue)
-    o = null
+    println("weakReference = $weakReference")
+//    o = null//o 弱可达 被释放
 
     Runtime.getRuntime().gc()
     try {

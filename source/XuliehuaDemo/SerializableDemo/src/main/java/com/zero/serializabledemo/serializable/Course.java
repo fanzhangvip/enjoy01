@@ -46,25 +46,52 @@ public class Course implements Serializable {
                 '}';
     }
 
+    static class A {
+        private String str;
+
+        public A(){}
+
+        public A(String str){
+            this.str = str;
+        }
+
+        @Override
+        public String toString() {
+            return "A{" +
+                    "str='" + str + '\'' +
+                    '}';
+        }
+    }
+
+   static class B implements Serializable {
+        private String name;
+        private int age;
+
+        private A a;
+
+        public B(String name,int age, A a){
+            this.name = name;
+            this.age = age;
+            this.a = a;
+        }
+
+        @Override
+        public String toString() {
+            return "B{" +
+                    "name='" + name + '\'' +
+                    ", age=" + age +
+                    ", a=" + a +
+                    '}';
+        }
+    }
+
     public static void main(String... args) throws Exception {
-        //TODO:
-        //TODO:
-        Course course = new Course("英语", 12f);
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ObjectOutputStream oos = new ObjectOutputStream(out);
-        oos.writeObject(course);
-        course.setScore(78f);
-        oos.reset();
-//        oos.writeUnshared(course);
-        oos.writeObject(course);
-        byte[] bs = out.toByteArray();
-        oos.close();
+        B b = new B("Zero",18,new A());
 
-        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
-        Course course1 = (Course) ois.readObject();
-        Course course2 = (Course) ois.readObject();
-        System.out.println("course1: " + course1);
-        System.out.println("course2: " + course2);
+        byte[] bs = SerializeableUtils.serialize(b);
 
+        //反序列化
+        B b1 = SerializeableUtils.deserialize(bs);
+        System.out.println(b1);
     }
 }
