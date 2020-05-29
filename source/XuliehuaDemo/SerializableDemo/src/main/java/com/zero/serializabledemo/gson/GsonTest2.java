@@ -25,12 +25,11 @@ public class GsonTest2 {
     }
 
     public static void main(String... args) {
-        //TODO:
 
     }
 
     public static void test1() {
-        //TODO:
+        //基本使用
         Gson gson = new GsonBuilder().serializeNulls().create();
         Foo foo = new Foo();
         String json = gson.toJson(foo);
@@ -38,7 +37,7 @@ public class GsonTest2 {
     }
 
     public static void test2() {
-        //TODO:
+        //自定义TypeAdapter
         Gson gson = new GsonBuilder().registerTypeAdapter(Foo.class
                 , new TypeAdapter<Foo>() {
 
@@ -79,7 +78,7 @@ public class GsonTest2 {
     }
 
     public static void test3() {
-        //TODO:
+        //nullSafe()演示
         Gson gson = new GsonBuilder().registerTypeAdapter(Foo.class
                 , new TypeAdapter<Foo>() {
 

@@ -124,6 +124,94 @@ gson 源码
 
 ReflectiveTypeAdapterFactory
 
+同学们，晚上好 
+20：05分发车
+
+今天全部java教学，以后的课尽量能不用kotlin的我不再使用kotlin
+如果同学们kotlin使用有问题的，可以私下找我
+xml protobuf 
+序列化
+
+Json 
+
+http 网络请求 
+
+1. json格式 基本语法
+2. json 想自己解析
+3. gson （moshi配套kotlin）
+
+格式良好的json  gson fastjson jackson 
+
+{
+"name": 12,
+"age": 23
+
+}
+
+重视 
+//Gson 
+1
+
+
+TypeAdapter
+JsonWriter
+JsonReader
+
+  if (value == null) {//进行非空判断
+                            out.nullValue();
+                            return;
+                        }
+
+ if (in.peek() == JsonToken.NULL) {//进行非空判断
+                            in.nextNull();
+                            return null;
+                        }
+面试题：
+1. 自定义TypeAdapter
+2. 自定义JsonDeserializer						
+Caused by: java.lang.IllegalStateException: Expected BEGIN_ARRAY but was STRING at line 3 column 17 path $.authors
+开发环境 测试环境 
+
+生产环境 错误表现在客户端 找后台
+稳定
+
+JsonDeserializer
+
+JsonElement
+
+gson 使用 还有没有什么问题？ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

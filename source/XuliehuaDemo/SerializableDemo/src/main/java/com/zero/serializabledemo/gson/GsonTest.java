@@ -9,8 +9,8 @@ public class GsonTest {
         public String str;
     }
 
+    //基本使用
     public static void main(String ... args){
-            //TODO:
         Gson gson = new Gson();
 
         System.out.println( gson.toJson(1));
@@ -31,6 +31,7 @@ public class GsonTest {
 
 
         GsonBean gsonBean1 = gson.fromJson(json,GsonBean.class);
+        System.out.println("gsonBean1: " + gsonBean1);
 
     }
 }

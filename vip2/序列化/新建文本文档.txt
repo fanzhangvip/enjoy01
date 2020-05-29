@@ -16,3 +16,29 @@ https://blog.csdn.net/xiaowan0404/article/details/72849041
 https://blog.csdn.net/yangwen123/article/details/9142521
 
 https://blog.csdn.net/qinjuning/article/details/6785517
+
+//gson
+https://blog.csdn.net/maplejaw_/article/details/51818570
+https://segmentfault.com/a/1190000017868423
+https://blog.csdn.net/chunqiuwei/article/list/4?t=1
+
+
+//使用建造者模式创建
+->GsonBuilder.java  
+create() 586
+
+//创建Gson对象
+Gson.java 
+Gson() 200
+
+//解析json串
+fromJson()  930
+
+JsonReader.java
+reader.peek() 421
+
+ TypeToken.get(typeOfT)
+
+getAdapter 440
+
+

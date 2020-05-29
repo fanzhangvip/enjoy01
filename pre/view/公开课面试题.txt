@@ -165,9 +165,61 @@ ThreadLocal原理：在ThreadLocal类中有一个Map，用于存储每一个线�
 8，死锁
 死锁就是指两个或者两个以上的线程在执行过程中，因争夺资源产生的一种相互等待现象。（比如两个人吃饭，一人一根筷子）
 
-圆形bitmap的实现原理
+1. 圆形bitmap的实现原理
 主要靠paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));这行代码实现圆形图片
 SRC_IN这种模式，取两个绘制的效果叠加后的交集，第一个绘制的是个圆形，第二个绘制的是个Bitmap，于是交集为圆形，展现的是BItmap，就实现了圆形图片效果
+
+2.  说说view的加载流程
+1.通过Activity的setContentView方法间接调用Phonewindow的setContentView（），在PhoneWindow中通过getLayoutInflate（）得到LayoutInflate对象
+2.通过LayoutInflate对象去加载View，主要步骤是
+（1）通过xml的Pull方式去解析xml布局文件，获取xml信息，并保存缓存信息，因为这些数据是静态不变的
+（2）根据xml的tag标签通过反射创建View逐层构建View
+（3）递归构建其中的子View，并将子View添加到父ViewGroup中
+
+
+3. View中onTouch，onTouchEvent和onClick的执行顺序
+
+当一个View需要处理事件时，如果它设置了OnTouchListener，那么OnTouchListener的onTouch方法会被回调。
+这时事件如何处理还得看onTouch的返回值，如果返回false，则当前View的onTouchEvent方法会被调用；如果返回true，那么onTouchEvent方法将不会被调用。由此可见，给View设置的onTouchListener，其优先级比onTouchEvent要高。
+如果当前方法中设置了onClickListener，那么它的onClick方法会被调用。可以看出，常用的OnClickListener，其优先级别最低
+
+4. View的滑动方式有哪些
+ 通过View本身提供的scrollTo/scrollBy方法
+. 通过动画给View施加平移效果实现滑动
+通过改变View的LayoutParams使View重新布局实现滑动
+
+三种方法的使用对比
+
+scrollTo/scrollBy：操作简单，适合对View内容的滑动；
+动画：操作简单，主要适合于没有交互的View和实现复杂的动画效果；
+改变布局参数：操作稍微复杂，适用于有交互的View。
+
+
+5. MeasureSpec和LayoutParams的关系
+
+View的MeasureSpec由父容器的MeasureSpec和自身的LayoutParams决定。
+View的masure过程由ViewGroup传递，具体观察ViewGroup的measureChildWithMargins方法
+DecorView的MeasureSpec由窗口尺寸和自身的LayoutParams决定。
+子元素的MeasureSpec还和View的margin和padding有关
+
+6. 重写View应该注意哪些方面
+自定义View的分类大致可以分为4类：
+
+继承View重写onDraw方法
+继承ViewGroup派生特殊的Layout
+继承特定的View（比如TextView）
+继承特定的ViewGroup（比如LinearLayout）
+
+让View支持wrap_content
+如果有必要，让View支持padding
+尽量不要在View中使用Handler，没必要，有post系列方法
+View中如果有线程或动画，需要及时停止，参考View#onDetachedFromWindow
+View带有滑动嵌套情形时，需要处理好滑动冲突
+
+
+
+
+
 
 
 

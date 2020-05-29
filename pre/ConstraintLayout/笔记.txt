@@ -1,11 +1,221 @@
-往期视频加可可老师
+往期视频加微微老师
 VIP咨询 阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 免费 Android学习大纲
 
 小伙伴们 15:10 发车
 
-面试 问的 高频考点 
+同学们 下午好 
+
+
+ 
+约束布局 1
+传统布局 2
+任务多 做不完
+你不会 耗时间
+
+为什么要用ConstraintLayout ？ 
+1.2016 拖拽 
+2.  属性太多
+
+3. 屏幕适配 面试也经常问（今日头条
+   AutoLayout 0-100 x1 -x100百分比  90%适配
+   
+4. 布局嵌套    测量-》 布局-》 绘制 viewtree
+   UI 不卡顿 布局层级不能太深
+   
+   如何手写 
+   
+   如何把约束布局替代传统布局
+   
+   相对布局 relativeLayout   增强版的相对布局
+   
+   4条边 
+   -》
+   left(start)  top  right(end)  bottom 
+   
+   
+   阿拉伯国家  《-
+   left(end)  top  right(start)  bottom 6 
+   
+   为什么是12
+   
+   约束布局的辅助控件
+   
+   Guideline
+   orientation
+   layout_constraintGuide_begin  100dp
+   layout_constraintGuide_end  xxdp
+   layout_constraintGuide_percent  百分比布局 
+   
+   Barrier
+    app:barrierDirection="end"
+    app:constraint_referenced_ids="username1,password1"
+
+
+layout_constraintBaseline_toBaselineOf
+
+偏移
+layout_constraintHorizontal_bias
+
+Placeholder
+
+
+Group
+
+layout_goneMarginLeft
+
+约束布局 当成线性布局 weight
+
+约束布局 当表格布局使用  Flow  2.0
+
+constraint_referenced_ids
+
+banner 自定义view  onMeasure  
+android: max/min
+app: max/min
+
+ConstraintHelper 1.x  guidline group barrier placeHolder
+                 2.x  自定义辅助控件
+				 
+				 约束布局
+				 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 约束布局：ConStraintLayout 2016
 ConStraintLayout 1 

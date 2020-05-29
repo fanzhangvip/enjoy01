@@ -1,7 +1,11 @@
 <resources>
+
+    <string name="username">登录</string>
+    <string name="password">密码</string>
+
     <string name="app_name">约束布局</string>
     <string name="desc">这是一张图片</string>
-    <string name="username_hint">请输入用户名·1</string>
+    <string name="username_hint">请输入用户名</string>
     <string name="pwd_hint">请输入密码</string>
     <string name="login">登录</string>
     <string name="copyright">copyright</string>
