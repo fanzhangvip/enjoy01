@@ -54,44 +54,6 @@ public class TextMeasureView1 extends AppCompatTextView {
 
     }
 
-    private int measureWidth(final int measureSpec) {
-        int mode = MeasureSpec.getMode(measureSpec);
-        int size = MeasureSpec.getSize(measureSpec);
-        int result = 0;
-        switch (mode) {
-            case MeasureSpec.EXACTLY:
-                Log.i(TAG, "measureWidth: EXACTLY");
-                result = size;
-                break;
-            case MeasureSpec.AT_MOST:
-            case MeasureSpec.UNSPECIFIED:
-                result = (int)(mMeasureWidth+ .5f) + getPaddingLeft() + getPaddingRight();
-                break;
-        }
-        //如果是AT_MOST,不能超过父布局的尺寸
-        result = (mode == MeasureSpec.AT_MOST)? Math.min(result,size):result;
-        return result;
-    }
-
-    private int measureHeight(final int measureSpec) {
-        int mode = MeasureSpec.getMode(measureSpec);
-        int size = MeasureSpec.getSize(measureSpec);
-        int result = 0;
-        switch (mode) {
-            case MeasureSpec.EXACTLY:
-                Log.i(TAG, "measureWidth: EXACTLY");
-                result = size;
-                break;
-            case MeasureSpec.AT_MOST:
-            case MeasureSpec.UNSPECIFIED:
-                result = (int)(mFontMetrics.descent - mFontMetrics.ascent +.5f) + getPaddingTop() + getPaddingBottom();
-                break;
-        }
-        //如果是AT_MOST,不能超过父布局的尺寸
-        result = (mode == MeasureSpec.AT_MOST)? Math.min(result,size):result;
-        return result;
-    }
-
     private void measureText() {
         mPaint.getTextBounds(mText, 0, mText.length(), mTextBounds);
         Log.i(TAG, "mTextBounds = " + mTextBounds);

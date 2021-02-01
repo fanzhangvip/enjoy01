@@ -54,7 +54,7 @@ class LinearLayout extends ViewGroup{}
 class Test03{
 
   public <T extends ViewGroup> T get(){//CAP#1
-      return (T)new LinearLayout();
+      return (T) new LinearLayout();
   }
 
 }

@@ -1,171 +1,253 @@
-往期视频加月亮老师：3433427729
+往期视频加月亮老师
 VIP咨询 阿媛老师：1413650094
-zero老师QQ: 3417671365
+zero老师微信: xiangxue_zero
 免费 Android学习大纲
 
+小伙伴们 15:10 发车
 
-同学们 下午好  15：10发车
+同学们 下午好 
+
+面试高频知识点 
+
+
+产品经理
+
+主题 手机
+
+apk 瘦身 
+切换theme app 
+插件化的换肤 
+换肤 那些资源可以替换？  
+皮肤资源包 
+
+换肤
+1. 哪些控件 哪些属性？ 
+
+如何获取需要换肤的控件？ 
+
+setFactory() -> 拿到所有的view
+换肤所有的view 都要替换吗？
+
+自定义属性attrs
+
+需要替换的资源从哪儿来？
+后台 
+如何加载进来的？
+外包资源  AssetManager
+
+app 资源如何打包 
+aapt2 -> 
+        二进制-》 res/
+		resourese.arsc 
+		R.java
+
+
+如何正确的找到对应的资源id?
+
+主App id           资源名称                      皮肤资源包 id
+getResoures().getColor(主id)
+主id  到皮肤资源包 找对应的资源 
+ 
+主app R.id 内部资源的id 
+
+
+getResourceEntryName（id= 0x00113322） -> colorAccent
+
+
+getIdentifier(colorAccent,Color,"xxx.xxx") ->皮肤资源包id
 
 XSkin
 
+UI 
+View 加载流程
+资源加载机制
+apk打包流程 体系化的学习 
 
-皮肤指什么？
+1.5W
 
-app-debug.apk  资源包  图片 
+会用  初级中级
+XSkin 懂原理 懂源码  高级
+Java 高级特性 
+Android注解 
+retrofit  @GET
+glide 
+eventbus 
+butterknife
+arouter 
+greendao 
+dagger2 ... APT 
 
-插件化   默认的资源
-预览  选择了某款
-下载  后台
-应用  加载进来 替换
+tinker 
+small
 
-看小说 白天 黑夜
-换 theme 
+new Thread Hanlder 
 
-apk 增大 
-
-apk  其实就是一个zip包
-
-java  编译 .class 
-res下面的资源  aapt (aapt2) -> R.java 
-                             assets文件和raw 不会改变
-							 二进制编码 
-							 resoure.arsc 
-							 
-							 
-1.  哪些控件 
-xml  转换成view  的过程？ 
-
-一个页面就是一个Activity 
-Activity 
-  Window 
-   DecorView
-     ContentView
-	    activity_main.xml -> view 
-		
-json 
-
-json 格式良好
-
-view -> AppCompatXXXView
-
-createViewFromTag  
-name  
-
-反射 ： 
-1. 不包含点 。 系统原生
-android.view.
-TextView
+MeasureSpec.unspecified -> 自己去计算高度
+            at_most <=parentSize
+ScrollView 
+ 自定义View/ TextView >parentSize 可以通过滚动 显示
+ 
+ 同步屏障 
+ 1500
+ 
+ 8个月
+ 6280
+ 5180  历史最低价格了 
 
 
-2.  自定义view 
-androidx.constraintlayout.widget.ConstraintLayout -》  Class对象
-com.enjoy02.changeskindemo.ZeroView
-
-final Object[] mConstructorArgs = new Object[2];
-Context ，attrs 
 
 
- public ZeroView(Context context, AttributeSet attrs) {
+
+
+
+
+
+
+
+-》 xml布局 如何转换成view 呈现给用户
+
+setContentView(R.layout.activity_main);、
+-》 MainActivity extends AppCompatActivity
+-》  AppCompatDelegate getDelegate()委托模式的应用
+
+contentParent
+——》LayoutInflater.from(mContext).inflate(resId, contentParent);
+ListView 
+
+inflate
+inflate(@LayoutRes int resource, @Nullable ViewGroup root, boolean attachToRoot)
+root ==null  
+attachToRoot = true/false
+addView
+viewPager  
+
+-> createViewFromTag
+
+mFactory 作用： 提供我们自己去创建view的机会
+
+if (-1 == name.indexOf('.')) {//不包含. 系统原生控件 Textview
+    view = onCreateView(parent, name, attrs);
+	
+	//return createView(name, "android.view.", attrs);
+	
+} else {//自定义view 第三方库google support androidx
+//androidx.constraintlayout.widget.ConstraintLayout
+//com.enjoy02.changeskindemo.ZeroView  Class 反射
+    view = createView(name, null, attrs);
+	1. loadClass  -> Class
+	2. getConstructor -> constructor
+	3.  View view = constructor.newInstance(args)
+	
+	 public ZeroView(Context context, AttributeSet attrs) {
         this(context, attrs,0);
+    }
 }
 
-final View view = constructor.newInstance(args);
-
-做过自定义view  1 
-		
-		
-LayoutInflater 
-Pull解析 
-哪几种xml解析方式？ 
-pull  dom  sax  基本功 
-
-		
+1.6 
+原生控件 -》 AppCompatXXX
 
 
-2.  换哪些属性 
-自定义属性 
 
-3. 外部的资源如何加载  - >   getResources 	context 
-Resource  
-
-打包 
-aapt2 
-res/    除去asset   /raw（id） 
-
-id  -  name 
-
-apk 本身
-id - name 
-getResourceEntryName  -> name 
-
-资源包 
-getIdentifier(name, "drawable", mOutPkgName) ->  id1 
-
-id1 - name 
-插件化换肤  难 
-做Android 几年了 
-3年以上  能力  年限 不匹配
- 很不幸 ： 技术迭代太快  
-           rxjava  -> 快过时了 (协程)
-		   mvp 
-		   jetpack compose 
-		   
-		   80%  kotlin 
-		   eclipse -> AS 
-		   
-幸运： 	有快速学习的能力  更多更先进的技术  多拿 
-
- 	
-
-1多小时： 
-       xml -> view 
-       插件化 资源加载 
-	   
-	   看书  看博客   zero老师  快 
-	   
-	   点 -》  vip  知识体系 
-	   
-	   1，计算机或相关专业本科及以上学历，5年以上工作经验，至少参加过一个完整的中型商业级手机应用开发项目。
-2，精通Java语言，熟悉Android系统架构及相关技术、精通Android平台UI设计，熟悉Android SDK不同版本的主要性。
-3，对网络编程、多线程、设计模式、高可用程序架构等有深入的理解。
-4，理解行业内流行的Android开源代码的结构和核心底层库，对Android底层接口有一定的认识。
-5，掌握tcp/ip协议、HTTP协议，对数据加密、防破解有较强的理解。
-6，熟练掌握kotlin者、利用工具能有效提高开发效率者优先。
-7、熟悉跨平台开发，对RN有深度开发者优先；有自己开源项目者优先。
-8，具备强烈的进取心和责任感, 极强的学习能力及良好的和跨团队合作能力,善于沟通,定期分享。
-	   
-Android高级工程师必备的知识体系  8 - 10 
-高级  伪 
-3-5 BAT 面试通知  ——》 面不过 
-
-知识体系	   
-		   
-		   retrofit  api  interface  method  泛型 注解  反射 动态代理  OKhttp Requst
-		   
-		   class<T>  具体的Java类型
-		   class<?> ? 不确定的java类型
-		   
-		   List<String>[] array = new ArrayList<string>[10];//error
-		   
-		   List<？>[] array = new ArrayList<？>[10]；//right 
+view设置属性 背景 -》 不需要重启
 
 
-不规则的UI 
 
-ble 蓝牙项目 
-广播 
 
-tinker 占坑 管理 activity 
 
-性能优化  写框架 
-风口 NDK 混合开发 
-人  1 岗位 -》 1000 入门
 
-5980  知识体系 8-10   25K 16个 
-一个星期 
-vip  20% 
 
-						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

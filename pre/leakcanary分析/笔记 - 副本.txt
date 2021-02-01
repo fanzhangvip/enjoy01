@@ -1,0 +1,1337 @@
+往期视频加乐乐老师
+zero老师微信: xiangxue_zero
+免费 Android学习大纲
+20：10开始
+
+同学们 晚上好
+
+面试的高频问点 往期视频加乐乐老师 免费 
+
+
+高频的面试点
+
+OOM: new object 1M  内存可用空间 < 1M
+
+根本原因：
+1. 加载大图片
+2. 内存泄漏  Activity 
+3. linux thread 限制： oom 
+
+java 自动回收垃圾  
+
+比较隐秘
+内部类 
+
+leakcanary 检查内存泄漏
+MAT 
+monkey 
+
+内存快照 
+
+adb shell dumpsys meminfo 
+
+
+leakcanary 热门 
+问使用 简单 
+
+原理：
+
+静态变量 生命周期  > Activity 
+
+leakcanary ->dump -> 内存快照 xxx.hprof 
+
+hprof-conv dump.hprof converted-dump.hprof  
+
+1. app.oncreate 初始化 
+2. api 
+
+1. 添加支持库 
+
+app的启动流程 
+
+contentprovider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OOM：内存溢出 
+c/c++ 
+new delete 
+
+java new 
+
+jvm:GC 
+new 
+垃圾回收机制：
+可达性分析：
+GC Root 引用： 对象还不能回收
+        没引用： 
+		
+app 生命周期比较长 
+activity 生命周期比较短  		OOM
+
+单例 >  TestActivity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OOM 
+mat 
+adb dumpsys meminfo 
+debug.dumphrop
+
+什么是OOM 
+一张图片 10M app 可用内存 < 10M 
+GC 
+< 10M   OOM 
+
+垃圾回收机制 有条件 
+什么样的对象才能被GC 
+
+Java 垃圾回收机制  自动回收
+
+
+内存泄漏 -》对象的 内存一直占有 -》 OOM 
+人 
+
+ square  okhttp  retrofit 
+ 
+ leakcanary 2.x 
+ 
+ TestDataModel.getInstance() 全局 app 不死 
+ TestActivity 退出这个页面 被销毁掉
+ 
+ leakcanary 报告  1
+ 
+ 检测到泄漏 -》 debug.dumphrop 内存快照 
+ 
+ MAT 不是标准的java  hprof 
+  hprof-conv .\2020-06-14_12-27-06_510.hprof aaa.hprof
+  
+ Lance 内存泄漏分析  
+ 
+ kotlin 
+ 
+ leakcanary到底如何检测内存泄漏
+ 
+ ContentProvider使用 
+ 
+ app的启动过程 
+ app  ContentProvider的onCreate 比Application的onCreate
+ 
+ 
+ apk打包流程 
+ 
+ mergeManifest -> 主app module (AndroidManifest.xml)
+ 
+   override fun onCreate(): Boolean {
+    CanaryLog.logger = DefaultCanaryLog()
+    val application = context!!.applicationContext as Application
+    InternalLeakSentry.install(application) // 进行初始化工作，核心
+    return true
+  }
+  
+  leakcanary源码 学到技巧 
+  
+  启动速度优化 
+  
+  leakcanary 到底能检测哪些对象？ 万能
+  
+  RefWatcher 负责监控对象的销毁 判断是否存在泄漏
+  install 结果： activity onDestory -> activity被销毁
+                 fragment onDestory ViewDestroyed（view） view
+  过了5秒 
+  activity还没被销毁
+  
+  RefWatcher
+				
+Java 引用 4种 	1 	
+
+Person person=new Person()	gc OOM  
+
+软  OOM
+
+弱  不管内存够不够 gc 
+
+bitmap weakReferences  内存缓存 
+Object obj  SoftReferences/WeakReferences 关联 
+ReferenceQueue  
+如果软引用所引用的对象被GC回收，Java虚拟机就会把这个软/弱引用加入到与之关联的引用队列中-》 知道对象是什么时候被回收的
+
+obj =null
+
+延迟5S 执行moveToRetained
+可能存在内存泄漏
+
+heapDumpTrigger
+ debug.dumphrop
+ 
+ System.gc  虚拟机一定会执行GC？ 
+ 
+ squre HAHA  可达性分析 
+ 
+ 知识体系 
+ 
+ leakcanary 是否只能检测 Activity Fragment ? 
+ 
+ 单例  app GCRoot
+ watch()
+ extend
+ 
+ BAT 
+ retrofit 
+ @GET 
+ 
+ interface 没有实现 具体业务逻辑
+ binder 安全性 性能 
+ 
+ handler 
+ 设计
+ 
+ handler  同步消息 异步 
+ 同步屏障  应用场景 
+ 
+ 同步消息，UI 优先级最高
+ 同步屏障
+ 异步
+ 
+ handler 源码 view绘制刷新源码
+ 
+ 获取view宽高 
+ 
+ onResume 
+ 不能 
+ handleResume 
+ 
+ decorview  window addview 刷新 measure layout draw
+ handler.post() 不能 同步屏障
+ 
+ view.post 
+ 
+ P7  8个月 更快 
+ 6280 %365 
+ 再贵学费 % 365  很小的投资
+ 再小的学习*365  拉开巨大差距 
+ 学习，最高的不是学费
+ 而是一去不复返的黄金时间
+ 
+ 更早 高薪 
+ HAHA 
+ 一个线程 
+ 
+ new 
+ 
+ 
+ 
+ 				 
+  
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+面试高频问题
+
+leakcanary 有没有用过 1 ，2
+
+高级： 掌握原理和源码
+初中级  调用api
+
+
+什么叫内存泄漏
+OOM
+
+内存泄漏(memory leak)
+
+加载bitmap 100K 但是app进程的可用内存  < 100K
+out of memory
+
+java 为什么会抛出OOM ？ 自动回收 垃圾回收机制
+C++ 
+
+内存泄漏 
+Context 
+Handler 
+
+什么是LeakCanary
+内存泄漏检测工具
+
+adb dumpsys memory 
+debug.dumphrop
+mat  eclipse AS 
+
+memory leak会最终会导致out of memory！
+
+自定义view 
+ondraw  new Paint ... 频繁的创建销毁对象-》内存抖动
+-》GC-》 卡顿 oom 耗电 
+
+知识体系
+leakcanary  2.x build.gradle 1秒杀
+GCRoots
+sInstance -> TestActivity实例  memory leak 
+TestActivity onDestory 销毁'
+
+kotlin语言 为什么用kotlin ? 
+
+AS  4.1 ComposeUI 
+
+leakcanary报告看不懂的  1. 
+MAT  
+
+glide imagerloader ... 
+
+App启动流程 
+请求AMS 
+-》 MainActivity app进程 直接跳转
+app进程还没有启动 -》zygote fork app进程 
+-》 创建app applcation 
+
+handleBindApplication -> 
+Application app;  makeApplication：-》 
+installContentProviders
+ ContentProvider.this.onCreate(); LeakSentryInstaller
+-> app.onCreate方法：做各种初始化操作
+
+休息5min
+android 4大组件 
+
+知识体系 app开发 写业务 
+java 高级特性 
+
+leakcanary到底如何检测内存泄漏 
+Activity 
+任意一个对象 检测 
+
+创建一个 RefWatcher 检测内存泄漏
+ ActivityDestroyWatcher.install( // 监听 Activity.onDestroy()
+        application, refWatcher, configProvider
+    )
+ActivityDestroyWatcher
+registerActivityLifecycleCallbacks
+onActivityDestroyed
+refWatcher.watch(activity) 
+Activity fragment 检测 
+
+
+GcTrigger GC触发器 gc
+
+System.gc
+HeapDumpTrigger 内存泄漏分析触发器
+registerVisibilityListener app在前台 还是后台
+
+RefWatcher核心原理   面试 核心原理
+
+4种引用
+
+	ReferenceQueue  + Weak Reference
+	发现对象 什么时候被销毁 
+	
+	MyKeyWeakReference ： WeakReference
+	
+	 1. //加入观察列表 activity ondestroy  =null  gc 
+        watchedReferences[key] = reference  过5秒
+		
+	 2. 	queue: ReferenceQueue<Any> 有没有对象ref
+	      从 watchedReferences删除 
+		  
+	 3. 	 retainedReferences.add(ref) 
+	 
+	 4. retainedReferences.size> 0 可能有泄漏 
+	 
+	 squre HAHA 专门分析内存泄漏
+	
+leakcanary 1.x  轮询 检测 
+           2.x   主动触发 
+	
+	
+ val weakReference = WeakReference<Any?>(o, referenceQueue)
+ 
+ 完整的知识体系 
+ 非静态内部类 -》 外包类的引用
+ 对象 
+ 
+ Activity  handler -> run 耗时
+ 告诉你 是否存在泄漏  如何解决？ 
+ 能接到BAT 面试通知 很多 。。。 
+ 能进去的很少 个人原因
+ 高级工程师 自己 3-5 Android 高级 
+ retrofit  butterknife arouter .. eventbus 
+ 
+ handler 
+ 
+ 跨进程 binder C/S 动态代理
+ 跨线程 handler
+ 
+ 弱网 通信 如何处理 
+ 5G   
+ 
+ 拼命的学习  能力提升
+ 8个月
+ 
+ 自学 
+ 跟着老师学 leakcanary 吊打面试官
+ 快速掌握面试 高频问题
+ 
+ 6280
+ 
+ 5580
+ 
+ 学费再贵  % 365  每天的投资 
+ 学习，每天进步一点点 * 365  拉开巨大差距
+ 学习，最贵不是学费
+ 而是一去不复返的黄金时间
+ 早学习 早点
+ 
+ 指导修改简历  -》 应该掌握哪些技术 -》 目标的准备 
+ -》 模拟面试 360 分析项目经历 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OOM 
+new Object() 10KB内存  只剩8KB 
+
+LeakCanary  高贵 1秒杀
+检测 activity  fragment 自动监控
+监控其他对象
+AppWatcher.objectWatcher.watch(schrodingerCat,"schrodingerCat")
+
+
+
+ square  okhttp  retrofit 5mins
+ 
+ 内存溢出 OOM 
+ 
+ 内存泄漏 
+ 
+ 垃圾回收机制 
+ 强引用 
+ gsRoots  可达
+ 
+ 1. leakcanary 依赖进来之后 它在哪儿初始化的？
+ 
+ AndroidManifest.xml 　<provider> LeakSentryInstaller
+ onCreate() 初始化InternalLeakSentry.install(application)
+ 
+ app启动 -》 
+handleBindApplication
+创建
+makeApplication： DebugExampleApplication 
+如果你注册了ContentProvider
+installContentProviders
+localProvider.attachInfo(c, info);
+ ContentProvider.this.onCreate();
+
+mInstrumentation.callApplicationOnCreate(app);
+ app.onCreate();DebugExampleApplication
+
+ContentProvider.oncreate  先于 Application的onCreate调用的
+提醒：dev 
+
+启动速度优化 
+
+2. leakcanary初始化 干了些什么事情？ 
+1. 创建了RefWatcher对象  watch 
+2. activity  fragment自动监控 原理？ 
+   LifeCycle 
+3. 其他一些初始化工作
+heapDumper 当你确定了存在内存泄漏 dump 堆栈
+gcTrigger  gc
+启动了一个检测内存泄漏的工作线程   1.x UI主线程idle
+
+heapDumpTrigger 检测内存泄漏
+
+fun Application.registerVisibilityListener
+应用 从不可见-》 可见 
+     可见 -》 不可见
+
+1.x 通过轮询检测	
+
+可见 -》 不可见
+做一次内存泄漏 scheduleRetainedInstanceCheck
+watch 主动做一次内存泄漏检测
+
+
+
+System.gc
+Runtime.getRuntime()//主要这里不是使用System.gc,因为它仅仅是通知系统在合适的时间进行一次垃圾回收操作
+          .gc()
+
+Kotlin 还不学习kotlin  淘汰
+
+面试： leakcanary检测内存泄漏的核心原理？ 
+
+
+
+1. 把需要监控的对象 watchedReferences
+要监控的引用
+referenc  -- key 
+
+过5秒
+5秒之内 referenc =null 
+被加入到ReferenceQueue
+
+gc之后，如果我发现retainedReferences还有引用，说明可能存在内存
+泄漏
+2. retainedReferences
+
+3. ReferenceQueue
+
+最终retainedReferences.size > 0 可能存在内存泄漏
+dump  分析
+HAHA 
+Handle  Looper -> MessageQueue-> Meassage -> Handler ->Activity
+
+Context  application  activity  service contentprovider 
+
+内存问题：  leakcanary 
+
+Android 知识体系 
+
+面试  面不上 
+Android高级  一线 互联网
+市场上要求的高级工程师： 掌握  Android 知识体系
+造轮子 
+retrofit  
+new Thread 
+
+baidu google  666
+
+多长时间 学废了
+ 8个月 
+ 1. 不仅仅是直播课程
+ 2. 工作遇到问题 帮助解决
+ 3. 面试简历指导 收到大厂的面试通知 模拟面试 快速的进入大厂
+ 8个月 知识体系学废了
+ 
+ 3.0 大纲 升级
+ 
+ 5380钱多吗？
+ 再贵学费 % 365  很小的投资
+ 再小的学习*365  拉开巨大差距 
+ 学习，最高的不是学费
+ 而是一去不复返的黄金时间 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+
+Welcome to Gradle 6.1.1!
+
+Here are the highlights of this release:
+ - Reusable dependency cache
+ - Configurable compilation order between Groovy/Kotlin/Java/Scala
+ - New sample projects in Gradle's documentation
+
+For more details see https://docs.gradle.org/6.1.1/release-notes.html
+
+Starting a Gradle Daemon, 1 incompatible Daemon could not be reused, use --status for details
+
+> Configure project :leakcanarydemo
+WARNING: DSL element 'android.viewBinding.enabled' is obsolete and has been replaced with 'android.buildFeatures.viewBinding'.
+It will be removed in version 5.0 of the Android Gradle plugin.
+
+> Configure project :materialdesign
+WARNING: DSL element 'android.viewBinding.enabled' is obsolete and has been replaced with 'android.buildFeatures.viewBinding'.
+It will be removed in version 5.0 of the Android Gradle plugin.
+
+> Task :clean
+> Task :app:clean
+> Task :app1:clean
+> Task :genericsdemo:clean UP-TO-DATE
+> Task :genericsdemo02:clean UP-TO-DATE
+> Task :jsonlib:clean UP-TO-DATE
+> Task :leakcanarydemo:clean
+> Task :materialdesign:clean
+> Task :memorydemo:clean
+> Task :textdraw:clean
+> Task :xuliehuademo:clean
+> Task :xuliehualib:clean UP-TO-DATE
+
+BUILD SUCCESSFUL in 24s
+12 actionable tasks: 8 executed, 4 up-to-date

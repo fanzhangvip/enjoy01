@@ -1,0 +1,146 @@
+往期视频加月亮老师：3433427729
+vip咨询加阿媛老师：1413650094
+VIP咨询 阿媛老师：1413650094
+zero老师微信: xiangxue_zero
+免费 Android学习大纲
+
+小伙伴们 20:10 发车
+
+约束布局：
+
+1. 拖拽 
+2. UI卡顿优化 - 层级过多 
+view tree -> measure -> layout -> draw -> 呈现给用户
+
+systrace 
+
+解决布局嵌套的问题
+
+UI 适配  90% 
+
+
+
+百分比布局
+今日头条 
+layout-800x
+
+px，
+分辨率
+屏幕尺寸
+dpi
+
+
+
+传统布局：线性， 相对 表格布局
+
+swing 
+
+
+相对: 增强版
+
+left/start  top  right/end  bottom  12 
+
+left/right 绝对的对齐关系
+
+start/end 基于阅读顺序的对齐
+阿拉伯 
+
+parent： 代表约束布局容器的id  = root
+
+相对定位：
+源控件：
+app:layout_constraintTop_toTopOf="@+id/target"
+app:layout_constraintEnd_toStartOf="@+id/target"
+
+将指定控件（源控件）相对于另一个控件（目标控件）进行定位
+目标控件： 
+
+线性：权重 
+
+链：
+ app:layout_constraintHorizontal_chainStyle="packed"
+权重 
+ app:layout_constraintHorizontal_weight="1"
+ 
+偏移： bias
+app:layout_constraintHorizontal_bias="0.5" 
+和反省约束属性一起使用
+app:layout_constraintLeft_toLeftOf
+app:layout_constraintRight_toRightOf
+
+
+包含了一大堆的辅助定位控件： 2.x 自定义辅助定位控件
+
+百分比布局：
+
+Guideline：不可见的
+
+android:orientation="vertical|horizontal"
+
+app:layout_constraintGuide_percent="0.47"
+app:layout_constraintGuide_begin
+app:layout_constraintGuide_end
+
+xml -> view ： LayoutInflater.inflate()
+
+Barrier:
+app:barrierDirection="end"
+app:constraint_referenced_ids="username1,password1"
+
+解决这个嵌套
+Group: 
+
+ConstraintHelper：
+//揭露动画
+createCircularReveal
+
+1. 2年以上Android客户端开发经验，有独立设计Android客户端架构经验。
+2. 开发基础良好，理解设计模式，在项目或产品中有很好的设计实践。
+3. 可以应付OOM、ANR、native crash等各种Android复杂问题，并迅速给出解决方案。
+4. 熟悉Android Framework，有一定Android源码阅读经验。
+5. 熟悉Linux系统者优先考虑，关注开源应用者优先考虑。
+6. 有前端开发经验优先；有小程序开发经验优先。
+
+构建Android知识体系
+擅长 
+某一方面 
+
+Java 高级特性
+retrofit glide .... 
+app 
+
+java 
+GC 
+
+ondraw(){
+
+ Paint paint = new Paint();
+ for(){
+   new 
+ }
+ 
+}
+
+retrofit : 原理 -》 动态代理
+squre: leakcanry 2.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

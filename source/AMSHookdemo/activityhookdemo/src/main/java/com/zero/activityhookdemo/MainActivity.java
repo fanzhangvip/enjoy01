@@ -12,6 +12,8 @@ import com.zero.activityhookdemo.hook.HookHelper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Collections.copy();
+
         ButterKnife.bind(this);
     }
 
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_hook4)
     public void onBtnHook4Clicked() {
         Log.i(TAG, "onBtnHook4Clicked: " + Build.VERSION.SDK_INT);
-        HookHelper.hookIActivityManager();
+        HookHelper.hookAMSAidl();
         HookHelper.hookHandler();
         Intent intent = new Intent(this,TargetActivity.class);
         startActivity(intent);

@@ -95,17 +95,26 @@ interface Api2{
     @MyGET("https://www.wanandroid.com/project/tree/json")
     fun getProject(): okhttp3.Call
 
-//    @MyGET("")
-//    fun xxx(): okhttp3.Call
+    @MyGET("")
+    fun xxx(): okhttp3.Call
 
 }
-class MyApi2(): Api2{
-    override fun getProject(): okhttp3.Call {
-        TODO("Not yet implemented")
-    }
-
-
-}
+//class MyApi2(): Api2{
+//    override fun getProject(): okhttp3.Call {
+//        TODO("Not yet implemented")
+//        //1. 获取url
+//        //2. Okhttpclient
+//        //3. client.newCall(request).enqueue
+//    }
+//
+////    override fun xxx(): okhttp3.Call {
+////        //1. 获取url
+////        //2. Okhttpclient
+////        //3. client.newCall(request).enqueue
+////    }
+//
+//
+//}
 
 fun mySimpleRetrofit(){
 
@@ -123,6 +132,7 @@ fun mySimpleRetrofit(){
             .build()
         client.newCall(request) as okhttp3.Call
     } as Api2
+//    api2.xxx()
     api2.getProject().enqueue(object : okhttp3.Callback {
         override fun onFailure(call: okhttp3.Call, e: IOException) {
             Log.i(TAG, "错误：${e.message}")

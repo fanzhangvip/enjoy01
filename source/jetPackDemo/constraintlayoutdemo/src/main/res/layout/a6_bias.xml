@@ -50,6 +50,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/t1"
         android:layout_width="wrap_content"
@@ -63,7 +64,6 @@
         app:layout_constraintStart_toEndOf="@id/left"
         app:layout_constraintTop_toTopOf="@id/left"
         app:layout_constraintWidth_min="120dp" />
-
 
     <TextView
         android:id="@+id/t2"
@@ -192,14 +192,13 @@
         android:background="@color/color_7"
         android:gravity="center"
         android:singleLine="true"
-        android:text="===========bias=0.5=========="
+        android:text="bias=0.5"
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/right2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/left2"
         app:layout_constraintTop_toTopOf="@id/left2"
         app:layout_constraintWidth_min="120dp" />
-
 
     <TextView
         android:id="@+id/t23"
@@ -209,10 +208,10 @@
         android:background="@color/color_7"
         android:gravity="center"
         android:singleLine="true"
-        android:text="========bias=0========"
+        android:text="bias=0"
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/right2"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@id/left2"
         app:layout_constraintTop_toBottomOf="@id/t13"
         app:layout_constraintWidth_min="120dp" />
@@ -246,20 +245,20 @@
         app:layout_constraintTop_toTopOf="@id/guideline3"
         app:layout_constraintWidth_percent="0.5" />
 
+
     <TextView
         android:id="@+id/t14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/color_3"
         android:gravity="center"
-        android:text="bias=0.5"
+        android:text="bias=0"
         android:textSize="32sp"
         app:layout_constraintEnd_toStartOf="@id/left3"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toEndOf="@id/left3"
         app:layout_constraintTop_toTopOf="@id/left3"
         app:layout_constraintWidth_min="120dp" />
-
 
     <TextView
         android:id="@+id/t24"
@@ -296,7 +295,7 @@
         android:text="锚点相同,bias无效"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="@id/left3"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="1"
         app:layout_constraintStart_toEndOf="@id/left3"
         app:layout_constraintTop_toBottomOf="@id/t24"
         app:layout_constraintWidth_min="120dp" />

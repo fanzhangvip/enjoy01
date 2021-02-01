@@ -14,7 +14,7 @@ fun weakReferenceTest() {
     var o: Any? = Object()
     val weakReference = WeakReference<Any?>(o, referenceQueue)
     println("weakReference = $weakReference")
-//    o = null//o 弱可达 被释放
+    o = null//o 弱可达 被释放
 
     Runtime.getRuntime().gc()
     try {
@@ -26,6 +26,8 @@ fun weakReferenceTest() {
     var ref: WeakReference<Any?>?
     do {
         ref = referenceQueue.poll() as? WeakReference<Any?>
+        val obj1 =ref?.get()//ref 弱引用
+        println("obj1 = $obj1")
         println("=============\n $ref in queue")
     } while (ref != null)
 

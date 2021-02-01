@@ -25,6 +25,69 @@ public class HookHelper {
 
     public static final String EXTRA_TARGET_INTENT = "extra_target_intent";
 
+    public static void hookAMSAidl(){
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P){
+            hookIActivityTaskManager();
+        }else{
+            hookIActivityManager();
+        }
+    }
+
+    public static void hookIActivityTaskManager(){
+        try{
+            Field singletonField = null;
+            Class<?> actvityManager = Class.forName("android.app.ActivityTaskManager");
+            singletonField = actvityManager.getDeclaredField("IActivityTaskManagerSingleton");
+            singletonField.setAccessible(true);
+            Object singleton = singletonField.get(null);
+            //拿IActivityManager对象
+            Class<?> singletonClass = Class.forName("android.util.Singleton");
+            Field mInstanceField = singletonClass.getDeclaredField("mInstance");
+            mInstanceField.setAccessible(true);
+            //原始的IActivityTaskManager
+            final Object IActivityTaskManager = mInstanceField.get(singleton);
+
+            Object proxy = Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader()
+                    , new Class[]{Class.forName("android.app.IActivityTaskManager")}
+                    , new InvocationHandler() {
+                        @Override
+                        public Object invoke(final Object proxy, final Method method, final Object[] args) throws Throwable {
+//                            Log.i(TAG, "invoke: " + method.getName());
+
+                            //偷梁换柱
+                            //真正要启动的activity目标
+                            Intent raw = null;
+                            int index = -1;
+                            if ("startActivity".equals(method.getName())) {
+                                Log.i(TAG, "invoke: startActivity 启动准备");
+                                for (int i = 0; i < args.length; i++) {
+                                    if(args[i] instanceof  Intent){
+                                        raw = (Intent)args[i];
+                                        index = i;
+                                    }
+                                }
+                                Log.i(TAG, "invoke: raw: " + raw);
+                                //代替的Intent
+                                Intent newIntent = new Intent();
+                                newIntent.setComponent(new ComponentName("com.zero.activityhookdemo", StubActivity.class.getName()));
+                                newIntent.putExtra(EXTRA_TARGET_INTENT,raw);
+
+                                args[index] = newIntent;
+
+                            }
+
+                            return method.invoke(IActivityTaskManager, args);
+                        }
+                    });
+
+            //            7. IActivityManagerProxy 融入到framework
+            mInstanceField.set(singleton, proxy);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static void hookIActivityManager() {
 
         try{
@@ -109,7 +172,7 @@ public class HookHelper {
                     Log.i(TAG, "handleMessage: " + msg.what);
                     switch (msg.what) {
                         case 100: {
-
+                          //在这里进行替换回来
                         }
                         break;
                         case 159: {

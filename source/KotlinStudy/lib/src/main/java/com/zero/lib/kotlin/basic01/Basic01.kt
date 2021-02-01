@@ -125,6 +125,16 @@ open class Base{
 
 var nstr: String? = null
 
+class V< T :P<*>> {
+
+    var mP :T ?=null
+}
+
+class P<T :V<*> > {
+
+    var mV :T?=null
+}
+
 fun main() {
 
     if(nstr!=null){

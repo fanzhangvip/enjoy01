@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg"
     app:isSupport="true"
-    tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <!--TODO: 关键技术点2 isSupport=true标识当前控件支持换肤-->

@@ -19,4 +19,8 @@ class TestActivity: AppCompatActivity() {
 
         catTest()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
 }

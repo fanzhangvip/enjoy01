@@ -191,7 +191,7 @@ public class TextMeasureView extends View {
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
         mPaint.setColor(Color.GREEN);
-        mPaint.setTextSize(sp2px(120));
+        mPaint.setTextSize(sp2px(80));
 
         mLinePaint = new Paint();
         mLinePaint.setStyle(Paint.Style.STROKE);
@@ -201,6 +201,8 @@ public class TextMeasureView extends View {
         mTextBounds = new Rect();
         mFontMetrics = new Paint.FontMetrics();
 
+        mText = "ཁྱོད་བདེ་མོ།";//藏文
+//        mText = "السلام عليكم";
         mText = "jEh";
     }
 

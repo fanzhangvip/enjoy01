@@ -12,22 +12,27 @@ Java_com_zero_giflibdemo_gif_GifFrame_nativeDecodeStream(JNIEnv *env, jclass cla
                                                          jbyteArray buffer) {
     // TODO: 把gif图片解析 GifFrame 创建一个java的GifFrame 返回给java层
 
-    //先要创建出C++层的GifFrame
+    //类似反射
+    //拿到Java InputStream
     jclass inputStreamClazz = env->FindClass("java/io/InputStream");
     JavaInputStream::readMethodId = env->GetMethodID(inputStreamClazz,"read","([BII)I");
     JavaInputStream inputStream(env,stream,buffer);
-    GifFrame* gifFrame = new GifFrame(&inputStream);
-    //调用Java层的GifFrame的构造函数
-    //1. Java层的GifFrame的jclass
-    jclass gifFrameClazz = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
-    //2  构造方法的jmethdId
-    jmethodID gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");//方法的签名
-    return env->NewObject(gifFrameClazz,gifFrameInit,
-                          reinterpret_cast<jlong>(gifFrame)
-                          ,gifFrame->getWidth()
-                          ,gifFrame->getHeight()
-                          ,gifFrame->getFrameCount());
 
+    //c/c++ GifFrame
+    GifFrame*  gifFrame = new GifFrame(&inputStream);
+
+    //创建一个Java层的 GifFrame对象返回
+    jclass gifFrameClazz = env->FindClass("com/zero/giflibdemo/gif/GifFrame");
+    // 拿方法 jmethodId
+    jmethodID  gifFrameInit = env->GetMethodID(gifFrameClazz,"<init>","(JIII)V");
+
+    //调用init方法
+    return env->NewObject(gifFrameClazz,gifFrameInit,
+                          reinterpret_cast<jlong>(gifFrame),
+                          gifFrame->getWidth(),
+                          gifFrame->getHeight(),
+                          gifFrame->getFrameCount()
+            );
 }
 
 extern "C"
@@ -59,10 +64,14 @@ decode_jni(JNIEnv *env, jclass clazz, jobject assetManager, jstring gifPath){
             ,gifFrame->getFrameCount());
 }
 
-
+//动态注册
 JNINativeMethod method[] = {
-        {"nativeDecodeStreamJNI"
-                ,"(Landroid/content/res/AssetManager;Ljava/lang/String;)Lcom/zero/giflibdemo/gif/GifFrame;",(void*) decode_jni },//
+        {
+            "nativeDecodeStreamJNI",
+            "(Landroid/content/res/AssetManager;Ljava/lang/String;)Lcom/zero/giflibdemo/gif/GifFrame;",
+                (void*) decode_jni
+            },
+
 };
 
 jint registNativeMethod(JNIEnv* env){
@@ -102,3 +111,11 @@ JNIEXPORT void JNI_OnUnload(JavaVM* vm, void* param){
         unRegistNativeMethod(env);
     }
 }
+
+//extern "C"
+//JNIEXPORT jobject JNICALL
+//Java_com_zero_giflibdemo_gif_GifFrame_nativeDecodeStreamJNI(JNIEnv *env, jclass clazz,
+//                                                            jobject asset_manager,
+//                                                            jstring gif_path) {
+//    // TODO: implement nativeDecodeStreamJNI()
+//}

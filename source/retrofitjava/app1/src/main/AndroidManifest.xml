@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jinlong.newmaterialdesign">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/BaseTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".toolbar.ZhiHuToolbarActivity" />
+        <activity android:name=".toolbar.DefaultToolbarActivity" />
+        <activity android:name=".toolbar.WithFragmentActivity" />
+        <activity android:name=".toolbar.YunActivity" />
+        <activity
+            android:name=".navigation.NavigationActivity"
+            android:theme="@style/BaseTheme" />
+        <activity android:name=".animation.TransitionManagerActivity" />
+        <activity android:name=".animation.HandleViewActivity" />
+        <activity android:name=".animation.SceneActivity" />
+        <activity android:name=".animation.SharedActivity" />
+        <activity android:name=".fab.FABActivity" />
+        <activity android:name=".fab.FABAndRecyclerViewActivity" />
+        <activity android:name=".fab.FABLocationActivity" />
+        <activity android:name=".behavior.BehaviorActivity" />
+        <activity android:name=".behavior.TwoBehaviorActivity" />
+        <activity android:name=".behavior.OneBehaviorActivity" />
+        <activity android:name=".material.MaterialActivity" />
+        <activity android:name=".material.SupperMaterialActivity" />
+        <activity android:name=".material.AppBarLayoutActivity" />
+        <activity android:name=".tablayout.TabLayoutActivity" />
+        <activity android:name=".tablayout.NewTabLayoutActivity" />
+        <activity android:name=".cardView.CardViewActivity" />
+        <activity android:name=".input.InputActivity" />
+    </application>
+
+</manifest>

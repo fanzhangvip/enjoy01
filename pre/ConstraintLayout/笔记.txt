@@ -1,4 +1,4 @@
-往期视频加微微老师
+往期视频加肉兰老师
 VIP咨询 阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 免费 Android学习大纲
@@ -6,6 +6,342 @@ zero老师微信: xiangxue_zero
 小伙伴们 15:10 发车
 
 同学们 下午好 
+
+
+2016
+
+为什么要用ConstraintLayout?
+性能会好些
+解决嵌套
+自适应布局
+
+
+
+传统布局 
+线性 相对 表格 。。。
+UI适配 -》 AutoLayout percent 今日头条 
+
+拖拽 不讲 
+
+手写xml  ConstraintLayout
+
+ConstraintLayout 增强版的 相对布局 
+百分比布局 
+
+和传统布局对比 
+
+ConstraintLayout当相对布局用
+相对布局 toLeft/Top/Right/Bottomof 
+
+源控件 
+目标控件
+父View
+中国  ->
+left(start)  top  right(end)  bottom  12
+
+阿拉伯国家  <-
+
+layout_constraintStart_toStartOf ="id值" parent
+
+4条边 都给约束 为什么是在中心位置？
+
+如果是使用传统布局 应该怎么做？
+
+Flutter 
+
+基线对齐
+layout_constraintBaseline_toBaselineOf
+
+1,  
+
+辅助控件  辅助你定位你需要显示的控件的，它本身runtime不可见
+
+guidline
+android:orientation="vertical"
+app:layout_constraintGuide_begin
+app:layout_constraintGuide_end
+
+app:layout_constraintGuide_percent 百分比布局  90%
+
+Barrier extends  ConstraintHelper
+ConstraintHelper extends View
+app:barrierDirection="end"
+app:constraint_referenced_ids="username1,password1"
+Group 解决嵌套 
+
+
+
+layout_constraintHorizontal_bias 1:3
+要求同一个方向上 有一对反向约束的属性
+锚点相同,bias无效
+left/start (right/end)
+
+top (bottom)
+
+
+layout_marginLeft 方向性问题
+
+layout_goneMarginLeft
+
+
+
+ConstraintLayout 当线性布局 
+
+链
+layout_constraintHorizontal_chainStyle
+
+
+
+圆形定位
+app:layout_constraintCircle="@id/text1"
+app:layout_constraintCircleAngle="30"
+app:layout_constraintCircleRadius="50dp"
+
+
+ConstraintLayout 当表格布局 
+
+辅助控件 Flow
+
+
+ConstraintLayout的大小设置
+wrap_content 
+0dp 填满
+app:layout_constraintWidth_default="wrap"//spread
+等同于
+wrap_content + app:layout_constrainedWidth="true"
+
+guidline 设置百分比 划分成不同区域
+
+android:layout_width="0dp"+layout_constraintWidth_percent
+
+app:layout_constrainedWidth="true" 强制约束 
+
+match_parent没有了
+
+ConstraintLayout的比例
+
+banner 自定义Banner
+onMeasure  width:height
+
+layout_constraintDimensionRatio
+
+最大/小 
+android:maxWidth
+android:minWidth
+
+
+建议使用下面这组
+app:layout_constraintWidth_max
+app:layout_constraintWidth_min
+
+基本使用
+
+进阶 
+自定义view 
+
+MeasureSpec
+多点触控+ matrix
+measure -> layout -> draw
+
+UI 高级 
+没有收到面试通知
+面试过不了  能力
+
+自定义框架 
+
+跨进程 binder
+跨线程 handler
+
+农村 app 弱网 
+
+高级 懂原理 源码 红利期 
+11 12 做Android 4大组件 listview 1W+ 
+找不到工作 
+
+flutter 
+
+8个月
+vip P7
+面试专题 面试指导 
+ 5580 + 8个月 = P7 知识体系 
+ 学习太痛苦 -》 8位 快乐快速的学习
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
  

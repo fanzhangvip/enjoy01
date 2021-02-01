@@ -100,6 +100,10 @@ hprof 文件可以展示某一时刻java堆的使用情况，根据这个文件�
 Android 生成 hprof 文件整体上有两种方式:
 
 使用 adb 命令
+https://androooid.github.io/public/lightsky/mat_usage/mat_usage.html
+
+select * from instanceof android.app.Activity
+https://help.eclipse.org/2020-06/index.jsp
 
 adb shell am dumpheap <processname> <FileName>
 复制代码

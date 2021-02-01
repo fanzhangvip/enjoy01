@@ -25,6 +25,45 @@
 完成的很好，今晚记得继续来听课
 
 
+setContentView 的源码解析
+
+ViewPager 中adpater 适配源码解析（可以百度）；
+分析ViewPager中的adapter应该重点关注
+1. PagerAdapter、DataSetObserver 与观察者模式的应用
+2. populate()方法中如何处理adapter的生命周期(startUpdate()->getCount()->->instantiateItem()->destroyItem()->setPrimaryItem()->finishUpdate())
+3. populate()是如何管理页面缓存大小，已经管理页面的销毁和重建
+
+而不是讲解>getCount(),isViewFromObject(),instantiateItem(),destroyItem()方法的作用
+
+了解懒加载的逻辑（选做，尽量写代码）
+懒加载的实现方案
+
+
+public View inflate(int resource, ViewGroup root)
+public View inflate(XmlPullParser parser,  ViewGroup root)
+public View inflate(int resource, ViewGroup root, boolean attachToRoot)
+public View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)
+
+
+1. 回答过于简单了，第一，要讲明白setContentView的调用流程
+第二，LayoutInflate.inflate有四个重载方法，
+public View inflate(int resource, ViewGroup root)
+public View inflate(XmlPullParser parser,  ViewGroup root)
+public View inflate(int resource, ViewGroup root, boolean attachToRoot)
+public View inflate(XmlPullParser parser, ViewGroup root, boolean attachToRoot)
+说明它们的区别，root是否为null,已经attachToRoot是否为真对添加的布局的影响
+
+2. 分析ViewPager中的adapter应该重点关注
+1. PagerAdapter、DataSetObserver 与观察者模式的应用
+2. populate()方法中如何处理adapter的生命周期(startUpdate()->getCount()->->instantiateItem()->destroyItem()->setPrimaryItem()->finishUpdate())
+3. populate()是如何管理页面缓存大小，以及管理页面的销毁和重建
+
+而不是讲解>getCount(),isViewFromObject(),instantiateItem(),destroyItem()方法的作用
+
+3. 第三题没做？请完成第三题，并且分析下android.support包下是如何实现Fragment+ViewPager的懒加载方案，
+如何分析下androidx下面利用setMaxLifecycle()方法实现懒加载的原理
+最后，尝试看看fragment+ViewPager2如何实现懒加载
+
 
 
 

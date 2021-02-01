@@ -4,7 +4,298 @@ vip咨询加阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 免费 领取大纲
 
-同学们 晚上好 20：10开始
+我的简书：https://www.jianshu.com/u/3348b92f77a4
+
+同学们 下午好 15：10开始
+
+gif ? png jpeg 
+
+glide：java  jvm 
+
+
+giflib: c/c++底层库
+
+帧动画 
+
+app: 集成 giflib 源码
+
+.so 加载 
+
+打开一个gif 加载： GifFileType
+
+public abstract class Drawable
+
+GifDrawable 然后解码gif ->bitmap  ->canvas.draw
+
+xxx.gif  文件
+
+giflib初始化 -> open -> 解析
+
+IO打开一个文件 
+
+Android Studio如何集成c/c++源码 
+增量更新：bsdiff 
+
+1. 在CPP目录下 把源码copy进来 
+
+java 调用c/c++  JNI 
+c/c++ -> libxxx.so 
+-> 
+static {
+    System.loadLibrary("native-lib");
+}
+
+2.  JNI -> libxxx.so -> c/c++
+
+eclispe -> .so
+
+CMakeLists.txt 脚本
+
+c/c++
+
+app: gradle 
+..
+...
+externalNativeBuild
+-> CMakeLists.txt
+
+abi
+abiFilters
+
+3. 如何编写JNI：
+要求懂JNI 区分应聘者
+Java app  Activity 
+SDK java层 framework
+
+JNI 桥梁
+
+NDK  c/c++ framework 
+
+在Java 编写native函数
+map 
+
+//JNI静态注册
+native        一一对应           jni
+nativeDecodeStream  ->  jvm规则 
+
+Java_com_zero_giflibdemo_gif_GifFrame_nativeDecodeStream
+com.zero.giflibdemo.gif
+
+Java_包名(. -> _)_类名_方法名
+Java_com_zero_giflibdemo_gif_GifFrame_nativeDecodeStream
+
+Java的参数
+InputStream stream,byte[] buffer
+
+JNI参数：
+JNIEnv *env, ：env->getxxx
+Context上下文（context.getxxx）
+
+static native: jclass clazz, 
+成员native: jobject object 
+ 
+jobject stream,jbyteArray buffer
+
+
+javah命令：
+
+//JNI动态注册
+native <->  JNI (方法名)
+
+System.loadLibrary("native-lib");
+
+JNI_OnLoad 生命周期 初始化
+env->RegisterNatives
+
+typedef struct {
+    const char* name; java native方法名称
+    const char* signature;签名 新手 90% 跳这个坑
+	(参数类型签名)返回值类型签名
+	
+    void*       fnPtr;c 函数指针：
+} JNINativeMethod;
+
+class->jobject-> L + 完整包名加类名(com.zero.) + ;
+                                   (com/zero/)  
+。。。。
+。。。
+
+JNI_OnUnload 卸载 销毁 
+
+4.  如何在jni返回Java的对象
+
+
+5. 如何在Java里面调用c/c++
+
+java 存储一个c指针： long 
+
+c/c++ 基础 
+
+体系化的
+
+堆业务： 《 15k
+          > 25K 
+		  
+多写代码 多练习 
+
+动态代理 工厂模式
+
+8个月
+面试 有技巧 
+
+5580： 
+
+80% 加班 
+工作效率低 ：
+
+歌词 渐变 
+
+工作低： 能力越低 ，-》提升能力-》 
+学习成本   8个月  -》 4K 5K
+1. 技术博客 200元 
+2. 答疑 1000
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 glide  gif   1
 

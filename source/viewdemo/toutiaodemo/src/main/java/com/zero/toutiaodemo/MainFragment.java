@@ -31,7 +31,7 @@ public class MainFragment extends ListFragment {
                 "OverDraw",//1
                 "简单文字测量demo",//2
                 "ViewPager+文字变色",//3
-                "绘制测试",//4
+                "文字绘制在中心",//3
         };
         arrayAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, array);
         setListAdapter(arrayAdapter);
@@ -62,7 +62,7 @@ public class MainFragment extends ListFragment {
                 startActivity(gotoAct);
                 break;
             case 4://ViewPager+文字变色
-                gotoAct = new Intent(getActivity(),DrawTestActivity.class);
+                gotoAct = new Intent(getActivity(),TextMeasure1Activity.class);
                 startActivity(gotoAct);
                 break;
             default:

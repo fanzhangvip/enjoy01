@@ -1,0 +1,20 @@
+参考资料
+
+https://www.kotlincn.net/docs/reference/coroutines/coroutines-guide.html
+https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
+https://kaixue.io/kotlin-coroutines-1/
+https://gist.github.com/linsea/adf4a67e863c318d5f9ee8405c5a65c5
+https://www.bennyhuo.com/2019/04/01/basic-coroutines/
+https://johnnyshieh.me/posts/kotlin-coroutine-introduction/
+https://www.jianshu.com/p/8db10f9d0f01
+
+
+重要：
+https://medium.com/androiddevelopers/coroutines-on-android-part-i-getting-the-background-3e0e54d20bb
+
+https://juejin.im/post/5d74ad56e51d456201486eab#heading-2
+
+
+1.  什么是协程？
+并发，并行的概念
+kotlin的协程不是广义的协程

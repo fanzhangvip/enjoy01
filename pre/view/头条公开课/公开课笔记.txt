@@ -1,11 +1,280 @@
-往期视频加肉兰老师微信
+往期视频加月亮老师微信
 vip咨询加阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 
 免费 Android学习大纲
 
-同学们晚上好
-20：10分发车
+同学们下午好
+15：10分发车
+
+Show layout bounds
+
+Debug GPU overdraw
+Android 将按如下方式为界面元素着色，以确定过度绘制的次数：
+
+真彩色：没有过度绘制
+ 蓝色：过度绘制 1 次
+ 绿色：过度绘制 2 次
+ 粉色：过度绘制 3 次
+ 红色：过度绘制 4 次或更多次
+
+TextView Span
+
+自定义TextView
+
+onMeasure(控件大小)  -> onlayout（摆放的位置） -> onDraw
+
+onDraw（显示什么）
+
+绘制文字  1
+/**
+     * Draw the text, with origin at (x,y), using the specified paint. The origin is interpreted
+     * based on the Align setting in the paint.
+     *
+     * @param text The text to be drawn
+     * @param x The x-coordinate of the origin of the text being drawn
+     * @param y The y-coordinate of the baseline of the text being drawn
+     * @param paint The paint used for the text (e.g. color, size, style)
+     */
+    public void drawText(@NonNull String text, float x, float y, @NonNull Paint paint) {
+        super.drawText(text, x, y, paint);
+    }
+
+Canvas 画布：决定在view上画什么东西
+Paint: 风格
+
+文字的尺寸
+baseline: abcJIeke
+
+ascent/descent
+
+top/bottom
+
+文字绘制在view的中心：
+y: baseline =  getMeasuredHeight()/2 + (fontMetrics.descent - fontMetrics.ascent )/2 - fontMetrics.descent
+
+= getMeasuredHeight()/2 - (fontMetrics.descent + fontMetrics.ascent )/2
+
+自定义View  炫酷的动效 
+自定义绘制 + 属性动画 
+
+知识体系
+
+初中级工程师：完成任务 ctrl+c ctrl+v 
+
+if else 
+
+retrofit 
+
+dagger2
+
+arouter
+
+
+高级工程师： 懂原理 懂源码 会性能优化 封装 T @
+要你封装多线程 handler
+
+kotlin 
+
+2-3
+
+ 《 5 7 8  50%
+
+0 基础班教学 免费 
+
+8个月
+
+要求： 11 12 懂四大组件 ListView 高级工程师：
+
+5180 %365 
+
+进步一点 * 365 
+跟着老师  效率 ：8月
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 今天同学听完课 收获如何？  
 

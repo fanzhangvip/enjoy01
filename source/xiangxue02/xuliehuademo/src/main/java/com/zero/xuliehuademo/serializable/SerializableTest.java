@@ -1,8 +1,12 @@
 package com.zero.xuliehuademo.serializable;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
-class A{
+class A implements Serializable{
     private String str;
 
     public A(String str){
@@ -39,17 +43,64 @@ class B implements Serializable {
     }
 }
 
+class MyCourse implements Serializable{
+
+    private String name;
+    private float score;
+
+    public MyCourse() {
+        System.out.println("_Course: empty");
+    }
+
+    public MyCourse(String name, float score) {
+        System.out.println("_Course: " + name + " " + score);
+        this.name = name;
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public float getScore() {
+        return score;
+    }
+
+    public void setScore(float score) {
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "name='" + name + '\'' +
+                ", score=" + score +
+                '}';
+    }
+}
+
 public class SerializableTest {
 
     public static void main(String[] args) throws Exception {
 
-        B b = new B("Zero",18,new A("test"));
+      MyCourse course = new MyCourse("english",12);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(out);
 
-        byte[] bs = SerializeableUtils.serialize(b);
+        course.setScore(34f);
+        oos.writeObject(course);
+        byte[] bs = out.toByteArray();
+        oos.close();
 
-        //反序列化
-        B b1 = SerializeableUtils.deserialize(bs);
-        System.out.println(b1);
+        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bs));
+        MyCourse course1 = (MyCourse)ois.readObject();
+        MyCourse course2 = (MyCourse)ois.readObject();
+        System.out.println("course1: " + course1);
+        System.out.println("course2: " + course2);
 
     }
 }

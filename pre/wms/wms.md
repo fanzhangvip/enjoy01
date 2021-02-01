@@ -1,5 +1,7 @@
 # WMS
+
 ## Activity与Window相关概念
+
 - Activity只负责生命周期和事件处理
 - Window只控制视图
 - 一个Activity包含一个Window，如果Activity没有Window，那就相当于Service
@@ -7,6 +9,7 @@
 - WMS控制所有Window的显示与隐藏以及要显示的位置
 
 ### Window
+
 “Window”表明它是和窗口相关的，“窗口”是一个抽象的概念，从用户的角度来讲，它是一个“界面”；从SurfaceFlinger的角度来看，它是一个Layer，承载着和界面有关的数据和属性；从WMS角度来看，它是一个WIndowState，用于管理和界面有关的状态。
 - 表示一个窗口的概念，是所有View的直接管理者，任何视图都通过Window呈现(点击事件由Window->DecorView->View; Activity的setContentView底层通过Window完成)
 - Window是一个抽象类，具体实现是PhoneWindow
@@ -17,17 +20,21 @@
 - 定义窗口样式和行为的抽象基类，用于作为顶层的view加到WindowManager中，其实现类是PhoneWindow。
 - 每个Window都需要指定一个Type（应用窗口、子窗口、系统窗口）。Activity对应的窗口是应用窗口；PopupWindow，ContextMenu，OptionMenu是常用的子窗口；像Toast和系统警告提示框（如ANR）就是系窗口，还有很多应用的悬浮框也属于系统窗口类型。
 ### WindowManager
+
 用来在应用与window之间的管理接口，管理窗口顺序，消息等。
 
 ### WindowManagerService
+
 简称Wms，WindowManagerService管理窗口的创建、更新和删除，显示顺序等，是WindowManager这个管理接品的真正的实现类。它运行在System_server进程，作为服务端，客户端（应用程序）通过IPC调用和它进行交互。
 
 ### Token
+
 这里提到的Token主是指窗口令牌（Window Token），是一种特殊的Binder令牌，Wms用它唯一标识系统中的一个窗口。
 
 
 
 ### Window的type
+
 - 应用窗口：层级范围是1~99
 - 子窗口：层级范围是1000~1999
 - 系统窗口：层级范围是2000~2999

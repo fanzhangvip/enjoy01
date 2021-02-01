@@ -18,6 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".TestActivity"/>
+
+<!--        <provider-->
+<!--            android:name="leakcanary.internal.LeakSentryInstaller"-->
+<!--            android:authorities="${applicationId}.leak-sentry-installer"-->
+<!--            android:exported="false"/>-->
     </application>
 
 </manifest>

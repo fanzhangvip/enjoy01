@@ -3,6 +3,74 @@ https://www.ibm.com/developerworks/cn/java/j-lo-proxy-pattern/index.html
 https://segmentfault.com/a/1190000022258194
 https://www.kancloud.cn/aslai/interview-guide/1126403、
 https://www.zhihu.com/question/20794107
+
+https://blog.csdn.net/u013132758/article/details/79690882
+https://blog.csdn.net/lmj623565791/article/details/51304204
+https://blog.csdn.net/ustcrding/article/details/53185801
+
+
+新
+https://www.jianshu.com/u/fae653b0f13d
+https://www.zhihu.com/question/20794107
+https://zhuanlan.zhihu.com/p/23025818
+
+OkHttp框架简介
+Android为我们提供了两种HTTP交互的方式：HttpURLConnection和 Apache HTTP Client，虽然两者都支持HTTPS，流的上传和下载，配置超时，IPv6和连接池，已足够满足我们各种HTTP请求的需求。但更高效的使用HTTP可以让您的应用运行更快、更节省流量。而OkHttp库就是为此而生。
+
+OKHttp是一款高效的HTTP库，支持连接同一地址的链接共享同一个socket，通过连接池来减小响应延迟，还有透明的GZIP压缩，请求缓存等优势。OkHttp存在以下的特点：
+
+① 支持HTTP2/SPDY
+
+② socket自动选择最好路线，并支持自动重连
+
+③ 拥有自动维护的socket连接池，减少握手次数
+
+④ 拥有队列线程池，轻松写并发
+
+⑤ 拥有Interceptors轻松处理请求与响应（比如透明GZIP压缩,LOGGING）
+
+⑥ 基于Headers的缓存策略
+
+OKHttp源码位置https://github.com/square/okhttp
+————————————————
+
+Retrofit框架
+
+Retrofit与okhttp共同出自于Square公司，retrofit就是对okhttp做了一层封装。把网络请求都交给给了Okhttp，我们只需要通过简单的配置就能使用retrofit来进行网络请求了。Retrofit框架存在的优势：
+
+① Retrofit使用注解方式，大大简化了我们的URL拼写形式，而且注解含义一目了然，简单易懂；
+
+② Retrofit使用简单，结构层次分明，每一步都能清晰的表达出之所以要使用的寓意；
+
+④ Retrofit支持同步和异步执行，使得请求变得异常简单，只要调用enqueue/execute即可完成；
+
+④ Retrofit更大自由度的支持我们自定义的业务逻辑，如自定义Converters。
+————————————————
+
+
+Okhttp：
+OKHttp是一款高效的HTTP库，支持连接同一地址的链接共享同一个socket，通过连接池来减小响应延迟，还有透明的GZIP压缩，请求缓存等优势。OkHttp存在以下的特点：
+① 支持HTTP2/SPDY 
+② socket自动选择最好路线，并支持自动重连 
+③ 拥有自动维护的socket连接池，减少握手次数 
+④ 拥有队列线程池，轻松写并发 
+⑤ 拥有Interceptors轻松处理请求与响应（比如透明GZIP压缩,LOGGING） 
+⑥ 基于Headers的缓存策略
+Retrofit:
+Retrofit与okhttp共同出自于Square公司，retrofit就是对okhttp做了一层封装。把网络请求都交给给了Okhttp，我们只需要通过简单的配置就能使用retrofit来进行网络请求了。Retrofit框架存在的优势：
+① Retrofit使用注解方式，大大简化了我们的URL拼写形式，而且注解含义一目了然，简单易懂；
+② Retrofit使用简单，结构层次分明，每一步都能清晰的表达出之所以要使用的寓意；
+③ Retrofit支持同步和异步执行，使得请求变得异常简单，只要调用enqueue/execute即可完成；
+④ Retrofit更大自由度的支持我们自定义的业务逻辑，如自定义Converters。
+⑤ Retrofit支持多种文件解析(Gson,Json,XML,Protobuf)
+⑥ Retrofit支持RxJava
+
+Okhttp 与 Retrofit的联系:
+两者之间的联系就是Retrofit是基于Okhttp的，它底层的所有请求默认走的都是Okhttp。它在Okhttp的基础上进一步封装，使用注解方式让我们使用简单方便且看代码一目了然。Retrofit是基于APP发起请求的封装，也就是面向的是应用层(比如响应数据的处理和错误处理等)。而Okhttp是对底层网络请求的封装与优化(socket优化，数据压缩，buffer缓存等)。
+
+
+
+
 为什么使用代理
 　　我们在写一个功能函数时，经常需要在其中写入与功能不是直接相关但很有必要的代 码，如日志记录，信息发送，安全和事务支持等，这些枝节性代码虽然是必要的，但它会带来以下麻烦：
 

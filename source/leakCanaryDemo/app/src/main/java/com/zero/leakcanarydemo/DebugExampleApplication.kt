@@ -51,11 +51,11 @@ class DebugExampleApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        LeakCanary.config = LeakCanary.config.copy(
-            onHeapAnalyzedListener = LeakUploader()
-        )
-
-
+//        LeakCanary.config = LeakCanary.config.copy(
+//            onHeapAnalyzedListener = LeakUploader()
+//        )
+//
+//
         registerActivityLifecycleCallbacks(MyActivityLifeCycleCallBack)
 
 //

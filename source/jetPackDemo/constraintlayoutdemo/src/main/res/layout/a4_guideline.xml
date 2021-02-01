@@ -10,21 +10,21 @@
         android:layout_width="1000dp"
         android:layout_height="100dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="118dp" />
+        app:layout_constraintGuide_end="239dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="10000dp"
+        android:layout_height="10000dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="50dp" />
+        app:layout_constraintGuide_end="143dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <TextView
         android:layout_width="wrap_content"

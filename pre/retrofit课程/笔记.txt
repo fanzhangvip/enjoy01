@@ -2,9 +2,117 @@
 VIP咨询 阿媛老师：1413650094
 zero老师微信: xiangxue_zero
 免费 Android学习大纲
-20：10开始
+15：10开始
 
-同学们 晚上午好
+同学们 下午好
+
+retroft  1 ,2 
+
+MediaType 
+
+图片类型  jpg png 
+
+retrofit  原理 
+
+代理模式  1 ，2
+注解 
+
+三国演义 
+挟天子以令诸侯
+曹操 
+汉献帝  盖章 
+
+静态代理 ：
+代理类 被代理类 实现业务接口 
+动态代理 ： 
+Android高级  只停留在用，一定要知道原理
+
+JDK  Proxy 动态代理实现方案 ：反射
+cglib -> ASM 
+
+ASM .class 文件结构
+
+
+public interface InvocationHandler {
+    public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable;
+}
+
+需要一个代理对象
+——》 newProxyInstance
+——》 getProxyClass0  返回Class<>
+-》 final Constructor<?> cons = cl.getConstructor(constructorParams);
+-》 cons.newInstance(new Object[]{h});
+
+ ProxyGenerator.generateProxyClass(
+                proxyName, interfaces, accessFlags)
+返回 byte[] proxyClassFile	
+
+defineClass0 转换成Class对象 		
+Qiangshou 静态代理 
+proxy$0	 动态代理 
+
+newProxyInstance（InvocationHandler）
+-》 proxy$0（InvocationHandler）
+
+protected InvocationHandler h;
+
+proxy$0.doCET4 -> super.h.invoke
+
+retrofit  封装okhttp  Call 
+OkHttp  Call 
+
+使用代理模式 封装okhttp
+静态代理 
+动态代理
+
+使用注解 + 动态代理 封装okhttp 1
+
+ loadServiceMethod(method)? 解析method 注解 -》 requestFactory
+ 
+ invoke ->  Call Okhttp
+ val request = requestFactory.create(args)!!
+        return client.newCall(request)
+		
+		
+		retrofit 
+		泛型+ 注解 + 动态代理 
+		
+		面试机会
+		面试过不了 
+		
+		不懂binder  一定不是Android高级工程师
+		activity -> AMS 
+		app(Proxy )
+		
+		了解 
+		java 
+		
+		android -> 红利期 会用 高薪 <2014  初级-》 应届生
+		
+		flutter 
+		
+		kotlin  红利期 
+		
+		
+		1 最贵 时间 
+		花钱 
+		6280
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

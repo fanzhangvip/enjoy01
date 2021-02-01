@@ -83,6 +83,13 @@ interface WanAndroidApi {
     @POST("project/upload")
     fun upload4(@PartMap map: Map<String,MultipartBody.Part>): Call<RequestBody>
 
+    @Multipart
+    @POST("project/xxx")
+    fun upload6(
+        @Part("username") userName: RequestBody,
+        @Part("password") passWord: RequestBody,
+        @Part file: MultipartBody.Part
+    ): Call<ProjectBean>
 
 
 

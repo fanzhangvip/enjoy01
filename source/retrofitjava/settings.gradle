@@ -1,0 +1,4 @@
+include ':app1'
+rootProject.name='retrofitjava'
+include ':app'
+include ':retrofitTest'

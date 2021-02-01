@@ -1,0 +1,436 @@
+往期视频加肉兰老师
+VIP咨询 阿媛老师：1413650094
+zero老师微信: xiangxue_zero
+免费 Android学习大纲
+15：10开始
+
+同学们 下午好
+
+retrofit 大量的设计模式
+
+开源框架的原理 源码 
+
+squre
+
+leakcanry
+
+
+OkHttp  HttpClient/HttpURLConnection-> http-async->volley
+
+retrofit
+
+OkHttp 代码里面到处课有网络请求
+new request 
+
+retrofit 内核 OkHttp
+
+Retrofit使用注解方式
+
+Retrofit更大自由度的支持我们自定义的业务逻辑，如自定义Converters。
+Retrofit支持多种文件解析(Gson,Json,XML,Protobuf)
+Retrofit支持RxJava livedata 协程
+
+Okhttp https  ssl
+
+retrofit:
+Call  包含了 OKhttp的call ->response convert bean
+Okhttp:
+Call 
+
+GitHubApi 接口 不能new 
+
+Proxy.newProxyInstance
+
+代理模式： Android 非常重要的地位
+binder: 
+
+给某一个对象提供一个代理对象，并由代理对象控制对原对象的引用
+王者荣耀  水平很差 代练
+vpn 蓝灯
+
+结合源码 
+生活中的例子
+
+静态代理：
+getProxyClass0 -》 返回了Class<?> cl
+-》cl.getConstructor
+-》cons.newInstance
+
+
+newProxyInstance(ClassLoader loader,
+Class<?>[] interfaces,InvocationHandler h)
+										  
+ cons.newInstance(new Object[]{h});
+										  
+protected Proxy(InvocationHandler h) {
+        Objects.requireNonNull(h);
+        this.h = h;
+}
+	
+proxy$0 extends Proxy implements ICET4 
+
+public final void doCET4() throws  {
+        try {
+            super.h.invoke(this, m3, (Object[])null);
+        } catch (RuntimeException | Error var2) {
+            throw var2;
+        } catch (Throwable var3) {
+            throw new UndeclaredThrowableException(var3);
+        }
+    }
+反射：
+通过反射去修改每个字段 调用方法
+method: 相关的信息
+
+类似 retrofit:
+少了 call转换 call -> rx livedata
+少了 json -> bean 
+
+接口GitHubAPI : 太监 他没有小DD 构造
+new 实例对象
+1. 收义子  曹操
+静态代理  
+2. 接一个小DD  创建实例
+
+Method -》 ServiceMethod
+
+RequestFactory requestFactory = RequestFactory.parseAnnotations(retrofit, method);
+
+Type[] parameterTypes = method.getGenericParameterTypes();
+
+ adapterType = method.getGenericReturnType();
+
+
+
+adapt
+Call<R> -》 Observable
+
+CallAdapter
+
+callbackExecutor 线程切换 背景线程 -》 UI主线程
+
+Builder模式优缺点
+优点：
+不需要知道产品内部的组成细节，产品与创建过程解耦
+分步组装产品，使得产品的创建过程更精细更清晰
+容易扩展，新产品只需要新建一个建造者即可
+缺点：
+Builder模式创建的产品差异性小，使用范围受限制
+不同的产品会产生多个建造者和指挥者
+
+优点
+只关注产品工厂即可，不需要关注产品如何创建，由工厂确定如何创建
+扩展性好，新增产品时，只需要新增一个具体工厂和具体产品
+缺点
+新增产品时，需要新增具体工厂和具体产品类，使系统变得庞大
+系统中加入抽象层，增加了系统的抽象性和理解难度
+
+rx3 
+
+适配器模式优缺点
+优点
+复用性好，引入适配器类来重用适配者类，无需修改原有代码
+增加类的透明性，将适配过程封装在适配器类中，对使用者来说相对透明
+灵活性扩展性好，通过配置可以随时更换适配器
+缺点
+使用适配器会使系统整体不好把握，调的是A接口，却被适配成了B接口的实现
+
+8个月
+
+1000
+全面 知识体系
+面试： 有技巧
+
+没有深入挖掘你自己的技能
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+网络请求：
+
+HttpClient/HttpURLConnection
+volley 
+Okhttp
+retrofit  简单 好用  解耦
+
+
+retrofit源码 
+
+url + 参数 
+
+参数是如何解析？ 
+
+@GET("/users/{user}/repos")
+Call<List<Repo>> listRepos(@Path("user") String user);
+转化成一个请求 
+
+接口 没法 new  
+
+GitHubApi
+
+动态代理  + 工厂模式 + 
+
+UML 类图 
+动态代理  为什么要用？  好处什么？
+ 
+如果是你来设计 你有没有更好的方式？ 
+
+基础 
+
+Proxy.newProxyInstance -》 对象 
+GitHubApi  -》 GitHubApi实例对象
+
+newProxyInstance（GitHubApi） -》 getProxyClass0
+-》 cons.newInstance(new Object[]{h}) -（GitHubApi）
+
+InvocationHandler
+
+public Object invoke(Object proxy, Method method, Object[] args)
+        throws Throwable;
+		
+		
+GitHubApi.listRepos -> invoke() -> Call (Okhttp3.Call )
+
+//代理模式  具体的实现 
+通过类加载器 ClassLoader  -> jvm虚拟机（Class对象）-》 newInstance
+静态代理-> .java
+
+
+动态代理 .class 在内存里面创建出来(getProxyClass0) -> generateProxy
+
+UML 类图 
+代理模式给某一个对象提供一个代理对象，并由代理对象控制对原对象的引用
+
+宝强 -》 经纪人  
+
+王者荣耀
+     白银    -》王者
+游戏代练 
+买火车票 -》找黄牛 
+
+proxy$0 extends Proxy implements ICET4 
+
+new  Proxy(h)
+
+ICET4
+Proxy.newProxyInstance 返回一个ICET4extends Proxy implements ICET4的实例 proxy
+
+proxy.doCET4()
+
+-> InvocationHandler -> invoke
+
+loadServiceMethod(method)
+method: listRepos
+
+ServiceMethod核心类 
+@GET("/users/{user}/repos")
+Call<List<Repo>> listRepos(@Path("user") String user);
+
+解析打包放到RequestFactory -》产生一个request
+
+ServiceMethod.parseAnnotations -> 
+一次Http的调用 
+ServiceMethod.invoke  -> Call 
+
+
+invoke(args != null ? args : emptyArgs);
+
+
+OkHttpClient
+
+发起网络请求
+Android 线程间通信  唯一 Handler
+
+CallAdapter: 负责创建Http请求的
+
+
+ T adapt(Call<R> call)
+ 
+ Java的 高级特性 
+ 
+ 
+ 天天加班 
+ systrace traceview 
+ 
+ 4.23 
+ 
+ 3期 
+ 2
+ 3
+ 4
+ 
+ 2000
+ 
+ 8个月  6280  投资 
+ 面试指导  从简历 
+
+
+
+
+
+
+
+
+
+
+	

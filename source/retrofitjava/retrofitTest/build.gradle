@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'cglib:cglib:3.3.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+sourceCompatibility = "8"
+targetCompatibility = "8"

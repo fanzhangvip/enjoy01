@@ -82,7 +82,7 @@ public class SkinFactory implements LayoutInflater.Factory2 {
 
     @Override
     public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        View view = mDelegate.createView(parent, name, context, attrs);
+        View view = mDelegate.createView(parent, name, context, attrs);//兼容处理
         if (view == null) {
             mConstructorArgs[0] = context;
 

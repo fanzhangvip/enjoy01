@@ -104,14 +104,14 @@ public class JsonAdapterTest {
         MyClass myClass = new MyClass("a","b","c");
         myClass.test();
 
-        Gson gson = new GsonBuilder()
-                .setVersion(1.2).create();
-        User user = new User("gg","Zero");
-        String gsonStr = gson.toJson(user);
-        System.out.println("gsonStr=" + gsonStr);
-
-        user = gson.fromJson(gsonStr,User.class);
-        System.out.println("user: " + user);
+//        Gson gson = new GsonBuilder()
+//                .setVersion(1.2).create();
+//        User user = new User("gg","Zero");
+//        String gsonStr = gson.toJson(user);
+//        System.out.println("gsonStr=" + gsonStr);
+//
+//        user = gson.fromJson(gsonStr,User.class);
+//        System.out.println("user: " + user);
 
     }
 }
